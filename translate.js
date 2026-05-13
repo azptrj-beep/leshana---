@@ -1,4 +1,4 @@
-translate.js
+
 const dictionary = {
 
   "bonjour": "ܫܠܡܐ",
