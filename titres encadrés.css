@@ -1,0 +1,12 @@
+titres encadrés.css
+section h2 {
+
+  display: inline-block;
+
+  padding-bottom: 12px;
+
+  border-bottom:
+    3px solid #00cfff;
+
+  margin-bottom: 25px;
+}

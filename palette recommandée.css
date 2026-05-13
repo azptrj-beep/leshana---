@@ -1,0 +1,18 @@
+palette recommandée.css
+:root {
+
+  --blue-main: #0033a0;
+  --blue-light: #0066ff;
+  --cyan: #00cfff;
+
+  --red-main: #d40000;
+
+  --dark-bg: #050816;
+  --dark-card: rgba(255,255,255,0.08);
+
+  --text-light: #ffffff;
+  --text-soft: #d9e2ff;
+
+  --glass-border:
+    rgba(255,255,255,0.12);
+}

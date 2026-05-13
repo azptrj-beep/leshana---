@@ -1,0 +1,54 @@
+keyboard.html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Clavier Soureth</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>
+      ⌨️ Clavier Soureth Moderne
+    </h1>
+
+  </header>
+
+  <section class="translator-box">
+
+    <textarea id="editor"
+              class="soureth-writing"
+              placeholder="Écrire en Soureth..."></textarea>
+
+    <div id="keyboard">
+
+      <button onclick="insertLetter('ܐ')">ܐ</button>
+      <button onclick="insertLetter('ܒ')">ܒ</button>
+      <button onclick="insertLetter('ܓ')">ܓ</button>
+      <button onclick="insertLetter('ܕ')">ܕ</button>
+      <button onclick="insertLetter('ܗ')">ܗ</button>
+      <button onclick="insertLetter('ܘ')">ܘ</button>
+      <button onclick="insertLetter('ܙ')">ܙ</button>
+      <button onclick="insertLetter(' ')">␣</button>
+
+    </div>
+
+  </section>
+
+  <script src="js/keyboard.js"></script>
+
+</body>
+
+</html>
