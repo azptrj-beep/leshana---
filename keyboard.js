@@ -1,4 +1,4 @@
-keyboard.js
+
 function insertLetter(letter) {
 
   const editor = document.getElementById('editor');
