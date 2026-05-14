@@ -279,7 +279,9 @@ nav a:hover {
 
 .hero h1 {
 
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  .hero h1 {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+}
 
   line-height: 1.1;
 
