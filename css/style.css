@@ -920,3 +920,18 @@ html {
   position: relative;
   z-index: 2;
 }
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
