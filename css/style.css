@@ -415,16 +415,24 @@ nav a {
   overflow: hidden;
 }
 
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
 .card::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   background:
     linear-gradient(
       135deg,
       rgba(255,255,255,0.08),
       transparent
     );
+
   pointer-events: none;
 }
 
