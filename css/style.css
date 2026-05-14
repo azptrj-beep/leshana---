@@ -422,6 +422,10 @@ nav a:hover {
   pointer-events: none;
 }
 
+.card {
+  animation: fadeInUp 0.8s ease;
+}
+
 
 /* =========================
    SECTION TITLES
