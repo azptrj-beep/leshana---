@@ -959,3 +959,30 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================
+   FONTS
+========================= */
+
+@font-face {
+  font-family: 'Adiabene';
+  src: url('./fonts/Adiabene.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* =========================
+   STYLES GLOBAUX
+========================= */
+
+body {
+  background: #111;
+  color: white;
+}
+
+/* =========================
+   SOURETH
+========================= */
+
+.soureth-text {
+  font-family: 'Adiabene', sans-serif !important;
+}
