@@ -271,18 +271,19 @@ nav a:hover {
 ========================= */
 
 .hero {
-
   text-align: center;
-
-  padding: 120px 20px;
+  padding: 90px 20px;
 }
 
 .hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
 
-  .hero h1 {
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  background: linear-gradient(135deg, #ffffff, #00cfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
   line-height: 1.1;
 
   margin-bottom: 25px;
