@@ -1016,3 +1016,28 @@ body {
 :lang(syr) {
   font-family: 'Adiabene', sans-serif !important;
 }
+
+/* Google Font */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Font Soureth */
+@font-face {
+  font-family: 'Adiabene';
+  src: url('./fonts/Adiabene.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Autres styles */
+.container {
+  padding: 20px;
+}
+
+/* ... */
+
+/* FORCE SOURETH */
+:lang(syr),
+.soureth-text {
+  font-family: 'Adiabene', sans-serif !important;
+}
