@@ -9,43 +9,13 @@
 }
 
 /* =========================
-   ROOT
-========================= */
-
-:root {
-
-  --bg: #050816;
-
-  --blue: #0066ff;
-
-  --cyan: #00cfff;
-
-  --text: #ffffff;
-
-  --soft: #d6ddff;
-}
-
-/* =========================
-   FONT SOURETH CHROME FIX
+   FONT
 ========================= */
 
 @font-face {
-
-  font-family: 'Adiabene Syriac';
-
-  src:
-    url('../fonts/Adiabene.woff2') format('woff2'),
-    url('../fonts/Adiabene.woff') format('woff');
-
-  font-style: normal;
-
-  font-weight: normal;
-
-  font-display: block;
-
-  unicode-range:
-    U+0700-074F,
-    U+0860-086F;
+  font-family: 'Adiabene';
+  src: url('../fonts/Adiabene.ttf') format('truetype');
+  font-display: swap;
 }
 
 /* =========================
@@ -53,50 +23,22 @@
 ========================= */
 
 body {
-
   font-family: 'Poppins', sans-serif;
-
-  background:
-    radial-gradient(
-      circle at top,
-      #0033a0,
-      #050816 60%
-    );
-
+  background: radial-gradient(circle at top, #0a1a3a, #050816);
   color: white;
-
-  overflow-x: hidden;
-
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* =========================
-   SOURETH FIX FINAL
+   GLASS EFFECT
 ========================= */
 
-.soureth-text {
-
-  font-family:
-    'Adiabene Syriac',
-    serif !important;
-
-  direction: rtl;
-
-  unicode-bidi: bidi-override;
-
-  text-rendering:
-    optimizeLegibility;
-
-  -webkit-font-smoothing:
-    antialiased;
-
-  -moz-osx-font-smoothing:
-    grayscale;
-}
-
-.big {
-
-  font-size: 72px;
+.glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
 }
 
 /* =========================
@@ -104,115 +46,48 @@ body {
 ========================= */
 
 header {
-
   position: sticky;
-
   top: 0;
-
   z-index: 999;
-
-  padding: 20px;
-
-  background:
-    rgba(0,0,0,0.25);
-
-  backdrop-filter: blur(12px);
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.08);
+  padding: 15px;
 }
 
-/* =========================
-   LOGO
-========================= */
-
-.logo-container {
-
+.topbar {
   display: flex;
-
-  justify-content: center;
-
   align-items: center;
-
-  gap: 20px;
-
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .logo {
-
-  width: 90px;
-
+  width: 60px;
   border-radius: 50%;
 }
 
-.title {
-
-  font-size: 2rem;
-}
-
-.subtitle {
-
-  color: var(--soft);
+.xp-box {
+  background: rgba(0,207,255,0.15);
+  padding: 8px 12px;
+  border-radius: 12px;
 }
 
 /* =========================
-   MENU
+   NAV
 ========================= */
 
-.menu-btn {
-
-  display: none;
-
-  text-align: center;
-
-  font-size: 30px;
-
-  margin-top: 15px;
-
-  cursor: pointer;
-}
-
 nav {
-
-  margin-top: 20px;
-
   display: flex;
-
-  justify-content: center;
-
   flex-wrap: wrap;
-
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 nav a {
-
-  text-decoration: none;
-
   color: white;
-
-  padding: 12px 18px;
-
-  border-radius: 14px;
-
-  background:
-    rgba(255,255,255,0.06);
-
-  transition: 0.3s;
-}
-
-nav a:hover {
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue),
-      var(--cyan)
-    );
-
-  transform:
-    translateY(-3px);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
 }
 
 /* =========================
@@ -220,85 +95,34 @@ nav a:hover {
 ========================= */
 
 .hero {
-
   text-align: center;
-
-  padding: 90px 20px;
+  padding: 80px 20px;
 }
 
-.hero h1 {
-
-  font-size:
-    clamp(2.8rem, 7vw, 5rem);
-
-  background:
-    linear-gradient(
-      135deg,
-      white,
-      #00cfff
-    );
-
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-
-  max-width: 850px;
-
-  margin: 20px auto;
-
-  line-height: 1.8;
-
-  color: var(--soft);
+.hero-card {
+  margin-top: 20px;
+  padding: 25px;
 }
 
 /* =========================
-   BUTTONS
+   SOURETH
 ========================= */
 
-.hero-buttons {
-
-  margin-top: 30px;
+.soureth-title,
+.soureth-writing,
+[lang="syr"] {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
 }
 
-.btn {
+/* =========================
+   GRID
+========================= */
 
-  padding: 14px 24px;
-
-  border: none;
-
-  border-radius: 16px;
-
-  cursor: pointer;
-
-  margin: 10px;
-
-  font-weight: 600;
-
-  color: white;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue),
-      var(--cyan)
-    );
-
-  transition: 0.3s;
-}
-
-.btn:hover {
-
-  transform:
-    scale(1.05);
-}
-
-.secondary {
-
-  background:
-    rgba(255,255,255,0.08);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
 }
 
 /* =========================
@@ -306,133 +130,79 @@ nav a:hover {
 ========================= */
 
 .card {
-
-  background:
-    rgba(255,255,255,0.07);
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
-  border-radius: 24px;
-
-  padding: 30px;
-
-  backdrop-filter: blur(18px);
-
-  margin-top: 30px;
+  background: rgba(255,255,255,0.06);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
 /* =========================
    KEYBOARD
 ========================= */
 
-.keyboard-section {
-
-  padding: 40px 20px;
-}
-
-textarea {
-
-  width: 100%;
-
-  min-height: 120px;
-
-  margin-top: 20px;
-
-  border: none;
-
-  border-radius: 18px;
-
-  padding: 20px;
-
-  background:
-    rgba(255,255,255,0.06);
-
-  color: white;
-
-  font-size: 30px;
-
-  font-family:
-    'Adiabene Syriac',
-    serif !important;
-
-  direction: rtl;
-}
-
-#keyboard {
-
+.keyboard {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 15px;
 }
 
-#keyboard button {
-
-  width: 65px;
-
-  height: 65px;
-
+.keyboard button {
+  font-family: 'Adiabene';
+  font-size: 28px;
+  width: 55px;
+  height: 55px;
   border: none;
-
-  border-radius: 16px;
-
-  background:
-    rgba(255,255,255,0.08);
-
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
   color: white;
-
   cursor: pointer;
-
-  font-size: 32px;
-
-  font-family:
-    'Adiabene Syriac',
-    serif !important;
-
-  transition: 0.2s;
-}
-
-#keyboard button:hover {
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue),
-      var(--cyan)
-    );
-
-  transform:
-    scale(1.08);
 }
 
 /* =========================
-   AUDIO BTN
+   BUTTON
 ========================= */
 
-.audio-btn {
-
-  margin-top: 20px;
-
-  padding: 12px 18px;
-
+.btn {
+  padding: 10px 16px;
+  border-radius: 12px;
   border: none;
-
-  border-radius: 14px;
-
-  cursor: pointer;
-
+  background: linear-gradient(135deg,#0066ff,#00cfff);
   color: white;
+  cursor: pointer;
+}
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--blue),
-      var(--cyan)
-    );
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.bar {
+  width: 100%;
+  height: 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.fill {
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg,#0066ff,#00cfff);
+}
+
+/* =========================
+   INPUT
+========================= */
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
 }
 
 /* =========================
@@ -440,50 +210,7 @@ textarea {
 ========================= */
 
 footer {
-
   text-align: center;
-
-  padding: 40px 20px;
-
-  color: var(--soft);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:768px) {
-
-  .menu-btn {
-
-    display: block;
-  }
-
-  nav {
-
-    display: none;
-
-    flex-direction: column;
-
-    align-items: center;
-  }
-
-  nav.active {
-
-    display: flex;
-  }
-
-  .big {
-
-    font-size: 52px;
-  }
-
-  #keyboard button {
-
-    width: 55px;
-
-    height: 55px;
-
-    font-size: 24px;
-  }
+  padding: 40px;
+  color: #aaa;
 }
