@@ -38,6 +38,30 @@
 ========================= */
 
 @font-face {
+  font-family: 'Soureth';
+  src:
+    url('./fonts/Adiabene.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Assyrian';
+  src:
+    url('./fonts/assyrian.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nohadra';
+  src:
+    url('./fonts/nohadra.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Adiabene', 'Soureth', sans-serif !important;
+}
+
+@font-face {
 
   font-family: 'Adiabene';
 
