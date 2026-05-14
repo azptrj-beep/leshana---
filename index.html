@@ -14,7 +14,8 @@
   <title>Leshana-Ed-Soureth</title>
 
   <!-- FAVICON -->
-  <link rel="icon" href="images/logo.png" />
+  <link rel="icon"
+        href="images/logo.png" />
 
   <!-- GOOGLE FONT -->
   <link rel="preconnect"
@@ -73,16 +74,10 @@
   <nav id="nav">
 
     <a href="#">🏠 Accueil</a>
-
     <a href="#">🔠 Alphabet</a>
-
     <a href="#">⌨️ Clavier</a>
-
     <a href="#">🌍 Traduction</a>
-
     <a href="#">🎮 Quiz</a>
-
-    <a href="#">📈 Progression</a>
 
   </nav>
 
@@ -101,10 +96,10 @@
     </h1>
 
     <p>
-      Découvre l’écriture moderne assyro-chaldéenne,
+      Découvre l’alphabet assyro-chaldéen moderne,
       les traductions,
-      les quiz interactifs
-      et les outils audio.
+      le clavier interactif
+      et les quiz audio.
     </p>
 
     <div class="hero-buttons">
@@ -143,51 +138,7 @@
 </section>
 
 <!-- =========================
-     FEATURES
-========================= -->
-
-<section class="features">
-
-  <div class="card">
-
-    <div class="icon">🔠</div>
-
-    <h2>Alphabet interactif</h2>
-
-    <p>
-      Lettres modernes avec audio natif.
-    </p>
-
-  </div>
-
-  <div class="card">
-
-    <div class="icon">⌨️</div>
-
-    <h2>Clavier Soureth</h2>
-
-    <p>
-      Écris facilement en alphabet moderne.
-    </p>
-
-  </div>
-
-  <div class="card">
-
-    <div class="icon">🌍</div>
-
-    <h2>Traduction</h2>
-
-    <p>
-      Traduction Français ⇄ Soureth.
-    </p>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     KEYBOARD
+     CLAVIER
 ========================= -->
 
 <section class="keyboard-section">
@@ -211,36 +162,7 @@
       <button onclick="insertLetter('ܕ')">ܕ</button>
       <button onclick="insertLetter('ܗ')">ܗ</button>
       <button onclick="insertLetter('ܘ')">ܘ</button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     QUIZ
-========================= -->
-
-<section class="quiz-section">
-
-  <div class="card">
-
-    <h2>🎮 Quiz rapide</h2>
-
-    <p id="quizQuestion">
-      ܫܠܡܐ signifie ?
-    </p>
-
-    <div class="quiz-buttons">
-
-      <button onclick="checkAnswer('Bonjour')">
-        Bonjour
-      </button>
-
-      <button onclick="checkAnswer('Maison')">
-        Maison
-      </button>
+      <button onclick="insertLetter('ܙ')">ܙ</button>
 
     </div>
 
@@ -289,18 +211,6 @@ function speakText(text) {
   utter.lang = "ar";
 
   speechSynthesis.speak(utter);
-}
-
-function checkAnswer(answer) {
-
-  if(answer === "Bonjour") {
-
-    alert("Correct ✅");
-
-  } else {
-
-    alert("Incorrect ❌");
-  }
 }
 
 </script>
