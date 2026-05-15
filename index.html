@@ -1,170 +1,323 @@
-<!DOCTYPE html><html lang="fr">
+
+<!DOCTYPE html>
+<html lang="fr">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Soureth Learning App PRO</title><link rel="stylesheet" href="style.css" /></head><body><!-- ================= HEADER ================= --><header>  <div class="logo-container">
-    <img src="logo.png" class="logo" />
-    <div>
-      <h2>Soureth Learning</h2>
-      <p class="subtitle">App éducative Soureth PRO</p>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+  <title>Leshana-Ed-Soureth</title>
+
+  <link rel="icon"
+        href="images/logo.png" />
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <div class="logo-container">
+
+      <img src="images/logo.png"
+           alt="Logo"
+           class="logo">
+
+      <div>
+
+        <h1 class="title">
+          Leshana-Ed-Soureth
+        </h1>
+
+        <p class="subtitle">
+          Plateforme moderne d’apprentissage du Soureth
+        </p>
+
+      </div>
+
     </div>
-  </div>  <!-- BURGER --><button id="burger" onclick="toggleMenu()">☰</button>
 
-  <nav id="nav">
-    <a href="#home">Accueil</a>
-    <a href="#alphabet">Alphabet</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#progress">Progression</a>
-  </nav><button class="btn btn-secondary" onclick="toggleTheme()">🌗</button>
+    <!-- NAVIGATION -->
 
-</header><!-- ================= HERO ================= --><section class="hero" id="home">
-  <h1>Apprends le Soureth comme une app pro</h1>
-  <p>Alphabet, quiz, audio, progression et niveaux.</p>  <div class="hero-buttons">
-    <button class="btn btn-primary" onclick="startLearning()">Commencer</button>
-    <button class="btn btn-secondary" onclick="speakLetter('ܐ')">🔊 Test audio</button>
-  </div>
-</section><!-- ================= ALPHABET ================= --><section id="alphabet">
-  <h2>Alphabet</h2>
-  <div class="alphabet-grid" id="alphabetGrid"></div>
-</section><!-- ================= KEYBOARD ================= --><section>
-  <h2>Clavier Soureth</h2>
-  <div id="keyboard"></div>
-  <input type="text" id="inputBox" placeholder="Écris ici..." />
-</section><!-- ================= QUIZ ================= --><section id="quiz">
-  <h2>Quiz</h2>  <div class="card">
-    <p id="question">Chargement...</p><button class="btn btn-primary" onclick="answer(true)">Correct</button>
-<button class="btn btn-secondary" onclick="answer(false)">Faux</button>
+    <nav>
 
-<p id="levelText"></p>
+      <a href="index.html">🏠 Accueil</a>
 
-  </div>
-</section><!-- ================= PROGRESS ================= --><section id="progress">
-  <h2>Progression</h2>  <div class="progress-card">
-    <p>Niveau: <span id="level">1</span></p><div class="progress-bar">
-  <div class="progress" id="progressBar"></div>
-</div>
+      <a href="alphabet.html">🔠 Alphabet</a>
 
-<p id="xpText">XP: 0</p>
+      <a href="voyelles.html">🔤 Voyelles</a>
 
-  </div>
-</section><!-- ================= FOOTER ================= --><footer>
-  © 2026 Soureth Learning App PRO
-</footer><!-- ================= JS ================= --><script>
+      <a href="ecriture.html">✍️ Écriture</a>
 
-/* ================= DATA ================= */
-const alphabet = ['ܐ','ܒ','ܓ','ܕ','ܗ','ܘ','ܙ','ܚ','ܛ'];
+      <a href="keyboard.html">⌨️ Clavier</a>
 
-let xp = parseInt(localStorage.getItem("xp") || 0);
-let level = parseInt(localStorage.getItem("level") || 1);
-let theme = localStorage.getItem("theme") || "dark";
+      <a href="traduction.html">🌍 Traduction</a>
 
-let currentAnswer = false;
+      <a href="quiz.html">🎮 Quiz</a>
 
-/* ================= INIT ================= */
-function init(){
-  document.body.className = theme + "-mode";
+      <a href="progression.html">📈 Progression</a>
 
-  renderAlphabet();
-  renderKeyboard();
-  updateUI();
-  nextQuestion();
-}
+      <a href="revision.html">🧠 Révision</a>
 
-/* ================= MENU ================= */
-function toggleMenu(){
-  document.getElementById("nav").classList.toggle("active");
-}
+      <a href="vocal.html">🎤 Vocal</a>
 
-/* ================= THEME ================= */
-function toggleTheme(){
-  theme = theme === "dark" ? "light" : "dark";
-  localStorage.setItem("theme", theme);
-  document.body.className = theme + "-mode";
-}
+      <a href="#"
+         onclick="toggleDarkMode()">
+         🌙 Mode sombre
+      </a>
 
-/* ================= ALPHABET ================= */
-function renderAlphabet(){
-  const grid = document.getElementById("alphabetGrid");
+    </nav>
 
-  alphabet.forEach(letter => {
-    const div = document.createElement("div");
-    div.className = "letter-card";
-    div.innerHTML = `<div class='letter' onclick="speakLetter('${letter}')">${letter}</div>`;
-    grid.appendChild(div);
-  });
-}
+  </header>
 
-/* ================= KEYBOARD ================= */
-function renderKeyboard(){
-  const kb = document.getElementById("keyboard");
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
 
-  alphabet.forEach(l => {
-    const btn = document.createElement("button");
-    btn.innerText = l;
+  <section class="hero">
 
-    btn.onclick = () => {
-      document.getElementById("inputBox").value += l;
-      speakLetter(l);
-    };
+    <div class="hero-content">
 
-    kb.appendChild(btn);
-  });
-}
+      <h1>
+        Apprendre le Soureth moderne
+      </h1>
 
-/* ================= AUDIO REAL ================= */
-function speakLetter(letter){
-  const msg = new SpeechSynthesisUtterance(letter);
-  msg.lang = "ar";
-  speechSynthesis.speak(msg);
-}
+      <p>
+        Découvre l’alphabet assyro-chaldéen,
+        les voyelles,
+        l’écriture moderne,
+        le clavier Soureth,
+        la traduction,
+        les quiz interactifs
+        et les audios natifs.
+      </p>
 
-/* ================= XP + LEVEL ================= */
-function addXP(value){
-  xp += value;
+      <div class="hero-buttons">
 
-  if(xp >= level * 100){
-    level++;
-    xp = 0;
-  }
+        <a href="alphabet.html"
+           class="btn btn-primary">
+          🔠 Commencer
+        </a>
 
-  localStorage.setItem("xp", xp);
-  localStorage.setItem("level", level);
+        <a href="keyboard.html"
+           class="btn btn-secondary">
+          ⌨️ Clavier Soureth
+        </a>
 
-  updateUI();
-}
+      </div>
 
-function updateUI(){
-  document.getElementById("xpText").innerText = "XP: " + xp;
-  document.getElementById("level").innerText = level;
+      <!-- DEMO SOURETH -->
 
-  document.getElementById("progressBar").style.width = (xp) + "%";
-}
+      <div class="hero-demo card">
 
-/* ================= QUIZ SYSTEM ================= */
-function nextQuestion(){
-  currentAnswer = Math.random() > 0.5;
-  document.getElementById("question").innerText = "Cette réponse est-elle correcte ?";
-  document.getElementById("levelText").innerText = "Niveau " + level;
-}
+        <div class="soureth-title">
+          ܫܠܡܐ
+        </div>
 
-function answer(val){
-  if(val === currentAnswer){
-    addXP(20);
-    alert("✔ Bonne réponse +20 XP");
-  } else {
-    alert("❌ Faux");
-  }
+        <p>
+          Shlama — Bonjour
+        </p>
 
-  nextQuestion();
-}
+      </div>
 
-/* ================= NAV ================= */
-function startLearning(){
-  document.getElementById("alphabet").scrollIntoView({behavior:"smooth"});
-}
+    </div>
 
-/* ================= START ================= */
-init();
+  </section>
 
-</script></body>
+  <!-- =========================
+       FEATURES
+  ========================== -->
+
+  <section class="features">
+
+    <div class="card">
+
+      <div class="card-icon">🔠</div>
+
+      <h2>Alphabet interactif</h2>
+
+      <p>
+        Apprends les lettres du Soureth
+        avec audio,
+        animations
+        et cartes interactives.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">⌨️</div>
+
+      <h2>Clavier Soureth</h2>
+
+      <p>
+        Écris facilement en Soureth
+        grâce au clavier moderne intégré.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🌍</div>
+
+      <h2>Traduction</h2>
+
+      <p>
+        Traduction Français ⇄ Soureth
+        avec translittération moderne.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">✍️</div>
+
+      <h2>Écriture tactile</h2>
+
+      <p>
+        Dessine les lettres
+        avec ton doigt
+        ou ta souris.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🔊</div>
+
+      <h2>Audio natif</h2>
+
+      <p>
+        Écoute de vraies voix
+        assyro-chaldéennes.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🎮</div>
+
+      <h2>Quiz intelligents</h2>
+
+      <p>
+        Progresse grâce aux quiz,
+        niveaux
+        et révisions automatiques.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       CLAVIER DEMO
+  ========================== -->
+
+  <section class="translator-box">
+
+    <div class="card">
+
+      <h2>
+        ⌨️ Essayer le clavier Soureth
+      </h2>
+
+      <textarea id="editor"
+                class="soureth-writing"
+                placeholder="Écrire en Soureth..."></textarea>
+
+      <div id="keyboard">
+
+        <button onclick="insertLetter('ܐ')">ܐ</button>
+        <button onclick="insertLetter('ܒ')">ܒ</button>
+        <button onclick="insertLetter('ܓ')">ܓ</button>
+        <button onclick="insertLetter('ܕ')">ܕ</button>
+        <button onclick="insertLetter('ܗ')">ܗ</button>
+        <button onclick="insertLetter('ܘ')">ܘ</button>
+        <button onclick="insertLetter('ܙ')">ܙ</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       PROGRESSION
+  ========================== -->
+
+  <section class="progress-section">
+
+    <div class="progress-card">
+
+      <h2>
+        📈 Votre progression
+      </h2>
+
+      <p>
+        Niveau actuel : Débutant
+      </p>
+
+      <div class="progress-bar">
+
+        <div class="progress"></div>
+
+      </div>
+
+      <p style="margin-top:15px;">
+        35% complété
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+      © 2026 Leshana-Ed-Soureth
+      — Plateforme éducative assyro-chaldéenne moderne
+    </p>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="js/app.js"></script>
+  <script src="js/keyboard.js"></script>
+
+</body>
+
 </html>
