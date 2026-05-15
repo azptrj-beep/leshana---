@@ -50,6 +50,13 @@ function playAudio(file) {
   audio.play();
 }
 
+function playLetter(src) {
+
+  const audio = new Audio(src);
+
+  audio.play();
+}
+
 /* =========================
    KEYBOARD SOURETH
 ========================= */
