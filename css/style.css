@@ -38,27 +38,30 @@
 ========================= */
 
 @font-face {
-
   font-family: 'Adiabene';
-
-  src: url('../fonts/Adiabene.ttf')
-       format('truetype');
+  src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
+       url('../assets/fonts/Adiabene.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-
   font-family: 'Nohadra';
-
-  src: url('../fonts/nohadra.ttf')
-       format('truetype');
+  src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
+       url('../assets/fonts/nohadra.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-
   font-family: 'AAssyrian';
-
-  src: url('../fonts/aassyrian.ttf')
-       format('truetype');
+  src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
+       url('../assets/fonts/aassyrian.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =========================
@@ -752,4 +755,31 @@ footer {
   nav.active {
     display: flex;
   }
+}
+
+
+/* =========================
+   SOURETH SAFE DISPLAY
+========================= */
+
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+:lang(syr) {
+
+  font-family: 'Adiabene', 'Nohadra', 'AAssyrian', sans-serif !important;
+
+  direction: rtl;
+
+  unicode-bidi: plaintext;
+}
+
+/* =========================
+   FIX MOBILE / CHROME
+========================= */
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
