@@ -1,0 +1,19 @@
+
+.card {
+  background:
+    rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border:
+    1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  padding: 35px;
+  transition: 0.35s;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.18);
+}
+.card:hover {
+  transform:
+    translateY(-8px);
+  box-shadow:
+    0 20px 45px rgba(0,162,255,0.25);
+}
