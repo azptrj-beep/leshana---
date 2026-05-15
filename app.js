@@ -1,4 +1,4 @@
-
+0
 /* =========================
    DARK MODE
 ========================= */
@@ -158,6 +158,29 @@ function checkAnswer(correct) {
     'quizScore',
     score
   );
+}
+
+let score = 0;
+
+function checkAnswer(answer) {
+
+  const result =
+    document.getElementById("quiz-result");
+
+  if(answer === 'ܐ') {
+
+    score += 10;
+
+    result.innerHTML =
+      "✅ Bonne réponse ! +10 XP";
+
+    saveXP();
+
+  } else {
+
+    result.innerHTML =
+      "❌ Mauvaise réponse";
+  }
 }
 
 /* =========================
