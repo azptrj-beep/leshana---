@@ -710,3 +710,46 @@ footer {
     font-size: 28px;
   }
 }
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.menu-toggle {
+  display: none;
+
+  background: rgba(255,255,255,0.08);
+
+  border: none;
+
+  color: white;
+
+  font-size: 2rem;
+
+  padding: 10px 18px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+}
+
+@media(max-width:768px) {
+
+  .menu-toggle {
+    display: block;
+
+    margin: 20px auto;
+  }
+
+  nav {
+    display: none;
+
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  nav.active {
+    display: flex;
+  }
+}
