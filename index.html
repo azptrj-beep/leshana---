@@ -2,160 +2,118 @@
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8" />
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description"
-        content="Plateforme moderne d’apprentissage du Soureth assyro-chaldéen." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Leshana-Ed-Soureth</title>
 
-  <!-- FAVICON -->
-  <link rel="icon"
-        href="images/logo.png" />
+  <meta name="description"
+        content="Plateforme moderne d’apprentissage du Soureth assyro-chaldéen : alphabet, traduction, clavier et quiz interactifs.">
+
+  <link rel="icon" href="images/logo.png" />
 
   <!-- GOOGLE FONT -->
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet"
-        href="css/style.css">
-
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
   <div class="logo-container">
 
-    <img src="images/logo.png"
-         alt="Logo"
-         class="logo">
+    <img src="images/logo.png" alt="Logo" class="logo">
 
     <div>
-
-      <h1 class="title">
-        Leshana-Ed-Soureth
-      </h1>
-
-      <p class="subtitle">
-        Plateforme moderne d’apprentissage du Soureth
-      </p>
-
+      <h1 class="title">Leshana-Ed-Soureth</h1>
+      <p class="subtitle">Plateforme moderne d’apprentissage du Soureth</p>
     </div>
 
   </div>
 
-  <!-- MENU MOBILE -->
-
-  <div class="menu-btn"
-       onclick="toggleMenu()">
-       ☰
-  </div>
-
-  <!-- NAVIGATION -->
-
-  <nav id="nav">
-
-    <a href="#">🏠 Accueil</a>
-    <a href="#">🔠 Alphabet</a>
-    <a href="#">⌨️ Clavier</a>
-    <a href="#">🌍 Traduction</a>
-    <a href="#">🎮 Quiz</a>
-
+  <nav>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="alphabet.html">🔠 Alphabet</a>
+    <a href="voyelles.html">🔤 Voyelles</a>
+    <a href="ecriture.html">✍️ Écriture</a>
+    <a href="keyboard.html">⌨️ Clavier</a>
+    <a href="traduction.html">🌍 Traduction</a>
+    <a href="quiz.html">🎮 Quiz</a>
+    <a href="vocal.html">🎤 Vocal</a>
+    <a href="#" onclick="toggleDarkMode()">🌙 Mode sombre</a>
   </nav>
 
 </header>
 
-<!-- =========================
-     HERO
-========================= -->
-
+<!-- HERO -->
 <section class="hero">
 
   <div class="hero-content">
 
-    <h1>
-      Apprendre le Soureth moderne
-    </h1>
+    <h1>Apprendre le Soureth moderne</h1>
 
     <p>
-      Découvre l’alphabet assyro-chaldéen moderne,
-      les traductions,
-      le clavier interactif
-      et les quiz audio.
+      Découvre l’alphabet, l’écriture, le clavier Soureth,
+      la traduction, les quiz et les audios natifs.
     </p>
 
     <div class="hero-buttons">
-
-      <button class="btn">
-        🔠 Commencer
-      </button>
-
-      <button class="btn secondary">
-        ⌨️ Clavier
-      </button>
-
+      <a href="alphabet.html" class="btn btn-primary">🔠 Commencer</a>
+      <a href="keyboard.html" class="btn btn-secondary">⌨️ Clavier</a>
     </div>
 
-    <!-- DEMO SOURETH -->
-
-    <div class="card demo-card">
-
-      <div class="soureth-text big">
-        ܫܠܡܐ
-      </div>
-
-      <p>
-        Shlama — Bonjour / Paix
-      </p>
-
-      <button class="audio-btn"
-              onclick="speakText('ܫܠܡܐ')">
-        🔊 Écouter
-      </button>
-
+    <div class="hero-demo card">
+      <div class="soureth-title" lang="syr">ܫܠܡܐ</div>
+      <p>Shlama — Bonjour - Paix</p>
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================
-     CLAVIER
-========================= -->
+<!-- FEATURES -->
+<section class="features">
 
-<section class="keyboard-section">
+  <div class="card">
+    <h2>🔠 Alphabet</h2>
+    <p>Apprentissage interactif avec audio.</p>
+  </div>
+
+  <div class="card">
+    <h2>⌨️ Clavier</h2>
+    <p>Écris facilement en Soureth.</p>
+  </div>
+
+  <div class="card">
+    <h2>🌍 Traduction</h2>
+    <p>Français ⇄ Soureth.</p>
+  </div>
+
+  <div class="card">
+    <h2>🎮 Quiz</h2>
+    <p>Apprentissage progressif.</p>
+  </div>
+
+</section>
+
+<!-- CLAVIER -->
+<section>
 
   <div class="card">
 
-    <h2>
-      ⌨️ Clavier Soureth
-    </h2>
+    <h2>⌨️ Tester le clavier</h2>
 
-    <textarea id="editor"
-              class="soureth-text"
-              placeholder="ܟܬܘܒ ܗܪܟܐ...">
-    </textarea>
+    <textarea id="editor" class="soureth-writing"
+              placeholder="Écrire en Soureth..."></textarea>
 
     <div id="keyboard">
-
       <button onclick="insertLetter('ܐ')">ܐ</button>
       <button onclick="insertLetter('ܒ')">ܒ</button>
       <button onclick="insertLetter('ܓ')">ܓ</button>
@@ -163,57 +121,36 @@
       <button onclick="insertLetter('ܗ')">ܗ</button>
       <button onclick="insertLetter('ܘ')">ܘ</button>
       <button onclick="insertLetter('ܙ')">ܙ</button>
-
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- PROGRESSION -->
+<section>
+
+  <div class="progress-card">
+
+    <h2>📈 Progression</h2>
+    <p>Niveau : Débutant</p>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <p>35% complété</p>
+
+  </div>
+
+</section>
 
 <footer>
-
-  <p>
-    © 2026 Leshana-Ed-Soureth
-  </p>
-
+  <p>© 2026 Leshana-Ed-Soureth</p>
 </footer>
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-function toggleMenu() {
-
-  document
-    .getElementById("nav")
-    .classList
-    .toggle("active");
-}
-
-function insertLetter(letter) {
-
-  document
-    .getElementById("editor")
-    .value += letter;
-}
-
-function speakText(text) {
-
-  const utter =
-    new SpeechSynthesisUtterance(text);
-
-  utter.lang = "ar";
-
-  speechSynthesis.speak(utter);
-}
-
-</script>
+<script src="js/app.js"></script>
+<script src="js/keyboard.js"></script>
 
 </body>
 </html>
