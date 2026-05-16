@@ -1,49 +1,61 @@
-0
-/* =========================
+/* =========================================
+   LESHANA-ED-SOURETH
+   CLEAN APP.JS
+========================================= */
+
+/* =========================================
    DARK MODE
-========================= */
+========================================= */
 
 function toggleDarkMode() {
+
   document.body.classList.toggle("dark-mode");
+
+  const isDark =
+    document.body.classList.contains(
+      "dark-mode"
+    );
 
   localStorage.setItem(
     "darkMode",
-    document.body.classList.contains("dark-mode")
+    isDark
   );
 }
 
-window.addEventListener("load", () => {
-  if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
+/* LOAD DARK MODE */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const savedDarkMode =
+    localStorage.getItem("darkMode");
+
+  if (savedDarkMode === "true") {
+
+    document.body.classList.add(
+      "dark-mode"
+    );
   }
+
+  loadProgress();
+
+  initAnimations();
 });
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+function toggleMenu() {
+
+  const nav =
+    document.querySelector("nav");
+
+  nav.classList.toggle("active");
 }
 
-/* =========================
-   LOAD DARK MODE
-========================= */
-
-window.addEventListener(
-  'load',
-  () => {
-
-    const darkMode =
-      localStorage.getItem(
-        'darkMode'
-      );
-
-    if (darkMode === 'true') {
-
-      document.body.classList.add(
-        'dark-mode'
-      );
-    }
-  }
-);
-
-/* =========================
-   AUDIO PLAYER
-========================= */
+/* =========================================
+   AUDIO
+========================================= */
 
 function playAudio(file) {
 
@@ -59,16 +71,14 @@ function playLetter(src) {
   audio.play();
 }
 
-/* =========================
-   KEYBOARD SOURETH
-========================= */
+/* =========================================
+   SOURETH KEYBOARD
+========================================= */
 
 function insertLetter(letter) {
 
   const editor =
-    document.getElementById(
-      'editor'
-    );
+    document.getElementById("editor");
 
   if (!editor) return;
 
@@ -77,26 +87,22 @@ function insertLetter(letter) {
   editor.focus();
 }
 
-/* =========================
-   AUTO RTL
-========================= */
+/* AUTO RTL */
 
 const editor =
-  document.getElementById(
-    'editor'
-  );
+  document.getElementById("editor");
 
 if (editor) {
 
   editor.setAttribute(
-    'dir',
-    'rtl'
+    "dir",
+    "rtl"
   );
 }
 
-/* =========================
+/* =========================================
    TRANSLATION SYSTEM
-========================= */
+========================================= */
 
 const dictionary = {
 
@@ -115,161 +121,148 @@ function translate() {
 
   const input =
     document.getElementById(
-      'frInput'
+      "frInput"
     );
 
   const result =
     document.getElementById(
-      'result'
+      "result"
     );
 
   if (!input || !result) return;
 
   const word =
-    input.value.toLowerCase().trim();
+    input.value
+      .toLowerCase()
+      .trim();
 
   result.innerText =
     dictionary[word]
     || "Mot non trouvé";
 }
 
-/* =========================
+/* =========================================
    QUIZ SYSTEM
-========================= */
-
-
-function checkAnswer(correct) {
-
-  if (correct) {
-
-    score++;
-
-    alert(
-      "✅ Bonne réponse !"
-    );
-
-  } else {
-
-    alert(
-      "❌ Mauvaise réponse"
-    );
-  }
-
-  localStorage.setItem(
-    'quizScore',
-    score
-  );
-}
+========================================= */
 
 let score = 0;
 
 function checkAnswer(answer) {
 
   const result =
-    document.getElementById("quiz-result");
+    document.getElementById(
+      "quiz-result"
+    );
 
-  if(answer === 'ܐ') {
+  if (!result) return;
+
+  if (answer === "ܐ") {
 
     score += 10;
 
     result.innerHTML =
       "✅ Bonne réponse ! +10 XP";
 
-    saveXP();
+    updateProgress(score);
 
   } else {
 
     result.innerHTML =
       "❌ Mauvaise réponse";
   }
+
+  localStorage.setItem(
+    "quizScore",
+    score
+  );
 }
 
-/* =========================
+/* =========================================
    USER PROGRESSION
-========================= */
+========================================= */
 
 function updateProgress(value) {
 
   const progress =
     document.querySelector(
-      '.progress'
+      ".progress"
     );
 
   if (!progress) return;
 
+  let finalValue =
+    Math.min(value, 100);
+
   progress.style.width =
-    value + '%';
+    finalValue + "%";
 
   localStorage.setItem(
-    'progress',
-    value
+    "progress",
+    finalValue
   );
 }
 
-/* =========================
-   LOAD PROGRESSION
-========================= */
+function loadProgress() {
 
-window.addEventListener(
-  'load',
-  () => {
+  const savedProgress =
+    localStorage.getItem(
+      "progress"
+    );
 
-    const savedProgress =
-      localStorage.getItem(
-        'progress'
-      );
+  if (savedProgress) {
 
-    if (savedProgress) {
-
-      updateProgress(
-        savedProgress
-      );
-    }
+    updateProgress(
+      parseInt(savedProgress)
+    );
   }
-);
+}
 
-/* =========================
+/* =========================================
    FADE-IN ANIMATION
-========================= */
+========================================= */
 
-const cards =
-  document.querySelectorAll(
-    '.card'
-  );
+function initAnimations() {
 
-const observer =
-  new IntersectionObserver(
+  const elements =
+    document.querySelectorAll(
+      ".card, .progress-card, .letter-card"
+    );
 
-    entries => {
+  const observer =
+    new IntersectionObserver(
 
-      entries.forEach(entry => {
+      entries => {
 
-        if (entry.isIntersecting) {
+        entries.forEach(entry => {
 
-          entry.target.classList.add(
-            'fade-in'
-          );
-        }
-      });
-    },
+          if (entry.isIntersecting) {
 
-    {
-      threshold: 0.2
-    }
-  );
+            entry.target.classList.add(
+              "fade-in"
+            );
+          }
+        });
 
-cards.forEach(card => {
+      },
 
-  observer.observe(card);
-});
+      {
+        threshold: 0.15
+      }
+    );
 
-/* =========================
+  elements.forEach(el => {
+
+    observer.observe(el);
+  });
+}
+
+/* =========================================
    TYPING EFFECT
-========================= */
+========================================= */
 
 const typingText =
   document.querySelector(
-    '.typing-effect'
+    ".typing-effect"
   );
 
 if (typingText) {
@@ -295,82 +288,75 @@ if (typingText) {
   type();
 }
 
-/* =========================
+/* =========================================
    SMOOTH SCROLL
-========================= */
+========================================= */
 
 document.querySelectorAll(
   'a[href^="#"]'
 ).forEach(anchor => {
 
   anchor.addEventListener(
-    'click',
-    function (e) {
+    "click",
+
+    function(e) {
+
+      const target =
+        document.querySelector(
+          this.getAttribute("href")
+        );
+
+      if (!target) return;
 
       e.preventDefault();
 
-      document.querySelector(
-        this.getAttribute('href')
-      ).scrollIntoView({
+      target.scrollIntoView({
 
-        behavior: 'smooth'
+        behavior: "smooth"
       });
     }
   );
 });
 
-/* =========================
-   SOUNDS BUTTON EFFECT
-========================= */
+/* =========================================
+   BUTTON HOVER EFFECT
+========================================= */
 
 const buttons =
   document.querySelectorAll(
-    'button'
+    "button"
   );
 
 buttons.forEach(button => {
 
   button.addEventListener(
-    'mouseenter',
+    "mouseenter",
     () => {
 
       button.style.transform =
-        'scale(1.05)';
+        "scale(1.05)";
     }
   );
 
   button.addEventListener(
-    'mouseleave',
+    "mouseleave",
     () => {
 
       button.style.transform =
-        'scale(1)';
+        "scale(1)";
     }
   );
 });
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu() {
-
-  const nav =
-    document.querySelector('nav');
-
-  nav.classList.toggle(
-    'active'
-  );
-}
-
-/* =========================
-   INSTALL PWA
-========================= */
+/* =========================================
+   PWA INSTALL
+========================================= */
 
 let deferredPrompt;
 
 window.addEventListener(
-  'beforeinstallprompt',
+  "beforeinstallprompt",
+
   (e) => {
 
     e.preventDefault();
@@ -378,50 +364,41 @@ window.addEventListener(
     deferredPrompt = e;
 
     console.log(
-      'PWA installable'
+      "PWA installable"
     );
   }
 );
 
-/* =========================
+/* =========================================
    SERVICE WORKER
-========================= */
+========================================= */
 
-if ('serviceWorker' in navigator) {
+if ("serviceWorker" in navigator) {
 
-  navigator.serviceWorker.register(
-    '/service-worker.js'
-  )
+  window.addEventListener(
+    "load",
 
-  .then(() => {
+    () => {
 
-    console.log(
-      'Service Worker enregistré'
-    );
-  });
-}
+      navigator.serviceWorker
+        .register(
+          "/service-worker.js"
+        )
 
-const fadeElements =
-document.querySelectorAll(".card, .progress-card");
+        .then(() => {
 
-const observer =
-new IntersectionObserver(entries => {
+          console.log(
+            "Service Worker enregistré"
+          );
+        })
 
-  entries.forEach(entry => {
+        .catch(error => {
 
-    if(entry.isIntersecting) {
-
-      entry.target.classList.add("visible");
+          console.log(
+            "Erreur Service Worker",
+            error
+          );
+        });
     }
-  });
-
-}, {
-  threshold: 0.15
-});
-
-fadeElements.forEach(el => {
-
-  el.classList.add("fade-scroll");
-
-  observer.observe(el);
-});
+  );
+}
