@@ -799,3 +799,39 @@ body.simple-dark {
     contrast(1.05);
 }
       
+/* FORCE RESTORE THEME */
+
+html,
+body {
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #0033a0,
+      #050816 60%
+    ) !important;
+
+  color: white !important;
+}
+
+/* FORCE CARDS */
+
+.card,
+.progress-card,
+.letter-card {
+
+  background:
+    rgba(255,255,255,0.08) !important;
+
+  color: white !important;
+}
+
+/* FORCE NAV */
+
+nav a {
+
+  color: white !important;
+
+  background:
+    rgba(255,255,255,0.05) !important;
+}
