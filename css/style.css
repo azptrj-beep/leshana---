@@ -79,6 +79,8 @@ body {
       #050816 60%
     );
 
+  background-attachment: fixed;
+
   color: white;
 
   overflow-x: hidden;
