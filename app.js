@@ -8,33 +8,21 @@
 
 function toggleTheme() {
 
-  const html =
-    document.documentElement;
+  document.body.classList.toggle("light-mode");
 
-  const current =
-    html.getAttribute("data-theme");
-
-  const next =
-    current === "light" ? "dark" : "light";
-
-  html.setAttribute("data-theme", next);
-
-  localStorage.setItem("theme", next);
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("light-mode")
+  );
 }
-
-/* LOAD THEME */
 
 window.addEventListener("DOMContentLoaded", () => {
 
-  const saved =
-    localStorage.getItem("theme");
+  const saved = localStorage.getItem("theme");
 
-  if (saved) {
+  if (saved === "true") {
 
-    document.documentElement.setAttribute(
-      "data-theme",
-      saved
-    );
+    document.body.classList.add("light-mode");
   }
 });
 
