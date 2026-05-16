@@ -7,6 +7,12 @@
    DARK MODE
 ========================================= */
 
+function toggleDarkMode() {
+
+  document.body.classList.toggle(
+    "simple-dark"
+  );
+}
 
 window.addEventListener("DOMContentLoaded", () => {
 
