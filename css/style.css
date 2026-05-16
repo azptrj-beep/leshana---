@@ -902,3 +902,24 @@ body.light-mode nav a {
   background: rgba(0,0,0,0.05) !important;
   color: #111827 !important;
 }
+
+/* =========================
+   XP PANEL
+========================= */
+
+.xp-panel {
+
+  margin-bottom: 15px;
+
+  padding: 15px;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  display: flex;
+
+  justify-content: space-between;
+}
