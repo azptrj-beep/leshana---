@@ -634,14 +634,21 @@ footer {
    DARK MODE
 ========================= */
 
-.dark-mode {
+:root {
+  --bg: #ffffff;
+  --text: #000;
+  --card: rgba(255,255,255,0.1);
+}
 
-  background:
-    linear-gradient(
-      180deg,
-      #000,
-      #050816
-    );
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body.dark {
+  --bg: #050816;
+  --text: #fff;
+  --card: rgba(0,0,0,0.4);
 }
 
 /* =========================
