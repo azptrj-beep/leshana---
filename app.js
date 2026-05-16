@@ -7,10 +7,9 @@
    DARK MODE
 ========================================= */
 
-function toggleDarkMode() {
+ {
 
-  document.body.classList.toggle(
-    "simple-dark"
+  
   );
 }
 
@@ -37,13 +36,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
  {
 
-  document.body.classList.toggle(
-    "light-mode"
+  
   );
 
-  const isLight =
-    document.body.classList.contains(
-      "light-mode"
+  
+    
     );
 
   localStorage.setItem(
@@ -63,7 +60,7 @@ window.addEventListener(
     if (saved === "true") {
 
       document.body.classList.add(
-        "light-mode"
+        
       );
     }
   }
