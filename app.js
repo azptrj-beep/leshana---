@@ -11,7 +11,7 @@
 window.addEventListener("DOMContentLoaded", () => {
 
   const savedDarkMode =
-    localStorage.getItem("darkMode");
+    
 
   if (savedDarkMode === "true") {
 
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
    MOBILE MENU
 =========================================  
 
-function toggleDarkMode() {
+ {
 
   document.body.classList.toggle(
     "light-mode"
@@ -52,9 +52,7 @@ window.addEventListener(
   () => {
 
     const saved =
-      localStorage.getItem(
-        "lightMode"
-      );
+      
 
     if (saved === "true") {
 
