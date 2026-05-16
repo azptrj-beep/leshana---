@@ -1,4 +1,4 @@
-Enregistrements
+
 /* =========================================
    LESHANA-ED-SOURETH - CLEAN APP JS
 ========================================= */
@@ -187,3 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+function updateUI() {
+
+  const xpEl = document.getElementById("xp-value");
+  const levelEl = document.getElementById("level-value");
+
+  if (xpEl) xpEl.textContent = xp;
+  if (levelEl) levelEl.textContent = level;
+}
