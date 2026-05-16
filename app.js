@@ -440,3 +440,5 @@ if ("serviceWorker" in navigator) {
     }
   );
 }
+
+alert("JS OK");
