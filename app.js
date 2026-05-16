@@ -7,22 +7,6 @@
    DARK MODE
 ========================================= */
 
-function toggleDarkMode() {
-
-  document.body.classList.toggle("dark-mode");
-
-  const isDark =
-    document.body.classList.contains(
-      "dark-mode"
-    );
-
-  localStorage.setItem(
-    "darkMode",
-    isDark
-  );
-}
-
-/* LOAD DARK MODE */
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -43,17 +27,45 @@ window.addEventListener("DOMContentLoaded", () => {
 
 /* =========================================
    MOBILE MENU
-========================================= */
+=========================================  
 
-function toggleMenu() {
+function toggleDarkMode() {
 
-  const nav =
-    document.querySelector("nav");
+  document.body.classList.toggle(
+    "light-mode"
+  );
 
-  nav.classList.toggle("active");
+  const isLight =
+    document.body.classList.contains(
+      "light-mode"
+    );
+
+  localStorage.setItem(
+    "lightMode",
+    isLight
+  );
 }
 
-/* =========================================
+window.addEventListener(
+  "DOMContentLoaded",
+
+  () => {
+
+    const saved =
+      localStorage.getItem(
+        "lightMode"
+      );
+
+    if (saved === "true") {
+
+      document.body.classList.add(
+        "light-mode"
+      );
+    }
+  }
+);
+
+=========================================
    AUDIO
 ========================================= */
 
