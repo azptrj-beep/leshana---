@@ -72,20 +72,35 @@ body {
 
   font-family: 'Poppins', sans-serif;
 
-  background:
-    radial-gradient(
-      circle at top left,
-      #0033a0,
-      #050816 60%
-    );
-
-  background-attachment: fixed;
-
-  color: white;
+  body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
+}
 
   overflow-x: hidden;
 
   min-height: 100vh;
+}
+
+/* =========================
+   THEME VARIABLES SAFE
+========================= */
+
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: white;
+  --card: rgba(255,255,255,0.08);
+  --nav: rgba(255,255,255,0.05);
+}
+
+/* LIGHT MODE */
+
+[data-theme="light"] {
+  --bg: #f4f7fb;
+  --text: #111827;
+  --card: rgba(255,255,255,0.9);
+  --nav: rgba(0,0,0,0.05);
 }
 
 /* =========================
