@@ -788,5 +788,14 @@ body.dark {
 =========================
 
 
+/* =========================
+   SIMPLE DARK EFFECT
+========================= */
 
+body.simple-dark {
+
+  filter:
+    brightness(0.92)
+    contrast(1.05);
+}
       
