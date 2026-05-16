@@ -1,4 +1,4 @@
-document.body.style.border = "10px solid blue";
+
 
 /* =========================================
    LESHANA-ED-SOURETH
