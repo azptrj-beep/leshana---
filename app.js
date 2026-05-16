@@ -135,7 +135,6 @@ function translate() {
    QUIZ SYSTEM
 ========================= */
 
-let score = 0;
 
 function checkAnswer(correct) {
 
