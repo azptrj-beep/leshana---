@@ -783,42 +783,9 @@ body.dark {
 
 /* =========================
    FIX MOBILE / CHROME
-========================= */
+=========================
 
-body.dark-mode {
-  background: #050816;
-  color: #e2e8f0;
-}
-
-/* HEADER */
-body.dark-mode header {
-  background: rgba(0,0,0,0.6);
-}
-
-/* CARDS */
-body.dark-mode .card,
-body.dark-mode .progress-card,
-body.dark-mode .letter-card {
-  background: rgba(0,0,0,0.45);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* NAV */
-body.dark-mode nav a {
-  background: rgba(255,255,255,0.05);
-}
-
-/* TEXT */
-body.dark-mode p,
-body.dark-mode h1,
-body.dark-mode h2 {
-  color: #e2e8f0;
-}
-  background: rgba(0,0,0,0.4);
-  color: white;
-}
-
-/* =========================================
+========================================
    CLEAN DARK MODE
 =========================================
 
