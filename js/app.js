@@ -67,33 +67,90 @@ function playAudio(src) {
   audio.play();
 }
 
-/* =========================================
-   QUIZ SYSTEM
-========================================= */
+/* 
+ ===========================================
+   QUIZ SYSTEM - XP + LEVELS
+=========================================== */
 
-let score = 0;
+let xp = parseInt(localStorage.getItem("xp")) || 0;
+let level = parseInt(localStorage.getItem("level")) || 1;
 
+/* TABLE DE PROGRESSION */
+function xpNeeded(level) {
+  return level * 50; // 50 XP puis 100 puis 150...
+}
+
+/* UPDATE DISPLAY (si tu ajoutes UI plus tard) */
+function updateUI() {
+
+  console.log("XP:", xp, "Level:", level);
+}
+
+/* CHECK ANSWER */
 function checkAnswer(answer) {
 
   const result = document.getElementById("quiz-result");
 
   if (!result) return;
 
-  if (answer === "ܐ") {
+  const correct = "ܐ"; // réponse correcte
 
-    score += 10;
+  if (answer === correct) {
 
-    result.innerHTML = "✅ Bonne réponse ! +10 XP";
+    gainXP(10);
 
-    updateProgress(score);
+    result.innerHTML =
+      "✅ Bonne réponse ! +10 XP";
 
   } else {
 
-    result.innerHTML = "❌ Mauvaise réponse";
+    result.innerHTML =
+      "❌ Mauvaise réponse";
+  }
+}
+
+/* GAIN XP */
+function gainXP(amount) {
+
+  xp += amount;
+
+  const needed = xpNeeded(level);
+
+  /* LEVEL UP */
+  if (xp >= needed) {
+
+    xp -= needed;
+    level++;
+
+    showLevelUp();
   }
 
-  localStorage.setItem("quizScore", score);
+  saveData();
+  updateUI();
 }
+
+/* LEVEL UP EFFECT */
+function showLevelUp() {
+
+  alert("🔥 LEVEL UP ! Niveau " + level);
+}
+
+/* SAVE */
+function saveData() {
+
+  localStorage.setItem("xp", xp);
+  localStorage.setItem("level", level);
+}
+
+/* LOAD */
+window.addEventListener("DOMContentLoaded", () => {
+
+  xp = parseInt(localStorage.getItem("xp")) || 0;
+  level = parseInt(localStorage.getItem("level")) || 1;
+
+  updateUI();
+});
+  
 
 /* =========================================
    PROGRESSION BAR
