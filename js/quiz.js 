@@ -1,77 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const letters = [
-    { letter: "ܐ", answer: "Alap" },
-    { letter: "ܒ", answer: "Beith" },
-    { letter: "ܓ", answer: "Gamal" },
-    { letter: "ܕ", answer: "Dalath" }
-  ];
+  const quizAnswers =
+    document.getElementById("quiz-answers");
 
-  const quizLetter = document.getElementById("quiz-letter");
-  const quizAnswers = document.getElementById("quiz-answers");
-  const scoreEl = document.getElementById("score");
-  const xpEl = document.getElementById("xp");
+  const btn =
+    document.createElement("button");
 
-  let score = 0;
-  let xp = 0;
+  btn.textContent = "TEST";
 
-  function loadQuestion() {
+  btn.style.display = "block";
+  btn.style.padding = "20px";
+  btn.style.margin = "20px auto";
+  btn.style.background = "green";
+  btn.style.color = "white";
+  btn.style.border = "none";
 
-    const current =
-      letters[Math.floor(Math.random() * letters.length)];
-
-    quizLetter.textContent = current.letter;
-
-    quizAnswers.innerHTML = "";
-
-    const shuffled =
-      [...letters].sort(() => Math.random() - 0.5);
-
-    shuffled.forEach(item => {
-
-      const btn = document.createElement("button");
-
-      btn.textContent = item.answer;
-
-      btn.className = "quiz-btn";
-
-      btn.style.display = "block";
-      btn.style.margin = "10px auto";
-      btn.style.padding = "12px 20px";
-      btn.style.background = "#16a34a";
-      btn.style.color = "white";
-      btn.style.border = "none";
-      btn.style.borderRadius = "10px";
-      btn.style.cursor = "pointer";
-
-      btn.addEventListener("click", () => {
-
-        if (item.answer === current.answer) {
-
-          score++;
-          xp += 10;
-
-          scoreEl.textContent = score;
-          xpEl.textContent = xp;
-
-          alert("✅ Bonne réponse");
-
-        } else {
-
-          alert("❌ Mauvaise réponse");
-
-        }
-
-        loadQuestion();
-
-      });
-
-      quizAnswers.appendChild(btn);
-
-    });
-
-  }
-
-  loadQuestion();
+  quizAnswers.appendChild(btn);
 
 });
