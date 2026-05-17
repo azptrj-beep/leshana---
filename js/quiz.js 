@@ -70,4 +70,25 @@ function loadQuestion() {
 
 }
 
+function renderQuestion(question) {
+  quizAnswers.innerHTML = "";
+
+  if (!question || !Array.isArray(question.options)) {
+    console.error("Question invalide :", question);
+    return;
+  }
+
+  question.options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.className = "answer-btn";
+    btn.textContent = option;
+
+    btn.addEventListener("click", () => {
+      checkAnswer(option);
+    });
+
+    quizAnswers.appendChild(btn);
+  });
+}
+
 window.onload = loadQuestion;
