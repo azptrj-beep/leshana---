@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.style.border = "none";
       btn.style.cursor = "pointer";
 
-      btn.addEventListener("click", (e) => {
+      document.addEventListener("click", (e) => {
+  console.log("CLICK GLOBAL:", e.target);
+});
 
         e.preventDefault(); // 🔥 bloque toute action formulaire
 
