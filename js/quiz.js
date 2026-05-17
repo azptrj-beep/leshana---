@@ -52,8 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.style.border = "none";
       btn.style.cursor = "pointer";
 
-      document.addEventListener("click", (e) => {
-
+      btn.addEventListener("click", (e) => {
 
         e.preventDefault(); // 🔥 bloque toute action formulaire
 
