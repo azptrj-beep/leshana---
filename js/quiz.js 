@@ -1,161 +1,89 @@
-/* =========================
-   ALPHABET DATA
-========================= */
-
 const letters = [
 
-  { syr: "ܐ", latin: "A" },
-  { syr: "ܒ", latin: "B" },
-  { syr: "ܓ", latin: "G" },
-  { syr: "ܕ", latin: "D" },
-  { syr: "ܗ", latin: "H" },
-  { syr: "ܘ", latin: "W" },
-  { syr: "ܙ", latin: "Z" },
-  { syr: "ܚ", latin: "Ḥ" },
-  { syr: "ܛ", latin: "Ṭ" },
-  { syr: "ܝ", latin: "Y" },
-  { syr: "ܟ", latin: "K" },
-  { syr: "ܠ", latin: "L" },
-  { syr: "ܡ", latin: "M" },
-  { syr: "ܢ", latin: "N" },
-  { syr: "ܣ", latin: "S" },
-  { syr: "ܥ", latin: "ʿ" },
-  { syr: "ܦ", latin: "P" },
-  { syr: "ܨ", latin: "Ṣ" },
-  { syr: "ܩ", latin: "Q" },
-  { syr: "ܪ", latin: "R" },
-  { syr: "ܫ", latin: "SH" },
-  { syr: "ܬ", latin: "T" }
+  { letter: "ܐ", answer: "Alap" },
+  { letter: "ܒ", answer: "Beith" },
+  { letter: "ܓ", answer: "Gamal" },
+  { letter: "ܕ", answer: "Dalath" },
+  { letter: "ܗ", answer: "Heh" },
+  { letter: "ܘ", answer: "Waw" },
+  { letter: "ܙ", answer: "Zain" },
+  { letter: "ܚ", answer: "Kheth" },
+  { letter: "ܛ", answer: "Teth" },
+  { letter: "ܝ", answer: "Yodh" }
 
 ];
 
-/* =========================
-   VARIABLES
-========================= */
-
-let currentQuestion;
 let score = 0;
 let xp = 0;
 
-/* =========================
-   DOM
-========================= */
-
-const syrLetter =
+const quizLetter =
   document.getElementById("quiz-letter");
 
-const answersContainer =
+const quizAnswers =
   document.getElementById("quiz-answers");
 
-const scoreText =
+const scoreEl =
   document.getElementById("score");
 
-const xpText =
+const xpEl =
   document.getElementById("xp");
 
-/* =========================
-   RANDOM
-========================= */
+function loadQuestion() {
 
-function randomLetter() {
+  quizAnswers.innerHTML = "";
 
-  return letters[
-    Math.floor(Math.random() * letters.length)
-  ];
+  const current =
+    letters[Math.floor(Math.random() * letters.length)];
 
-}
+  quizLetter.textContent =
+    current.letter;
 
-/* =========================
-   SHUFFLE
-========================= */
+  const options =
+    [...letters]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 4);
 
-function shuffle(array) {
+  if (!options.find(o => o.answer === current.answer)) {
 
-  return array.sort(() => Math.random() - 0.5);
-
-}
-
-/* =========================
-   NEW QUESTION
-========================= */
-
-function generateQuestion() {
-
-  answersContainer.innerHTML = "";
-
-  currentQuestion = randomLetter();
-
-  syrLetter.textContent =
-    currentQuestion.syr;
-
-  let answers = [currentQuestion.latin];
-
-  while (answers.length < 4) {
-
-    let random =
-      randomLetter().latin;
-
-    if (!answers.includes(random)) {
-
-      answers.push(random);
-
-    }
-
+    options[0] = current;
   }
 
-  answers = shuffle(answers);
+  options.sort(() => 0.5 - Math.random());
 
-  answers.forEach(answer => {
+  options.forEach(option => {
 
     const btn =
       document.createElement("button");
 
     btn.classList.add("quiz-btn");
 
-    btn.textContent = answer;
+    btn.textContent =
+      option.answer;
 
-    btn.onclick = () =>
-      checkAnswer(answer);
+    btn.onclick = () => {
 
-    answersContainer.appendChild(btn);
+      if (option.answer === current.answer) {
+
+        score++;
+        xp += 10;
+
+        scoreEl.textContent = score;
+        xpEl.textContent = xp;
+
+        alert("✅ Bonne réponse");
+
+      } else {
+
+        alert("❌ Mauvaise réponse");
+      }
+
+      loadQuestion();
+    };
+
+    quizAnswers.appendChild(btn);
 
   });
 
 }
 
-/* =========================
-   CHECK ANSWER
-========================= */
-
-function checkAnswer(answer) {
-
-  if (answer === currentQuestion.latin) {
-
-    score++;
-
-    xp += 10;
-
-    alert("✅ Bonne réponse !");
-
-  } else {
-
-    alert(
-      `❌ Mauvaise réponse !
-La bonne réponse était :
-${currentQuestion.latin}`
-    );
-
-  }
-
-  scoreText.textContent = score;
-  xpText.textContent = xp;
-
-  generateQuestion();
-
-}
-
-/* =========================
-   START
-========================= */
-
-generateQuestion();
+loadQuestion();
