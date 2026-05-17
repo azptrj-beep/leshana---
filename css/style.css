@@ -1297,26 +1297,3 @@ body.light-mode nav a {
 
 }
 
-
-
-#quiz-answers {
-  background: yellow !important;
-  border: 3px solid red !important;
-}
-
-#quiz-answers button {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  background: green !important;
-  color: white !important;
-  padding: 10px !important;
-  margin: 10px !important;
-  border: 2px solid black !important;
-}
-.quiz-container {
-  border: 5px solid blue;
-}
-.quiz-card {
-  border: 5px solid purple;
-}
