@@ -85,8 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-console.log("🔥 QUIZ JS ACTIF - VERSION CLEAN");
+document.addEventListener("click", (e) => {
 
-document.addEventListener("click", () => {
-  console.log("GLOBAL CLICK DETECTED");
+  console.log("🔥 CLICK SUR :", e.target);
+  console.log("TAG :", e.target.tagName);
+  console.log("CLASS :", e.target.className);
+  console.log("ID :", e.target.id);
+
 });
