@@ -17,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let score = 0;
   let xp = 0;
 
+  if (!quizLetter || !quizAnswers || !scoreEl || !xpEl) {
+    console.error("❌ DOM manquant");
+    return;
+  }
+
   function loadQuestion() {
 
     const current =
@@ -32,9 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffled.forEach(item => {
 
       const btn = document.createElement("button");
-btn.type = "button"; // 👈 IMPORTANT
 
-    
+      // 🔥 sécurité anti-submit + anti-navigation
+      btn.type = "button";
+      btn.setAttribute("type", "button");
+
       btn.textContent = item.answer;
       btn.className = "quiz-btn";
 
@@ -45,15 +52,14 @@ btn.type = "button"; // 👈 IMPORTANT
       btn.style.border = "none";
       btn.style.cursor = "pointer";
 
-      btn.onclick = () => {
+      btn.addEventListener("click", (e) => {
+
+        e.preventDefault(); // 🔥 bloque toute action formulaire
 
         if (item.answer === current.answer) {
 
           score++;
           xp += 10;
-
-          scoreEl.textContent = score;
-          xpEl.textContent = xp;
 
           alert("✅ Bonne réponse");
 
@@ -63,11 +69,15 @@ btn.type = "button"; // 👈 IMPORTANT
 
         }
 
+        scoreEl.textContent = score;
+        xpEl.textContent = xp;
+
         loadQuestion();
 
-      };
+      });
 
       quizAnswers.appendChild(btn);
+
     });
   }
 
