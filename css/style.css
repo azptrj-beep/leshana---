@@ -1314,3 +1314,9 @@ body.light-mode nav a {
   margin: 10px !important;
   border: 2px solid black !important;
 }
+.quiz-container {
+  border: 5px solid blue;
+}
+.quiz-card {
+  border: 5px solid purple;
+}
