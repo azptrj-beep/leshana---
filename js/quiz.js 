@@ -1,14 +1,8 @@
 console.log("🟢 JS CHARGÉ");
 
-window.onload = () => {
-  console.log("🟢 WINDOW ONLOAD OK");
+document.addEventListener("DOMContentLoaded", () => {
 
-  const letters = [
-    { letter: "ܐ", answer: "Alap" },
-    { letter: "ܒ", answer: "Beith" },
-    { letter: "ܓ", answer: "Gamal" },
-    { letter: "ܕ", answer: "Dalath" }
-  ];
+  console.log("DOM READY");
 
   const quizLetter = document.getElementById("quiz-letter");
   const quizAnswers = document.getElementById("quiz-answers");
@@ -17,9 +11,11 @@ window.onload = () => {
   console.log("quizAnswers =", quizAnswers);
 
   if (!quizLetter || !quizAnswers) {
-    alert("❌ DOM NON TROUVÉ (IDs faux ou script trop tôt)");
+    alert("❌ DOM introuvable → mauvais HTML ou mauvais fichier chargé");
     return;
   }
+
+});
 
   const current = letters[0];
 
