@@ -1,58 +1,45 @@
-const letters = [
-  { letter: "ܐ", answer: "Alap" },
-  { letter: "ܒ", answer: "Beith" },
-  { letter: "ܓ", answer: "Gamal" },
-  { letter: "ܕ", answer: "Dalath" }
-];
+console.log("🟢 JS CHARGÉ");
 
-let score = 0;
-let xp = 0;
+window.onload = () => {
+  console.log("🟢 WINDOW ONLOAD OK");
 
-const quizLetter = document.getElementById("quiz-letter");
-const quizAnswers = document.getElementById("quiz-answers");
-const scoreEl = document.getElementById("score");
-const xpEl = document.getElementById("xp");
+  const letters = [
+    { letter: "ܐ", answer: "Alap" },
+    { letter: "ܒ", answer: "Beith" },
+    { letter: "ܓ", answer: "Gamal" },
+    { letter: "ܕ", answer: "Dalath" }
+  ];
 
-console.log("quizLetter =", quizLetter);
-console.log("quizAnswers =", quizAnswers);
+  const quizLetter = document.getElementById("quiz-letter");
+  const quizAnswers = document.getElementById("quiz-answers");
 
-function loadQuestion() {
+  console.log("quizLetter =", quizLetter);
+  console.log("quizAnswers =", quizAnswers);
 
-  console.log("LOAD OK");
+  if (!quizLetter || !quizAnswers) {
+    alert("❌ DOM NON TROUVÉ (IDs faux ou script trop tôt)");
+    return;
+  }
 
-  const current = letters[Math.floor(Math.random() * letters.length)];
+  const current = letters[0];
 
   quizLetter.textContent = current.letter;
   quizAnswers.innerHTML = "";
 
-  const shuffled = [...letters].sort(() => Math.random() - 0.5);
+  console.log("🟡 création boutons...");
 
-  console.log("SHUFFLED =", shuffled);
-
-  shuffled.forEach(item => {
-
+  for (let i = 0; i < letters.length; i++) {
     const btn = document.createElement("button");
-    btn.textContent = item.answer;
-    btn.className = "quiz-btn";
+    btn.textContent = letters[i].answer;
 
-    btn.onclick = () => {
-
-      if (item.answer === current.answer) {
-        score++;
-        xp += 10;
-        alert("✅ Bonne réponse");
-      } else {
-        alert("❌ Mauvaise réponse");
-      }
-
-      scoreEl.textContent = score;
-      xpEl.textContent = xp;
-
-      loadQuestion();
-    };
+    btn.style.display = "block";
+    btn.style.margin = "10px";
+    btn.style.padding = "10px";
 
     quizAnswers.appendChild(btn);
-  });
-}
 
-window.onload = loadQuestion;
+    console.log("bouton ajouté:", letters[i].answer);
+  }
+
+  console.log("🟢 FIN BOUCLE");
+};
