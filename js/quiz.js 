@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-console.log("🟢 JS CHARGÉ");
+console.log("🟢 JS OK");
 
 const letters = [
   { letter: "ܐ", answer: "Alap" },
@@ -9,49 +7,26 @@ const letters = [
   { letter: "ܕ", answer: "Dalath" }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
+const quizAnswers = document.getElementById("quiz-answers");
 
-  console.log("DOM READY");
+console.log("quizAnswers =", quizAnswers);
 
-  const quizLetter = document.getElementById("quiz-letter");
-  const quizAnswers = document.getElementById("quiz-answers");
+quizAnswers.innerHTML = "";
 
-  console.log("quizLetter =", quizLetter);
-  console.log("quizAnswers =", quizAnswers);
+console.log("➡️ AVANT BOUCLE");
 
-  if (!quizLetter || !quizAnswers) {
-    alert("❌ DOM introuvable");
-    return;
-  }
+for (let i = 0; i < letters.length; i++) {
+  console.log("➡️ LOOP", i);
 
-  const current = letters[0];
+  const btn = document.createElement("button");
+  btn.textContent = letters[i].answer;
+  btn.style.background = "green";
+  btn.style.display = "block";
+  btn.style.margin = "10px";
 
-  quizLetter.textContent = current.letter;
-  quizAnswers.innerHTML = "";
+  quizAnswers.appendChild(btn);
 
-  console.log("🟡 création boutons...");
+  console.log("✔ bouton ajouté:", letters[i].answer);
+}
 
-  letters.forEach(item => {
-
-    const btn = document.createElement("button");
-    btn.textContent = item.answer;
-
-    btn.style.display = "block";
-    btn.style.margin = "10px";
-    btn.style.padding = "10px";
-
-    btn.onclick = () => {
-      if (item.answer === current.answer) {
-        alert("✅ Bonne réponse");
-      } else {
-        alert("❌ Mauvaise réponse");
-      }
-    };
-
-    quizAnswers.appendChild(btn);
-
-    console.log("bouton ajouté:", item.answer);
-  });
-
-  console.log("🟢 FIN BOUCLE");
-});
+console.log("🟢 FIN SCRIPT");
