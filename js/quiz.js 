@@ -1,3 +1,5 @@
+alert("QUIZ JS CHARGÉ");
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const quizAnswers =
