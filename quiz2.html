@@ -1,39 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<title>Quiz Soureth</title>
-<link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz Soureth</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
 </head>
 
 <body>
 
-<header class="hero">
-  <h1>Quiz Soureth</h1>
-</header>
+  <header>
 
-<section class="card">
-  <h2>Quelle est cette lettre ?</h2>
+    <h1>
+      🎮 Quiz Alphabet Soureth
+    </h1>
 
-  <h1 id="letter">ܐ</h1>
+    <nav>
 
-  <button onclick="checkAnswer('a')">a</button>
-  <button onclick="checkAnswer('b')">b</button>
-  <button onclick="checkAnswer('g')">g</button>
+      <a href="index.html">
+        🏠 Accueil
+      </a>
 
-  <p id="result"></p>
-</section>
+      <a href="keyboard.html">
+        ⌨️ Clavier
+      </a>
 
-<script>
-function checkAnswer(answer) {
-  if (answer === "a") {
-    document.getElementById("result").innerText = "✅ Correct";
-  } else {
-    document.getElementById("result").innerText = "❌ Faux";
-  }
-}
-</script>
+    </nav>
+
+  </header>
+
+  <main class="quiz-container">
+
+    <div class="quiz-card">
+
+      <h2>
+        Quelle est cette lettre ?
+      </h2>
+
+      <div id="quiz-letter"
+           class="quiz-letter">
+        ܐ
+      </div>
+
+      <div id="quiz-answers"
+           class="quiz-answers">
+
+      </div>
+
+      <div class="quiz-stats">
+
+        <p>
+          🏆 Score :
+          <span id="score">0</span>
+        </p>
+
+        <p>
+          ⚡ XP :
+          <span id="xp">0</span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+<script src="./js/quiz.js"></script>
 
 </body>
+
 </html>
