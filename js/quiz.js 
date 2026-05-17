@@ -2,84 +2,57 @@ const letters = [
   { letter: "ܐ", answer: "Alap" },
   { letter: "ܒ", answer: "Beith" },
   { letter: "ܓ", answer: "Gamal" },
-  { letter: "ܕ", answer: "Dalath" },
-  { letter: "ܗ", answer: "Heh" },
-  { letter: "ܘ", answer: "Waw" },
-  { letter: "ܙ", answer: "Zain" },
-  { letter: "ܚ", answer: "Kheth" },
-  { letter: "ܛ", answer: "Teth" },
-  { letter: "ܝ", answer: "Yodh" }
+  { letter: "ܕ", answer: "Dalath" }
 ];
 
 let score = 0;
 let xp = 0;
 
 const quizLetter =
-  document.getElementById("quiz-letter");
+  document.querySelector("#quiz-letter");
 
 const quizAnswers =
-  document.getElementById("quiz-answers");
+  document.querySelector("#quiz-answers");
 
 const scoreEl =
-  document.getElementById("score");
+  document.querySelector("#score");
 
 const xpEl =
-  document.getElementById("xp");
-
-function shuffle(array) {
-
-  for (let i = array.length - 1; i > 0; i--) {
-
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [array[i], array[j]] =
-      [array[j], array[i]];
-  }
-
-  return array;
-}
+  document.querySelector("#xp");
 
 function loadQuestion() {
-
-  quizAnswers.innerHTML = "";
 
   const current =
     letters[Math.floor(Math.random() * letters.length)];
 
-  quizLetter.textContent =
+  quizLetter.innerHTML =
     current.letter;
 
-  let options =
-    shuffle([...letters]).slice(0, 4);
+  quizAnswers.innerHTML = "";
 
-  const exists =
-    options.some(
-      item => item.answer === current.answer
-    );
+  const shuffled =
+    [...letters]
+      .sort(() => Math.random() - 0.5);
 
-  if (!exists) {
-    options[0] = current;
-  }
+  shuffled.forEach(item => {
 
-  options = shuffle(options);
-
-  options.forEach(option => {
-
-    const button =
+    const btn =
       document.createElement("button");
 
-    button.className =
-      "quiz-btn";
+    btn.className = "quiz-btn";
 
-    button.textContent =
-      option.answer;
+    btn.innerHTML =
+      item.answer;
 
-    button.addEventListener("click", () => {
+    btn.onclick = () => {
 
-      if (option.answer === current.answer) {
+      if (item.answer === current.answer) {
 
         score++;
         xp += 10;
+
+        scoreEl.innerHTML = score;
+        xpEl.innerHTML = xp;
 
         alert("✅ Bonne réponse");
 
@@ -88,17 +61,13 @@ function loadQuestion() {
         alert("❌ Mauvaise réponse");
       }
 
-      scoreEl.textContent = score;
-      xpEl.textContent = xp;
-
       loadQuestion();
+    };
 
-    });
-
-    quizAnswers.appendChild(button);
+    quizAnswers.appendChild(btn);
 
   });
 
 }
 
-loadQuestion();
+window.onload = loadQuestion;
