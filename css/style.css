@@ -1164,6 +1164,139 @@ body.light-mode nav a {
   <script src="js/app.js" defer></script>
   <script src="js/keyboard.js" defer></script>
 
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-container {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 80vh;
+
+  padding: 20px;
+
+}
+
+.quiz-card {
+
+  width: 100%;
+
+  max-width: 500px;
+
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 25px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.25);
+
+}
+
+.quiz-letter {
+
+  font-size: 7rem;
+
+  margin: 30px 0;
+
+  animation:
+    pulse 2s infinite;
+
+}
+
+.quiz-answers {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin-top: 20px;
+
+}
+
+.quiz-btn {
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+
+  color: white;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+}
+
+.quiz-btn:hover {
+
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 15px rgba(0,207,255,0.6);
+
+}
+
+.quiz-stats {
+
+  margin-top: 30px;
+
+  font-size: 1.1rem;
+
+}
+
+@keyframes pulse {
+
+  0% {
+
+    transform: scale(1);
+
+  }
+
+  50% {
+
+    transform: scale(1.08);
+
+  }
+
+  100% {
+
+    transform: scale(1);
+
+  }
+
+}
+
 </body>
 
 </html>
