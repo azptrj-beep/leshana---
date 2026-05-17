@@ -91,4 +91,18 @@ function renderQuestion(question) {
   });
 }
 
+console.log("QUESTION =", question);
+console.log("OPTIONS =", question?.options);
+console.log("TYPE =", typeof question?.options);
+
+if (!question || !Array.isArray(question.options)) {
+  console.error("❌ options invalides ou question cassée");
+} else {
+  question.options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    quizAnswers.appendChild(btn);
+  });
+}
+
 window.onload = loadQuestion;
