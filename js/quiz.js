@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffled.forEach(item => {
 
       const btn = document.createElement("button");
+btn.type = "button"; // 👈 IMPORTANT
 
+      btn.type = "button";
+    
       btn.textContent = item.answer;
       btn.className = "quiz-btn";
 
