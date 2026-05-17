@@ -8,39 +8,45 @@ const letters = [
 let score = 0;
 let xp = 0;
 
-const quizLetter = document.querySelector("#quiz-letter");
-const quizAnswers = document.querySelector("#quiz-answers");
-const scoreEl = document.querySelector("#score");
-const xpEl = document.querySelector("#xp");
+const quizLetter = document.getElementById("quiz-letter");
+const quizAnswers = document.getElementById("quiz-answers");
+const scoreEl = document.getElementById("score");
+const xpEl = document.getElementById("xp");
+
+console.log("quizLetter =", quizLetter);
+console.log("quizAnswers =", quizAnswers);
 
 function loadQuestion() {
 
+  console.log("LOAD OK");
+
   const current = letters[Math.floor(Math.random() * letters.length)];
 
-  quizLetter.innerHTML = current.letter;
+  quizLetter.textContent = current.letter;
   quizAnswers.innerHTML = "";
 
   const shuffled = [...letters].sort(() => Math.random() - 0.5);
 
+  console.log("SHUFFLED =", shuffled);
+
   shuffled.forEach(item => {
 
     const btn = document.createElement("button");
-    btn.className = "quiz-btn";
     btn.textContent = item.answer;
+    btn.className = "quiz-btn";
 
     btn.onclick = () => {
 
       if (item.answer === current.answer) {
         score++;
         xp += 10;
-
-        scoreEl.textContent = score;
-        xpEl.textContent = xp;
-
         alert("✅ Bonne réponse");
       } else {
         alert("❌ Mauvaise réponse");
       }
+
+      scoreEl.textContent = score;
+      xpEl.textContent = xp;
 
       loadQuestion();
     };
