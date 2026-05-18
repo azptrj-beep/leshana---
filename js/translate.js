@@ -154,8 +154,11 @@ function showSuggestions(value) {
 
     }
 
-    const matches = Object.keys(dictionary)
-
+    Object.keys(
+  currentDirection === "fr-syr"
+    ? frToSyr
+    : syrToFr
+)
       .filter(word =>
         word.startsWith(
           value.toLowerCase()
