@@ -1,3 +1,5 @@
+"use strict";
+
 let dictionary = {};
 let userData = {
   xp: 0,
