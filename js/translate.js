@@ -1,57 +1,106 @@
 "use strict";
 
 /* =========================
-   STATE
+   GLOBAL STATE
 ========================= */
 
-let direction = "fr-syr";
+let direction = "auto";
 
 /* =========================
-   DICTIONNAIRE
+   DICTIONARY
 ========================= */
 
-const dict = {
+const dictionary = {
+
   bonjour: "ܫܠܡܐ",
+  salut: "ܫܠܡܐ",
+  paix: "ܫܠܡܐ",
+
   maison: "ܒܝܬܐ",
   eau: "ܡܝܐ",
   roi: "ܡܠܟܐ",
-  paix: "ܫܠܡܐ",
+
   homme: "ܒܪܢܫܐ",
   femme: "ܐܢܬܬܐ",
+
   comment: "ܐܝܟ",
   tu: "ܐܢܬ",
   vas: "ܐܙܠ"
+
 };
+
+/* =========================
+   REVERSE DICTIONARY
+========================= */
+
+const reverseDictionary = {};
+
+for (const key in dictionary) {
+
+  const value = dictionary[key];
+
+  if (!reverseDictionary[value]) {
+    reverseDictionary[value] = key;
+  }
+
+}
 
 /* =========================
    CLEAN TEXT
 ========================= */
 
 function clean(text) {
+
   return text
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
+
 }
 
 /* =========================
-   TRANSLATE ENGINE
+   DETECT LANGUAGE
+========================= */
+
+function detectLanguage(text) {
+
+  const syrRegex = /[\u0700-\u074F]/;
+
+  return syrRegex.test(text)
+    ? "syr"
+    : "fr";
+
+}
+
+/* =========================
+   TRANSLATION ENGINE
 ========================= */
 
 function translate(text) {
 
+  const lang = detectLanguage(text);
+
   const map =
-    direction === "fr-syr"
-      ? dict
-      : Object.fromEntries(
-          Object.entries(dict).map(([k, v]) => [v, k])
-        );
+    lang === "fr"
+      ? dictionary
+      : reverseDictionary;
 
   return clean(text)
     .split(" ")
-    .map(w => map[w] || w)
+    .map(word => map[word] || `[${word}]`)
     .join(" ");
+
+}
+
+/* =========================
+   STATUS
+========================= */
+
+function setStatus(message) {
+
+  document.getElementById("status")
+    .innerText = message;
 
 }
 
@@ -59,27 +108,156 @@ function translate(text) {
    HISTORY
 ========================= */
 
-function saveHistory(o, r) {
+function saveHistory(original, translated) {
 
-  let h = JSON.parse(localStorage.getItem("history") || "[]");
+  let history =
+    JSON.parse(localStorage.getItem("history")) || [];
 
-  h.unshift({ o, r });
+  history.unshift({
+    original,
+    translated
+  });
 
-  localStorage.setItem("history", JSON.stringify(h.slice(0, 15)));
+  history = history.slice(0, 20);
+
+  localStorage.setItem(
+    "history",
+    JSON.stringify(history)
+  );
 
 }
 
 function renderHistory() {
 
-  const box = document.getElementById("history");
+  const box =
+    document.getElementById("history");
 
-  const h = JSON.parse(localStorage.getItem("history") || "[]");
+  const history =
+    JSON.parse(localStorage.getItem("history")) || [];
 
-  box.innerHTML = "<h3>Historique</h3>";
+  box.innerHTML = "";
 
-  h.forEach(x => {
-    box.innerHTML += `<div>${x.o} → ${x.r}</div>`;
+  history.forEach(item => {
+
+    box.innerHTML += `
+      <div class="history-item">
+        ${item.original}
+        →
+        ${item.translated}
+      </div>
+    `;
+
   });
+
+}
+
+/* =========================
+   VOICE
+========================= */
+
+function speak(text) {
+
+  if (!("speechSynthesis" in window)) {
+
+    setStatus("❌ Voix non supportée");
+
+    return;
+
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "fr-FR";
+
+  utterance.rate = 1;
+
+  utterance.onerror = () => {
+
+    setStatus("❌ Erreur audio");
+
+  };
+
+  speechSynthesis.speak(utterance);
+
+}
+
+/* =========================
+   MICROPHONE
+========================= */
+
+function setupMicrophone(input) {
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  const micBtn =
+    document.getElementById("micBtn");
+
+  if (!SpeechRecognition) {
+
+    micBtn.disabled = true;
+
+    setStatus(
+      "🎤 Micro non supporté ici"
+    );
+
+    return;
+
+  }
+
+  const recognition =
+    new SpeechRecognition();
+
+  recognition.lang = "fr-FR";
+
+  recognition.interimResults = false;
+
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = () => {
+
+    setStatus("🎤 Écoute...");
+
+  };
+
+  recognition.onresult = e => {
+
+    input.value =
+      e.results[0][0].transcript;
+
+    setStatus("✅ Texte détecté");
+
+  };
+
+  recognition.onerror = e => {
+
+    setStatus(
+      "❌ Micro : " + e.error
+    );
+
+  };
+
+  micBtn.addEventListener(
+    "click",
+
+    () => {
+
+      try {
+
+        recognition.start();
+
+      } catch (err) {
+
+        console.log(err);
+
+      }
+
+    }
+  );
 
 }
 
@@ -89,120 +267,151 @@ function renderHistory() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const input = document.getElementById("input");
-  const result = document.getElementById("result");
+  const input =
+    document.getElementById("input");
+
+  const result =
+    document.getElementById("result");
 
   /* ===== TRANSLATE ===== */
 
-  function run() {
+  function runTranslation() {
 
-    const text = input.value.trim();
+    const text =
+      input.value.trim();
 
     if (!text) {
-      result.innerText = "⚠️ champ vide";
+
+      result.innerText =
+        "⚠️ Champ vide";
+
       return;
+
     }
 
-    const r = translate(text);
+    const translated =
+      translate(text);
 
-    result.innerText = r;
+    result.innerText =
+      translated;
 
-    saveHistory(text, r);
+    saveHistory(
+      text,
+      translated
+    );
 
     renderHistory();
 
+    setStatus("✅ Traduction OK");
+
   }
 
-  document.getElementById("translateBtn").addEventListener("click", run);
+  document
+    .getElementById("translateBtn")
+    .addEventListener(
+      "click",
+      runTranslation
+    );
 
-  input.addEventListener("keydown", e => {
-    if (e.key === "Enter") run();
-  });
+  input.addEventListener(
+    "keydown",
 
-  /* =========================
-     SWAP LANGUAGE
-  ========================= */
+    e => {
 
-  document.getElementById("swapBtn").addEventListener("click", () => {
+      if (e.key === "Enter") {
 
-    direction =
-      direction === "fr-syr"
-        ? "syr-fr"
-        : "fr-syr";
+        e.preventDefault();
 
-    input.value = "";
-    result.innerText = "";
+        runTranslation();
 
-  });
+      }
 
-  /* =========================
-     MICRO FIX (IMPORTANT)
-  ========================= */
-
-  const SR =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-  if (SR) {
-
-    const rec = new SR();
-    rec.lang = "fr-FR";
-
-    rec.onresult = (e) => {
-      input.value = e.results[0][0].transcript;
-    };
-
-    rec.onerror = (e) => {
-      console.log("MIC ERROR:", e.error);
-    };
-
-    const micBtn = document.getElementById("micBtn");
-
-    if (micBtn) {
-      micBtn.addEventListener("click", () => {
-        try {
-          rec.start();
-        } catch (e) {
-          console.log("MIC BLOCKED:", e);
-        }
-      });
     }
+  );
 
-  }
+  /* ===== SWAP ===== */
 
-  /* =========================
-     VOICE FIX (IMPORTANT)
-  ========================= */
+  document
+    .getElementById("swapBtn")
+    .addEventListener(
+      "click",
 
-  document.getElementById("speakBtn").addEventListener("click", () => {
+      () => {
 
-    const text = result.innerText;
+        direction =
+          direction === "fr"
+            ? "syr"
+            : "fr";
 
-    if (!text || text === "⚠️ champ vide") return;
+        input.value = "";
+        result.innerText = "...";
 
-    speechSynthesis.cancel();
+        setStatus("⇄ Inversion");
 
-    const utterance = new SpeechSynthesisUtterance(text);
+      }
+    );
 
-    utterance.lang = "fr-FR";
-    utterance.rate = 1;
+  /* ===== CLEAR ===== */
 
-    utterance.onerror = (e) => {
-      console.log("VOICE ERROR:", e.error);
-    };
+  document
+    .getElementById("clearBtn")
+    .addEventListener(
+      "click",
 
-    speechSynthesis.speak(utterance);
+      () => {
 
-  });
+        input.value = "";
+        result.innerText = "...";
 
-  document.getElementById("stopBtn").addEventListener("click", () => {
-    speechSynthesis.cancel();
-  });
+      }
+    );
 
-  /* =========================
-     INIT HISTORY
-  ========================= */
+  /* ===== VOICE ===== */
+
+  document
+    .getElementById("speakBtn")
+    .addEventListener(
+      "click",
+
+      () => {
+
+        const text =
+          result.innerText;
+
+        if (
+          !text ||
+          text === "..."
+        ) return;
+
+        speak(text);
+
+      }
+    );
+
+  /* ===== STOP ===== */
+
+  document
+    .getElementById("stopBtn")
+    .addEventListener(
+      "click",
+
+      () => {
+
+        speechSynthesis.cancel();
+
+        setStatus("⏹ Audio stoppé");
+
+      }
+    );
+
+  /* ===== MICRO ===== */
+
+  setupMicrophone(input);
+
+  /* ===== INIT ===== */
 
   renderHistory();
+
+  setStatus("✅ App prête");
 
 });
