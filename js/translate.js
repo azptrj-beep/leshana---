@@ -1,27 +1,86 @@
 
 "use strict";
+"use strict";
 
-let dictionary = {};
+const dictionary = {
+  bonjour: "ܫܠܡܐ",
+  maison: "ܒܝܬܐ",
+  eau: "ܡܝܐ",
+  roi: "ܡܠܟܐ",
+  paix: "ܫܠܡܐ",
+  comment: "ܐܝܟ",
+  tu: "ܐܢܬ",
+  vas: "ܐܙܠ",
+  homme: "ܒܪܢܫܐ",
+  femme: "ܐܢܬܬܐ"
+};
 
-// 📚 charger dictionnaire JSON
-fetch("data/dictionary.json")
-  .then(res => res.json())
-  .then(data => {
-    dictionary = data;
-  });
+// 🧼 nettoyage robuste
+function cleanText(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+// 🤖 mini IA (reformulation simple)
+function smartRewrite(words) {
+  // petite logique type “phrase naturelle”
+  // (version légère IA sans backend)
+  return words;
+}
 
 // 🧠 traduction
 function translateText(text) {
 
-  return text
-    .toLowerCase()
-    .trim()
-    .split(" ")
-    .map(word => dictionary[word] || `[${word}]`)
+  const words = smartRewrite(
+    cleanText(text).split(" ")
+  );
+
+  return words
+    .map(w => dictionary[w] || `[${w}]`)
     .join(" ");
 }
 
-// 💡 suggestions
+// 💾 historique global (sync toutes pages)
+function saveHistory(original, translated) {
+
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  history.unshift({
+    original,
+    translated,
+    time: Date.now()
+  });
+
+  history = history.slice(0, 15);
+
+  localStorage.setItem("history", JSON.stringify(history));
+
+  renderHistory();
+}
+
+// 📜 affichage propre
+function renderHistory() {
+
+  const container = document.getElementById("history");
+
+  const history = JSON.parse(localStorage.getItem("history")) || [];
+
+  container.innerHTML = "<h3>📜 Historique</h3>";
+
+  history.forEach(item => {
+
+    container.innerHTML += `
+      <div class="history-item">
+        <span>${item.original} → ${item.translated}</span>
+      </div>
+    `;
+  });
+}
+
+// 💡 suggestions intelligentes (triées)
 function showSuggestions(value) {
 
   const box = document.getElementById("suggestions");
@@ -31,90 +90,85 @@ function showSuggestions(value) {
     return;
   }
 
+  const v = value.toLowerCase();
+
   const matches = Object.keys(dictionary)
-    .filter(word =>
-      word.startsWith(value.toLowerCase())
-    )
-    .slice(0, 5);
+    .filter(k => k.startsWith(v))
+    .sort((a, b) => a.length - b.length)
+    .slice(0, 6);
 
-  box.innerHTML = matches
-    .map(word =>
-      `<div class="suggestion">${word}</div>`
-    )
-    .join("");
-
-  document.querySelectorAll(".suggestion")
-    .forEach(el => {
-
-      el.addEventListener("click", () => {
-        document.getElementById("input").value =
-          el.innerText;
-
-        box.innerHTML = "";
-      });
-
-    });
+  box.innerHTML = matches.map(m =>
+    `<div class="suggestion" data-word="${m}">${m}</div>`
+  ).join("");
 }
 
-// 🔊 audio
+// 🔊 audio propre (reset avant lecture)
 function speak(text) {
 
-  const utterance =
-    new SpeechSynthesisUtterance(text);
+  if (!text) return;
 
+  speechSynthesis.cancel(); // IMPORTANT V2.4
+
+  const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "fr-FR";
 
   speechSynthesis.speak(utterance);
 }
 
-// 🚀 app
+// 🚀 INIT SAFE
 document.addEventListener("DOMContentLoaded", () => {
 
-  const input =
-    document.getElementById("input");
+  const input = document.getElementById("frInput");
+  const result = document.getElementById("result");
 
-  const result =
-    document.getElementById("result");
+  function doTranslate() {
 
-  // traduction
-  document.getElementById("translateBtn")
-    .addEventListener("click", () => {
+    const text = input.value.trim();
 
-      const text = input.value;
-
-      if (!text) {
-        result.innerText = "⚠️ Champ vide";
-        return;
-      }
-
-      const translated =
-        translateText(text);
-
-      result.innerText = translated;
-    });
-
-  // ENTER
-  input.addEventListener("keydown", e => {
-
-    if (e.key === "Enter") {
-      document
-        .getElementById("translateBtn")
-        .click();
+    if (!text) {
+      result.innerText = "⚠️ Champ vide";
+      return;
     }
 
+    const translated = translateText(text);
+
+    result.innerText = translated;
+
+    saveHistory(text, translated);
+  }
+
+  document.getElementById("translateBtn").addEventListener("click", doTranslate);
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") doTranslate();
   });
 
-  // suggestions
-  input.addEventListener("input", e => {
+  input.addEventListener("input", (e) => {
     showSuggestions(e.target.value);
   });
 
-  // audio
-  document.getElementById("voiceBtn")
-    .addEventListener("click", () => {
+  // 🖱️ suggestions (event delegation propre)
+  document.getElementById("suggestions").addEventListener("click", (e) => {
 
-      speak(result.innerText);
+    const el = e.target.closest(".suggestion");
 
-    });
+    if (!el) return;
 
+    const word = el.dataset.word;
+
+    input.value = word;
+
+    const translated = translateText(word);
+
+    result.innerText = translated;
+
+    saveHistory(word, translated);
+  });
+
+  // 🔊 audio bouton
+  document.getElementById("speakBtn").addEventListener("click", () => {
+    speak(result.innerText);
+  });
+
+  renderHistory();
 });
