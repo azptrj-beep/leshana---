@@ -1,3 +1,6 @@
+
+"use strict";
+
 let dictionary = {};
 
 // 📚 charger dictionnaire JSON
