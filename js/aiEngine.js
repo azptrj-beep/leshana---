@@ -1,3 +1,5 @@
+"use strict";
+
 const dictionary = require("../database/dictionary.json");
 
 // 🧠 mini IA contextuelle
