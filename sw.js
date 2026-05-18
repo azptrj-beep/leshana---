@@ -1,3 +1,5 @@
+"use strict";
+
 const CACHE = "soureth-pro-v1";
 
 const FILES = [
