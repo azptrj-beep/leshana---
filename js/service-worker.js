@@ -1,18 +1,22 @@
 
 
 "use strict";
-self.addEventListener("install", event => {
-
-  event.waitUntil(
-
-    caches.open("soureth-v7").then(cache => {
-
+self.addEventListener("install", e => {
+  e.waitUntil(
+    caches.open("v4-cache").then(cache => {
       return cache.addAll([
         "/",
         "/index.html",
         "/css/style.css",
-        "/js/app.js"
+        "/js/app.js",
+        "/data/dictionary.json"
       ]);
     })
+  );
+});
+
+self.addEventListener("fetch", e => {
+  e.respondWith(
+    caches.match(e.request).then(res => res || fetch(e.request))
   );
 });
