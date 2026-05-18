@@ -534,7 +534,103 @@ section h2 {
 
   transform: scale(1.08);
 }
+/* =========================
+   TRANSLATOR
+========================= */
 
+.translator-box {
+
+  max-width: 700px;
+
+  margin: auto;
+
+  padding: 20px;
+
+}
+
+.translator-buttons {
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 15px;
+
+}
+
+#frInput {
+
+  width: 100%;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  font-size: 18px;
+
+}
+
+#result {
+
+  margin-top: 30px;
+
+  font-size: 2rem;
+
+  text-align: center;
+
+  word-break: break-word;
+
+}
+
+.suggestion {
+
+  padding: 10px;
+
+  cursor: pointer;
+
+  border-radius: 8px;
+
+}
+
+.suggestion:hover {
+
+  opacity: 0.8;
+
+}
+
+.history-item {
+
+  margin-top: 10px;
+
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+
+  background: #0b0f1a;
+
+  color: white;
+
+}
+
+body.dark .translator-box {
+
+  background: #121a2a;
+
+  border-radius: 16px;
+
+}
+
+body.dark .suggestion {
+
+  background: #1b2942;
+
+}
 
 /* =========================
    INPUTS
@@ -1296,27 +1392,5 @@ body.light-mode nav a {
 
   }
 
-}
-
-body.dark {
-  background: #0b0f1a;
-  color: white;
-}
-
-.suggestion {
-  padding: 6px;
-  cursor: pointer;
-  background: #eee;
-  margin: 2px 0;
-}
-
-body.dark .suggestion {
-  background: #1b2238;
-}
-
-.history-item {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
 }
 
