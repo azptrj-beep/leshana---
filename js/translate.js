@@ -427,3 +427,14 @@ document.addEventListener(
 
   }
 );
+
+function detectLanguage(text) {
+
+  const syrRegex = /[\u0700-\u074F]/;
+
+  if (syrRegex.test(text)) {
+    return "syr";
+  }
+
+  return "fr";
+}
