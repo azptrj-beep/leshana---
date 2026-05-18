@@ -5,12 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Traduction FR ⇄ Soureth PRO</title>
+  <title>Traduction FR ⇄ Soureth</title>
 
   <link rel="stylesheet" href="css/style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f172a">
-
 </head>
 
 <body>
@@ -20,51 +17,29 @@
   <h1>🌍 FR ⇄ Soureth</h1>
 
   <div class="top-actions">
-
-    <button id="swapBtn" class="icon-btn">⇄</button>
-    <button id="autoBtn" class="icon-btn">⚡</button>
-
+    <button id="swapBtn">⇄</button>
   </div>
 
 </header>
 
 <main class="container">
 
-  <!-- INPUT -->
-  <section class="card">
+  <textarea id="frInput" placeholder="Écris ton texte..."></textarea>
 
-    <textarea id="frInput"
-              placeholder="Écris ton texte ici..."
-              rows="4"></textarea>
+  <div class="buttons">
 
-    <div id="suggestions" class="suggestions"></div>
-
-  </section>
-
-  <!-- ACTIONS -->
-  <section class="actions">
-
-    <button id="translateBtn" class="btn-primary">Traduire</button>
+    <button id="translateBtn">Traduire</button>
     <button id="speakBtn">🔊</button>
     <button id="stopBtn">⏹</button>
     <button id="micBtn">🎤</button>
 
-  </section>
+  </div>
 
-  <!-- OUTPUT -->
-  <section class="card output">
+  <div id="suggestions"></div>
 
-    <div id="result">...</div>
+  <div id="result"></div>
 
-  </section>
-
-  <!-- HISTORY -->
-  <section class="history">
-
-    <h3>Historique</h3>
-    <div id="history"></div>
-
-  </section>
+  <div id="history"></div>
 
 </main>
 
