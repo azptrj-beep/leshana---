@@ -36,11 +36,10 @@ function cleanText(text) {
 
   return text
     .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
 
-}
 
 /* =========================
    TRADUCTION
