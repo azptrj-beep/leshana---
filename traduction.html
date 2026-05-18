@@ -2,58 +2,39 @@
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traduction Soureth V2</title>
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>Traduction Soureth</title>
-
-  <link rel="stylesheet"
-        href="css/style.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
+  <header>
+    <h1>🌍 Traduction Français ⇄ Soureth V2</h1>
+  </header>
 
-  <h1>🌍 Traduction Français ⇄ Soureth</h1>
+  <section class="translator-box">
 
-</header>
+    <input type="text"
+           id="frInput"
+           placeholder="Entrer un mot ou phrase"
+           autocomplete="off">
 
-<section class="translator-box">
-
-  <input type="text"
-         id="input"
-         placeholder="Entrer un mot ou phrase">
-
-  <div class="translator-buttons">
-
-    <button id="translateBtn"
-            class="btn btn-primary">
+    <button id="translateBtn" class="btn btn-primary">
       Traduire
     </button>
 
-    <button id="voiceBtn"
-            class="btn">
-      🔊
-    </button>
+    <div id="suggestions" class="suggestions"></div>
 
-  </div>
+    <div id="result" class="soureth-title"></div>
 
-  <div id="suggestions"></div>
+    <div id="history" class="history"></div>
 
-  <div id="result"
-       class="soureth-title">
-  </div>
+  </section>
 
-  <div id="history"></div>
-
-</section>
-
-<script src="js/translate.js" defer></script>
+  <script src="js/translate.js" defer></script>
 
 </body>
 </html>
