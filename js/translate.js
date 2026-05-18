@@ -48,11 +48,12 @@ function cleanText(text) {
 
 function translateText(text) {
 
-  const words =
-    cleanText(text).split(" ");
+  const lang = detectLanguage(text);
+
+  const words = cleanText(text).split(" ");
 
   const activeDictionary =
-    currentDirection === "fr-syr"
+    lang === "fr"
       ? frToSyr
       : syrToFr;
 
@@ -61,7 +62,6 @@ function translateText(text) {
       activeDictionary[word] || `[${word}]`
     )
     .join(" ");
-
 }
 
 /* =========================
