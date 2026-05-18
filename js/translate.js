@@ -1,9 +1,7 @@
-
-"use strict";
 "use strict";
 
 /* =========================
-   DICTIONNAIRE
+   DICTIONNAIRES
 ========================= */
 
 const frToSyr = {
@@ -21,15 +19,14 @@ const frToSyr = {
 
 };
 
-// 🔁 inversion auto
+// 🔁 dictionnaire inversé
 const syrToFr = Object.fromEntries(
   Object.entries(frToSyr)
     .map(([k, v]) => [v, k])
 );
 
-// 🌍 direction actuelle
+// 🌍 direction
 let currentDirection = "fr-syr";
-};
 
 /* =========================
    CLEAN TEXT
@@ -46,26 +43,14 @@ function cleanText(text) {
 }
 
 /* =========================
-   SMART PHRASE
-========================= */
-
-function smartSentence(words) {
-
-  return words;
-
-}
-
-/* =========================
    TRADUCTION
 ========================= */
 
 function translateText(text) {
 
-  const words = smartSentence(
-    cleanText(text).split(" ")
-  );
+  const words =
+    cleanText(text).split(" ");
 
-  // 🌍 dictionnaire actif
   const activeDictionary =
     currentDirection === "fr-syr"
       ? frToSyr
@@ -92,11 +77,10 @@ function saveHistory(original, translated) {
 
   history.unshift({
     original,
-    translated,
-    time: Date.now()
+    translated
   });
 
-  history = history.slice(0, 15);
+  history = history.slice(0, 10);
 
   localStorage.setItem(
     "history",
@@ -136,49 +120,40 @@ function renderHistory() {
    SUGGESTIONS
 ========================= */
 
-let debounceTimer;
-
 function showSuggestions(value) {
 
   const box =
     document.getElementById("suggestions");
 
-  clearTimeout(debounceTimer);
+  if (!value) {
 
-  debounceTimer = setTimeout(() => {
+    box.innerHTML = "";
+    return;
 
-    if (!value) {
+  }
 
-      box.innerHTML = "";
-      return;
+  const activeDictionary =
+    currentDirection === "fr-syr"
+      ? frToSyr
+      : syrToFr;
 
-    }
+  const matches =
+    Object.keys(activeDictionary)
 
-    Object.keys(
-  currentDirection === "fr-syr"
-    ? frToSyr
-    : syrToFr
-)
       .filter(word =>
         word.startsWith(
           value.toLowerCase()
         )
       )
 
-      .sort((a, b) =>
-        a.length - b.length
-      )
+      .slice(0, 5);
 
-      .slice(0, 6);
-
-    box.innerHTML = matches.map(word => `
-      <div class="suggestion"
-           data-word="${word}">
-        ${word}
-      </div>
-    `).join("");
-
-  }, 120);
+  box.innerHTML = matches.map(word => `
+    <div class="suggestion"
+         data-word="${word}">
+      ${word}
+    </div>
+  `).join("");
 
 }
 
@@ -233,7 +208,8 @@ let recognition = null;
 
 if (SpeechRecognition) {
 
-  recognition = new SpeechRecognition();
+  recognition =
+    new SpeechRecognition();
 
   recognition.lang = "fr-FR";
 
@@ -253,7 +229,7 @@ document.addEventListener(
     const result =
       document.getElementById("result");
 
-    /* ===== LOAD THEME ===== */
+    /* ===== THEME ===== */
 
     const savedTheme =
       localStorage.getItem("theme")
@@ -309,12 +285,16 @@ document.addEventListener(
       }
     );
 
-    /* ===== LIVE SUGGESTIONS ===== */
+    /* ===== SUGGESTIONS ===== */
 
     input.addEventListener(
       "input",
       e => {
-        showSuggestions(e.target.value);
+
+        showSuggestions(
+          e.target.value
+        );
+
       }
     );
 
@@ -331,18 +311,10 @@ document.addEventListener(
 
           if (!el) return;
 
-          const word =
+          input.value =
             el.dataset.word;
 
-          input.value = word;
-
-          const translated =
-            translateText(word);
-
-          result.innerText =
-            translated;
-
-          saveHistory(word, translated);
+          doTranslate();
 
         }
       );
@@ -354,18 +326,24 @@ document.addEventListener(
       .addEventListener(
         "click",
         () => {
-          speak(result.innerText);
+
+          speak(
+            result.innerText
+          );
+
         }
       );
 
-    /* ===== STOP AUDIO ===== */
+    /* ===== STOP ===== */
 
     document
       .getElementById("stopBtn")
       .addEventListener(
         "click",
         () => {
+
           speechSynthesis.cancel();
+
         }
       );
 
@@ -378,7 +356,9 @@ document.addEventListener(
         .addEventListener(
           "click",
           () => {
+
             recognition.start();
+
           }
         );
 
@@ -394,7 +374,7 @@ document.addEventListener(
 
     }
 
-    /* ===== THEME ===== */
+    /* ===== THEME BTN ===== */
 
     document
       .getElementById("themeBtn")
@@ -406,8 +386,37 @@ document.addEventListener(
             document.body.classList.contains("dark");
 
           setTheme(
-            dark ? "light" : "dark"
+            dark
+              ? "light"
+              : "dark"
           );
+
+        }
+      );
+
+    /* ===== SWAP ===== */
+
+    document
+      .getElementById("swapBtn")
+      .addEventListener(
+        "click",
+        () => {
+
+          currentDirection =
+            currentDirection === "fr-syr"
+              ? "syr-fr"
+              : "fr-syr";
+
+          input.placeholder =
+            currentDirection === "fr-syr"
+              ? "Entrer un mot français"
+              : "Entrer un mot soureth";
+
+          result.innerText = "";
+
+          document
+            .getElementById("suggestions")
+            .innerHTML = "";
 
         }
       );
