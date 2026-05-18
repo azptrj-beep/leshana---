@@ -1,3 +1,5 @@
+let autoMode = false;
+
 "use strict";
 
 /* =========================
