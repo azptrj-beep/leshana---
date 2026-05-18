@@ -2,90 +2,45 @@
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Traduction Soureth PRO</title>
 
-  <title>Traduction Soureth</title>
-
-  <link rel="stylesheet"
-        href="css/style.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <header class="translator-header">
+<header>
 
-    <h1>
-      🌍 Traduction Français ⇄ Soureth
-    </h1>
+  <h1>🌍 Traduction FR ⇄ Soureth</h1>
 
-    <button id="themeBtn"
-            class="btn theme-btn">
-      🌙
-    </button>
+  <button id="swapBtn" class="btn">⇄</button>
+  <button id="autoBtn" class="btn">⚡ Auto OFF</button>
 
-  </header>
+</header>
 
-  <section class="translator-box">
+<section class="translator-box">
 
-    <input type="text"
-           id="frInput"
-           placeholder="Entrer un mot ou phrase"
-           autocomplete="off">
+  <input id="frInput" type="text" placeholder="Entrer un texte">
 
-    <div class="translator-buttons">
-      
-      <button id="swapBtn"
-          class="btn">
-    ⇄ Inverser
-  </button>
+  <div class="translator-buttons">
 
-      <button id="translateBtn"
-              class="btn btn-primary">
-        Traduire
-      </button>
+    <button id="translateBtn" class="btn btn-primary">Traduire</button>
+    <button id="speakBtn" class="btn">🔊</button>
+    <button id="stopBtn" class="btn">⏹</button>
+    <button id="micBtn" class="btn">🎤</button>
 
-      <button id="speakBtn"
-              class="btn">
-        🔊
-      </button>
+  </div>
 
-      <button id="stopBtn"
-              class="btn">
-        ⏹
-      </button>
+  <div id="suggestions"></div>
+  <div id="result"></div>
+  <div id="history"></div>
 
-      <button id="micBtn"
-              class="btn">
-        🎤
-      </button>
+</section>
 
-<button id="autoBtn" class="btn">
-  ⚡ Auto
-</button>
-
-    </div>
-
-    <div id="suggestions"
-         class="suggestions">
-    </div>
-
-    <div id="result"
-         class="soureth-title">
-    </div>
-
-    <div id="history"
-         class="history">
-    </div>
-
-  </section>
-
-  <script src="js/translate.js" defer></script>
+<script src="js/translate.js" defer></script>
 
 </body>
-
 </html>
