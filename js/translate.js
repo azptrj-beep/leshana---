@@ -39,7 +39,7 @@ function cleanText(text) {
 
   return text
     .toLowerCase()
-    .replace(/[^\w\s]/gi, "")
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
 
