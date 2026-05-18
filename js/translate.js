@@ -6,7 +6,7 @@
    DICTIONNAIRE
 ========================= */
 
-const dictionary = {
+const frToSyr = {
 
   bonjour: "ܫܠܡܐ",
   maison: "ܒܝܬܐ",
@@ -19,6 +19,16 @@ const dictionary = {
   tu: "ܐܢܬ",
   vas: "ܐܙܠ"
 
+};
+
+// 🔁 inversion auto
+const syrToFr = Object.fromEntries(
+  Object.entries(frToSyr)
+    .map(([k, v]) => [v, k])
+);
+
+// 🌍 direction actuelle
+let currentDirection = "fr-syr";
 };
 
 /* =========================
