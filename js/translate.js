@@ -68,16 +68,13 @@ function translateText(text) {
 
 function saveHistory(o, t) {
 
-  let h = JSON.parse(localStorage.getItem("history")) || [];
+  let h = JSON.parse(localStorage.getItem("history") || "[]");
 
   h.unshift({ o, t });
 
-  h = h.slice(0, 10);
+  localStorage.setItem("history", JSON.stringify(h.slice(0, 20)));
 
-  localStorage.setItem("history", JSON.stringify(h));
-
-  renderHistory();
-
+}
 }
 
 function renderHistory() {
