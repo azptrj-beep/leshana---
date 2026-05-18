@@ -1394,3 +1394,89 @@ body.light-mode nav a {
 
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: white;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: #111827;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+}
+
+.card {
+  background: #1f2937;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  outline: none;
+  resize: none;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.icon-btn {
+  background: #374151;
+  color: white;
+}
+
+.suggestions {
+  margin-top: 10px;
+  background: #111827;
+  border-radius: 8px;
+}
+
+.suggestions div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background: #374151;
+}
+
+.output {
+  font-size: 22px;
+  min-height: 60px;
+}
+
+.history {
+  font-size: 14px;
+  opacity: 0.8;
+}
