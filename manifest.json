@@ -1,7 +1,7 @@
 {
-  "name": "Soureth Translator",
+  "name": "Soureth Translator PRO",
   "short_name": "Soureth",
-  "start_url": "index.html",
+  "start_url": "/traduction.html",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
