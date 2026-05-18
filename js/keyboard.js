@@ -1,3 +1,7 @@
+
+
+"use strict";
+
 keyboard.js
 function insertLetter(letter) {
 
