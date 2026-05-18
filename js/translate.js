@@ -1,7 +1,5 @@
 
 "use strict";
-"use strict";
-
 const dictionary = {
   bonjour: "ܫܠܡܐ",
   maison: "ܒܝܬܐ",
@@ -10,77 +8,49 @@ const dictionary = {
   paix: "ܫܠܡܐ",
   comment: "ܐܝܟ",
   tu: "ܐܢܬ",
-  vas: "ܐܙܠ",
-  homme: "ܒܪܢܫܐ",
-  femme: "ܐܢܬܬܐ"
+  vas: "ܐܙܠ"
 };
 
-// 🧼 nettoyage robuste
-function cleanText(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s]/gi, "")
-    .trim()
-    .replace(/\s+/g, " ");
-}
-
-// 🤖 mini IA (reformulation simple)
-function smartRewrite(words) {
-  // petite logique type “phrase naturelle”
-  // (version légère IA sans backend)
-  return words;
-}
-
-// 🧠 traduction
+// 🧠 traduction mot ou phrase
 function translateText(text) {
 
-  const words = smartRewrite(
-    cleanText(text).split(" ")
-  );
+  const words = text.toLowerCase().split(" ");
 
-  return words
-    .map(w => dictionary[w] || `[${w}]`)
-    .join(" ");
+  const translated = words.map(w => {
+    return dictionary[w] || `[${w}]`;
+  });
+
+  return translated.join(" ");
 }
 
-// 💾 historique global (sync toutes pages)
+// 💾 historique
 function saveHistory(original, translated) {
 
   let history = JSON.parse(localStorage.getItem("history")) || [];
 
-  history.unshift({
-    original,
-    translated,
-    time: Date.now()
-  });
+  history.unshift({ original, translated });
 
-  history = history.slice(0, 15);
+  history = history.slice(0, 10); // max 10
 
   localStorage.setItem("history", JSON.stringify(history));
 
   renderHistory();
 }
 
-// 📜 affichage propre
+// 📜 afficher historique
 function renderHistory() {
 
   const container = document.getElementById("history");
 
   const history = JSON.parse(localStorage.getItem("history")) || [];
 
-  container.innerHTML = "<h3>📜 Historique</h3>";
-
-  history.forEach(item => {
-
-    container.innerHTML += `
-      <div class="history-item">
-        <span>${item.original} → ${item.translated}</span>
-      </div>
-    `;
-  });
+  container.innerHTML = "<h3>Historique</h3>" +
+    history.map(h =>
+      `<p>${h.original} → ${h.translated}</p>`
+    ).join("");
 }
 
-// 💡 suggestions intelligentes (triées)
+// 💡 suggestions simples
 function showSuggestions(value) {
 
   const box = document.getElementById("suggestions");
@@ -90,38 +60,20 @@ function showSuggestions(value) {
     return;
   }
 
-  const v = value.toLowerCase();
-
   const matches = Object.keys(dictionary)
-    .filter(k => k.startsWith(v))
-    .sort((a, b) => a.length - b.length)
-    .slice(0, 6);
+    .filter(k => k.startsWith(value.toLowerCase()))
+    .slice(0, 5);
 
-  box.innerHTML = matches.map(m =>
-    `<div class="suggestion" data-word="${m}">${m}</div>`
-  ).join("");
+  box.innerHTML = matches.map(m => `<p>${m}</p>`).join("");
 }
 
-// 🔊 audio propre (reset avant lecture)
-function speak(text) {
-
-  if (!text) return;
-
-  speechSynthesis.cancel(); // IMPORTANT V2.4
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "fr-FR";
-
-  speechSynthesis.speak(utterance);
-}
-
-// 🚀 INIT SAFE
+// 🚀 init
 document.addEventListener("DOMContentLoaded", () => {
 
   const input = document.getElementById("frInput");
   const result = document.getElementById("result");
 
-  function doTranslate() {
+  document.getElementById("translateBtn").addEventListener("click", () => {
 
     const text = input.value.trim();
 
@@ -135,39 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     result.innerText = translated;
 
     saveHistory(text, translated);
-  }
-
-  document.getElementById("translateBtn").addEventListener("click", doTranslate);
-
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") doTranslate();
   });
 
+  // ENTER
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      document.getElementById("translateBtn").click();
+    }
+  });
+
+  // suggestions live
   input.addEventListener("input", (e) => {
     showSuggestions(e.target.value);
-  });
-
-  // 🖱️ suggestions (event delegation propre)
-  document.getElementById("suggestions").addEventListener("click", (e) => {
-
-    const el = e.target.closest(".suggestion");
-
-    if (!el) return;
-
-    const word = el.dataset.word;
-
-    input.value = word;
-
-    const translated = translateText(word);
-
-    result.innerText = translated;
-
-    saveHistory(word, translated);
-  });
-
-  // 🔊 audio bouton
-  document.getElementById("speakBtn").addEventListener("click", () => {
-    speak(result.innerText);
   });
 
   renderHistory();
