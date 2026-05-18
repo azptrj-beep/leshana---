@@ -437,24 +437,21 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===== VOICE ===== */
 
   document
-    .getElementById("speakBtn")
-    .addEventListener(
-      "click",
+  .getElementById("speakBtn")
+  .addEventListener(
+    "click",
 
-      () => {
+    () => {
 
-        const text =
-          result.innerText;
+      const text =
+        document
+          .getElementById("result")
+          .innerText;
 
-        if (
-          !text ||
-          text === "..."
-        ) return;
+      speak(text);
 
-        speak(text);
-
-      }
-    );
+    }
+  );
 
   /* ===== STOP ===== */
 
