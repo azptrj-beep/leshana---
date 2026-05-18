@@ -2,37 +2,81 @@
 <html lang="fr">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Traduction Soureth </title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="css/style.css">
+  <title>Traduction Soureth</title>
 
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet"
+        href="css/style.css">
+
 </head>
 
 <body>
 
-<header>
-  <h1>🌍 Traduction Soureth </h1>
+  <header class="translator-header">
 
-  <button id="swapLang">⇄ FR / SYR</button>
-</header>
+    <h1>
+      🌍 Traduction Français ⇄ Soureth
+    </h1>
 
-<section class="translator-box">
+    <button id="themeBtn"
+            class="btn theme-btn">
+      🌙
+    </button>
 
-  <input id="input" type="text" placeholder="Écris ou parle...">
+  </header>
 
-  <button id="btnTranslate">Traduire</button>
-  <button id="btnMic">🎤 Parler</button>
+  <section class="translator-box">
 
-  <div id="result"></div>
+    <input type="text"
+           id="frInput"
+           placeholder="Entrer un mot ou phrase"
+           autocomplete="off">
 
-</section>
+    <div class="translator-buttons">
 
-<script src="js/app.js" defer></script>
+      <button id="translateBtn"
+              class="btn btn-primary">
+        Traduire
+      </button>
+
+      <button id="speakBtn"
+              class="btn">
+        🔊
+      </button>
+
+      <button id="stopBtn"
+              class="btn">
+        ⏹
+      </button>
+
+      <button id="micBtn"
+              class="btn">
+        🎤
+      </button>
+
+    </div>
+
+    <div id="suggestions"
+         class="suggestions">
+    </div>
+
+    <div id="result"
+         class="soureth-title">
+    </div>
+
+    <div id="history"
+         class="history">
+    </div>
+
+  </section>
+
+  <script src="js/translate.js" defer></script>
 
 </body>
+
 </html>
