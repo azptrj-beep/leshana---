@@ -157,12 +157,16 @@ function renderHistory() {
 
 function speak(text) {
 
+  if (!text || text === "...") {
+    setStatus("⚠️ Aucun texte");
+    return;
+  }
+
   if (!("speechSynthesis" in window)) {
 
-    setStatus("❌ Voix non supportée");
+    setStatus("❌ Audio non supporté");
 
     return;
-
   }
 
   speechSynthesis.cancel();
@@ -170,17 +174,81 @@ function speak(text) {
   const utterance =
     new SpeechSynthesisUtterance(text);
 
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  /* ===== CHARGEMENT DES VOIX ===== */
+
+  let voices =
+    speechSynthesis.getVoices();
+
+  if (!voices.length) {
+
+    speechSynthesis.onvoiceschanged = () => {
+
+      voices =
+        speechSynthesis.getVoices();
+
+      startSpeech(
+        utterance,
+        voices
+      );
+
+    };
+
+  } else {
+
+    startSpeech(
+      utterance,
+      voices
+    );
+
+  }
+
+}
+
+/* =========================
+   START SPEECH
+========================= */
+
+function startSpeech(
+  utterance,
+  voices
+) {
+
+  /* ===== PRIORITÉ FR ===== */
+
+  const frenchVoice =
+    voices.find(v =>
+      v.lang.includes("fr")
+    );
+
+  if (frenchVoice) {
+    utterance.voice = frenchVoice;
+  }
+
   utterance.lang = "fr-FR";
 
-  utterance.rate = 1;
+  utterance.onstart = () => {
+    setStatus("🔊 Lecture...");
+  };
 
-  utterance.onerror = () => {
+  utterance.onend = () => {
+    setStatus("✅ Lecture terminée");
+  };
+
+  utterance.onerror = e => {
+
+    console.log(e);
 
     setStatus("❌ Erreur audio");
 
   };
 
-  speechSynthesis.speak(utterance);
+  speechSynthesis.speak(
+    utterance
+  );
 
 }
 
