@@ -1331,3 +1331,24 @@ body.light-mode nav a {
 
 }
 
+body.dark {
+  background: #0b0f1a;
+  color: white;
+}
+
+.suggestion {
+  padding: 6px;
+  cursor: pointer;
+  background: #eee;
+  margin: 2px 0;
+}
+
+body.dark .suggestion {
+  background: #1b2238;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
