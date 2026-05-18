@@ -11,39 +11,32 @@ let direction = "fr-syr";
 ========================= */
 
 const dict = {
-
   bonjour: "ܫܠܡܐ",
   maison: "ܒܝܬܐ",
   eau: "ܡܝܐ",
   roi: "ܡܠܟܐ",
   paix: "ܫܠܡܐ",
   homme: "ܒܪܢܫܐ",
-  femme: "ܐܢܬܬܐ",
-  comment: "ܐܝܟ",
-  tu: "ܐܢܬ",
-  vas: "ܐܙܠ"
-
+  femme: "ܐܢܬܬܐ"
 };
 
 /* =========================
    CLEAN SAFE
 ========================= */
 
-function clean(text) {
-
-  return text
+function clean(t) {
+  return t
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
-
 }
 
 /* =========================
-   TRANSLATE
+   TRANSLATE ENGINE
 ========================= */
 
-function translate(text) {
+function translate(t) {
 
   const map =
     direction === "fr-syr"
@@ -52,7 +45,7 @@ function translate(text) {
           Object.entries(dict).map(([k, v]) => [v, k])
         );
 
-  return clean(text)
+  return clean(t)
     .split(" ")
     .map(w => map[w] || w)
     .join(" ");
@@ -60,11 +53,35 @@ function translate(text) {
 }
 
 /* =========================
-   UI HELPERS
+   SAVE HISTORY
 ========================= */
 
-function show(text) {
-  document.getElementById("result").innerText = text;
+function save(o, r) {
+
+  let h = JSON.parse(localStorage.getItem("h") || "[]");
+
+  h.unshift({ o, r });
+
+  localStorage.setItem("h", JSON.stringify(h.slice(0, 20)));
+
+}
+
+/* =========================
+   RENDER HISTORY
+========================= */
+
+function render() {
+
+  const box = document.getElementById("history");
+
+  const h = JSON.parse(localStorage.getItem("h") || "[]");
+
+  box.innerHTML = "";
+
+  h.forEach(x => {
+    box.innerHTML += `<div>${x.o} → ${x.r}</div>`;
+  });
+
 }
 
 /* =========================
@@ -73,30 +90,26 @@ function show(text) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const input = document.getElementById("frInput");
-
-  const btn = document.getElementById("translateBtn");
-
-  /* ===== TRANSLATE ===== */
+  const input = document.getElementById("input");
+  const result = document.getElementById("result");
 
   function run() {
 
     const text = input.value.trim();
 
-    if (!text) {
-      show("⚠️ champ vide");
-      return;
-    }
+    if (!text) return;
 
-    const result = translate(text);
+    const r = translate(text);
 
-    show(result);
+    result.innerText = r;
 
-    save(text, result);
+    save(text, r);
+
+    render();
 
   }
 
-  btn.addEventListener("click", run);
+  document.getElementById("translateBtn").onclick = run;
 
   input.addEventListener("keydown", e => {
     if (e.key === "Enter") run();
@@ -104,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== SWAP ===== */
 
-  document.getElementById("swapBtn").addEventListener("click", () => {
+  document.getElementById("swapBtn").onclick = () => {
 
     direction =
       direction === "fr-syr"
@@ -112,26 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
         : "fr-syr";
 
     input.value = "";
-    show("");
+    result.innerText = "";
 
-    document.getElementById("suggestions").innerHTML = "";
-
-  });
+  };
 
   /* ===== MIC ===== */
 
-  const SpeechRecognition =
+  const SR =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
 
-  if (SpeechRecognition) {
+  if (SR) {
 
-    const rec = new SpeechRecognition();
+    const rec = new SR();
     rec.lang = "fr-FR";
 
-    document.getElementById("micBtn").addEventListener("click", () => {
-      rec.start();
-    });
+    document.getElementById("micBtn").onclick = () => rec.start();
 
     rec.onresult = e => {
       input.value = e.results[0][0].transcript;
@@ -141,51 +150,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===== AUDIO ===== */
 
-  document.getElementById("speakBtn").addEventListener("click", () => {
+  document.getElementById("speakBtn").onclick = () => {
 
-    const t = document.getElementById("result").innerText;
+    const text = result.innerText;
 
-    if (!t) return;
+    if (!text) return;
 
     speechSynthesis.cancel();
 
-    const u = new SpeechSynthesisUtterance(t);
+    speechSynthesis.speak(
+      new SpeechSynthesisUtterance(text)
+    );
 
-    speechSynthesis.speak(u);
+  };
 
-  });
-
-  document.getElementById("stopBtn").addEventListener("click", () => {
+  document.getElementById("stopBtn").onclick = () => {
     speechSynthesis.cancel();
-  });
-
-  /* ===== HISTORY ===== */
-
-  function save(o, t) {
-
-    let h = JSON.parse(localStorage.getItem("history") || "[]");
-
-    h.unshift({ o, t });
-
-    localStorage.setItem("history", JSON.stringify(h.slice(0, 15)));
-
-    render();
-
-  }
-
-  function render() {
-
-    const box = document.getElementById("history");
-
-    const h = JSON.parse(localStorage.getItem("history") || "[]");
-
-    box.innerHTML = "<h3>Historique</h3>";
-
-    h.forEach(x => {
-      box.innerHTML += `<div>${x.o} → ${x.t}</div>`;
-    });
-
-  }
+  };
 
   render();
 
