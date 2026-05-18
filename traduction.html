@@ -4,45 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Traduction Soureth V3</title>
+
+  <title>Traduction Soureth V4</title>
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
 
-  <header>
-    <h1>🌍 Traduction Français ⇄ Soureth V3</h1>
+<header>
+  <h1>🌍 Traduction Soureth V4</h1>
 
-    <button id="themeToggle" class="btn-small">
-      🌙 Mode
-    </button>
-  </header>
+  <button id="swapLang">⇄ FR / SYR</button>
+</header>
 
-  <section class="translator-box">
+<section class="translator-box">
 
-    <input type="text"
-           id="frInput"
-           placeholder="Entrer un mot ou phrase"
-           autocomplete="off">
+  <input id="input" type="text" placeholder="Écris ou parle...">
 
-    <button id="translateBtn" class="btn btn-primary">
-      Traduire
-    </button>
+  <button id="btnTranslate">Traduire</button>
+  <button id="btnMic">🎤 Parler</button>
 
-    <div id="suggestions" class="suggestions"></div>
+  <div id="result"></div>
 
-    <button id="speakBtn" class="btn-small">
-      🔊 Écouter
-    </button>
+</section>
 
-    <div id="result" class="soureth-title"></div>
-
-    <div id="history"></div>
-
-  </section>
-
-  <script src="js/translate.js" defer></script>
+<script src="js/app.js" defer></script>
 
 </body>
 </html>
