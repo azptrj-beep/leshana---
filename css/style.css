@@ -535,39 +535,6 @@ section h2 {
   transform: scale(1.08);
 }
 
-/* =========================
-   TRADUCTEUR
-========================= */
-
-.translator-box {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-}
-
-.translator-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-#input {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  font-size: 18px;
-}
-
-#result {
-  margin-top: 30px;
-  font-size: 2rem;
-  text-align: center;
-}
-
-.suggestion {
-  padding: 10px;
-  cursor: pointer;
-}
 
 /* =========================
    INPUTS
@@ -1351,4 +1318,38 @@ body.dark .suggestion {
   display: flex;
   justify-content: space-between;
   margin: 5px 0;
+}
+
+/* =========================
+   TRADUCTEUR
+========================= */
+
+.translator-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.translator-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+#result {
+  margin-top: 30px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
 }
