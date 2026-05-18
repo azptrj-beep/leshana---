@@ -4,37 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Traduction Soureth V2</title>
+
+  <title>Traduction Soureth V4</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>🌍 Traduction Français ⇄ Soureth V2</h1>
-  </header>
+<header>
+  <h1>🌍 Traduction Français ⇄ Soureth V4</h1>
 
-  <section class="translator-box">
+  <button id="themeBtn">🌙</button>
+</header>
 
-    <input type="text"
-           id="frInput"
-           placeholder="Entrer un mot ou phrase"
-           autocomplete="off">
+<section class="translator-box">
 
-    <button id="translateBtn" class="btn btn-primary">
-      Traduire
-    </button>
+  <input id="frInput"
+         type="text"
+         placeholder="Entrer un mot ou phrase">
 
-    <div id="suggestions" class="suggestions"></div>
+  <button id="translateBtn">Traduire</button>
+  <button id="voiceBtn">🔊</button>
 
-    <div id="result" class="soureth-title"></div>
+  <div id="suggestions"></div>
 
-    <div id="history" class="history"></div>
+  <div id="result" class="soureth-title"></div>
 
-  </section>
+  <div id="history"></div>
 
-  <script src="js/translate.js" defer></script>
+</section>
+
+<script src="js/translate.js" defer></script>
 
 </body>
 </html>
