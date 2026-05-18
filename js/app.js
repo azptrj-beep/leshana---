@@ -271,3 +271,36 @@ function learnWord(word) {
     );
   }
 }
+
+import { translateSentence } from "./engine.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  loadUser();
+
+  const input = document.getElementById("input");
+  const result = document.getElementById("result");
+
+  // 🚀 traduction
+  document.getElementById("translateBtn").addEventListener("click", () => {
+
+    const text = input.value.trim();
+    if (!text) return;
+
+    const translated = translateSentence(text);
+
+    result.innerText = translated;
+  });
+
+  // 🔊 lecture
+  document.getElementById("speakBtn").addEventListener("click", () => {
+    const t = new SpeechSynthesisUtterance(result.innerText);
+    speechSynthesis.speak(t);
+  });
+
+  // 📚 mode apprentissage
+  document.getElementById("learnBtn").addEventListener("click", () => {
+    alert("Mode apprentissage activé 🔥");
+  });
+
+});
