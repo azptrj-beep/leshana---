@@ -5,42 +5,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Traduction Soureth PRO</title>
+  <title>Traduction FR ⇄ Soureth PRO</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
+<header class="topbar">
 
-  <h1>🌍 Traduction FR ⇄ Soureth</h1>
+  <h1>🌍 FR ⇄ Soureth</h1>
 
-  <button id="swapBtn" class="btn">⇄</button>
-  <button id="autoBtn" class="btn">⚡ Auto OFF</button>
+  <div class="top-actions">
 
-</header>
-
-<section class="translator-box">
-
-  <input id="frInput" type="text" placeholder="Entrer un texte">
-
-  <div class="translator-buttons">
-
-    <button id="translateBtn" class="btn btn-primary">Traduire</button>
-    <button id="speakBtn" class="btn">🔊</button>
-    <button id="stopBtn" class="btn">⏹</button>
-    <button id="micBtn" class="btn">🎤</button>
+    <button id="swapBtn" class="icon-btn">⇄</button>
+    <button id="autoBtn" class="icon-btn">⚡</button>
 
   </div>
 
-  <div id="suggestions"></div>
-  <div id="result"></div>
-  <div id="history"></div>
+</header>
 
-</section>
+<main class="container">
+
+  <!-- INPUT -->
+  <section class="card">
+
+    <textarea id="frInput"
+              placeholder="Écris ton texte ici..."
+              rows="4"></textarea>
+
+    <div id="suggestions" class="suggestions"></div>
+
+  </section>
+
+  <!-- ACTIONS -->
+  <section class="actions">
+
+    <button id="translateBtn" class="btn-primary">Traduire</button>
+    <button id="speakBtn">🔊</button>
+    <button id="stopBtn">⏹</button>
+    <button id="micBtn">🎤</button>
+
+  </section>
+
+  <!-- OUTPUT -->
+  <section class="card output">
+
+    <div id="result">...</div>
+
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history">
+
+    <h3>Historique</h3>
+    <div id="history"></div>
+
+  </section>
+
+</main>
 
 <script src="js/translate.js" defer></script>
 
 </body>
+
 </html>
