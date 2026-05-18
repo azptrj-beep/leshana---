@@ -1,13 +1,17 @@
-let autoMode = false;
-
 "use strict";
 
 /* =========================
-   DICTIONNAIRES
+   STATE GLOBAL (IMPORTANT)
+========================= */
+
+let direction = "fr-syr";
+let autoMode = false;
+
+/* =========================
+   DICTIONNAIRE
 ========================= */
 
 const frToSyr = {
-
   bonjour: "ܫܠܡܐ",
   maison: "ܒܝܬܐ",
   eau: "ܡܝܐ",
@@ -18,75 +22,55 @@ const frToSyr = {
   comment: "ܐܝܟ",
   tu: "ܐܢܬ",
   vas: "ܐܙܠ"
-
 };
 
-// 🔁 dictionnaire inversé
 const syrToFr = Object.fromEntries(
-  Object.entries(frToSyr)
-    .map(([k, v]) => [v, k])
+  Object.entries(frToSyr).map(([k, v]) => [v, k])
 );
 
-// 🌍 direction
-let currentDirection = "fr-syr";
-
 /* =========================
-   CLEAN TEXT
+   CLEAN
 ========================= */
 
 function cleanText(text) {
-
   return text
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
-
+}
 
 /* =========================
-   TRADUCTION
+   TRANSLATE
 ========================= */
 
 function translateText(text) {
 
-  const lang = detectLanguage(text);
-
-  const words = cleanText(text).split(" ");
-
-  const activeDictionary =
-    lang === "fr"
+  const dict =
+    direction === "fr-syr"
       ? frToSyr
       : syrToFr;
 
-  return words
-    .map(word =>
-      activeDictionary[word] || `[${word}]`
-    )
+  return cleanText(text)
+    .split(" ")
+    .map(w => dict[w] || `[${w}]`)
     .join(" ");
+
 }
 
 /* =========================
-   HISTORIQUE
+   HISTORY
 ========================= */
 
-function saveHistory(original, translated) {
+function saveHistory(o, t) {
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("history")
-    ) || [];
+  let h = JSON.parse(localStorage.getItem("history")) || [];
 
-  history.unshift({
-    original,
-    translated
-  });
+  h.unshift({ o, t });
 
-  history = history.slice(0, 10);
+  h = h.slice(0, 10);
 
-  localStorage.setItem(
-    "history",
-    JSON.stringify(history)
-  );
+  localStorage.setItem("history", JSON.stringify(h));
 
   renderHistory();
 
@@ -94,25 +78,14 @@ function saveHistory(original, translated) {
 
 function renderHistory() {
 
-  const container =
-    document.getElementById("history");
+  const box = document.getElementById("history");
 
-  const history =
-    JSON.parse(
-      localStorage.getItem("history")
-    ) || [];
+  const h = JSON.parse(localStorage.getItem("history")) || [];
 
-  container.innerHTML =
-    "<h3>📜 Historique</h3>";
+  box.innerHTML = "<h3>📜 Historique</h3>";
 
-  history.forEach(item => {
-
-    container.innerHTML += `
-      <div class="history-item">
-        ${item.original} → ${item.translated}
-      </div>
-    `;
-
+  h.forEach(x => {
+    box.innerHTML += `<div>${x.o} → ${x.t}</div>`;
   });
 
 }
@@ -123,38 +96,22 @@ function renderHistory() {
 
 function showSuggestions(value) {
 
-  const box =
-    document.getElementById("suggestions");
+  const box = document.getElementById("suggestions");
 
   if (!value) {
-
     box.innerHTML = "";
     return;
-
   }
 
-  const activeDictionary =
-    currentDirection === "fr-syr"
-      ? frToSyr
-      : syrToFr;
+  const dict = direction === "fr-syr" ? frToSyr : syrToFr;
 
-  const matches =
-    Object.keys(activeDictionary)
+  const matches = Object.keys(dict)
+    .filter(k => k.startsWith(value.toLowerCase()))
+    .slice(0, 5);
 
-      .filter(word =>
-        word.startsWith(
-          value.toLowerCase()
-        )
-      )
-
-      .slice(0, 5);
-
-  box.innerHTML = matches.map(word => `
-    <div class="suggestion"
-         data-word="${word}">
-      ${word}
-    </div>
-  `).join("");
+  box.innerHTML = matches.map(m =>
+    `<div class="suggestion" data-w="${m}">${m}</div>`
+  ).join("");
 
 }
 
@@ -168,51 +125,10 @@ function speak(text) {
 
   speechSynthesis.cancel();
 
-  const utterance =
-    new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "fr-FR";
 
-  utterance.lang = "fr-FR";
-
-  speechSynthesis.speak(utterance);
-
-}
-
-/* =========================
-   THEME
-========================= */
-
-function setTheme(mode) {
-
-  if (mode === "dark") {
-
-    document.body.classList.add("dark");
-
-  } else {
-
-    document.body.classList.remove("dark");
-
-  }
-
-  localStorage.setItem("theme", mode);
-
-}
-
-/* =========================
-   SPEECH RECOGNITION
-========================= */
-
-const SpeechRecognition =
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
-
-let recognition = null;
-
-if (SpeechRecognition) {
-
-  recognition =
-    new SpeechRecognition();
-
-  recognition.lang = "fr-FR";
+  speechSynthesis.speak(u);
 
 }
 
@@ -220,239 +136,111 @@ if (SpeechRecognition) {
    INIT
 ========================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-const autoBtn = document.getElementById("autoBtn");
+  const input = document.getElementById("frInput");
+  const result = document.getElementById("result");
 
-  if (autoBtn) {
+  function run() {
 
-    autoBtn.addEventListener("click", () => {
+    const t = input.value.trim();
 
-      autoMode = !autoMode;
+    if (!t) {
+      result.innerText = "⚠️ vide";
+      return;
+    }
 
-      autoBtn.innerText =
-        autoMode ? "⚡ Auto ON" : "⚡ Auto OFF";
+    const r = translateText(t);
 
-    });
+    result.innerText = r;
+
+    saveHistory(t, r);
 
   }
+
+  /* ===== TRANSLATE ===== */
+  document.getElementById("translateBtn").onclick = run;
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") run();
+  });
+
+  input.addEventListener("input", e => {
+
+    showSuggestions(e.target.value);
+
+    if (autoMode && e.target.value.length > 2) {
+      result.innerText = translateText(e.target.value);
+    }
+
+  });
+
+  /* ===== CLICK SUGGEST ===== */
+  document.getElementById("suggestions").onclick = e => {
+
+    const el = e.target.closest(".suggestion");
+
+    if (!el) return;
+
+    input.value = el.dataset.w;
+
+    run();
+
+  };
+
+  /* ===== SWAP ===== */
+  document.getElementById("swapBtn").onclick = () => {
+
+    direction =
+      direction === "fr-syr"
+        ? "syr-fr"
+        : "fr-syr";
+
+    input.value = "";
+    result.innerText = "";
+    document.getElementById("suggestions").innerHTML = "";
+
+  };
+
+  /* ===== AUTO MODE ===== */
+  const autoBtn = document.getElementById("autoBtn");
+
+  autoBtn.onclick = () => {
+
+    autoMode = !autoMode;
+
+    autoBtn.innerText =
+      autoMode ? "⚡ Auto ON" : "⚡ Auto OFF";
+
+  };
+
+  /* ===== AUDIO ===== */
+  document.getElementById("speakBtn").onclick = () =>
+    speak(result.innerText);
+
+  document.getElementById("stopBtn").onclick = () =>
+    speechSynthesis.cancel();
+
+  /* ===== MIC ===== */
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if (SpeechRecognition) {
+
+    const rec = new SpeechRecognition();
+
+    rec.lang = "fr-FR";
+
+    document.getElementById("micBtn").onclick = () =>
+      rec.start();
+
+    rec.onresult = e => {
+      input.value = e.results[0][0].transcript;
+    };
+
+  }
+
+  renderHistory();
 
 });
-
-    const input =
-      document.getElementById("frInput");
-
-    const result =
-      document.getElementById("result");
-
-    /* ===== THEME ===== */
-
-    const savedTheme =
-      localStorage.getItem("theme")
-      || "light";
-
-    setTheme(savedTheme);
-
-    /* ===== TRADUCTION ===== */
-
-    function doTranslate() {
-
-      const text =
-        input.value.trim();
-
-      if (!text) {
-
-        result.innerText =
-          "⚠️ Champ vide";
-
-        return;
-
-      }
-
-      const translated =
-        translateText(text);
-
-      result.innerText =
-        translated;
-
-      saveHistory(text, translated);
-
-    }
-
-    /* ===== BUTTON ===== */
-
-    document
-      .getElementById("translateBtn")
-      .addEventListener(
-        "click",
-        doTranslate
-      );
-
-    /* ===== ENTER ===== */
-
-    input.addEventListener(
-      "keydown",
-      e => {
-
-        if (e.key === "Enter") {
-          doTranslate();
-        }
-
-      }
-    );
-
-    /* ===== SUGGESTIONS ===== */
-
-    input.addEventListener(
-      "input",
-      e => {
-
-        showSuggestions(
-          e.target.value
-        );
-
-      }
-    );
-
-    /* ===== CLICK SUGGESTION ===== */
-
-    document
-      .getElementById("suggestions")
-      .addEventListener(
-        "click",
-        e => {
-
-          const el =
-            e.target.closest(".suggestion");
-
-          if (!el) return;
-
-          input.value =
-            el.dataset.word;
-
-          doTranslate();
-
-        }
-      );
-
-    /* ===== AUDIO ===== */
-
-    document
-      .getElementById("speakBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          speak(
-            result.innerText
-          );
-
-        }
-      );
-
-    /* ===== STOP ===== */
-
-    document
-      .getElementById("stopBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          speechSynthesis.cancel();
-
-        }
-      );
-
-    /* ===== MIC ===== */
-
-    if (recognition) {
-
-      document
-        .getElementById("micBtn")
-        .addEventListener(
-          "click",
-          () => {
-
-            recognition.start();
-
-          }
-        );
-
-      recognition.onresult =
-        event => {
-
-          const text =
-            event.results[0][0].transcript;
-
-          input.value = text;
-
-        };
-
-    }
-
-    /* ===== THEME BTN ===== */
-
-    document
-      .getElementById("themeBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          const dark =
-            document.body.classList.contains("dark");
-
-          setTheme(
-            dark
-              ? "light"
-              : "dark"
-          );
-
-        }
-      );
-
-    /* ===== SWAP ===== */
-
-    document
-      .getElementById("swapBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          currentDirection =
-            currentDirection === "fr-syr"
-              ? "syr-fr"
-              : "fr-syr";
-
-          input.placeholder =
-            currentDirection === "fr-syr"
-              ? "Entrer un mot français"
-              : "Entrer un mot soureth";
-
-          result.innerText = "";
-
-          document
-            .getElementById("suggestions")
-            .innerHTML = "";
-
-        }
-      );
-
-    /* ===== HISTORY ===== */
-
-    renderHistory();
-
-  }
-);
-
-function detectLanguage(text) {
-
-  const syrRegex = /[\u0700-\u074F]/;
-
-  if (syrRegex.test(text)) {
-    return "syr";
-  }
-
-  return "fr";
-}
