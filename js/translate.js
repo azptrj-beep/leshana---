@@ -48,12 +48,16 @@ function translateText(text) {
 
   const dict =
     direction === "fr-syr"
-      ? frToSyr
-      : syrToFr;
+      ? dictionary
+      : Object.fromEntries(
+          Object.entries(dictionary)
+            .map(([k, v]) => [v, k])
+        );
 
-  return cleanText(text)
+  return text
+    .toLowerCase()
     .split(" ")
-    .map(w => dict[w] || `[${w}]`)
+    .map(w => dict[w] || w)
     .join(" ");
 
 }
