@@ -1,9 +1,11 @@
-{
-  "bonjour": "ܫܠܡܐ",
-  "maison": "ܒܝܬܐ",
-  "eau": "ܡܝܐ",
-  "roi": "ܡܠܟܐ",
-  "paix": "ܫܠܡܐ",
-  "homme": "ܒܪܢܫܐ",
-  "femme": "ܐܢܬܬܐ"
-}
+const dictionary = {
+
+  bonjour: "ܫܠܡܐ",
+  maison: "ܒܝܬܐ",
+  eau: "ܡܝܐ",
+  roi: "ܡܠܟܐ",
+  paix: "ܫܠܡܐ",
+  homme: "ܒܪܢܫܐ",
+  femme: "ܐܢܬܬܐ"
+
+};
