@@ -1,18 +1,9 @@
-
 {
-  "name": "Leshana Ed Soureth",
+  "name": "Traduction Soureth",
   "short_name": "Soureth",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#050816",
-  "theme_color": "#0033a0"
-}
-
-{
-  "name": "Soureth AI",
-  "short_name": "Soureth",
-  "display": "standalone",
-  "theme_color": "#0033a0",
   "background_color": "#0b0f1a",
-  "start_url": "/"
+  "theme_color": "#0033a0",
+  "icons": []
 }
