@@ -17,15 +17,18 @@ const dict = {
   roi: "ܡܠܟܐ",
   paix: "ܫܠܡܐ",
   homme: "ܒܪܢܫܐ",
-  femme: "ܐܢܬܬܐ"
+  femme: "ܐܢܬܬܐ",
+  comment: "ܐܝܟ",
+  tu: "ܐܢܬ",
+  vas: "ܐܙܠ"
 };
 
 /* =========================
-   CLEAN SAFE
+   CLEAN TEXT
 ========================= */
 
-function clean(t) {
-  return t
+function clean(text) {
+  return text
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
@@ -36,7 +39,7 @@ function clean(t) {
    TRANSLATE ENGINE
 ========================= */
 
-function translate(t) {
+function translate(text) {
 
   const map =
     direction === "fr-syr"
@@ -45,7 +48,7 @@ function translate(t) {
           Object.entries(dict).map(([k, v]) => [v, k])
         );
 
-  return clean(t)
+  return clean(text)
     .split(" ")
     .map(w => map[w] || w)
     .join(" ");
@@ -53,30 +56,26 @@ function translate(t) {
 }
 
 /* =========================
-   SAVE HISTORY
+   HISTORY
 ========================= */
 
-function save(o, r) {
+function saveHistory(o, r) {
 
-  let h = JSON.parse(localStorage.getItem("h") || "[]");
+  let h = JSON.parse(localStorage.getItem("history") || "[]");
 
   h.unshift({ o, r });
 
-  localStorage.setItem("h", JSON.stringify(h.slice(0, 20)));
+  localStorage.setItem("history", JSON.stringify(h.slice(0, 15)));
 
 }
 
-/* =========================
-   RENDER HISTORY
-========================= */
-
-function render() {
+function renderHistory() {
 
   const box = document.getElementById("history");
 
-  const h = JSON.parse(localStorage.getItem("h") || "[]");
+  const h = JSON.parse(localStorage.getItem("history") || "[]");
 
-  box.innerHTML = "";
+  box.innerHTML = "<h3>Historique</h3>";
 
   h.forEach(x => {
     box.innerHTML += `<div>${x.o} → ${x.r}</div>`;
@@ -93,31 +92,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("input");
   const result = document.getElementById("result");
 
+  /* ===== TRANSLATE ===== */
+
   function run() {
 
     const text = input.value.trim();
 
-    if (!text) return;
+    if (!text) {
+      result.innerText = "⚠️ champ vide";
+      return;
+    }
 
     const r = translate(text);
 
     result.innerText = r;
 
-    save(text, r);
+    saveHistory(text, r);
 
-    render();
+    renderHistory();
 
   }
 
-  document.getElementById("translateBtn").onclick = run;
+  document.getElementById("translateBtn").addEventListener("click", run);
 
   input.addEventListener("keydown", e => {
     if (e.key === "Enter") run();
   });
 
-  /* ===== SWAP ===== */
+  /* =========================
+     SWAP LANGUAGE
+  ========================= */
 
-  document.getElementById("swapBtn").onclick = () => {
+  document.getElementById("swapBtn").addEventListener("click", () => {
 
     direction =
       direction === "fr-syr"
@@ -127,9 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
     input.value = "";
     result.innerText = "";
 
-  };
+  });
 
-  /* ===== MIC ===== */
+  /* =========================
+     MICRO FIX (IMPORTANT)
+  ========================= */
 
   const SR =
     window.SpeechRecognition ||
@@ -140,34 +148,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const rec = new SR();
     rec.lang = "fr-FR";
 
-    document.getElementById("micBtn").onclick = () => rec.start();
-
-    rec.onresult = e => {
+    rec.onresult = (e) => {
       input.value = e.results[0][0].transcript;
     };
 
+    rec.onerror = (e) => {
+      console.log("MIC ERROR:", e.error);
+    };
+
+    const micBtn = document.getElementById("micBtn");
+
+    if (micBtn) {
+      micBtn.addEventListener("click", () => {
+        try {
+          rec.start();
+        } catch (e) {
+          console.log("MIC BLOCKED:", e);
+        }
+      });
+    }
+
   }
 
-  /* ===== AUDIO ===== */
+  /* =========================
+     VOICE FIX (IMPORTANT)
+  ========================= */
 
-  document.getElementById("speakBtn").onclick = () => {
+  document.getElementById("speakBtn").addEventListener("click", () => {
 
     const text = result.innerText;
 
-    if (!text) return;
+    if (!text || text === "⚠️ champ vide") return;
 
     speechSynthesis.cancel();
 
-    speechSynthesis.speak(
-      new SpeechSynthesisUtterance(text)
-    );
+    const utterance = new SpeechSynthesisUtterance(text);
 
-  };
+    utterance.lang = "fr-FR";
+    utterance.rate = 1;
 
-  document.getElementById("stopBtn").onclick = () => {
+    utterance.onerror = (e) => {
+      console.log("VOICE ERROR:", e.error);
+    };
+
+    speechSynthesis.speak(utterance);
+
+  });
+
+  document.getElementById("stopBtn").addEventListener("click", () => {
     speechSynthesis.cancel();
-  };
+  });
 
-  render();
+  /* =========================
+     INIT HISTORY
+  ========================= */
+
+  renderHistory();
 
 });
