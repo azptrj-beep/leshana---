@@ -1,3 +1,6 @@
+
+"use strict";
+
 translate.js
 const dictionary = {
 
