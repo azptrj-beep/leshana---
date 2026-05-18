@@ -1,145 +1,64 @@
 
 "use strict";
-const dictionary = {
-  bonjour: "ܫܠܡܐ",
-  maison: "ܒܝܬܐ",
-  eau: "ܡܝܐ",
-  roi: "ܡܠܟܐ",
-  paix: "ܫܠܡܐ",
-  comment: "ܐܝܟ",
-  tu: "ܐܢܬ",
-  vas: "ܐܙܠ"
-};
+let direction = "fr-syr";
+let dictionary = {};
+let reverseDictionary = {};
 
-// 🧼 nettoyage intelligent
-function cleanText(text) {
+// 📦 chargement dictionnaire
+fetch("data/dictionary.json")
+  .then(res => res.json())
+  .then(data => {
+    dictionary = data;
+
+    // inversion automatique
+    reverseDictionary = Object.fromEntries(
+      Object.entries(data).map(([k, v]) => [v, k])
+    );
+  });
+
+// 🧠 traduction intelligente
+function translate(text) {
+
+  const dict = direction === "fr-syr" ? dictionary : reverseDictionary;
+
   return text
     .toLowerCase()
-    .replace(/[^\w\s]/gi, "")
-    .trim();
+    .split(" ")
+    .map(w => dict[w] || `[${w}]`)
+    .join(" ");
 }
 
-// 🧠 traduction améliorée
-function translateText(text) {
-  const words = cleanText(text).split(" ");
+// 🔁 switch langue
+document.getElementById("swapLang").addEventListener("click", () => {
+  direction = direction === "fr-syr" ? "syr-fr" : "fr-syr";
+});
 
-  return words.map(w => dictionary[w] || `(${w})`).join(" ");
-}
+// 🎤 reconnaissance vocale
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-// 💾 historique
-function saveHistory(original, translated) {
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+if (SpeechRecognition) {
 
-  history.unshift({ original, translated });
-  history = history.slice(0, 15);
+  const recognition = new SpeechRecognition();
+  recognition.lang = "fr-FR";
 
-  localStorage.setItem("history", JSON.stringify(history));
-  renderHistory();
-}
-
-function renderHistory() {
-  const box = document.getElementById("history");
-  const history = JSON.parse(localStorage.getItem("history")) || [];
-
-  box.innerHTML = "<h3>📜 Historique</h3>";
-
-  history.forEach((h, i) => {
-    box.innerHTML += `
-      <div class="history-item">
-        ${h.original} → ${h.translated}
-        <button onclick="deleteHistory(${i})">❌</button>
-      </div>
-    `;
-  });
-}
-
-function deleteHistory(index) {
-  let history = JSON.parse(localStorage.getItem("history")) || [];
-  history.splice(index, 1);
-  localStorage.setItem("history", JSON.stringify(history));
-  renderHistory();
-}
-
-// 💡 suggestions cliquables
-function showSuggestions(value) {
-  const box = document.getElementById("suggestions");
-
-  if (!value) {
-    box.innerHTML = "";
-    return;
-  }
-
-  const matches = Object.keys(dictionary)
-    .filter(k => k.startsWith(value.toLowerCase()))
-    .slice(0, 6);
-
-  box.innerHTML = matches
-    .map(m => `<div class="suggestion">${m}</div>`)
-    .join("");
-
-  document.querySelectorAll(".suggestion").forEach(el => {
-    el.addEventListener("click", () => {
-      document.getElementById("frInput").value = el.innerText;
-      box.innerHTML = "";
-    });
-  });
-}
-
-// 🔊 lecture audio
-function speak(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "fr-FR";
-  speechSynthesis.speak(utterance);
-}
-
-// 🌙 mode sombre
-function toggleTheme() {
-  document.body.classList.toggle("dark");
-  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-}
-
-// 🚀 init app
-document.addEventListener("DOMContentLoaded", () => {
-
-  const input = document.getElementById("frInput");
-  const result = document.getElementById("result");
-
-  document.getElementById("translateBtn").addEventListener("click", () => {
-
-    const text = input.value;
-
-    if (!text) {
-      result.innerText = "⚠️ Champ vide";
-      return;
-    }
-
-    const translated = translateText(text);
-
-    result.innerText = translated;
-
-    saveHistory(text, translated);
+  document.getElementById("btnMic").addEventListener("click", () => {
+    recognition.start();
   });
 
-  input.addEventListener("input", e => {
-    showSuggestions(e.target.value);
-  });
+  recognition.onresult = (event) => {
+    const text = event.results[0][0].transcript;
+    document.getElementById("input").value = text;
+  };
+}
 
-  input.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-      document.getElementById("translateBtn").click();
-    }
-  });
+// 🔥 traduction bouton
+document.getElementById("btnTranslate").addEventListener("click", () => {
 
-  document.getElementById("speakBtn").addEventListener("click", () => {
-    speak(result.innerText);
-  });
+  const input = document.getElementById("input").value.trim();
 
-  document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+  if (!input) return;
 
-  // load theme
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-  }
+  const result = translate(input);
 
-  renderHistory();
+  document.getElementById("result").innerText = result;
 });
