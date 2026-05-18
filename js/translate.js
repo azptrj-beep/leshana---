@@ -65,9 +65,15 @@ function translateText(text) {
     cleanText(text).split(" ")
   );
 
+  // 🌍 dictionnaire actif
+  const activeDictionary =
+    currentDirection === "fr-syr"
+      ? frToSyr
+      : syrToFr;
+
   return words
     .map(word =>
-      dictionary[word] || `[${word}]`
+      activeDictionary[word] || `[${word}]`
     )
     .join(" ");
 
