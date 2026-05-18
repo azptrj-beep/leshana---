@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Traduction Soureth V4</title>
+  <title>Soureth Translator V5</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,29 +12,30 @@
 <body>
 
 <header>
-  <h1>🌍 Traduction Français ⇄ Soureth V4</h1>
+  <h1>🌍 Soureth Translator V5</h1>
 
-  <button id="themeBtn">🌙</button>
+  <div id="profile">
+    ⭐ XP: <span id="xp">0</span>
+  </div>
 </header>
 
-<section class="translator-box">
+<section class="translator">
 
-  <input id="frInput"
-         type="text"
-         placeholder="Entrer un mot ou phrase">
+  <input id="input" placeholder="Écris une phrase...">
 
-  <button id="translateBtn">Traduire</button>
-  <button id="voiceBtn">🔊</button>
+  <div class="buttons">
+    <button id="translateBtn">Traduire</button>
+    <button id="speakBtn">🔊</button>
+    <button id="learnBtn">📚 Apprendre</button>
+  </div>
+
+  <div id="result"></div>
 
   <div id="suggestions"></div>
 
-  <div id="result" class="soureth-title"></div>
-
-  <div id="history"></div>
-
 </section>
 
-<script src="js/translate.js" defer></script>
+<script src="js/app.js" defer></script>
 
 </body>
 </html>
