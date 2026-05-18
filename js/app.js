@@ -254,3 +254,20 @@ function updateUI() {
   if (xpEl) xpEl.textContent = xp;
   if (levelEl) levelEl.textContent = level;
 }
+
+function learnWord(word) {
+
+  let learned = JSON.parse(
+    localStorage.getItem("learned")
+  ) || [];
+
+  if (!learned.includes(word)) {
+
+    learned.push(word);
+
+    localStorage.setItem(
+      "learned",
+      JSON.stringify(learned)
+    );
+  }
+}
