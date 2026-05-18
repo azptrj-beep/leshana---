@@ -222,6 +222,23 @@ document.addEventListener(
   "DOMContentLoaded",
   () => {
 
+const autoBtn = document.getElementById("autoBtn");
+
+  if (autoBtn) {
+
+    autoBtn.addEventListener("click", () => {
+
+      autoMode = !autoMode;
+
+      autoBtn.innerText =
+        autoMode ? "⚡ Auto ON" : "⚡ Auto OFF";
+
+    });
+
+  }
+
+});
+
     const input =
       document.getElementById("frInput");
 
