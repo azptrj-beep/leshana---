@@ -1,17 +1,17 @@
 "use strict";
 
 /* =========================
-   STATE GLOBAL (IMPORTANT)
+   STATE
 ========================= */
 
 let direction = "fr-syr";
-let autoMode = false;
 
 /* =========================
    DICTIONNAIRE
 ========================= */
 
-const frToSyr = {
+const dict = {
+
   bonjour: "ܫܠܡܐ",
   maison: "ܒܝܬܐ",
   eau: "ܡܝܐ",
@@ -22,115 +22,49 @@ const frToSyr = {
   comment: "ܐܝܟ",
   tu: "ܐܢܬ",
   vas: "ܐܙܠ"
+
 };
 
-const syrToFr = Object.fromEntries(
-  Object.entries(frToSyr).map(([k, v]) => [v, k])
-);
-
 /* =========================
-   CLEAN
+   CLEAN SAFE
 ========================= */
 
-function cleanText(text) {
+function clean(text) {
+
   return text
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
+
 }
 
 /* =========================
    TRANSLATE
 ========================= */
 
-function translateText(text) {
+function translate(text) {
 
-  const dict =
+  const map =
     direction === "fr-syr"
-      ? dictionary
+      ? dict
       : Object.fromEntries(
-          Object.entries(dictionary)
-            .map(([k, v]) => [v, k])
+          Object.entries(dict).map(([k, v]) => [v, k])
         );
 
-  return text
-    .toLowerCase()
+  return clean(text)
     .split(" ")
-    .map(w => dict[w] || w)
+    .map(w => map[w] || w)
     .join(" ");
 
 }
 
 /* =========================
-   HISTORY
+   UI HELPERS
 ========================= */
 
-function saveHistory(o, t) {
-
-  let h = JSON.parse(localStorage.getItem("history") || "[]");
-
-  h.unshift({ o, t });
-
-  localStorage.setItem("history", JSON.stringify(h.slice(0, 20)));
-
-}
-}
-
-function renderHistory() {
-
-  const box = document.getElementById("history");
-
-  const h = JSON.parse(localStorage.getItem("history")) || [];
-
-  box.innerHTML = "<h3>📜 Historique</h3>";
-
-  h.forEach(x => {
-    box.innerHTML += `<div>${x.o} → ${x.t}</div>`;
-  });
-
-}
-
-/* =========================
-   SUGGESTIONS
-========================= */
-
-function showSuggestions(value) {
-
-  const box = document.getElementById("suggestions");
-
-  if (!value) {
-    box.innerHTML = "";
-    return;
-  }
-
-  const dict = direction === "fr-syr" ? frToSyr : syrToFr;
-
-  const matches = Object.keys(dict)
-    .filter(k => k.startsWith(value.toLowerCase()))
-    .slice(0, 5);
-
-  box.innerHTML = matches.map(m =>
-    `<div class="suggestion" data-w="${m}">${m}</div>`
-  ).join("");
-
-}
-
-/* =========================
-   AUDIO
-========================= */
-
-function speak(text) {
-
-  if (!text) return;
-
-  speechSynthesis.cancel();
-
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "fr-FR";
-
-  speechSynthesis.speak(u);
-
+function show(text) {
+  document.getElementById("result").innerText = text;
 }
 
 /* =========================
@@ -140,57 +74,37 @@ function speak(text) {
 document.addEventListener("DOMContentLoaded", () => {
 
   const input = document.getElementById("frInput");
-  const result = document.getElementById("result");
+
+  const btn = document.getElementById("translateBtn");
+
+  /* ===== TRANSLATE ===== */
 
   function run() {
 
-    const t = input.value.trim();
+    const text = input.value.trim();
 
-    if (!t) {
-      result.innerText = "⚠️ vide";
+    if (!text) {
+      show("⚠️ champ vide");
       return;
     }
 
-    const r = translateText(t);
+    const result = translate(text);
 
-    result.innerText = r;
+    show(result);
 
-    saveHistory(t, r);
+    save(text, result);
 
   }
 
-  /* ===== TRANSLATE ===== */
-  document.getElementById("translateBtn").onclick = run;
+  btn.addEventListener("click", run);
 
   input.addEventListener("keydown", e => {
     if (e.key === "Enter") run();
   });
 
-  input.addEventListener("input", e => {
-
-    showSuggestions(e.target.value);
-
-    if (autoMode && e.target.value.length > 2) {
-      result.innerText = translateText(e.target.value);
-    }
-
-  });
-
-  /* ===== CLICK SUGGEST ===== */
-  document.getElementById("suggestions").onclick = e => {
-
-    const el = e.target.closest(".suggestion");
-
-    if (!el) return;
-
-    input.value = el.dataset.w;
-
-    run();
-
-  };
-
   /* ===== SWAP ===== */
-  document.getElementById("swapBtn").onclick = () => {
+
+  document.getElementById("swapBtn").addEventListener("click", () => {
 
     direction =
       direction === "fr-syr"
@@ -198,31 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
         : "fr-syr";
 
     input.value = "";
-    result.innerText = "";
+    show("");
+
     document.getElementById("suggestions").innerHTML = "";
 
-  };
-
-  /* ===== AUTO MODE ===== */
-  const autoBtn = document.getElementById("autoBtn");
-
-  autoBtn.onclick = () => {
-
-    autoMode = !autoMode;
-
-    autoBtn.innerText =
-      autoMode ? "⚡ Auto ON" : "⚡ Auto OFF";
-
-  };
-
-  /* ===== AUDIO ===== */
-  document.getElementById("speakBtn").onclick = () =>
-    speak(result.innerText);
-
-  document.getElementById("stopBtn").onclick = () =>
-    speechSynthesis.cancel();
+  });
 
   /* ===== MIC ===== */
+
   const SpeechRecognition =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
@@ -230,11 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (SpeechRecognition) {
 
     const rec = new SpeechRecognition();
-
     rec.lang = "fr-FR";
 
-    document.getElementById("micBtn").onclick = () =>
+    document.getElementById("micBtn").addEventListener("click", () => {
       rec.start();
+    });
 
     rec.onresult = e => {
       input.value = e.results[0][0].transcript;
@@ -242,13 +139,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  renderHistory();
+  /* ===== AUDIO ===== */
+
+  document.getElementById("speakBtn").addEventListener("click", () => {
+
+    const t = document.getElementById("result").innerText;
+
+    if (!t) return;
+
+    speechSynthesis.cancel();
+
+    const u = new SpeechSynthesisUtterance(t);
+
+    speechSynthesis.speak(u);
+
+  });
+
+  document.getElementById("stopBtn").addEventListener("click", () => {
+    speechSynthesis.cancel();
+  });
+
+  /* ===== HISTORY ===== */
+
+  function save(o, t) {
+
+    let h = JSON.parse(localStorage.getItem("history") || "[]");
+
+    h.unshift({ o, t });
+
+    localStorage.setItem("history", JSON.stringify(h.slice(0, 15)));
+
+    render();
+
+  }
+
+  function render() {
+
+    const box = document.getElementById("history");
+
+    const h = JSON.parse(localStorage.getItem("history") || "[]");
+
+    box.innerHTML = "<h3>Historique</h3>";
+
+    h.forEach(x => {
+      box.innerHTML += `<div>${x.o} → ${x.t}</div>`;
+    });
+
+  }
+
+  render();
 
 });
-
-if ("serviceWorker" in navigator) {
-
-  navigator.serviceWorker.register("/sw.js")
-    .then(() => console.log("SW actif"));
-
-}
