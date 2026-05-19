@@ -1394,70 +1394,70 @@ body.light-mode nav a {
 
 }
 
-body {
+
+ html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
   font-family: Arial;
-  background: #0f172a;
-  color: white;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .topbar {
+  background: #0033a0;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.top-actions {
+.canvas-wrapper {
+  position: relative;
+}
+
+canvas {
+  width: 85vw;
+  height: 85vw;
+  max-height: 65vh;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #0033a0;
+  touch-action: none;
+}
+
+.guide {
+  position: absolute;
+  font-size: 140px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.bottombar {
   display: flex;
-  gap: 10px;
+  justify-content: space-around;
+  padding: 10px;
+  background: white;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 15px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 15px;
+button {
+  padding: 10px 14px;
+  border: none;
   border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-textarea {
-  width: 100%;
-  font-size: 18px;
-  padding: 12px;
-  border-radius: 10px;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-#result {
-  font-size: 24px;
-  min-height: 60px;
-}
-
-#status {
-  margin: 10px 0;
-  opacity: 0.8;
-}
-
-.history-item {
-  margin: 6px 0;
-}
-
-canvas {
-  touch-action: none;
-}
-
-canvas {
-  touch-action: none;
-  width: 300px;
-  height: 300px;
+  background: #d40000;
+  color: white;
 }
