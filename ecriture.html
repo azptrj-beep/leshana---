@@ -124,6 +124,7 @@
   </div>  <br><button class="btn" onclick="clearCanvas()">Effacer</button> <button class="btn" onclick="nextLetter()">Lettre suivante</button>
 
 </div><script>
+
 const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"];
 
 let index = 0;
@@ -138,34 +139,58 @@ function setLetter() {
   document.getElementById("guideLetter").innerText = letters[index];
 }
 
-canvas.addEventListener("mousedown", () => drawing = true);
-canvas.addEventListener("mouseup", () => drawing = false);
-canvas.addEventListener("mouseleave", () => drawing = false);
-
-canvas.addEventListener("mousemove", draw);
-
-canvas.addEventListener("touchmove", function(e) {
-  const touch = e.touches[0];
+function getPos(e) {
   const rect = canvas.getBoundingClientRect();
 
-  draw({
-    offsetX: touch.clientX - rect.left,
-    offsetY: touch.clientY - rect.top
-  });
-});
+  const touch = e.touches?.[0] || e.changedTouches?.[0];
+
+  return {
+    x: (touch ? touch.clientX : e.clientX) - rect.left,
+    y: (touch ? touch.clientY : e.clientY) - rect.top
+  };
+}
+
+function start(e) {
+  drawing = true;
+
+  const pos = getPos(e);
+
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+
+  e.preventDefault();
+}
 
 function draw(e) {
   if (!drawing) return;
+
+  const pos = getPos(e);
 
   ctx.lineWidth = 6;
   ctx.lineCap = "round";
   ctx.strokeStyle = "#0033a0";
 
-  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.lineTo(pos.x, pos.y);
   ctx.stroke();
+
   ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
+  ctx.moveTo(pos.x, pos.y);
+
+  e.preventDefault();
 }
+
+function stop() {
+  drawing = false;
+}
+
+canvas.addEventListener("mousedown", start);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", stop);
+canvas.addEventListener("mouseleave", stop);
+
+canvas.addEventListener("touchstart", start, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stop);
 
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -174,12 +199,14 @@ function clearCanvas() {
 function nextLetter() {
   index = (index + 1) % letters.length;
   setLetter();
+  clearCanvas();
+}
 
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
-  clearCanvas();
-}
+
+setLetter();
 
 setLetter();
 
