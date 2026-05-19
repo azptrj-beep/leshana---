@@ -1461,3 +1461,7 @@ button {
   background: #d40000;
   color: white;
 }
+
+body {
+  overscroll-behavior: none;
+}
