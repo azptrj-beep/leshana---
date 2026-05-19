@@ -480,3 +480,20 @@ document.addEventListener("DOMContentLoaded", () => {
   setStatus("✅ App prête");
 
 });
+
+const isFirefox =
+  navigator.userAgent
+    .toLowerCase()
+    .includes("firefox");
+
+if (isFirefox) {
+
+  document
+    .getElementById("micBtn")
+    .disabled = true;
+
+  setStatus(
+    "🎤 Firefox ne supporte pas correctement le micro"
+  );
+
+}
