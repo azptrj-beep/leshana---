@@ -1465,3 +1465,7 @@ button {
 body {
   overscroll-behavior: none;
 }
+
+canvas {
+  touch-action: none;
+}
