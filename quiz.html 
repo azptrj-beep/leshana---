@@ -1,18 +1,80 @@
-<div id="quiz-container">
+<!DOCTYPE html>
+<html lang="fr">
 
-  <h2>Quiz Soureth Moderne</h2>
+<head>
 
-  <select id="quiz-select">
-    <option value="alphabet">Alphabet</option>
-    <option value="vocabulaire">Vocabulaire</option>
-    <option value="soureth">Soureth moderne</option>
-  </select>
+  <meta charset="UTF-8">
 
-  <div id="quiz-letter"></div>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <div id="quiz-answers"></div>
+  <title>Quiz Soureth</title>
 
-  <p>Score : <span id="score">0</span></p>
-  <p>XP : <span id="xp">0</span></p>
+  <link rel="stylesheet"
+        href="css/style.css">
 
-</div>
+</head>
+
+<body>
+
+  <header>
+
+    <h1>
+      🎮 Quiz Alphabet Soureth
+    </h1>
+
+    <nav>
+
+      <a href="index.html">
+        🏠 Accueil
+      </a>
+
+      <a href="keyboard.html">
+        ⌨️ Clavier
+      </a>
+
+    </nav>
+
+  </header>
+
+  <main class="quiz-container">
+
+    <div class="quiz-card">
+
+      <h2>
+        Quelle est cette lettre ?
+      </h2>
+
+      <div id="quiz-letter"
+           class="quiz-letter">
+        ܐ
+      </div>
+
+      <div id="quiz-answers"
+           class="quiz-answers">
+
+      </div>
+
+      <div class="quiz-stats">
+
+        <p>
+          🏆 Score :
+          <span id="score">0</span>
+        </p>
+
+        <p>
+          ⚡ XP :
+          <span id="xp">0</span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </main>
+
+<script src="js/quiz.js" defer></script>
+
+</body>
+
+</html>
