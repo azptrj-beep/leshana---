@@ -1,98 +1,95 @@
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  console.log("🟢 Quiz JS chargé");
+  console.log("🟢 Quiz chargé");
 
-  const letters = [
-    { letter: "ܐ", answer: "Alap" },
-    { letter: "ܒ", answer: "Beith" },
-    { letter: "ܓ", answer: "Gamal" },
-    { letter: "ܕ", answer: "Dalath" }
-  ];
+  const quizzes = {
+    alphabet: [
+      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
+      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
+      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
+      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
+    ],
+
+    vocabulaire: [
+      { question: "ܫܠܡܐ signifie ?", answers: ["Bonjour", "Merci", "Maison", "Livre"], correct: "Bonjour" },
+      { question: "ܒܝܬܐ signifie ?", answers: ["Maison", "Eau", "Feu", "Main"], correct: "Maison" }
+    ],
+
+    soureth: [
+      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
+      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
+      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
+      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
+    ]
+  };
 
   const quizLetter = document.getElementById("quiz-letter");
   const quizAnswers = document.getElementById("quiz-answers");
   const scoreEl = document.getElementById("score");
   const xpEl = document.getElementById("xp");
+  const quizSelect = document.getElementById("quiz-select");
 
   let score = 0;
   let xp = 0;
+  let currentQuiz = "alphabet";
+  let current = null;
 
-  if (!quizLetter || !quizAnswers || !scoreEl || !xpEl) {
-    console.error("❌ DOM manquant");
-    return;
+  function getData() {
+    return quizzes[currentQuiz];
   }
 
   function loadQuestion() {
 
-    const current =
-      letters[Math.floor(Math.random() * letters.length)];
+    const data = getData();
 
-    quizLetter.textContent = current.letter;
+    current = data[Math.floor(Math.random() * data.length)];
+
+    quizLetter.textContent = current.question;
+
+    // gestion style Soureth
+    if (currentQuiz === "soureth") {
+      quizLetter.classList.add("soureth-mode");
+    } else {
+      quizLetter.classList.remove("soureth-mode");
+    }
 
     quizAnswers.innerHTML = "";
 
-    const shuffled =
-      [...letters].sort(() => Math.random() - 0.5);
+    const shuffled = [...current.answers].sort(() => Math.random() - 0.5);
 
-    shuffled.forEach(item => {
+    shuffled.forEach(answer => {
 
       const btn = document.createElement("button");
-
-      // 🔥 sécurité anti-submit + anti-navigation
       btn.type = "button";
-      btn.setAttribute("type", "button");
-
-      btn.textContent = item.answer;
       btn.className = "quiz-btn";
+      btn.textContent = answer;
 
-      btn.style.display = "block";
-      btn.style.margin = "10px auto";
-      btn.style.padding = "12px 20px";
-      btn.style.borderRadius = "10px";
-      btn.style.border = "none";
-      btn.style.cursor = "pointer";
+      btn.addEventListener("click", () => {
 
-      btn.addEventListener("click", (e) => {
-
-        e.preventDefault(); // 🔥 bloque toute action formulaire
-
-        if (item.answer === current.answer) {
-
+        if (answer === current.correct) {
           score++;
           xp += 10;
-
           alert("✅ Bonne réponse");
-
         } else {
-
           alert("❌ Mauvaise réponse");
-
         }
 
         scoreEl.textContent = score;
         xpEl.textContent = xp;
 
         loadQuestion();
-
       });
 
       quizAnswers.appendChild(btn);
-
     });
   }
 
+  quizSelect.addEventListener("change", (e) => {
+    currentQuiz = e.target.value;
+    loadQuestion();
+  });
+
   loadQuestion();
-
-});
-
-document.addEventListener("click", (e) => {
-
-  console.log("🔥 CLICK SUR :", e.target);
-  console.log("TAG :", e.target.tagName);
-  console.log("CLASS :", e.target.className);
-  console.log("ID :", e.target.id);
-
 });
