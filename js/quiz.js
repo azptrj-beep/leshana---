@@ -2,57 +2,53 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const quizzes = {
-    alphabet: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
-    ],
+  console.log("🟢 Quiz chargé");
 
-    vocabulaire: [
-      { question: "ܫܠܡܐ signifie ?", answers: ["Bonjour", "Merci", "Maison", "Livre"], correct: "Bonjour" },
-      { question: "ܒܝܬܐ signifie ?", answers: ["Maison", "Eau", "Feu", "Main"], correct: "Maison" }
-    ]
-  };
+  const letters = [
+    { letter: "ܐ", answer: "Alap" },
+    { letter: "ܒ", answer: "Beith" },
+    { letter: "ܓ", answer: "Gamal" },
+    { letter: "ܕ", answer: "Dalath" }
+  ];
 
   const quizLetter = document.getElementById("quiz-letter");
   const quizAnswers = document.getElementById("quiz-answers");
   const scoreEl = document.getElementById("score");
   const xpEl = document.getElementById("xp");
-  const quizSelect = document.getElementById("quiz-select");
 
   let score = 0;
   let xp = 0;
-  let currentQuiz = "alphabet";
   let current = null;
 
-  function getQuizData() {
-    return quizzes[currentQuiz];
+  if (!quizLetter || !quizAnswers || !scoreEl || !xpEl) {
+    console.error("❌ éléments DOM manquants");
+    return;
   }
 
   function loadQuestion() {
 
-    const data = getQuizData();
+    current = letters[Math.floor(Math.random() * letters.length)];
 
-    current = data[Math.floor(Math.random() * data.length)];
-
-    quizLetter.textContent = current.question;
+    quizLetter.textContent = current.letter;
+    quizLetter.style.fontFamily = "'Adiabene', sans-serif";
 
     quizAnswers.innerHTML = "";
 
-    const shuffled = [...current.answers].sort(() => Math.random() - 0.5);
+    const shuffled = [...letters].sort(() => Math.random() - 0.5);
 
-    shuffled.forEach(answer => {
+    shuffled.forEach(item => {
 
       const btn = document.createElement("button");
+
       btn.type = "button";
       btn.className = "quiz-btn";
-      btn.textContent = answer;
+      btn.textContent = item.answer;
 
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
 
-        if (answer === current.correct) {
+        e.preventDefault();
+
+        if (item.answer === current.answer) {
           score++;
           xp += 10;
           alert("✅ Bonne réponse");
@@ -69,11 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       quizAnswers.appendChild(btn);
     });
   }
-
-  quizSelect.addEventListener("change", (e) => {
-    currentQuiz = e.target.value;
-    loadQuestion();
-  });
 
   loadQuestion();
 });
