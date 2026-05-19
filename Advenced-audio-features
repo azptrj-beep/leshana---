@@ -1,0 +1,187 @@
+// ========================================== // 🚀 ADVANCED FEATURES - APPRENDRE SOURETH // ==========================================
+
+// ========================================== // 🔊 AUDIO GLOBAL // ==========================================
+
+let currentAudio = null; let playbackSpeed = 1;
+
+function playAudio(path) {
+
+if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+
+currentAudio = new Audio(path);
+
+currentAudio.playbackRate = playbackSpeed;
+
+currentAudio.play(); }
+
+// ========================================== // ⏩ VITESSE AUDIO // ==========================================
+
+function setAudioSpeed(speed) { playbackSpeed = speed;
+
+alert("🔊 Vitesse audio : x" + speed); }
+
+// Exemple HTML : // <button onclick="setAudioSpeed(0.7)">🐢 Lent</button> // <button onclick="setAudioSpeed(1)">▶️ Normal</button> // <button onclick="setAudioSpeed(1.3)">⚡ Rapide</button>
+
+// ========================================== // ⭐ FAVORIS // ==========================================
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+function addFavorite(word) {
+
+if (!favorites.includes(word)) { favorites.push(word);
+
+localStorage.setItem("favorites", JSON.stringify(favorites));
+
+alert("⭐ Ajouté aux favoris : " + word);
+
+} }
+
+function showFavorites() {
+
+console.log("⭐ Favoris :", favorites); }
+
+// Exemple HTML : // <button onclick="addFavorite('Shlama')">⭐ Favori</button>
+
+// ========================================== // 📥 MODE OFFLINE // ==========================================
+
+if ('serviceWorker' in navigator) {
+
+navigator.serviceWorker.register('service-worker.js')
+
+.then(() => {
+  console.log('✅ Mode offline activé');
+})
+
+.catch(err => {
+  console.log('❌ Erreur Service Worker', err);
+});
+
+}
+
+// ========================================== // 🎤 RECONNAISSANCE VOCALE // ==========================================
+
+function startRecognition() {
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!SpeechRecognition) { alert("Reconnaissance vocale non supportée"); return; }
+
+const recognition = new SpeechRecognition();
+
+recognition.lang = 'ar'; recognition.interimResults = false;
+
+recognition.start();
+
+recognition.onresult = function(event) {
+
+const transcript = event.results[0][0].transcript;
+
+document.getElementById('voice-result').innerText = transcript;
+
+console.log('🎤 Reconnu :', transcript);
+
+}; }
+
+// Exemple HTML : // <button onclick="startRecognition()">🎤 Parler</button> // <div id="voice-result"></div>
+
+// ========================================== // 🤖 IA PRONONCIATION (BASE) // ==========================================
+
+function checkPronunciation(userSpeech, expected) {
+
+userSpeech = userSpeech.toLowerCase(); expected = expected.toLowerCase();
+
+if (userSpeech.includes(expected)) {
+
+alert('✅ Bonne prononciation');
+
+} else {
+
+alert('❌ Essaie encore');
+
+} }
+
+// Exemple : // checkPronunciation(transcript, 'shlama');
+
+// ========================================== // 📚 PLAYLISTS PÉDAGOGIQUES // ==========================================
+
+const playlists = {
+
+debutant: [ 'audio/mots/shlama_h.mp3', 'audio/mots/baba_h.mp3', 'audio/mots/maya_h.mp3' ],
+
+alphabet: [ 'audio/alphabet/alaph_h.mp3', 'audio/alphabet/beth_h.mp3' ] };
+
+let playlistIndex = 0; let playlistAudio = null;
+
+function playPlaylist(name) {
+
+const playlist = playlists[name];
+
+if (!playlist) { alert('Playlist introuvable'); return; }
+
+playlistIndex = 0;
+
+playNextTrack(playlist); }
+
+function playNextTrack(playlist) {
+
+if (playlistIndex >= playlist.length) { alert('✅ Playlist terminée'); return; }
+
+playlistAudio = new Audio(playlist[playlistIndex]);
+
+playlistAudio.play();
+
+playlistAudio.onended = () => {
+
+playlistIndex++;
+
+playNextTrack(playlist);
+
+}; }
+
+// Exemple HTML : // <button onclick="playPlaylist('debutant')"> // 📚 Playlist Débutant // </button>
+
+// ========================================== // 🌙 MODE SOMBRE AUTO // ==========================================
+
+function toggleDarkMode() {
+
+document.body.classList.toggle('dark-mode');
+
+localStorage.setItem( 'darkMode', document.body.classList.contains('dark-mode') ); }
+
+window.onload = () => {
+
+const darkMode = localStorage.getItem('darkMode') === 'true';
+
+if (darkMode) { document.body.classList.add('dark-mode'); } };
+
+// ========================================== // 📈 SAUVEGARDE PROGRESSION // ==========================================
+
+let xp = Number(localStorage.getItem('xp')) || 0;
+
+function addXP(amount) {
+
+xp += amount;
+
+localStorage.setItem('xp', xp);
+
+console.log('🏆 XP :', xp); }
+
+// ========================================== // 🔥 BADGES // ==========================================
+
+function unlockBadge(name) {
+
+let badges = JSON.parse(localStorage.getItem('badges')) || [];
+
+if (!badges.includes(name)) {
+
+badges.push(name);
+
+localStorage.setItem('badges', JSON.stringify(badges));
+
+alert('🏅 Badge débloqué : ' + name);
+
+} }
+
+// ========================================== // 🚀 INITIALISATION APP // ==========================================
+
+console.log('✅ Advanced Soureth System Loaded');
