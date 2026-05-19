@@ -358,6 +358,10 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
 
+document.addEventListener("click", () => {
+  speechSynthesis.resume();
+});
+
 setLetter();
   
   
