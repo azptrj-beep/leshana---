@@ -1,96 +1,70 @@
+@font-face {
+  font-family: 'Adiabene';
+  src:
+    url('./fonts/adiabene.woff2') format('woff2'),
+    url('./fonts/adiabene.ttf') format('truetype');
+  font-display: swap;
+}
 
-"use strict";
+body {
+  font-family: 'Adiabene', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 
-document.addEventListener("DOMContentLoaded", () => {
+/* CONTAINER */
+#quiz-container {
+  padding: 20px;
+}
 
-  console.log("🟢 Quiz chargé");
+/* LETTRE / QUESTION */
+#quiz-letter {
+  font-family: 'Adiabene', sans-serif;
+  font-size: 60px;
+  margin: 20px 0;
+}
 
-  const quizzes = {
-    alphabet: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
-    ],
+/* MODE SOURETH MODERNE */
+.soureth-mode {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  font-size: 70px;
+}
 
-    vocabulaire: [
-      { question: "ܫܠܡܐ signifie ?", answers: ["Bonjour", "Merci", "Maison", "Livre"], correct: "Bonjour" },
-      { question: "ܒܝܬܐ signifie ?", answers: ["Maison", "Eau", "Feu", "Main"], correct: "Maison" }
-    ],
+/* REPONSES */
+#quiz-answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
 
-    soureth: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
-    ]
-  };
+/* BOUTONS */
+.quiz-btn {
+  font-family: 'Adiabene', sans-serif;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 180px;
+  transition: 0.2s;
+}
 
-  const quizLetter = document.getElementById("quiz-letter");
-  const quizAnswers = document.getElementById("quiz-answers");
-  const scoreEl = document.getElementById("score");
-  const xpEl = document.getElementById("xp");
-  const quizSelect = document.getElementById("quiz-select");
+.quiz-btn:hover {
+  transform: scale(1.05);
+}
 
-  let score = 0;
-  let xp = 0;
-  let currentQuiz = "alphabet";
-  let current = null;
+/* SCORE */
+#score, #xp {
+  font-weight: bold;
+}
 
-  function getData() {
-    return quizzes[currentQuiz];
-  }
-
-  function loadQuestion() {
-
-    const data = getData();
-
-    current = data[Math.floor(Math.random() * data.length)];
-
-    quizLetter.textContent = current.question;
-
-    // gestion style Soureth
-    if (currentQuiz === "soureth") {
-      quizLetter.classList.add("soureth-mode");
-    } else {
-      quizLetter.classList.remove("soureth-mode");
-    }
-
-    quizAnswers.innerHTML = "";
-
-    const shuffled = [...current.answers].sort(() => Math.random() - 0.5);
-
-    shuffled.forEach(answer => {
-
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "quiz-btn";
-      btn.textContent = answer;
-
-      btn.addEventListener("click", () => {
-
-        if (answer === current.correct) {
-          score++;
-          xp += 10;
-          alert("✅ Bonne réponse");
-        } else {
-          alert("❌ Mauvaise réponse");
-        }
-
-        scoreEl.textContent = score;
-        xpEl.textContent = xp;
-
-        loadQuestion();
-      });
-
-      quizAnswers.appendChild(btn);
-    });
-  }
-
-  quizSelect.addEventListener("change", (e) => {
-    currentQuiz = e.target.value;
-    loadQuestion();
-  });
-
-  loadQuestion();
-});
+/* ANTI FALLBACK CHROME SYRIAC */
+#quiz-letter,
+#quiz-answers,
+.quiz-btn {
+  font-family: 'Adiabene', sans-serif !important;
+}
