@@ -11,7 +11,7 @@
       color: #111;
     }
 
-
+   
 header {
       background: linear-gradient(135deg, #0033a0, #0055d4);
       color: white;
@@ -146,7 +146,7 @@ header {
 
   <div class="logo-container">
 
-    <img src="assets/images/logo.png"
+    <img src="images/logo.png"
          alt="Leshana Ed Soureth"
          class="logo">
 
@@ -216,14 +216,3 @@ header {
   </div>  <div class="practice-section">
     <h2>🧠 Exercices de prononciation</h2><div class="practice-word">
   ܫܠܵܡܵܐ
-
-<link rel="stylesheet" href="css/style.css">
-
-<script src="js/app.js" defer></script>
-<script src="js/keyboard.js" defer></script>
-<script src="js/audio.js" defer></script>
-
-
-<button onclick="playSlowAudio('voyelles', 'a', 'femme')">
-  🔊 Écoute lente
-</button>
