@@ -1,130 +1,126 @@
-
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
 <link rel="icon" href="images/logo.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Écriture Soureth</title>  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f7ff;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Écriture Soureth</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f7ff;
+  text-align: center;
+}
+
+header {
+  background: #0033a0;
+  color: white;
+  padding: 20px;
+}
+
+nav a {
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+}
+
+.letter-box {
+  font-size: 80px;
+  margin: 20px;
+  color: #0033a0;
+}
+
+.canvas-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+canvas {
+  border: 2px solid #0033a0;
+  background: white;
+  border-radius: 10px;
+  touch-action: none;
+}
+
+.guide {
+  font-size: 120px;
+  opacity: 0.1;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  top: 40px;
+  left: 40px;
+}
+
+.btn {
+  background: #d40000;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background: #121212;
+  color: white;
+}
+
+.dark-mode header {
+  background: #111;
+}
+
+.dark-mode canvas {
+  background: #1f1f1f;
+  border-color: white;
+}
+
+.dark-mode .letter-box {
+  color: white;
+}
+</style>
+</head>
+
+<body>
 
 <header>
-
-  <div class="logo-container">
-
-    <img src="images/logo.png"
-         alt="Leshana Ed Soureth"
-         class="logo">
-
-    <div>
-      <h1>Leshana-Ed-Soureth</h1>
-      <p>Apprendre le Soureth</p>
-    </div>
-
-  </div>
-
-  <nav>
-    <a href="index.html">🏠 Accueil</a>
-    <a href="alphabet.html">🔠 Alphabet</a>
-    <a href="voyelles.html">🔤 Voyelles</a>
-    <a href="ecriture.html">✍️ Écriture</a>
-    <a href="mots.html">📚 Mots</a>
-    <a href="phrases.html">🗣️ Phrases</a>
-  </nav>
-
-</header>
-    header {
-      background: #0033a0;
-      color: white;
-      padding: 20px;
-    }
-
-    nav a {
-      margin: 10px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 20px;
-    }
-
-    .letter-box {
-      font-size: 80px;
-      margin: 20px;
-      color: #0033a0;
-    }
-
-    canvas {
-      border: 2px solid #0033a0;
-      background: white;
-      border-radius: 10px;
-      touch-action: none;
-    }
-
-    .btn {
-      background: #d40000;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      margin: 10px;
-      cursor: pointer;
-    }
-
-    .guide {
-      font-size: 120px;
-      opacity: 0.1;
-      position: absolute;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .canvas-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-  .dark-mode {
-      background: #121212;
-      color: white;
-    }
-
-    .dark-mode header {
-      background: #111;
-    }
-
-    .dark-mode canvas {
-      background: #1f1f1f;
-      border-color: #ffffff;
-    }
-
-    .dark-mode .letter-box {
-      color: white;
-    }
-  </style></head><body><header>
   <h1>✍️ Écriture du Soureth</h1>
   <nav>
     <a href="index.html">Accueil</a>
     <a href="alphabet.html">Alphabet</a>
     <a href="voyelles.html">Voyelles</a>
-    <a href="ecriture.html">Écriture</a>
-    <a href="revision.html">Révision</a>
-    <a href="vocal.html">Vocal</a>
     <a href="#" onclick="toggleDarkMode()">Mode sombre</a>
   </nav>
-</header><div class="container">  <h2>Entraîne-toi à écrire</h2>
-  <p>Trace la lettre avec ton doigt ou ta souris</p>  <div class="letter-box" id="letterDisplay">ܐ</div>  <div class="canvas-wrapper">
+</header>
+
+<div class="container">
+
+  <h2>Entraîne-toi à écrire</h2>
+  <p>Trace la lettre avec ton doigt ou ta souris</p>
+
+  <div class="letter-box" id="letterDisplay">ܐ</div>
+
+  <div class="canvas-wrapper">
     <div class="guide" id="guideLetter">ܐ</div>
     <canvas id="board" width="300" height="300"></canvas>
-  </div>  <br><button class="btn" onclick="clearCanvas()">Effacer</button> <button class="btn" onclick="nextLetter()">Lettre suivante</button>
+  </div>
 
-</div><script>
+  <br>
 
+  <button class="btn" onclick="clearCanvas()">Effacer</button>
+  <button class="btn" onclick="nextLetter()">Lettre suivante</button>
+
+</div>
+
+<script>
 const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"];
 
 let index = 0;
@@ -203,12 +199,11 @@ function nextLetter() {
 }
 
 function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
+  document.body.classList.toggle("dark-mode");
 }
 
 setLetter();
+</script>
 
-setLetter();
-
-</script></body>
+</body>
 </html>
