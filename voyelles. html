@@ -1,0 +1,3 @@
+<button onclick="playSlowAudio('voyelles', 'a', 'femme')">
+  🔊 Écoute lente
+</button>
