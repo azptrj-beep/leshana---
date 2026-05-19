@@ -278,88 +278,86 @@ function learnWord(word) {
    ECRITURE TACTILE SOURETH
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"];
 
-  const canvas = document.getElementById("writingCanvas");
+let index = 0;
 
-  if (!canvas) return;
+const canvas = document.getElementById("board");
+const ctx = canvas.getContext("2d");
 
-  const ctx = canvas.getContext("2d");
+let drawing = false;
 
-ctx.strokeStyle = "red";
+function setLetter() {
+  document.getElementById("letterDisplay").innerText = letters[index];
+  document.getElementById("guideLetter").innerText = letters[index];
+}
 
-  // CONFIG
-  canvas.width = 300;
-  canvas.height = 300;
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
 
-  ctx.strokeStyle = "red";
-  ctx.lineWidth = 8;
+  const touch = e.touches?.[0] || e.changedTouches?.[0];
+
+  return {
+    x: (touch ? touch.clientX : e.clientX) - rect.left,
+    y: (touch ? touch.clientY : e.clientY) - rect.top
+  };
+}
+
+function start(e) {
+  drawing = true;
+  const pos = getPos(e);
+
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+
+  e.preventDefault();
+}
+
+function draw(e) {
+  if (!drawing) return;
+
+  const pos = getPos(e);
+
+  ctx.lineWidth = 6;
   ctx.lineCap = "round";
+  ctx.strokeStyle = "#0033a0";
 
-  let drawing = false;
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
 
-  // Empêche le scroll tactile
-  canvas.style.touchAction = "none";
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
 
-  function getPosition(e) {
+  e.preventDefault();
+}
 
-    const rect = canvas.getBoundingClientRect();
+function stop() {
+  drawing = false;
+}
 
-    if (e.touches) {
+canvas.addEventListener("mousedown", start);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", stop);
+canvas.addEventListener("mouseleave", stop);
 
-      return {
-        x: e.touches[0].clientX - rect.left,
-        y: e.touches[0].clientY - rect.top
-      };
+canvas.addEventListener("touchstart", start, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stop);
 
-    }
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
-    return {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-  }
+function nextLetter() {
+  index = (index + 1) % letters.length;
+  setLetter();
+  clearCanvas();
+}
 
-  function startDrawing(e) {
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
 
-    drawing = true;
-
-    const pos = getPosition(e);
-
-    ctx.beginPath();
-    ctx.moveTo(pos.x, pos.y);
-
-    e.preventDefault();
-  }
-
-  function draw(e) {
-
-    if (!drawing) return;
-
-    const pos = getPosition(e);
-
-    ctx.lineTo(pos.x, pos.y);
-    ctx.stroke();
-
-    e.preventDefault();
-  }
-
-  function stopDrawing() {
-
-    drawing = false;
-  }
-
-  // SOURIS
-  canvas.addEventListener("mousedown", startDrawing);
-  canvas.addEventListener("mousemove", draw);
-  canvas.addEventListener("mouseup", stopDrawing);
-  canvas.addEventListener("mouseleave", stopDrawing);
-
-  // TACTILE
-  canvas.addEventListener("touchstart", startDrawing, { passive: false });
-  canvas.addEventListener("touchmove", draw, { passive: false });
-  canvas.addEventListener("touchend", stopDrawing);
-
-});
+setLetter();
   
   
