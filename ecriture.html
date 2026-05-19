@@ -131,6 +131,44 @@ const ctx = canvas.getContext("2d");
 
 let drawing = false;
 
+function speakLetter() {
+  const letter = letters[index];
+
+  const utterance = new SpeechSynthesisUtterance();
+
+  const map = {
+    "ܐ": "a",
+    "ܒ": "bé",
+    "ܓ": "gué",
+    "ܕ": "dé",
+    "ܗ": "hé",
+    "ܘ": "ou",
+    "ܙ": "zé",
+    "ܚ": "kh",
+    "ܛ": "t",
+    "ܝ": "y",
+    "ܟ": "k",
+    "ܠ": "l",
+    "ܡ": "m",
+    "ܢ": "n",
+    "ܣ": "s",
+    "ܥ": "a guttural",
+    "ܦ": "p",
+    "ܨ": "ts",
+    "ܩ": "q",
+    "ܪ": "r",
+    "ܫ": "sh",
+    "ܬ": "t"
+  };
+
+  utterance.text = map[letter] || letter;
+  utterance.lang = "fr-FR";
+  utterance.rate = 0.9;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
 function setLetter() {
   document.getElementById("letterDisplay").innerText = letters[index];
   document.getElementById("guideLetter").innerText = letters[index];
