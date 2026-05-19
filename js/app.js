@@ -286,6 +286,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ctx = canvas.getContext("2d");
 
+ctx.strokeStyle = "red";
+
   // CONFIG
   canvas.width = 300;
   canvas.height = 300;
