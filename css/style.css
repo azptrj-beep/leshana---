@@ -1454,6 +1454,7 @@ canvas {
   background: white;
 }
 
+
 button {
   padding: 10px 14px;
   border: none;
@@ -1463,9 +1464,14 @@ button {
 }
 
 body {
-  overscroll-behavior: none;
+  overscroll-behavior: auto;
 }
 
 canvas {
-  touch-action: none;
+  touch-action: auto;
+}
+
+body {
+  overflow-y: auto;
+  touch-action: auto;
 }
