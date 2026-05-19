@@ -1455,3 +1455,9 @@ textarea {
 canvas {
   touch-action: none;
 }
+
+canvas {
+  touch-action: none;
+  width: 300px;
+  height: 300px;
+}
