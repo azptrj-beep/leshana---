@@ -362,6 +362,17 @@ document.addEventListener("click", () => {
   speechSynthesis.resume();
 });
 
+
+function resizeCanvas() {
+  const size = Math.min(window.innerWidth * 0.85, window.innerHeight * 0.65);
+
+  canvas.width = size;
+  canvas.height = size;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
 setLetter();
   
   
