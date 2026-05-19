@@ -2,8 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  console.log("🟢 Quiz chargé");
-
   const quizzes = {
     alphabet: [
       { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
@@ -15,13 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     vocabulaire: [
       { question: "ܫܠܡܐ signifie ?", answers: ["Bonjour", "Merci", "Maison", "Livre"], correct: "Bonjour" },
       { question: "ܒܝܬܐ signifie ?", answers: ["Maison", "Eau", "Feu", "Main"], correct: "Maison" }
-    ],
-
-    soureth: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
     ]
   };
 
@@ -36,24 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuiz = "alphabet";
   let current = null;
 
-  function getData() {
+  function getQuizData() {
     return quizzes[currentQuiz];
   }
 
   function loadQuestion() {
 
-    const data = getData();
+    const data = getQuizData();
 
     current = data[Math.floor(Math.random() * data.length)];
 
     quizLetter.textContent = current.question;
-
-    // gestion style Soureth
-    if (currentQuiz === "soureth") {
-      quizLetter.classList.add("soureth-mode");
-    } else {
-      quizLetter.classList.remove("soureth-mode");
-    }
 
     quizAnswers.innerHTML = "";
 
