@@ -132,9 +132,9 @@ const ctx = canvas.getContext("2d");
 let drawing = false;
 
 function speakLetter() {
-  const letter = letters[index];
+  speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance();
+  const letter = letters[index];
 
   const map = {
     "ܐ": "a",
@@ -161,13 +161,15 @@ function speakLetter() {
     "ܬ": "t"
   };
 
-  utterance.text = map[letter] || letter;
+  const utterance = new SpeechSynthesisUtterance(map[letter] || letter);
+
   utterance.lang = "fr-FR";
   utterance.rate = 0.9;
   utterance.pitch = 1;
 
   window.speechSynthesis.speak(utterance);
 }
+  
 
 function setLetter() {
   document.getElementById("letterDisplay").innerText = letters[index];
