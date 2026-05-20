@@ -1,97 +1,107 @@
 "use strict";
 
-console.log("QUIZ JS CHARGÉ ✔");
+console.log("QUIZ LEVEL SYSTEM ✔");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  console.log("🟢 Quiz chargé");
+  const quizLetter = document.getElementById("question");
+  const quizAnswers = document.querySelector(".quiz-options");
+  const result = document.getElementById("quiz-result");
+  const xpEl = document.getElementById("xp-value");
+
+  let xp = 0;
+  let level = 1;
+  let streak = 0;
+  let current = null;
+
+  const levels = {
+    1: "🟢 Facile",
+    2: "🟡 Moyen",
+    3: "🔴 Expert"
+  };
 
   const quizzes = {
-    alphabet: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
+    easy: [
+      { q: "ܐ", a: "Alap", o: ["Alap", "Beth", "Gamal", "Dalath"] },
+      { q: "ܒ", a: "Beth", o: ["Alap", "Beth", "Gamal", "Dalath"] },
+      { q: "ܓ", a: "Gamal", o: ["Alap", "Beth", "Gamal", "Dalath"] }
     ],
 
-    vocabulaire: [
-      { question: "ܫܠܡܐ signifie ?", answers: ["Bonjour", "Merci", "Maison", "Livre"], correct: "Bonjour" },
-      { question: "ܒܝܬܐ signifie ?", answers: ["Maison", "Eau", "Feu", "Main"], correct: "Maison" }
+    medium: [
+      { q: "ܕ", a: "Dalath", o: ["Alap", "Beth", "Gamal", "Dalath"] },
+      { q: "ܗ", a: "Heh", o: ["Heh", "Waw", "Yodh", "Kaph"] },
+      { q: "ܘ", a: "Waw", o: ["Heh", "Waw", "Yodh", "Kaph"] }
     ],
 
-    soureth: [
-      { question: "ܐ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Alap" },
-      { question: "ܒ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Beth" },
-      { question: "ܓ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Gamal" },
-      { question: "ܕ", answers: ["Alap", "Beth", "Gamal", "Dalath"], correct: "Dalath" }
+    hard: [
+      { q: "ܫܠܡܐ", a: "Shlama", o: ["Shlama", "Bayta", "Nura", "Maya"] },
+      { q: "ܒܝܬܐ", a: "Bayta", o: ["Shlama", "Bayta", "Nura", "Maya"] },
+      { q: "ܡܝܐ", a: "Maya", o: ["Shlama", "Bayta", "Nura", "Maya"] }
     ]
   };
 
-  const quizLetter = document.getElementById("quiz-letter");
-  const quizAnswers = document.getElementById("quiz-answers");
-  const scoreEl = document.getElementById("score");
-  const xpEl = document.getElementById("xp");
-  const quizSelect = document.getElementById("quiz-select");
+  function getLevel() {
 
-  let score = 0;
-  let xp = 0;
-  let currentQuiz = "alphabet";
-  let current = null;
+    if (xp < 50) return 1;
+    if (xp < 120) return 2;
+    return 3;
+  }
 
-  function getData() {
-    return quizzes[currentQuiz];
+  function getPool() {
+
+    const lvl = getLevel();
+
+    if (lvl === 1) return quizzes.easy;
+    if (lvl === 2) return quizzes.medium;
+    return quizzes.hard;
   }
 
   function loadQuestion() {
 
-    const data = getData();
+    level = getLevel();
 
-    current = data[Math.floor(Math.random() * data.length)];
+    const pool = getPool();
 
-    quizLetter.textContent = current.question;
+    current = pool[Math.floor(Math.random() * pool.length)];
 
-    // gestion style Soureth
-    if (currentQuiz === "soureth") {
-      quizLetter.classList.add("soureth-mode");
-    } else {
-      quizLetter.classList.remove("soureth-mode");
-    }
+    quizLetter.textContent = current.q;
 
     quizAnswers.innerHTML = "";
 
-    const shuffled = [...current.answers].sort(() => Math.random() - 0.5);
+    const shuffled = [...current.o].sort(() => Math.random() - 0.5);
 
-    shuffled.forEach(answer => {
+    shuffled.forEach(opt => {
 
       const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "quiz-btn";
-      btn.textContent = answer;
+      btn.textContent = opt;
 
       btn.addEventListener("click", () => {
 
-        if (answer === current.correct) {
-          score++;
+        if (opt === current.a) {
+
           xp += 10;
-          alert("✅ Bonne réponse");
+          streak++;
+
+          result.textContent = "✔ Bonne réponse";
+
         } else {
-          alert("❌ Mauvaise réponse");
+
+          xp = Math.max(0, xp - 5);
+          streak = 0;
+
+          result.textContent = "✖ Mauvaise réponse";
         }
 
-        scoreEl.textContent = score;
         xpEl.textContent = xp;
 
-        loadQuestion();
+        setTimeout(loadQuestion, 600);
       });
 
       quizAnswers.appendChild(btn);
     });
-  }
 
-  quizSelect.addEventListener("change", (e) => {
-    currentQuiz = e.target.value;
-    loadQuestion();
-  });
+    result.textContent = levels[level];
+  }
 
   loadQuestion();
 });
