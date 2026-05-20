@@ -1733,3 +1733,229 @@ html, body {
   overflow: auto;
   touch-action: auto;
 }
+
+/* =========================
+   QUIZ MOBILE PERFECT
+========================= */
+
+.quiz-box {
+
+  max-width: 650px;
+
+  margin: 40px auto;
+
+  padding: 22px;
+
+  border-radius: 24px;
+
+  text-align: center;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(14px);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.25);
+}
+
+/* QUESTION */
+
+#question {
+
+  font-size: clamp(1.3rem, 5vw, 2rem);
+
+  line-height: 1.4;
+
+  margin-bottom: 24px;
+
+  color: white;
+}
+
+/* =========================
+   QUIZ OPTIONS GRID
+========================= */
+
+.quiz-options {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(90px, 1fr));
+
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+/* BOUTONS LETTRES */
+
+.quiz-options button {
+
+  min-height: 74px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  cursor: pointer;
+
+  font-family:
+    'Adiabene',
+    'Nohadra',
+    sans-serif;
+
+  font-size: clamp(28px, 6vw, 42px);
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* HOVER */
+
+.quiz-options button:hover {
+
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+
+  transform:
+    translateY(-3px);
+}
+
+/* CLICK */
+
+.quiz-options button:active {
+
+  transform: scale(0.96);
+}
+
+/* =========================
+   RESULTAT
+========================= */
+
+#quiz-result {
+
+  margin-top: 22px;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  min-height: 24px;
+}
+
+/* =========================
+   XP PANEL
+========================= */
+
+.xp-panel {
+
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  font-size: 0.95rem;
+}
+
+/* =========================
+   MOBILE ULTRA OPTIMIZED
+========================= */
+
+@media (max-width: 768px) {
+
+  .quiz-box {
+
+    width: calc(100% - 20px);
+
+    margin: 20px auto;
+
+    padding: 18px 14px;
+
+    border-radius: 20px;
+  }
+
+  #question {
+
+    font-size: 1.15rem;
+
+    margin-bottom: 18px;
+  }
+
+  .quiz-options {
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 10px;
+  }
+
+  .quiz-options button {
+
+    min-height: 64px;
+
+    border-radius: 14px;
+
+    font-size: 32px;
+  }
+
+  .xp-panel {
+
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 6px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 420px) {
+
+  .quiz-options {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .quiz-options button {
+
+    min-height: 58px;
+
+    font-size: 28px;
+  }
+}
