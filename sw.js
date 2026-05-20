@@ -13,9 +13,9 @@ const FILES = [
   "/revision.html",
   "/vocal.html",
   "/traduction.html",
-
+  "/quiz.html",
+  
   "/css/style.css",
-
   "/js/app.js",
   "/js/translate.js",
   "/js/writing.js",
