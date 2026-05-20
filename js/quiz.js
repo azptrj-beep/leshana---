@@ -1,5 +1,7 @@
 "use strict";
 
+console.log("QUIZ JS CHARGÉ ✔");
+
 document.addEventListener("DOMContentLoaded", () => {
 
   console.log("🟢 Quiz chargé");
