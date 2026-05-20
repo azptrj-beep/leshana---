@@ -1467,11 +1467,6 @@ body {
   overscroll-behavior: auto;
 }
 
-body.ecriture-page {
-  overflow: auto;
-  touch-action: auto;
-}
-
 canvas {
   touch-action: none;
 }
