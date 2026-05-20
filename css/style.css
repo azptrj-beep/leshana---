@@ -1431,8 +1431,8 @@ body.light-mode nav a {
 }
 
 canvas {
-  width: 85vw;
-  height: 85vw;
+  width: min(90vw, 500px);
+  height: min(90vw, 500px);
   max-height: 65vh;
   background: white;
   border-radius: 16px;
