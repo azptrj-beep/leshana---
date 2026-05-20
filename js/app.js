@@ -378,4 +378,9 @@ setLetter();
 if (window.location.pathname.includes("ecriture")) {
   document.body.classList.add("ecriture-page");
 }
-  
+ 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("Service Worker OK"))
+    .catch(err => console.log("SW erreur", err));
+}
