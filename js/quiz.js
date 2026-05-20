@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     medium: [
       { q: "ܕ", a: "Dalath", o: ["Alap", "Beth", "Gamal", "Dalath"] },
-      { q: "ܗ", a: "Heh", o: ["Heh", "Waw", "Yodh", "Kap"] },
-      { q: "ܘ", a: "Waw", o: ["Heh", "Waw", "Yodh", "Kap"] }
+      { q: "ܗ", a: "Heh", o: ["He", "Waw", "Yodh", "Kap"] },
+      { q: "ܘ", a: "Waw", o: ["He", "Waw", "Yodh", "Kap"] }
     ],
 
     hard: [
