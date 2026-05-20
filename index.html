@@ -425,10 +425,26 @@ onclick="insertLetter('ܫ')">ܫ</button>
   <script src="js/app.js"></script>
   <script src="js/keyboard.js"></script>
   <script src="js/translate.js"></script>
-  <script src="js/service-worker.js"></script>
+  <script src="sw.js"></script>
   <script src="js/quiz.js"></script>
 
 <!-- rebuild fix -->
+
+<script>
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener("load", () => {
+
+    navigator.serviceWorker.register("/sw.js")
+
+      .then(() => console.log("SW enregistré"))
+
+      .catch(err => console.log("Erreur SW", err));
+
+  });
+
+}
+</script>
 
 </body>
 
