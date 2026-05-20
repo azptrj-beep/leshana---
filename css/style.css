@@ -900,7 +900,49 @@ body.dark {
    FIX MOBILE / CHROME
 =========================
 
+/* =========================
+   HEADER MOBILE FIX
+========================= */
 
+@media (max-width: 768px) {
+
+  header {
+    padding: 10px 12px;
+  }
+
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .logo {
+    width: 55px;
+    height: auto;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
 /* =========================
    SIMPLE DARK EFFECT
 ========================= */
