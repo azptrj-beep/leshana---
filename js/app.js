@@ -375,4 +375,7 @@ resizeCanvas();
 
 setLetter();
   
+if (window.location.pathname.includes("ecriture")) {
+  document.body.classList.add("ecriture-page");
+}
   
