@@ -1468,8 +1468,8 @@ body {
 }
 
 body.ecriture-page {
-  overflow: hidden;
-  touch-action: none;
+  overflow: auto;
+  touch-action: auto;
 }
 
 canvas {
