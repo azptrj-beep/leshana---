@@ -399,3 +399,6 @@ function loadQuestion() {
   }
 }
  
+document.addEventListener("DOMContentLoaded", () => {
+  renderQuestion();
+});
