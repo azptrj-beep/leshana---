@@ -1805,8 +1805,8 @@ html, body {
 
   font-family:
     'Adiabene',
-    'Nohadra', 
-    'Assyria', 
+    'nohadra', 
+    'assyrian', 
     sans-serif;
 
   font-size: clamp(28px, 6vw, 42px);
