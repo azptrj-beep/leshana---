@@ -42,21 +42,7 @@
 
   <main class="quiz-container">
 
-    <div class="quiz-card">
-
-      <h2>
-        Quelle est cette lettre ?
-      </h2>
-
-      <div id="quiz-letter"
-           class="quiz-letter">
-        ܐ
-      </div>
-
-      <div id="quiz-answers"
-           class="quiz-answers">
-
-      </div>
+   
 
       <div class="quiz-stats">
 
