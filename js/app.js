@@ -378,4 +378,24 @@ setLetter();
 if (window.location.pathname.includes("ecriture")) {
   document.body.classList.add("ecriture-page");
 }
+
+let currentIndex = 0;
+
+function loadQuestion() {
+  const q = quizData[currentIndex];
+
+  if (q.type === "letter") {
+    document.getElementById("question").textContent = q.value;
+  }
+
+  if (q.type === "image") {
+    document.getElementById("question").innerHTML =
+      `<img src="${q.src}" style="max-width:200px;">`;
+  }
+
+  if (q.type === "audio") {
+    document.getElementById("question").innerHTML =
+      `<button onclick="playAudio('${q.src}')">🔊 Play</button>`;
+  }
+}
  
