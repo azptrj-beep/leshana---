@@ -1,3 +1,11 @@
+function playSound(src) {
+
+  const audio =
+    new Audio(src);
+
+  audio.play();
+}
+
 let currentIndex = 0;
 let score = 0;
 
