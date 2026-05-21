@@ -131,3 +131,7 @@ function updateXPUI() {
 
   document.getElementById("streak").textContent = streak;
 }
+
+playSound("assets/audio/correct.mp3");
+
+playSound("assets/audio/wrong.mp3");
