@@ -3,3 +3,7 @@ const quizData = [
   { type: "audio", src: "assets/audio/word.mp3", answer: "word" },
   { type: "letter", value: "ܐ", answer: "Alap" }
 ];
+
+[
+  { "type": "image", "src": "apple.png", "answer": "apple" }
+]
