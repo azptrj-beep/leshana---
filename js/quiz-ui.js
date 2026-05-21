@@ -55,3 +55,50 @@ function generateFakeAnswers(q) {
 function shuffle(arr) {
   arr.sort(() => Math.random() - 0.5);
 }
+
+function renderQuestion() {
+
+  const q = getCurrentQuestion();
+
+  const questionEl = document.getElementById("question");
+  const optionsEl = document.getElementById("options");
+
+  optionsEl.innerHTML = "";
+
+  // ===== TYPES =====
+
+  if (q.type === "letter") {
+    questionEl.innerHTML =
+      `<div class="quiz-letter">${q.question}</div>`;
+  }
+
+  if (q.type === "image") {
+    questionEl.innerHTML =
+      `<img src="${q.src}" class="quiz-image">`;
+  }
+
+  if (q.type === "audio") {
+    questionEl.innerHTML =
+      `<button class="audio-btn"
+        onclick="playAudio('${q.src}')">
+        🔊 Écouter
+      </button>`;
+  }
+
+  // ===== IA ANSWERS =====
+
+  const answers = generateSmartAnswers(q);
+
+  answers.forEach(answer => {
+
+    const btn = document.createElement("button");
+
+    btn.className = "quiz-answer";
+
+    btn.textContent = answer;
+
+    btn.onclick = () => checkAnswer(answer);
+
+    optionsEl.appendChild(btn);
+  });
+}
