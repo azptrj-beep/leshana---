@@ -398,11 +398,13 @@ function loadQuestion() {
       `<button onclick="playAudio('${q.src}')">🔊 Play</button>`;
   }
 }
- 
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
 
-  renderQuestion();
+  if (document.getElementById("question")) {
 
-  updateXPUI();
+    renderQuestion();
+
+    updateXPUI();
+  }
 
 });
