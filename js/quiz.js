@@ -22,10 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const quizzes = {
     easy: [
-      { q: "ܐ", a: "Alap", o: ["Alap", "Beth", "Gamal", "Dalath"] },
-      { q: "ܒ", a: "Beth", o: ["Alap", "Beth", "Gamal", "Dalath"] },
-      { q: "ܓ", a: "Gamal", o: ["Alap", "Beth", "Gamal", "Dalath"] }
-    ],
+
+  {
+    q: "ܐ",
+    a: "ܐܠܦ",
+    o: ["ܐܠܦ", "ܒܝܬ", "ܓܡܠ", "ܕܠܬ"]
+  },
+
+  {
+    q: "ܒ",
+    a: "ܒܝܬ",
+    o: ["ܐܠܦ", "ܒܝܬ", "ܓܡܠ", "ܕܠܬ"]
+  },
+
+  {
+    q: "ܓ",
+    a: "ܓܡܠ",
+    o: ["ܐܠܦ", "ܒܝܬ", "ܓܡܠ", "ܕܠܬ"]
+  }
+
+]
 
     medium: [
       { q: "ܕ", a: "Dalath", o: ["Alap", "Beth", "Gamal", "Dalath"] },
