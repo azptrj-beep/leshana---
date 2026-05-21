@@ -42,27 +42,49 @@
 
   </header>
 
-  <main class="quiz-container">
+ <main class="quiz-container">
 
-   
+  <div class="quiz-box">
 
-      <div class="quiz-stats">
+    <!-- XP / SCORE -->
+    <div class="xp-panel">
 
-        <p>
-          🏆 Score :
-          <span id="score">0</span>
-        </p>
+      <div>
+        🏆 Score :
+        <span id="score">0</span>
+      </div>
 
-        <p>
-          ⚡ XP :
-          <span id="xp">0</span>
-        </p>
+      <div>
+        ⚡ XP :
+        <span id="xp">0</span>
+      </div>
 
+      <div>
+        🔥 Streak :
+        <span id="streak">0</span>
       </div>
 
     </div>
 
-  </main>
+    <!-- QUESTION -->
+    <div id="question">
+      ܐ
+    </div>
+
+    <!-- OPTIONS -->
+    <div id="options"
+         class="quiz-options">
+
+    </div>
+
+    <!-- RESULT -->
+    <div id="quiz-result">
+
+    </div>
+
+  </div>
+
+</main>  
   
 
 <script src="js/quiz.js" defer></script>
