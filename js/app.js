@@ -408,3 +408,18 @@ function loadQuestion() {
   }
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  xp = Number(localStorage.getItem("soureth_xp")) || 0;
+  level = Number(localStorage.getItem("soureth_level")) || 1;
+  lives = Number(localStorage.getItem("soureth_lives")) || 3;
+
+  if (document.getElementById("question")) {
+
+    renderQuestion();
+    updateXPUI();
+    updateDuoUI();
+  }
+
+});
