@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,12 +13,13 @@
   <link rel="icon"
         href="assets/images/logo.png" />
 
+  <!-- PRELOAD FONT -->
 
   <link rel="preload"
-      href="assets/fonts/Adiabene.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin>
+        href="assets/fonts/Adiabene.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin>
 
   <!-- GOOGLE FONT -->
 
@@ -38,8 +38,13 @@
   <link rel="stylesheet"
         href="css/style.css">
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0033a0">
+  <!-- PWA -->
+
+  <link rel="manifest"
+        href="manifest.json">
+
+  <meta name="theme-color"
+        content="#0033a0">
 
 </head>
 
@@ -71,11 +76,14 @@
 
     </div>
 
-    <!-- NAVIGATION -->
+    <!-- MENU MOBILE -->
 
-<button class="menu-toggle" onclick="toggleMenu()">
-  ☰
-</button>
+    <button class="menu-toggle"
+            onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <!-- NAVIGATION -->
 
     <nav>
 
@@ -99,9 +107,12 @@
 
       <a href="vocal.html">🎤 Vocal</a>
 
-      <a href="vidéos.html">Videos</a>
+      <a href="videos.html">🎥 Vidéos</a>
 
-      <a href="#" onclick="toggleTheme()">🌓 Thème</a>
+      <a href="#"
+         onclick="toggleTheme()">
+         🌓 Thème
+      </a>
 
     </nav>
 
@@ -119,24 +130,24 @@
         Apprendre le Soureth moderne
       </h1>
 
-      <p>
+      <p class="hero-text">
 
+        SITE EN CONSTRUCTION
 
-       SITE EN CONSTRUCTION 
+        <br><br>
 
-      </p>
-    
         Découvre l’alphabet assyro-chaldéen,
         les voyelles,
         l’écriture moderne,
         le clavier Soureth,
         la traduction,
         les quiz interactifs,
-        les vidéos, 
+        les vidéos
         et les audios natifs.
 
-
       </p>
+
+      <!-- BUTTONS -->
 
       <div class="hero-buttons">
 
@@ -152,7 +163,7 @@
 
       </div>
 
-      <!-- DEMO SOURETH -->
+      <!-- SOURETH DEMO -->
 
       <div class="hero-demo card">
 
@@ -161,7 +172,7 @@
         </div>
 
         <p>
-          Shlama: Paix - (Bonjour - Salut) 
+          Shlama : Paix — Bonjour — Salut
         </p>
 
       </div>
@@ -225,7 +236,8 @@
 
       <p>
         Dessine les lettres
-        avec ton doigt, un stylet
+        avec ton doigt,
+        un stylet
         ou ta souris.
       </p>
 
@@ -260,76 +272,54 @@
 
   </section>
 
-
-<section class="quiz-box card"
-
-<h2 id="question">
-    Quelle lettre correspond à “Alap” ?
-  </h2>
-
-  <div class="quiz-options">
-
-    <button onclick="checkAnswer('ܐ')">ܐ</button>
-
-    <button onclick="checkAnswer('ܒ')">ܒ</button>
-
-    <button onclick="checkAnswer('ܓ')">ܓ</button>
-
-    <button onclick="checkAnswer('ܕ')">ܕ</button>
-
-    <button onclick="checkAnswer('ܗ')">ܗ</button>
-
-    <button onclick="checkAnswer('ܘ')">ܘ</button>
-
-    <button onclick="checkAnswer('ܝ')">ܝ</button>
-
-    <button onclick="checkAnswer('ܚ')">ܚ</button>
-
-    <button onclick="checkAnswer('ܛ')">ܛ</button>
-
-    <button onclick="checkAnswer('ܙ')">ܙ</button>
-
-    <button onclick="checkAnswer('ܟ')">ܟ</button>
-
-    <button onclick="checkAnswer('ܠ')">ܠ</button>
-
-    <button onclick="checkAnswer('ܡ')">ܡ</button>
-
-    <button onclick="checkAnswer('ܢ')">ܢ</button>
-
-    <button onclick="checkAnswer('ܣ')">ܣ</button>
-
-    <button onclick="checkAnswer('ܥ')">ܥ</button>
-
-    <button onclick="checkAnswer('ܦ')">ܦ</button>
-
-    <button onclick="checkAnswer('ܨ')">ܨ</button>
-
-    <button onclick="checkAnswer('ܩ')">ܩ</button>
-
-    <button onclick="checkAnswer('ܪ')">ܪ</button>
-
-    <button onclick="checkAnswer('ܫ')">ܫ</button>
-
-    <button onclick="checkAnswer('ܬ')">ܬ</button>
-
-
-  </div>
-
-  <p id="quiz-result"></p>
-
-<div class="xp-panel">
-
-  <p>⭐ XP : <span id="xp-value">0</span></p>
-
-  <p>🏆 Niveau : <span id="level-value">1</span></p>
-
-</div>
-
-</section>
-  
   <!-- =========================
-       CLAVIER DEMO
+       QUIZ
+  ========================== -->
+
+  <section class="quiz-box card">
+
+    <h2 id="question">
+      ܐ
+    </h2>
+
+    <div class="quiz-options"></div>
+
+    <p id="quiz-result"></p>
+
+    <!-- XP -->
+
+    <div class="xp-panel">
+
+      <p>
+        ⭐ XP :
+        <span id="xp-value">0</span>
+      </p>
+
+      <p>
+        🏆 Niveau :
+        <span id="level-value">1</span>
+      </p>
+
+    </div>
+
+    <!-- BADGES -->
+
+    <div class="badge-box">
+
+      <h3>
+        🏆 Badge
+      </h3>
+
+      <div id="badge-display">
+        🟢 Débutant
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       KEYBOARD DEMO
   ========================== -->
 
   <section class="translator-box">
@@ -354,7 +344,7 @@
         <button onclick="insertLetter('ܘ')">ܘ</button>
         <button onclick="insertLetter('ܝ')">ܝ</button>
 
-   <button onclick="insertLetter('ܚ')">ܚ</button>
+        <button onclick="insertLetter('ܚ')">ܚ</button>
         <button onclick="insertLetter('ܛ')">ܛ</button>
         <button onclick="insertLetter('ܙ')">ܙ</button>
         <button onclick="insertLetter('ܟ')">ܟ</button>
@@ -362,14 +352,13 @@
         <button onclick="insertLetter('ܡ')">ܡ</button>
         <button onclick="insertLetter('ܢ')">ܢ</button>
 
-   <button onclick="insertLetter('ܣ')">ܣ</button>
+        <button onclick="insertLetter('ܣ')">ܣ</button>
         <button onclick="insertLetter('ܥ')">ܥ</button>
         <button onclick="insertLetter('ܦ')">ܦ</button>
-        <button  onclick="insertLetter('ܨ')">ܨ</button>
+        <button onclick="insertLetter('ܨ')">ܨ</button>
         <button onclick="insertLetter('ܩ')">ܩ</button>
         <button onclick="insertLetter('ܪ')">ܪ</button>
-        <button
-onclick="insertLetter('ܫ')">ܫ</button>
+        <button onclick="insertLetter('ܫ')">ܫ</button>
         <button onclick="insertLetter('ܬ')">ܬ</button>
 
       </div>
@@ -421,31 +410,37 @@ onclick="insertLetter('ܫ')">ܫ</button>
 
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
 
   <script src="js/app.js"></script>
+
   <script src="js/keyboard.js"></script>
+
   <script src="js/translate.js"></script>
-  <script src="sw.js"></script>
+
   <script src="js/quiz.js"></script>
 
-<!-- rebuild fix -->
+  <!-- SERVICE WORKER -->
 
-<script>
-if ("serviceWorker" in navigator) {
+  <script>
 
-  window.addEventListener("load", () => {
+    if ("serviceWorker" in navigator) {
 
-    navigator.serviceWorker.register("/sw.js")
+      window.addEventListener("load", () => {
 
-      .then(() => console.log("SW enregistré"))
+        navigator.serviceWorker.register("/sw.js")
 
-      .catch(err => console.log("Erreur SW", err));
+          .then(() => console.log("SW enregistré ✔"))
 
-  });
+          .catch(err => console.log("Erreur SW :", err));
 
-}
-</script>
+      });
+
+    }
+
+  </script>
 
 </body>
 
