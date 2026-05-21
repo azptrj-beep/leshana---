@@ -49,6 +49,12 @@
     <!-- XP / SCORE -->
     <div class="xp-panel">
 
+<div>❤️ Vies : <span id="lives">3</span></div>
+
+<div style="width:120px; height:10px; background:rgba(255,255,255,0.2); border-radius:10px; overflow:hidden;">
+  <div id="progress-bar" style="height:100%; width:0%; background:#00cfff;"></div>
+</div>
+
       <div>
         🏆 Score :
         <span id="score">0</span>
