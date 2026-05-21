@@ -86,8 +86,11 @@
 
 </main>  
   
-
-<script src="js/quiz.js" defer></script>
+<script src="js/quiz-data.js"></script>
+<script src="js/quiz-ai.js"></script>
+<script src="js/quiz-core.js"></script>
+<script src="js/quiz-ui.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 
