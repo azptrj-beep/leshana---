@@ -1,7 +1,7 @@
 
 "use strict";
 
-const CACHE = "soureth-pro-v2";
+const CACHE = "soureth";
 
 const FILES = [
 
