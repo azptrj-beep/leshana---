@@ -1,4 +1,14 @@
-function renderQuestion(lastCorrect = null) {
+/* =========================
+   QUIZ UI SOURETH ENGINE
+   (AFFICHAGE UNIQUEMENT)
+========================= */
+
+/* =========================
+   RENDER QUESTION
+========================= */
+
+function renderQuestion() {
+
   const q = getCurrentQuestion();
 
   const questionEl = document.getElementById("question");
@@ -6,53 +16,75 @@ function renderQuestion(lastCorrect = null) {
 
   optionsEl.innerHTML = "";
 
-  // FEEDBACK
-  if (lastCorrect === true) {
-    questionEl.style.color = "lightgreen";
-  } else if (lastCorrect === false) {
-    questionEl.style.color = "red";
-  } else {
-    questionEl.style.color = "white";
-  }
+  // reset feedback
+  const resultEl = document.getElementById("quiz-result");
+  if (resultEl) resultEl.textContent = "";
 
-  // TYPES
+  /* =========================
+     TYPES DISPLAY
+  ========================= */
+
   if (q.type === "letter") {
-    questionEl.textContent = q.question;
+
+    questionEl.innerHTML =
+      `<div class="quiz-letter">${q.question}</div>`;
   }
 
-  if (q.type === "image") {
-    questionEl.innerHTML = `<img src="${q.src}" width="180">`;
+  else if (q.type === "image") {
+
+    questionEl.innerHTML =
+      `<img src="${q.src}" class="quiz-image">`;
   }
 
-  if (q.type === "audio") {
-    questionEl.innerHTML = `
-      <button onclick="playAudio('${q.src}')">
+  else if (q.type === "audio") {
+
+    questionEl.innerHTML =
+      `<button class="audio-btn" onclick="playAudio('${q.src}')">
         🔊 Écouter
-      </button>
-    `;
+      </button>`;
   }
 
-  // EXEMPLES de réponses (simple version)
-  generateFakeAnswers(q);
+  /* =========================
+     ANSWERS UI
+  ========================= */
+
+  generateSmartAnswersUI(q);
 }
 
-function generateFakeAnswers(q) {
-  const options = document.getElementById("options");
+/* =========================
+   GENERATE ANSWERS UI
+========================= */
 
-  const fake = ["apple", "word", "Alap", "dog", "car"];
-  const answers = [...fake.slice(0, 3), q.answer];
+function generateSmartAnswersUI(q) {
 
-  shuffle(answers);
+  const optionsEl = document.getElementById("options");
 
-  answers.forEach(a => {
+  const answers = generateSmartAnswers(q);
+
+  answers.forEach(answer => {
+
     const btn = document.createElement("button");
-    btn.textContent = a;
+
     btn.className = "quiz-answer";
+    btn.textContent = answer;
 
-btn.onclick = () => {
+    btn.onclick = () => handleAnswer(btn, answer, q);
 
-  const correct =
-    answer === q.answer;
+    optionsEl.appendChild(btn);
+  });
+}
+
+/* =========================
+   HANDLE CLICK (VISUAL FEEDBACK)
+========================= */
+
+function handleAnswer(btn, answer, q) {
+
+  const correct = answer === q.answer;
+
+  // reset old styles (optional safety)
+  document.querySelectorAll(".quiz-answer")
+    .forEach(b => b.disabled = true);
 
   if (correct) {
 
@@ -67,82 +99,50 @@ btn.onclick = () => {
 
     checkAnswer(answer);
 
-  }, 500);
-};
-  });
+  }, 450);
 }
 
-function shuffle(arr) {
-  arr.sort(() => Math.random() - 0.5);
-}
-
-function renderQuestion() {
-
-  const q = getCurrentQuestion();
-
-  const questionEl = document.getElementById("question");
-  const optionsEl = document.getElementById("options");
-
-  optionsEl.innerHTML = "";
-
-  // ===== TYPES =====
-
-  if (q.type === "letter") {
-    questionEl.innerHTML =
-      `<div class="quiz-letter">${q.question}</div>`;
-  }
-
-  if (q.type === "image") {
-    questionEl.innerHTML =
-      `<img src="${q.src}" class="quiz-image">`;
-  }
-
-  if (q.type === "audio") {
-    questionEl.innerHTML =
-      `<button class="audio-btn"
-        onclick="playAudio('${q.src}')">
-        🔊 Écouter
-      </button>`;
-  }
-
-  // ===== IA ANSWERS =====
-
-  const answers = generateSmartAnswers(q);
-
-  answers.forEach(answer => {
-
-    const btn = document.createElement("button");
-
-    btn.className = "quiz-answer";
-
-    btn.textContent = answer;
-
-    btn.onclick = () => checkAnswer(answer);
-
-    optionsEl.appendChild(btn);
-  });
-}
+/* =========================
+   UPDATE XP UI
+========================= */
 
 function updateXPUI() {
 
-  document.getElementById("level").textContent = level;
+  const levelEl = document.getElementById("level");
+  const xpEl = document.getElementById("xp");
+  const streakEl = document.getElementById("streak");
+  const scoreEl = document.getElementById("score");
 
-  document.getElementById("xp").textContent = xp;
-
-  document.getElementById("streak").textContent = streak;
+  if (levelEl) levelEl.textContent = level;
+  if (xpEl) xpEl.textContent = xp;
+  if (streakEl) streakEl.textContent = streak;
+  if (scoreEl) scoreEl.textContent = score;
 }
 
-playSound("assets/audio/correct.mp3");
-
-playSound("assets/audio/wrong.mp3");
+/* =========================
+   DUOLINGO UI (LIVES + PROGRESS)
+========================= */
 
 function updateDuoUI() {
 
-  document.getElementById("lives").textContent = lives;
+  const livesEl = document.getElementById("lives");
+  const progressBar = document.getElementById("progress-bar");
 
-  document.getElementById("progress-bar").style.width =
-    progress + "%";
+  if (livesEl) livesEl.textContent = lives;
 
-  // sauvegarde automatique
+  if (progressBar) {
+    progressBar.style.width = progress + "%";
+  }
+
   saveProgress();
+}
+
+/* =========================
+   OPTIONAL AUDIO WRAPPER
+========================= */
+
+function playAudio(src) {
+
+  const audio = new Audio(src);
+  audio.play();
 }
