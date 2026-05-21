@@ -1999,3 +1999,10 @@ html, body {
 
   min-height: 74px;
 }
+
+body {
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
+}
