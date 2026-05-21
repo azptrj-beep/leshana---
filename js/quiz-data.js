@@ -78,3 +78,39 @@ const quizData = [
     difficulty: 1
   }
 ];
+
+const quizData = [
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܐ",
+    answer: "Alap",
+    difficulty: 1
+  },
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܒ",
+    answer: "Beth",
+    difficulty: 1
+  },
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܓ",
+    answer: "Gamal",
+    difficulty: 1
+  },
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܕ",
+    answer: "Dalath",
+    difficulty: 1
+  }
+
+];
