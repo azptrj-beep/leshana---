@@ -1,3 +1,7 @@
+
+let lives = 3;
+let maxLives = 3;
+let progress = 0;
 function playSound(src) {
 
   const audio =
