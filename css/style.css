@@ -1805,7 +1805,8 @@ html, body {
 
   font-family:
     'Adiabene',
-    'Nohadra',
+    'Nohadra', 
+    'Assyria', 
     sans-serif;
 
   font-size: clamp(28px, 6vw, 42px);
@@ -1958,4 +1959,43 @@ html, body {
 
     font-size: 28px;
   }
+}
+
+/* =========================
+   QUIZ SOURETH MODERNE
+========================= */
+
+.quiz-options button,
+#question,
+.quiz-letter,
+.soureth-mode {
+
+  font-family:
+    'Adiabene',
+    'Nohadra',
+    sans-serif !important;
+
+  direction: rtl;
+
+  unicode-bidi: plaintext;
+}
+
+/* QUESTION */
+
+#question {
+
+  font-size: clamp(42px, 8vw, 72px);
+
+  line-height: 1.2;
+
+  margin-bottom: 25px;
+}
+
+/* BOUTONS */
+
+.quiz-options button {
+
+  font-size: clamp(28px, 6vw, 42px);
+
+  min-height: 74px;
 }
