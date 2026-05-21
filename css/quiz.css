@@ -134,3 +134,75 @@
   direction: rtl;
   unicode-bidi: plaintext;
 }
+
+/* =========================
+   QUIZ FEEDBACK
+========================= */
+
+.quiz-answer.correct {
+
+  background:
+    linear-gradient(
+      135deg,
+      #00c853,
+      #64dd17
+    ) !important;
+
+  animation:
+    correctPulse 0.5s ease;
+}
+
+.quiz-answer.wrong {
+
+  background:
+    linear-gradient(
+      135deg,
+      #d50000,
+      #ff1744
+    ) !important;
+
+  animation:
+    wrongShake 0.4s ease;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes correctPulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wrongShake {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+
+  75% {
+    transform: translateX(-6px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
