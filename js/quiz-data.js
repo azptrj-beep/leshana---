@@ -4,6 +4,9 @@ const quizData = [
   { type: "letter", value: "ܐ", answer: "Alap" }
 ];
 
-[
-  { "type": "image", "src": "apple.png", "answer": "apple" }
-]
+fetch("js/quiz-data.json")
+  .then(res => res.json())
+  .then(data => {
+    quizData = data;
+    loadQuestion();
+  });
