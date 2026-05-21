@@ -47,8 +47,28 @@ function generateFakeAnswers(q) {
   answers.forEach(a => {
     const btn = document.createElement("button");
     btn.textContent = a;
-    btn.onclick = () => checkAnswer(a);
-    options.appendChild(btn);
+    btn.className = "quiz-answer";
+
+btn.onclick = () => {
+
+  const correct =
+    answer === q.answer;
+
+  if (correct) {
+
+    btn.classList.add("correct");
+
+  } else {
+
+    btn.classList.add("wrong");
+  }
+
+  setTimeout(() => {
+
+    checkAnswer(answer);
+
+  }, 500);
+};
   });
 }
 
