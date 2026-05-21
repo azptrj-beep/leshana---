@@ -102,3 +102,12 @@ function renderQuestion() {
     optionsEl.appendChild(btn);
   });
 }
+
+function updateXPUI() {
+
+  document.getElementById("level").textContent = level;
+
+  document.getElementById("xp").textContent = xp;
+
+  document.getElementById("streak").textContent = streak;
+}
