@@ -43,3 +43,38 @@ function endQuiz() {
   document.getElementById("question").innerHTML =
     `🎉 Fin du quiz<br>Score: ${score}/${quizData.length}`;
 }
+
+const quizData = [
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܐ",
+    answer: "Alap",
+    difficulty: 1
+  },
+
+  {
+    category: "letters",
+    type: "letter",
+    question: "ܒ",
+    answer: "Beth",
+    difficulty: 1
+  },
+
+  {
+    category: "audio",
+    type: "audio",
+    src: "assets/audio/shlama.mp3",
+    answer: "Shlama",
+    difficulty: 2
+  },
+
+  {
+    category: "image",
+    type: "image",
+    src: "assets/images/apple.png",
+    answer: "Apple",
+    difficulty: 1
+  }
+];
