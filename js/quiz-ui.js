@@ -135,3 +135,14 @@ function updateXPUI() {
 playSound("assets/audio/correct.mp3");
 
 playSound("assets/audio/wrong.mp3");
+
+function updateDuoUI() {
+
+  document.getElementById("lives").textContent = lives;
+
+  document.getElementById("progress-bar").style.width =
+    progress + "%";
+
+  // sauvegarde automatique
+  saveProgress();
+}
