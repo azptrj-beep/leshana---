@@ -112,3 +112,10 @@ function endQuiz() {
 
   document.getElementById("options").innerHTML = "";
 }
+
+function saveProgress() {
+
+  localStorage.setItem("soureth_xp", xp);
+  localStorage.setItem("soureth_level", level);
+  localStorage.setItem("soureth_lives", lives);
+}
