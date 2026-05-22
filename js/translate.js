@@ -12,7 +12,7 @@ let direction = "auto";
 
 const dictionary = {
 
-  bonjour: "ܫܠܡܐ",
+  bonjour: "ܫܠܡܐ",shlama 
   salut: "ܫܠܡܐ",
   paix: "ܫܠܡܐ",
 
