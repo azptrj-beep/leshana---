@@ -2121,15 +2121,22 @@ body {
   }
 }
 
-.features-grid a{
+/* =========================
+   FEATURE LINKS
+========================= */
+
+.feature-link{
   text-decoration:none;
-}
-
-.feature-card{
+  color:white;
+  display:block;
   cursor:pointer;
-  transition:0.3s;
+  transition:0.3s ease;
 }
 
-.feature-card:hover{
-  transform:translateY(-5px);
+.feature-link:hover{
+  transform:translateY(-5px) scale(1.02);
+}
+
+.feature-link:active{
+  transform:scale(0.98);
 }
