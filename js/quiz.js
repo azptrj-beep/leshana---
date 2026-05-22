@@ -290,3 +290,16 @@ function saveProgress() {
   localStorage.setItem("lives", lives);
   localStorage.setItem("score", score);
 }
+
+let xp =
+  parseInt(localStorage.getItem("xp")) || 0;
+
+function addXP(amount){
+
+  xp += amount;
+
+  localStorage.setItem("xp", xp);
+
+  document.getElementById("xp-value").textContent = xp;
+
+}
