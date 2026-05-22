@@ -2336,3 +2336,8 @@ input,
 canvas {
   font-family: 'Noto Sans Syriac Eastern', sans-serif !important;
 }
+
+textarea {
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
