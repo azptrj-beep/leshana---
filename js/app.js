@@ -423,3 +423,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+document.querySelectorAll(".card").forEach(card => {
+
+  card.addEventListener("click", function(e){
+
+    const ripple = document.createElement("span");
+
+    ripple.classList.add("ripple");
+
+    const rect = card.getBoundingClientRect();
+
+    ripple.style.left =
+      e.clientX - rect.left + "px";
+
+    ripple.style.top =
+      e.clientY - rect.top + "px";
+
+    card.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+
+  });
+
+});
