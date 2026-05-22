@@ -2327,3 +2327,12 @@ body{
   }
 
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern&display=swap');
+
+body,
+textarea,
+input,
+canvas {
+  font-family: 'Noto Sans Syriac Eastern', sans-serif !important;
+}
