@@ -2120,3 +2120,16 @@ body {
     font-size: 56px;
   }
 }
+
+.features-grid a{
+  text-decoration:none;
+}
+
+.feature-card{
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-5px);
+}
