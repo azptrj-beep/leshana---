@@ -2124,19 +2124,10 @@ body {
 /* =========================
    FEATURE LINKS
 ========================= */
-
-.feature-link{
-  text-decoration:none;
-  color:white;
-  display:block;
+.features .card{
   cursor:pointer;
-  transition:0.3s ease;
 }
 
-.feature-link:hover{
-  transform:translateY(-5px) scale(1.02);
-}
-
-.feature-link:active{
-  transform:scale(0.98);
+.features .card:hover{
+  transform:translateY(-5px);
 }
