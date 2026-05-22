@@ -1,4 +1,23 @@
-/* =========================
+function playSound(type) {
+
+  let src = "";
+
+  if (type === "correct") {
+    src = "assets/audio/correct.mp3";
+  }
+
+  if (type === "wrong") {
+    src = "assets/audio/wrong.mp3";
+  }
+
+  if (type === "click") {
+    src = "assets/audio/click.mp3";
+  }
+
+  const audio = new Audio(src);
+  audio.volume = 0.7;
+  audio.play();
+}/* =========================
    QUIZ UI SOURETH ENGINE
    (AFFICHAGE UNIQUEMENT)
 ========================= */
