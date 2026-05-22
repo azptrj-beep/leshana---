@@ -206,3 +206,49 @@
     transform: translateX(0);
   }
 }
+
+/* =========================
+   QUESTION TRANSITION
+========================= */
+
+.quiz-box.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.2s ease;
+}
+
+.quiz-box.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.2s ease;
+}
+
+/* =========================
+   FEEDBACK FULL SCREEN
+========================= */
+
+.feedback-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  z-index: 9999;
+  animation: pop 0.4s ease;
+}
+
+.feedback-correct {
+  background: rgba(0, 200, 83, 0.9);
+}
+
+.feedback-wrong {
+  background: rgba(213, 0, 0, 0.9);
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
