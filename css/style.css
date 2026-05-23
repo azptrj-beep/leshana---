@@ -61,7 +61,8 @@ url('../assets/fonts/Adiabene.ttf') format('truetype');
 @font-face {
   font-family: 'Nohadra';
   src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
-        format('truetype');
+url('../assets/fonts/Nohadra.ttf') format('truetype');
+    format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -70,6 +71,8 @@ url('../assets/fonts/Adiabene.ttf') format('truetype');
 @font-face {
   font-family: 'AAssyrian';
   src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
+url('../assets/fonts/AAssyrian.ttf') format('truetype');
+
         format('truetype');
   font-weight: normal;
   font-style: normal;
