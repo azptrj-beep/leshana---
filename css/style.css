@@ -1164,8 +1164,8 @@ body.light-mode nav a {
     <!-- KHETH -->
     <div class="letter-card">
       <div class="letter soureth-title">ܚ</div>
-      <div class="latin">Ḥ - Kheth</div>
-      <button class="audio-btn" onclick="playAudio('audio/kheth.mp3')">
+      <div class="latin">Ḥ - heth</div>
+      <button class="audio-btn" onclick="playAudio('audio/heth.mp3')">
         🔊 Écouter
       </button>
     </div>
@@ -2328,16 +2328,25 @@ body{
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern&display=swap');
 
 body,
 textarea,
 input,
 canvas {
-  font-family: 'Noto Sans Syriac Eastern', sans-serif !important;
+  font-family: 'Adiabene', sans-serif !important;
 }
 
 textarea {
   direction: rtl;
   unicode-bidi: plaintext;
+}
+
+.letter-box,
+.guide,
+canvas,
+button,
+h1,
+h2,
+p {
+  font-family: "Adiabene", sans-serif !important;
 }
