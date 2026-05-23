@@ -2339,7 +2339,23 @@ body{
   font-family: 'Adiabene', 'Nohadra', 'AAssyrian', sans-serif !important;
 }
 
-body {
-  font-family: 'Poppins'
+textarea,
+input {
+  font-family: Arial, sans-serif;
+  direction: ltr;
+  unicode-bidi: plaintext;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+p, h1, h2, h3 {
+  word-break: break-word;
+}
+
+/* sécurité affichage syriaque */
+:lang(syr) {
+  font-family: 'Adiabene', sans-serif;
+  direction: rtl;
+}
