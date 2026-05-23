@@ -2371,3 +2371,89 @@ p, h1, h2, h3 {
   color: white !important;
 }
 
+
+/* =========================
+   MODULE ECRITURE CLEAN
+========================= */
+
+.model {
+
+  position: relative;
+
+  margin: 20px 0;
+}
+
+/* LETTRE PRINCIPALE */
+
+#letterDisplay {
+
+  font-family: 'Adiabene' !important;
+
+  font-size: 90px;
+
+  color: #0033a0;
+
+  direction: rtl;
+}
+
+/* LETTRE GUIDE */
+
+#guideLetter {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  font-family: 'Adiabene' !important;
+
+  font-size: 90px;
+
+  opacity: 0.12;
+
+  color: #0033a0;
+
+  pointer-events: none;
+
+  direction: rtl;
+}
+
+/* CANVAS */
+
+.canvas-wrapper {
+
+  display: flex;
+
+  justify-content: center;
+}
+
+#board {
+
+  width: min(90vw, 420px);
+
+  height: min(90vw, 420px);
+
+  background: white;
+
+  border: 2px solid #0033a0;
+
+  border-radius: 16px;
+
+  touch-action: none;
+}
+
+/* MODE SOMBRE */
+
+.dark-mode #letterDisplay,
+.dark-mode #guideLetter {
+
+  color: white !important;
+}
+
+.dark-mode #board {
+
+  background: #111;
+
+  border-color: white;
+}
