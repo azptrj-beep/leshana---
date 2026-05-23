@@ -147,7 +147,10 @@ function initCanvas() {
 
   ctx.lineWidth = 6;
   ctx.lineCap = "round";
-  ctx.strokeStyle = "#0033a0";
+  ctx.strokeStyle =
+  document.body.classList.contains("dark-mode")
+  ? "#ffffff"
+  : "#0033a0";
 
   setLetter();
 
