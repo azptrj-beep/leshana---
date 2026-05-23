@@ -2366,5 +2366,8 @@ p, h1, h2, h3 {
 }
 
 
-
+.dark-mode .letter-box,
+.dark-mode .guide {
+  color: white !important;
+}
 
