@@ -282,7 +282,7 @@ const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ
 
 let index = 0;
 
-ctx.font = "28px 'Noto Sans Syriac Eastern'";
+ctx.font = "60px 'Adiabene'";
 ctx.direction = "rtl";
 ctx.textAlign = "right";
 const canvas = document.getElementById("board");
