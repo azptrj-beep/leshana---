@@ -152,6 +152,13 @@ function initCanvas() {
   ? "#ffffff"
   : "#0033a0";
 
+
+const ctx = canvas.getContext("2d");
+
+ctx.font = "140px 'Adiabene'";
+ctx.direction = "rtl";
+ctx.textAlign = "center";
+
   setLetter();
 
   canvas.addEventListener("mousedown", startDraw);
