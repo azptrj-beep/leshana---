@@ -452,3 +452,12 @@ document.querySelectorAll(".card").forEach(card => {
   });
 
 });
+
+function setLetter() {
+  document.getElementById("letterDisplay").innerText = letters[index];
+  document.getElementById("guideLetter").innerText = letters[index];
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  drawing = false;
+}
