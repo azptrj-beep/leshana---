@@ -2443,6 +2443,92 @@ p, h1, h2, h3 {
   touch-action: none;
 }
 
+
+/* =========================================
+   ECRITURE TACTILE SOURETH MODERNE FIX
+========================================= */
+
+/* LETTRES MODELES */
+
+#letterDisplay,
+#guideLetter {
+
+  font-family: 'Adiabene' !important;
+
+  direction: rtl;
+
+  unicode-bidi: plaintext;
+
+  font-weight: normal;
+
+  font-style: normal;
+
+  line-height: 1;
+}
+
+/* LETTRE PRINCIPALE */
+
+#letterDisplay {
+
+  font-size: 110px;
+
+  color: #ffffff;
+}
+
+/* LETTRE GUIDE TRANSPARENTE */
+
+#guideLetter {
+
+  font-size: 170px;
+
+  opacity: 0.08;
+
+  color: #ffffff;
+
+  position: absolute;
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+/* CANVAS */
+
+#board {
+
+  background: #ffffff;
+
+  border: 3px solid #0033a0;
+
+  border-radius: 22px;
+
+  touch-action: none;
+}
+
+/* MODE SOMBRE */
+
+body.dark-mode #board {
+
+  background: #111827;
+
+  border-color: #00cfff;
+}
+
+body.dark-mode #letterDisplay {
+
+  color: #ffffff !important;
+}
+
+body.dark-mode #guideLetter {
+
+  color: #ffffff !important;
+
+  opacity: 0.06;
+}
 /* MODE SOMBRE */
 
 .dark-mode #letterDisplay,
