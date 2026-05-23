@@ -1,84 +1,78 @@
 @font-face {
 
-  font-family:'Adiabene';
+font-family:'Adiabene';
 
-  src:
-    url('assets/fonts/Adiabene.woff2') format('woff2'),
+src:
+url('assets/fonts/Adiabene.woff2') format('woff2'),
+url('assets/fonts/Adiabene.ttf') format('truetype');
 
-        url('assets/fonts/Adiabene.ttf') format('ttf'),
-
-}
+}and
 
 /* =========================
-   RESET
+RESET
 ========================= */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
+
 /* =========================
-   VARIABLES
+VARIABLES
 ========================= */
 
 :root {
 
-  --blue-main: #0033a0;
-  --blue-light: #0066ff;
-  --cyan: #00cfff;
+--blue-main: #0033a0;
+--blue-light: #0066ff;
+--cyan: #00cfff;
 
-  --red-main: #d40000;
+--red-main: #d40000;
 
-  --dark-bg: #050816;
+--dark-bg: #050816;
 
-  --glass:
-    rgba(255,255,255,0.08);
+--glass:
+rgba(255,255,255,0.08);
 
-  --glass-border:
-    rgba(255,255,255,0.12);
+--glass-border:
+rgba(255,255,255,0.12);
 
-  --text-light: #ffffff;
-  --text-soft: #d9e2ff;
+--text-light: #ffffff;
+--text-soft: #d9e2ff;
 }
 
 /* =========================
-   FONTS
+FONTS
 ========================= */
 
 @font-face {
-  font-family: 'Adiabene';
-  src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
+font-family: 'Adiabene';
+src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
 url('../assets/fonts/Adiabene.ttf') format('truetype');
-
-        format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
 
 @font-face {
-  font-family: 'Nohadra';
-  src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
-url('../assets/fonts/Nohadra.ttf') format('truetype');
-    format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+font-family: 'Nohadra';
+src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
+url('../assets/fonts/nohadra.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
 
 @font-face {
-  font-family: 'AAssyrian';
-  src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
-url('../assets/fonts/AAssyrian.ttf') format('truetype');
-
-        format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+font-family: 'AAssyrian';
+src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
+url('../assets/fonts/aassyrian.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
-
 /* =========================
    BODY
 ========================= */
