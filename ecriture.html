@@ -8,16 +8,49 @@
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0033a0">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern&display=swap" rel="stylesheet"> 
 
 <style>
+
+/* =========================
+   FONT ADIABENE
+========================= */
+
+@font-face {
+  font-family: "Adiabene";
+
+  src:
+    url("assets/fonts/Adiabene.woff2") format("woff2"),
+    url("assets/fonts/Adiabene.ttf") format("truetype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================
+   BODY
+========================= */
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Adiabene", Arial, sans-serif;
   margin: 0;
   background: #f4f7ff;
   text-align: center;
 }
 
+/* =========================
+   FORCE FONT ADIABENE
+========================= */
+
+.letter-box,
+.guide,
+canvas,
+button,
+h1,
+h2,
+p,
+nav a {
+  font-family: "Adiabene", sans-serif !important;
+}
 header {
   background: #0033a0;
   color: white;
