@@ -125,38 +125,7 @@ function checkAnswer(answer) {
   }
 }
 
-/* =========================================
-   CANVAS SOURETH (FIX COMPLET)
-========================================= */
-
-const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"];
-
-let index = 0;
-let drawing = false;
-
-let canvas;
-let ctx;
-
-function initCanvas() {
-  canvas = document.getElementById("board");
-  if (!canvas) return;
-
-  ctx = canvas.getContext("2d");
-
-  resizeCanvas();
-
-  ctx.lineWidth = 6;
-  ctx.lineCap = "round";
-  ctx.strokeStyle =
-  document.body.classList.contains("dark-mode")
-  ? "#ffffff"
-  : "#0033a0";
-
-
-const ctx = canvas.getContext("2d");
-
-ctx.font = "140px 'Adiabene'";
-ctx.direction = "rtl";
+ = "rtl";
 ctx.textAlign = "center";
 
   setLetter();
@@ -181,52 +150,8 @@ function getPos(e) {
   };
 }
 
-function startDraw(e) {
-  drawing = true;
 
-  const pos = getPos(e);
-
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
-
-  e.preventDefault();
-}
-
-function draw(e) {
-  if (!drawing) return;
-
-  const pos = getPos(e);
-
-  ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
-
-  e.preventDefault();
-}
-
-function stopDraw() {
-  drawing = false;
-}
-
-function clearCanvas() {
-  if (!ctx) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-function resizeCanvas() {
-  if (!canvas) return;
-
-  const size = Math.min(window.innerWidth * 0.85, window.innerHeight * 0.6);
-
-  canvas.width = size;
-  canvas.height = size;
-}
-
-window.addEventListener("resize", resizeCanvas);
-
-/* =========================================
+ =========================================
    LETTER SYSTEM
 ========================================= */
 
