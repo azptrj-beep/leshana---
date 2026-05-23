@@ -70,18 +70,14 @@
 ========================= */
 
 body {
-
-  font-family: 'Poppins', sans-serif;
-
-  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
   background: var(--bg);
   color: var(--text);
-  transition: 0.3s ease;
-}
-
+  text-align: center;
   overflow-x: hidden;
-
   min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
 /* =========================
@@ -2358,4 +2354,8 @@ p, h1, h2, h3 {
 :lang(syr) {
   font-family: 'Adiabene', sans-serif;
   direction: rtl;
+}
+
+canvas {
+  font-family: Arial, sans-serif !important;
 }
