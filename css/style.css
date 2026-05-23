@@ -2359,3 +2359,9 @@ p, h1, h2, h3 {
 canvas {
   font-family: Arial, sans-serif !important;
 }
+
+
+canvas {
+  touch-action: none;
+  -ms-touch-action: none;
+}
