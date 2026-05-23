@@ -2341,12 +2341,3 @@ textarea {
   unicode-bidi: plaintext;
 }
 
-.letter-box,
-.guide,
-canvas,
-button,
-h1,
-h2,
-p {
-  font-family: "Adiabene", sans-serif !important;
-}
