@@ -4,7 +4,7 @@
 
   src:
     url('assets/fonts/Adiabene.woff2') format('woff2'),
-    url('assets/fonts/Adiabene.ttf') format('truetype');
+    
 
 }
 
@@ -49,7 +49,7 @@
 @font-face {
   font-family: 'Adiabene';
   src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
-       url('../assets/fonts/Adiabene.ttf') format('truetype');
+        format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -58,7 +58,7 @@
 @font-face {
   font-family: 'Nohadra';
   src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
-       url('../assets/fonts/nohadra.ttf') format('truetype');
+        format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -67,7 +67,7 @@
 @font-face {
   font-family: 'AAssyrian';
   src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
-       url('../assets/fonts/aassyrian.ttf') format('truetype');
+        format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
