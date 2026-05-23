@@ -1,288 +1,323 @@
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<link rel="icon" href="images/logo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Écriture Soureth</title>
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0033a0">
+  <meta charset="UTF-8" />
 
-<style>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
 
-/* =========================
-   FONT ADIABENE
-========================= */
+  <title>Leshana-Ed-Soureth</title>
 
-@font-face {
-  font-family: "Adiabene";
+  <link rel="icon"
+        href="images/logo.png" />
 
-  src:
-    url("assets/fonts/Adiabene.woff2") format("woff2"),
-    url("assets/fonts/Adiabene.ttf") format("truetype");
+  <!-- GOOGLE FONT -->
 
-  font-weight: normal;
-  font-style: normal;
-}
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-/* =========================
-   BODY
-========================= */
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-body {
-  font-family: "Adiabene", Arial, sans-serif;
-  margin: 0;
-  background: #f4f7ff;
-  text-align: center;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-/* =========================
-   FORCE FONT ADIABENE
-========================= */
+  <!-- CSS -->
 
-.letter-box,
-.guide,
-canvas,
-button,
-h1,
-h2,
-p,
-nav a {
-  font-family: "Adiabene", sans-serif !important;
-}
-header {
-  background: #0033a0;
-  color: white;
-  padding: 20px;
-}
+  <link rel="stylesheet"
+        href="css/style.css">
 
-nav a {
-  margin: 10px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-.container {
-  padding: 20px;
-}
-
-.letter-box {
-  font-size: 80px;
-  margin: 20px;
-  color: #0033a0;
-}
-
-.canvas-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-canvas {
-  border: 2px solid #0033a0;
-  background: white;
-  border-radius: 10px;
-  touch-action: none;
-}
-
-.guide {
-  font-size: 120px;
-  opacity: 0.1;
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  top: 40px;
-  left: 40px;
-}
-
-.btn {
-  background: #d40000;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.dark-mode {
-  background: #121212;
-  color: white;
-}
-
-.dark-mode header {
-  background: #111;
-}
-
-.dark-mode canvas {
-  background: #1f1f1f;
-  border-color: white;
-}
-
-.dark-mode .letter-box {
-  color: white;
-}
-</style>
 </head>
 
 <body>
 
-<header>
-  <h1>✍️ Écriture du Soureth</h1>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="alphabet.html">Alphabet</a>
-    <a href="voyelles.html">Voyelles</a>
-    <a href="#" onclick="toggleDarkMode()">Mode sombre</a>
-  </nav>
-</header>
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-<div class="container">
+  <header>
 
-  <h2>Entraîne-toi à écrire</h2>
-  <p>Trace la lettre avec ton doigt ou ta souris</p>
+    <div class="logo-container">
 
-  <div class="letter-box" id="letterDisplay">ܐ</div>
+      <img src="images/logo.png"
+           alt="Logo"
+           class="logo">
 
-  <div class="canvas-wrapper">
-    <div class="guide" id="guideLetter">ܐ</div>
-    <canvas id="board" width="300" height="300"></canvas>
-  </div>
+      <div>
 
-  <br>
+        <h1 class="title">
+          Leshana-Ed-Soureth
+        </h1>
 
-  <button class="btn" onclick="clearCanvas()">Effacer</button>
-<button class="btn" onclick="nextLetter()">Lettre suivante</button>
-<button class="btn" onclick="speakLetter()">🔊 Prononcer</button>
+        <p class="subtitle">
+          Plateforme moderne d’apprentissage du Soureth
+        </p>
 
-</div>
+      </div>
 
-<script>
-const letters = ["ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"];
+    </div>
 
-let index = 0;
+    <!-- NAVIGATION -->
 
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+    <nav>
 
-let drawing = false;
+      <a href="index.html">🏠 Accueil</a>
 
-function speakLetter() {
-  speechSynthesis.cancel();
+      <a href="alphabet.html">🔠 Alphabet</a>
 
-  const letter = letters[index];
+      <a href="voyelles.html">🔤 Voyelles</a>
 
-  const map = {
-    "ܐ": "a",
-    "ܒ": "bé",
-    "ܓ": "gué",
-    "ܕ": "dé",
-    "ܗ": "hé",
-    "ܘ": "ou",
-    "ܙ": "zé",
-    "ܚ": "kh",
-    "ܛ": "t",
-    "ܝ": "y",
-    "ܟ": "k",
-    "ܠ": "l",
-    "ܡ": "m",
-    "ܢ": "n",
-    "ܣ": "s",
-    "ܥ": "a guttural",
-    "ܦ": "p",
-    "ܨ": "ts",
-    "ܩ": "q",
-    "ܪ": "r",
-    "ܫ": "sh",
-    "ܬ": "t"
-  };
+      <a href="ecriture.html">✍️ Écriture</a>
 
-  const utterance = new SpeechSynthesisUtterance(map[letter] || letter);
+      <a href="keyboard.html">⌨️ Clavier</a>
 
-  utterance.lang = "fr-FR";
-  utterance.rate = 0.9;
-  utterance.pitch = 1;
+      <a href="traduction.html">🌍 Traduction</a>
 
-  window.speechSynthesis.speak(utterance);
-}
-  
+      <a href="quiz.html">🎮 Quiz</a>
 
-function setLetter() {
-  document.getElementById("letterDisplay").innerText = letters[index];
-  document.getElementById("guideLetter").innerText = letters[index];
-}
+      <a href="progression.html">📈 Progression</a>
 
-function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
+      <a href="revision.html">🧠 Révision</a>
 
-  const touch = e.touches?.[0] || e.changedTouches?.[0];
+      <a href="vocal.html">🎤 Vocal</a>
 
-  return {
-    x: (touch ? touch.clientX : e.clientX) - rect.left,
-    y: (touch ? touch.clientY : e.clientY) - rect.top
-  };
-}
+      <a href="#"
+         onclick="toggleDarkMode()">
+         🌙 Mode sombre
+      </a>
 
-function start(e) {
-  drawing = true;
+    </nav>
 
-  const pos = getPos(e);
+  </header>
 
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
 
-  e.preventDefault();
-}
+  <section class="hero">
 
-function draw(e) {
-  if (!drawing) return;
+    <div class="hero-content">
 
-  const pos = getPos(e);
+      <h1>
+        Apprendre le Soureth moderne
+      </h1>
 
-  ctx.lineWidth = 6;
-  ctx.lineCap = "round";
-  ctx.strokeStyle = "#0033a0";
+      <p>
+        Découvre l’alphabet assyro-chaldéen,
+        les voyelles,
+        l’écriture moderne,
+        le clavier Soureth,
+        la traduction,
+        les quiz interactifs
+        et les audios natifs.
+      </p>
 
-  ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
+      <div class="hero-buttons">
 
-  ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
+        <a href="alphabet.html"
+           class="btn btn-primary">
+          🔠 Commencer
+        </a>
 
-  e.preventDefault();
-}
+        <a href="keyboard.html"
+           class="btn btn-secondary">
+          ⌨️ Clavier Soureth
+        </a>
 
-function stop() {
-  drawing = false;
-}
+      </div>
 
-canvas.addEventListener("mousedown", start);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", stop);
-canvas.addEventListener("mouseleave", stop);
+      <!-- DEMO SOURETH -->
 
-canvas.addEventListener("touchstart", start, { passive: false });
-canvas.addEventListener("touchmove", draw, { passive: false });
-canvas.addEventListener("touchend", stop);
+      <div class="hero-demo card">
 
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+        <div class="soureth-title">
+          ܫܠܡܐ
+        </div>
 
-function nextLetter() {
-  index = (index + 1) % letters.length;
-  setLetter();
-  clearCanvas();
-}
+        <p>
+          Shlama — Bonjour
+        </p>
 
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-}
+      </div>
 
-setLetter();
-</script>
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FEATURES
+  ========================== -->
+
+  <section class="features">
+
+    <div class="card">
+
+      <div class="card-icon">🔠</div>
+
+      <h2>Alphabet interactif</h2>
+
+      <p>
+        Apprends les lettres du Soureth
+        avec audio,
+        animations
+        et cartes interactives.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">⌨️</div>
+
+      <h2>Clavier Soureth</h2>
+
+      <p>
+        Écris facilement en Soureth
+        grâce au clavier moderne intégré.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🌍</div>
+
+      <h2>Traduction</h2>
+
+      <p>
+        Traduction Français ⇄ Soureth
+        avec translittération moderne.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">✍️</div>
+
+      <h2>Écriture tactile</h2>
+
+      <p>
+        Dessine les lettres
+        avec ton doigt
+        ou ta souris.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🔊</div>
+
+      <h2>Audio natif</h2>
+
+      <p>
+        Écoute de vraies voix
+        assyro-chaldéennes.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">🎮</div>
+
+      <h2>Quiz intelligents</h2>
+
+      <p>
+        Progresse grâce aux quiz,
+        niveaux
+        et révisions automatiques.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       CLAVIER DEMO
+  ========================== -->
+
+  <section class="translator-box">
+
+    <div class="card">
+
+      <h2>
+        ⌨️ Essayer le clavier Soureth
+      </h2>
+
+      <textarea id="editor"
+                class="soureth-writing"
+                placeholder="Écrire en Soureth..."></textarea>
+
+      <div id="keyboard">
+
+        <button onclick="insertLetter('ܐ')">ܐ</button>
+        <button onclick="insertLetter('ܒ')">ܒ</button>
+        <button onclick="insertLetter('ܓ')">ܓ</button>
+        <button onclick="insertLetter('ܕ')">ܕ</button>
+        <button onclick="insertLetter('ܗ')">ܗ</button>
+        <button onclick="insertLetter('ܘ')">ܘ</button>
+        <button onclick="insertLetter('ܙ')">ܙ</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       PROGRESSION
+  ========================== -->
+
+  <section class="progress-section">
+
+    <div class="progress-card">
+
+      <h2>
+        📈 Votre progression
+      </h2>
+
+      <p>
+        Niveau actuel : Débutant
+      </p>
+
+      <div class="progress-bar">
+
+        <div class="progress"></div>
+
+      </div>
+
+      <p style="margin-top:15px;">
+        35% complété
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+      © 2026 Leshana-Ed-Soureth
+      — Plateforme éducative assyro-chaldéenne moderne
+    </p>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="js/app.js"></script>
+  <script src="js/keyboard.js"></script>
 
 </body>
-</html>
 
+</html>
