@@ -4,13 +4,18 @@
    INIT
 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS OK ✔");
+import { initMenu } from "./menu.js";
+import { initTheme } from "./theme.js";
+import { initState } from "./state.js";
+import { initUI } from "./ui.js";
+import { initRouter } from "./router.js";
 
+document.addEventListener("DOMContentLoaded", () => {
+  initState();
   initTheme();
   initMenu();
-  initProgress();
-  initEffects();
+  initUI();
+  initRouter();
 });
 
 /* =========================
@@ -150,20 +155,3 @@ function initEffects() {
   });
 }
 
-"use strict";
-
-import { initTheme } from "./theme.js";
-import { initMenu } from "./menu.js";
-import { initState } from "./state.js";
-import { initUI } from "./ui.js";
-import { initRouter } from "./router.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-  initState();
-  initTheme();
-  initMenu();
-  initUI();
-  initRouter();
-
-  console.log("🚀 App PRO chargée");
-});
