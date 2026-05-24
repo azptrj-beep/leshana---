@@ -172,7 +172,7 @@
         </div>
 
         <p>
-          Shlama : Paix — Bonjour — Salut
+          Shlama : Paix — (Bonjour — Salut) 
         </p>
 
       </div>
@@ -362,6 +362,16 @@
         <button onclick="insertLetter('ܪ')">ܪ</button>
         <button onclick="insertLetter('ܫ')">ܫ</button>
         <button onclick="insertLetter('ܬ')">ܬ</button>
+        <button 
+onclick="insertLetter('̈')">̈</button>
+        <button onclick="insertLetter('ܲ')">ܲ</button>
+        <button onclick="insertLetter('‌ܸ')">ܸ</button>
+        <button onclick="insertLetter('ܹ')">ܹ</button>
+        <button onclick="insertLetter('̮')">̮</button>
+        <button onclick="insertLetter('݂')">݂</button>
+        <button onclick="insertLetter('̈')">̈</button>
+        <button onclick="insertLetter('ܼ')">ܼ</button>
+        <button onclick="insertLetter('ܿ')">ܿ</button
 
       </div>
 
@@ -458,55 +468,53 @@
 
 </div>
 
-<a href="soureth-adiabene.html">Soureth Moderne</a>
+<a href="soureth-Adiabene.html">Soureth Moderne</a>
 
 <script>
 const canvas = document.getElementById("draw");
-const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-}
+if (canvas) {
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+  const ctx = canvas.getContext("2d");
 
-// STYLE SOURETH FORCÉ
-ctx.strokeStyle = "#38bdf8";
-ctx.lineWidth = 3;
-ctx.lineCap = "round";
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
 
-// IMPORTANT : police soureth (même si canvas n'affiche pas texte ici, utile si tu ajoutes du texte)
-ctx.font = "28px 'Noto Sans Syriac Eastern'";
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
 
-// DRAW STATE
-let drawing = false;
+  ctx.strokeStyle = "#38bdf8";
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
 
-canvas.addEventListener("pointerdown", (e) => {
-  drawing = true;
-  ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
-});
+  let drawing = false;
 
-canvas.addEventListener("pointermove", (e) => {
-  if (!drawing) return;
+  canvas.addEventListener("pointerdown", (e) => {
+    drawing = true;
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+  });
 
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
-});
+  canvas.addEventListener("pointermove", (e) => {
+    if (!drawing) return;
 
-canvas.addEventListener("pointerup", () => {
-  drawing = false;
-});
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  });
 
-canvas.addEventListener("pointerleave", () => {
-  drawing = false;
-});
+  canvas.addEventListener("pointerup", () => {
+    drawing = false;
+  });
 
-// CLEAR FUNCTION (bouton)
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  canvas.addEventListener("pointerleave", () => {
+    drawing = false;
+  });
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
 </script>
 
