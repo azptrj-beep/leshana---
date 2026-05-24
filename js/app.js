@@ -4,18 +4,13 @@
    INIT
 ========================= */
 
-import { initMenu } from "./menu.js";
-import { initTheme } from "./theme.js";
-import { initState } from "./state.js";
-import { initUI } from "./ui.js";
-import { initRouter } from "./router.js";
-
 document.addEventListener("DOMContentLoaded", () => {
-  initState();
+  console.log("JS OK ✔");
+
   initTheme();
   initMenu();
-  initUI();
-  initRouter();
+  initProgress();
+  initEffects();
 });
 
 /* =========================
@@ -154,4 +149,3 @@ function initEffects() {
     });
   });
 }
-
