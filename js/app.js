@@ -216,3 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initUI();
   initRouter();
 });
+
+function insertLetter(letter) {
+  const editor = document.getElementById("editor");
+  if (!editor) return;
+
+  editor.value += letter;
+}
+
+window.insertLetter = insertLetter;
