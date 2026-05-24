@@ -893,7 +893,7 @@ body.dark {
 .soureth-classic,
 :lang(syr) {
 
-  font-family: 'Adiabene', 'nohadra', 'Amassyrian', sans-serif !important;
+  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
 
   direction: rtl;
 
@@ -1977,7 +1977,7 @@ html, body {
 
   font-family:
     'Adiabene',
-    'Nohadra', 
+    'nohadra', 
     'assyrian', 
     sans-serif !important;
 
@@ -2035,7 +2035,7 @@ body {
 
   font-family:
     'Adiabene',
-    'Nohadra',
+    'nohadra',
     sans-serif !important;
 
   direction: rtl;
