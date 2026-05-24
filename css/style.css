@@ -2183,29 +2183,16 @@ body{
 @media (max-width:768px){
 
   .features{
-    gap:16px;
-    padding:20px 14px;
+    grid-template-columns:1fr;
   }
 
   .card{
-    min-height:170px;
-    padding:20px;
-    border-radius:20px;
-  }
-
-  .card-icon{
-    font-size:34px;
-    margin-bottom:12px;
+    min-height:150px;
+    padding:18px;
   }
 
   .card h2{
-    font-size:20px;
-    margin-bottom:10px;
-  }
-
-  .card p{
-    font-size:14px;
-    line-height:1.5;
+    font-size:18px;
   }
 
 }
