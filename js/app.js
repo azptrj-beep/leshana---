@@ -1,102 +1,87 @@
 "use strict";
 
-/* =========================================
-   LESHANA-ED-SOURETH - CLEAN APP JS (FIXED)
-========================================= */
+/* =========================
+   INIT
+========================= */
 
-console.log("JS chargé ✔");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("JS OK ✔");
 
-/* =========================================
+  initTheme();
+  initMenu();
+  initProgress();
+  initEffects();
+});
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+function initMenu() {
+  const btn = document.querySelector(".menu-toggle");
+  const nav = document.querySelector("nav");
+
+  if (!btn || !nav) return;
+
+  btn.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+}
+
+/* =========================
    THEME
-========================================= */
+========================= */
 
 function toggleTheme() {
   document.body.classList.toggle("light-mode");
-
   localStorage.setItem(
     "theme",
     document.body.classList.contains("light-mode")
   );
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "true") {
+function initTheme() {
+  const saved = localStorage.getItem("theme");
+  if (saved === "true") {
     document.body.classList.add("light-mode");
   }
-
-  loadProgress();
-  initCanvas();
-  initUIEffects();
-});
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-function toggleMenu() {
-  const nav = document.querySelector("nav");
-  if (nav) nav.classList.toggle("active");
 }
 
-/* =========================================
+/* =========================
    AUDIO
-========================================= */
+========================= */
 
 function playAudio(src) {
-  const audio = new Audio(src);
-  audio.play();
+  new Audio(src).play();
 }
 
-/* =========================================
+/* =========================
    PROGRESSION
-========================================= */
+========================= */
 
-let xp = parseInt(localStorage.getItem("xp")) || 0;
-let level = parseInt(localStorage.getItem("level")) || 1;
+let xp = Number(localStorage.getItem("xp")) || 0;
+let level = Number(localStorage.getItem("level")) || 1;
 
-function xpNeeded(level) {
-  return level * 50;
-}
+function gainXP(val) {
+  xp += val;
 
-function gainXP(amount) {
-  xp += amount;
-
-  const needed = xpNeeded(level);
-
-  if (xp >= needed) {
-    xp -= needed;
+  if (xp >= level * 50) {
+    xp -= level * 50;
     level++;
-    showLevelUp();
+    alert("Level Up !");
   }
 
-  saveData();
+  save();
   updateUI();
 }
 
-function showLevelUp() {
-  alert("🔥 LEVEL UP ! Niveau " + level);
-}
-
-function saveData() {
+function save() {
   localStorage.setItem("xp", xp);
   localStorage.setItem("level", level);
 }
 
-function loadProgress() {
-  const saved = localStorage.getItem("progress");
-  if (saved) updateProgress(parseInt(saved));
-}
-
-function updateProgress(value) {
-  const progress = document.querySelector(".progress");
-  if (!progress) return;
-
-  const finalValue = Math.min(value, 100);
-  progress.style.width = finalValue + "%";
-
-  localStorage.setItem("progress", finalValue);
+function initProgress() {
+  updateUI();
 }
 
 function updateUI() {
@@ -107,118 +92,60 @@ function updateUI() {
   if (levelEl) levelEl.textContent = level;
 }
 
-/* =========================================
-   QUIZ SIMPLE
-========================================= */
+/* =========================
+   QUIZ
+========================= */
 
-function checkAnswer(answer) {
-  const result = document.getElementById("quiz-result");
-  if (!result) return;
+function checkAnswer(ans) {
+  const res = document.getElementById("quiz-result");
+  if (!res) return;
 
-  const correct = "ܐ";
-
-  if (answer === correct) {
+  if (ans === "ܐ") {
     gainXP(10);
-    result.innerHTML = "✅ Bonne réponse ! +10 XP";
+    res.textContent = "Bonne réponse";
   } else {
-    result.innerHTML = "❌ Mauvaise réponse";
+    res.textContent = "Mauvaise réponse";
   }
 }
 
- = "rtl";
-ctx.textAlign = "center";
+/* =========================
+   CANVAS SAFE (IMPORTANT)
+========================= */
 
-  setLetter();
+function initCanvas() {
+  const canvas = document.getElementById("draw");
+  if (!canvas) return;
 
-  canvas.addEventListener("mousedown", startDraw);
-  canvas.addEventListener("mousemove", draw);
-  canvas.addEventListener("mouseup", stopDraw);
-  canvas.addEventListener("mouseleave", stopDraw);
+  const ctx = canvas.getContext("2d");
 
-  canvas.addEventListener("touchstart", startDraw, { passive: false });
-  canvas.addEventListener("touchmove", draw, { passive: false });
-  canvas.addEventListener("touchend", stopDraw);
-}
+  let drawing = false;
 
-function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
-  const touch = e.touches?.[0] || e.changedTouches?.[0];
-
-  return {
-    x: (touch ? touch.clientX : e.clientX) - rect.left,
-    y: (touch ? touch.clientY : e.clientY) - rect.top
-  };
-}
-
-
- =========================================
-   LETTER SYSTEM
-========================================= */
-
-function setLetter() {
-  const letter = letters[index];
-
-  const display = document.getElementById("letterDisplay");
-  const guide = document.getElementById("guideLetter");
-
-  if (display) display.innerText = letter;
-  if (guide) guide.innerText = letter;
-
-  clearCanvas();
-  drawing = false;
-}
-
-function nextLetter() {
-  index = (index + 1) % letters.length;
-  setLetter();
-}
-
-/* =========================================
-   DARK MODE
-========================================= */
-
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-}
-
-/* =========================================
-   UI EFFECTS
-========================================= */
-
-function initUIEffects() {
-  const buttons = document.querySelectorAll("button");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("mouseenter", () => {
-      btn.style.transform = "scale(1.05)";
-    });
-
-    btn.addEventListener("mouseleave", () => {
-      btn.style.transform = "scale(1)";
-    });
+  canvas.addEventListener("pointerdown", (e) => {
+    drawing = true;
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
   });
 
+  canvas.addEventListener("pointermove", (e) => {
+    if (!drawing) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  });
+
+  canvas.addEventListener("pointerup", () => {
+    drawing = false;
+  });
+}
+
+/* =========================
+   EFFECTS SAFE
+========================= */
+
+function initEffects() {
   document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", (e) => {
-      const ripple = document.createElement("span");
-      ripple.classList.add("ripple");
-
-      const rect = card.getBoundingClientRect();
-
-      ripple.style.left = (e.clientX - rect.left) + "px";
-      ripple.style.top = (e.clientY - rect.top) + "px";
-
-      card.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
+    card.addEventListener("click", () => {
+      card.style.transform = "scale(1.02)";
+      setTimeout(() => card.style.transform = "", 150);
     });
   });
 }
-
-/* =========================================
-   PROTECTION
-========================================= */
-
-document.addEventListener("click", () => {
-  speechSynthesis.resume();
-});
