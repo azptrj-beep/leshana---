@@ -263,15 +263,3 @@ footer {
   color: white;
   font-size: 22px;
 }
-
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
-
-nav.open {
-  display: flex !important;
-}
