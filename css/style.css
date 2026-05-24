@@ -1110,17 +1110,34 @@ canvas {
 /* =========================
    BLOC SHLAMA COMPACT
 ========================= */
+/* =========================
+   BLOC SHLAMA COMPACT
+========================= */
+
 .hero-demo.card{
-  max-width:75px;
-  padding:8px;
+  max-width:90px;
+  margin:16px auto 0;
+  padding:10px;
+  border-radius:14px;
 }
 
+/* TEXTE SOURETH */
 .soureth-title{
-  font-size:clamp(18px,5vw,30px);
+  font-family:'Adiabene';
+  direction:rtl;
+
+  font-size:clamp(22px,6vw,40px);
+
+  line-height:1;
+
+  margin-bottom:2px;
 }
 
+/* TEXTE PAIX */
 .hero-demo p{
-  font-size:0.65rem;
+  font-size:0.72rem;
+  line-height:1.15;
+  margin:0;
 }
 /* =========================
    MOBILE
