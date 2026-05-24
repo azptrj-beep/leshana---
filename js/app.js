@@ -200,3 +200,17 @@ initQuiz();
 document.addEventListener("click", () => {
   speechSynthesis.resume();
 });
+
+import { initMenu } from "./menu.js";
+import { initTheme } from "./theme.js";
+import { initState } from "./state.js";
+import { initUI } from "./ui.js";
+import { initRouter } from "./router.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initState();
+  initTheme();
+  initMenu();
+  initUI();
+  initRouter();
+});
