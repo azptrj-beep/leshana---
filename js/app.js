@@ -192,6 +192,8 @@ document.querySelectorAll(".card").forEach(card => {
 
 });
 
+import { initQuiz } from "./quiz.js";
+initQuiz();
  =========================================
    PROTECTION
 ========================================= */
