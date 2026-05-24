@@ -2,12 +2,9 @@
 
 "use strict";
 
-keyboard.js
-function insertLetter(letter) {
+export function insertLetter(letter) {
+  const input = document.getElementById("editor");
+  if (!input) return;
 
-  const editor = document.getElementById('editor');
-
-  editor.value += letter;
-
-  editor.focus();
+  input.value += letter;
 }
