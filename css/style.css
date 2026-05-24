@@ -5,6 +5,49 @@ src:
 url('assets/fonts/Adiabene.woff2') format('woff2'),
 url('assets/fonts/Adiabene.ttf') format('truetype');
 }and
+
+.bottom-nav{
+
+  position:fixed;
+
+  bottom:15px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:92%;
+
+  display:flex;
+  justify-content:space-around;
+
+  background:rgba(10,15,35,0.92);
+
+  backdrop-filter:blur(12px);
+
+  border-radius:25px;
+
+  padding:14px;
+
+  z-index:9999;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.bottom-nav a{
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:26px;
+
+  transition:0.3s;
+}
+
+.bottom-nav a:hover{
+  transform:scale(1.2);
+}
+
 /* =========================
 RESET
 ========================= */
@@ -1899,13 +1942,130 @@ nav a:hover {
    FEATURES
 ========================= */
 
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  padding:40px 20px;
 }
 
+.feature-link{
+  text-decoration:none;
+  color:white;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,35,80,0.95),
+      rgba(10,15,40,0.95)
+    );
+
+  border-radius:28px;
+
+  padding:30px;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border .35s ease;
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(12px);
+
+  min-height:240px;
+}
+
+.card::before{
+  content:"";
+
+  position:absolute;
+
+  top:-100px;
+  left:-100px;
+
+  width:220px;
+  height:220px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,200,255,0.25),
+      transparent 70%
+    );
+
+  transition:0.5s;
+}
+
+.card:hover{
+  transform:
+    translateY(-10px)
+    scale(1.02);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    0 0 25px rgba(0,200,255,0.25);
+
+  border:1px solid rgba(0,200,255,0.35);
+}
+
+.card:hover::before{
+  transform:scale(1.5);
+}
+
+.card-icon{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.card p{
+  opacity:0.85;
+  line-height:1.7;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+}
+
+.ripple{
+  position:absolute;
+
+  width:20px;
+  height:20px;
+
+  background:rgba(255,255,255,0.5);
+
+  border-radius:50%;
+
+  transform:translate(-50%,-50%);
+
+  animation:rippleEffect .6s linear;
+}
+
+@keyframes rippleEffect{
+
+  from{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(0);
+  }
+
+  to{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(15);
+  }
+
+}
 /* =========================
    QUIZ
 ========================= */
