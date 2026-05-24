@@ -6,14 +6,14 @@
 let xp = parseInt(localStorage.getItem("xp")) || 0;
 let level = parseInt(localStorage.getItem("level")) || 1;
 
-/* Alphabet */
+let index = 0;
+
+/* Alphabet Soureth */
 const letters = [
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
   "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
   "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
 ];
-
-let index = 0;
 
 /* Canvas */
 let canvas, ctx, drawing = false;
@@ -24,6 +24,7 @@ let canvas, ctx, drawing = false;
 window.addEventListener("DOMContentLoaded", () => {
   initTheme();
   loadProgress();
+  updateUI();
   initCanvas();
   initUIEffects();
   setLetter();
@@ -41,7 +42,8 @@ function toggleTheme() {
 }
 
 function initTheme() {
-  if (localStorage.getItem("theme") === "true") {
+  const saved = localStorage.getItem("theme");
+  if (saved === "true") {
     document.body.classList.add("light-mode");
   }
 }
@@ -78,6 +80,7 @@ function gainXP(amount) {
   }
 
   saveProgress();
+  updateUI();
 }
 
 /* =========================================
@@ -128,6 +131,7 @@ function setLetter() {
   if (guide) guide.textContent = letters[index];
 
   clearCanvas();
+  drawing = false;
 }
 
 function nextLetter() {
@@ -136,7 +140,7 @@ function nextLetter() {
 }
 
 /* =========================================
-   CANVAS (FIX COMPLET)
+   CANVAS (FIX STABLE)
 ========================================= */
 function initCanvas() {
   canvas = document.getElementById("board");
@@ -220,10 +224,20 @@ function initUIEffects() {
       setTimeout(() => ripple.remove(), 600);
     });
   });
+
+  document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("mouseenter", () => {
+      btn.style.transform = "scale(1.05)";
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "scale(1)";
+    });
+  });
 }
 
 /* =========================================
-   GLOBAL EXPORTS (HTML onclick safe)
+   GLOBAL EXPORTS
 ========================================= */
 window.toggleTheme = toggleTheme;
 window.toggleMenu = toggleMenu;
