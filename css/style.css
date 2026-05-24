@@ -2203,3 +2203,15 @@ body{
   }
 
 }
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+nav.open {
+  display: flex !important;
+}
