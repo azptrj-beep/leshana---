@@ -30,7 +30,6 @@ function toggleMenu() {
   if (nav) nav.classList.toggle("active");
 }
 
-window.toggleMenu = toggleMenu;
 
 /* =========================================
    AUDIO
