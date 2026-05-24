@@ -1,4 +1,4 @@
-@font-face {
+Lo0@font-face {
 
 font-family:'Adiabene';
 
@@ -58,7 +58,7 @@ font-display: swap;
 
 @font-face {
 font-family: 'Nohadra';
-src: url('../assets/fonts/Nohadra.woff2') format('woff2'),
+src: url('../assets/fonts/nohadra.woff2') format('woff2'),
 url('../assets/fonts/nohadra.ttf') format('truetype');
 font-weight: normal;
 font-style: normal;
@@ -67,7 +67,7 @@ font-display: swap;
 
 @font-face {
 font-family: 'AAssyrian';
-src: url('../assets/fonts/AAssyrian.woff2') format('woff2'),
+src: url('../assets/fonts/assyrian.woff2') format('woff2'),
 url('../assets/fonts/aassyrian.ttf') format('truetype');
 font-weight: normal;
 font-style: normal;
@@ -155,7 +155,7 @@ p {
 
 .soureth-classic {
 
-  font-family: 'AAssyrian';
+  font-family: 'assyrian';
 
   direction: rtl;
 }
@@ -893,7 +893,7 @@ body.dark {
 .soureth-classic,
 :lang(syr) {
 
-  font-family: 'Adiabene', 'Nohadra', 'AAssyrian', sans-serif !important;
+  font-family: 'Adiabene', 'nohadra', 'Amassyrian', sans-serif !important;
 
   direction: rtl;
 
@@ -2341,7 +2341,7 @@ body{
 .guide,
 #keyboard button,
 .quiz-options button {
-  font-family: 'Adiabene', 'Nohadra', 'AAssyrian', sans-serif !important;
+  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
 }
 
 textarea,
