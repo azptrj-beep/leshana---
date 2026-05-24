@@ -2175,3 +2175,20 @@ body{
   }
 
 }
+
+@media (max-width:768px){
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    min-height:150px;
+    padding:18px;
+  }
+
+  .card h2{
+    font-size:18px;
+  }
+
+}
