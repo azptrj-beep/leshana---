@@ -149,3 +149,21 @@ function initEffects() {
     });
   });
 }
+
+"use strict";
+
+import { initTheme } from "./theme.js";
+import { initMenu } from "./menu.js";
+import { initState } from "./state.js";
+import { initUI } from "./ui.js";
+import { initRouter } from "./router.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initState();
+  initTheme();
+  initMenu();
+  initUI();
+  initRouter();
+
+  console.log("🚀 App PRO chargée");
+});
