@@ -29,6 +29,9 @@ function toggleMenu() {
   const nav = document.querySelector("nav");
   if (nav) nav.classList.toggle("active");
 }
+
+window.toggleMenu = toggleMenu;
+
 /* =========================================
    AUDIO
 ========================================= */
