@@ -30,6 +30,10 @@ window.addEventListener("DOMContentLoaded", () => {
   setLetter();
 });
 
+document.addEventListener("touchstart", () => {
+  document.body.focus();
+}, { once: true });
+
 /* =========================================
    THEME
 ========================================= */
