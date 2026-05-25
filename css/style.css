@@ -655,3 +655,13 @@ button:active,
     height:72px;
   }
 }
+
+.soureth-input:focus{
+
+  border:
+    1px solid rgba(0,204,255,.35);
+
+  box-shadow:
+    0 0 25px rgba(0,204,255,.18),
+    0 10px 30px rgba(0,0,0,.35);
+}
