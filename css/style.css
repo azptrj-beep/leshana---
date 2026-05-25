@@ -487,14 +487,60 @@ width: 88%;
 padding: 12px;
 }
 }
+/* =========================================
+   SHLAMA HERO FIX (SAFE VERSION)
+========================================= */
 
-/* Réduction hauteur bloc Shlama */
+.hero{
+  text-align:center;
+  padding:10px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.hero-text{
+  margin:0;
+  line-height:1.35;
+  font-size:14px;
+  max-width:340px;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:6px;
+}
+
+/* SHLAMA CARD */
+
+.hero-demo.card{
+  padding:10px 12px;
+  margin-top:8px;
+  max-width:320px;
+}
+
+/* COMPACT CARD INSIDE HERO */
 
 .hero .card{
-  padding:14px 16px;
-  max-width:240px;
-  margin:auto;
+  padding:12px 14px;
+  max-width:320px;
+  margin:0 auto;
 }
+
+/* TEXT INSIDE CARD */
 
 .hero .card h1,
 .hero .card h2{
@@ -504,21 +550,12 @@ padding: 12px;
 
 .hero .card p{
   line-height:1.35;
-  margin-bottom:8px;
-}
-
-.hero .btn,
-.hero button{
-  padding:8px 12px;
+  margin-bottom:6px;
 }}
 
 /* FORCE COMPACT SHLAMA (override total) */
 
-.hero,
-.hero *{
-  margin:0 !important;
-  padding:0 !important;
-}
+
 
 .hero .card{
   padding:10px !important;
