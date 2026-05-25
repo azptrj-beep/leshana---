@@ -203,9 +203,9 @@ button{
 
   border:none;
 
-  border-radius:14px;
+  border-radius:13px;
 
-  padding:12px 18px;
+  padding:10px 12px;
 
   cursor:pointer;
 
@@ -377,7 +377,7 @@ button:hover,
 ========================================= */
 
 .bloc{
-  width: min(92%, 460px);
+  width: min(92%, 360px);
   margin: 14px auto;
   padding: 18px;
 
@@ -469,7 +469,17 @@ a, a:visited{
   }
 
   .bloc{
-    width: 94%;
-    padding: 14px;
+    width: 88%;
+    padding: 12px;
   }
+}
+
+/* =========================================
+   COMPACT HERO / SHLAMA BLOCK FIX
+========================================= */
+
+.hero .bloc{
+  max-width: 320px;
+  padding: 14px;
+  border-radius: 16px;
 }
