@@ -1267,9 +1267,11 @@ canvas {
   touch-action: none;
   -ms-touch-action: none;
 }
-html, body {
-  overflow: auto;
-  touch-action: auto;
+html,
+body {
+  overflow-x: hidden;
+  overscroll-behavior: auto;
+  touch-action: manipulation;
 }
 /* =========================
    QUIZ MOBILE PERFECT
