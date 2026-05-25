@@ -31,11 +31,17 @@
 
   <section class="translator-box">
 
-    <textarea id="editor"
-              class="soureth-writing"
-              placeholder="Écrire en Soureth..."></textarea>
+    <div class="soureth-keyboard">
 
-    <div id="keyboard">
+  <textarea
+    id="sourethInput"
+    class="soureth-input"
+    placeholder="ܟܬܘܒ ܣܘܪܝܬ..."
+  ></textarea>
+
+  <div id="keyboard"></div>
+
+</div>
 
       <button onclick="insertLetter('ܐ')">ܐ</button>
       <button onclick="insertLetter('ܒ')">ܒ</button>
