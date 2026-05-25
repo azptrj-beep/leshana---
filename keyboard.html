@@ -31,17 +31,11 @@
 
   <section class="translator-box">
 
-    <div class="soureth-keyboard">
+    <textarea id="editor"
+              class="soureth-writing"
+              placeholder="Écrire en Soureth..."></textarea>
 
-  <textarea
-    id="sourethInput"
-    class="soureth-input"
-    placeholder="ܟܬܘܒ ܣܘܪܝܬ..."
-  ></textarea>
-
-  <div id="keyboard"></div>
-
-</div>
+    <div id="keyboard">
 
       <button onclick="insertLetter('ܐ')">ܐ</button>
       <button onclick="insertLetter('ܒ')">ܒ</button>
@@ -77,8 +71,6 @@
 
       <button onclick="insertLetter(' ')">␣</button>
 
-      <button onclick="deleteLetter()">⌫</button>
-
     </div>
 
   </section>
@@ -89,7 +81,6 @@
 <script src="js/app.js" defer></script>
 <script src="js/keyboard.js" defer></script>
 <script src="js/audio.js" defer></script>
-
 
 </body>
 
