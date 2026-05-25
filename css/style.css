@@ -474,34 +474,6 @@ padding: 12px;
 }
 
 /* =========================================
-BLOC SHLAMA - VERSION COMPACTE
-========================================= */
-
-.bloc{
-width: min(92%, 340px);
-margin: 10px auto;
-
-padding: 10px 12px;
-
-border-radius: 14px;
-
-background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.10);
-
-backdrop-filter: blur(10px);
-
-box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-
-color: white;
-
-transition: .2s ease;
-
-display: flex;
-flex-direction: column;
-gap: 6px;
-}
-
-/* =========================================
    FIX HAUTEUR BLOC SHLAMA
 ========================================= */
 
