@@ -159,6 +159,11 @@ nav a{
   transition:.25s ease;
 }
 
+/* FIX VIOLET LINKS */
+nav a:visited{
+  color:white;
+}
+
 nav a:hover{
   background:
     linear-gradient(
@@ -368,6 +373,67 @@ button:hover,
 }
 
 /* =========================================
+   BLOCS SYSTEM (NEW)
+========================================= */
+
+.bloc{
+  width: min(92%, 460px);
+  margin: 14px auto;
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+  color: white;
+
+  transition: .25s ease;
+}
+
+.bloc:hover{
+  transform: translateY(-4px);
+}
+
+.bloc.small{
+  width: min(92%, 260px);
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.bloc.primary{
+  border: 1px solid rgba(0, 204, 255, 0.35);
+  box-shadow: 0 0 18px rgba(0, 204, 255, 0.15);
+}
+
+/* FIX GLOBAL TEXT COLORS */
+.bloc *{
+  color: inherit;
+}
+
+/* FIX LINKS VIOLET */
+a, a:visited{
+  color: white;
+}
+
+/* =========================================
+   TYPOGRAPHY INSIDE BLOCS
+========================================= */
+
+.bloc h2{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.bloc p{
+  opacity: 0.9;
+}
+
+/* =========================================
    MOBILE
 ========================================= */
 
@@ -400,5 +466,10 @@ button:hover,
 
   #letterDisplay{
     font-size:78px;
+  }
+
+  .bloc{
+    width: 94%;
+    padding: 14px;
   }
 }
