@@ -372,134 +372,131 @@ button:hover,
   font-size:24px;
 }
 /* =========================================
-   DUOLINGO STYLE BLOCKS
+BLOCS SYSTEM (NEW)
 ========================================= */
 
 .bloc{
-  width:min(92%,340px);
+width: min(92%, 360px);
+margin: 14px auto;
+padding: 18px;
 
-  margin:10px auto;
+border-radius: 18px;
 
-  padding:10px 12px;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.10);
 
-  border-radius:16px;
+backdrop-filter: blur(12px);
 
-  background:rgba(255,255,255,0.06);
+box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 
-  border:1px solid rgba(255,255,255,0.10);
+color: white;
 
-  backdrop-filter:blur(10px);
-
-  box-shadow:0 6px 16px rgba(0,0,0,0.20);
-
-  color:white;
-
-  transition:.2s ease;
-
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-
-  position:relative;
+transition: .25s ease;
 }
-
-/* INTERACTION */
 
 .bloc:hover{
-  transform:translateY(-3px) scale(1.01);
-
-  box-shadow:
-    0 10px 24px rgba(0,0,0,0.24);
+transform: translateY(-4px);
 }
-
-.bloc:active{
-  transform:scale(.98);
-}
-
-/* SMALL VERSION */
 
 .bloc.small{
-  width:min(92%,260px);
-
-  padding:8px 10px;
-
-  border-radius:14px;
+width: min(92%, 260px);
+padding: 12px;
+border-radius: 14px;
 }
-
-/* PRIMARY CARD */
 
 .bloc.primary{
-  border:
-    1px solid rgba(0,204,255,0.35);
-
-  box-shadow:
-    0 0 18px rgba(0,204,255,0.15);
+border: 1px solid rgba(0, 204, 255, 0.35);
+box-shadow: 0 0 18px rgba(0, 204, 255, 0.15);
 }
 
-/* SHLAMA HERO */
-
-.bloc.shlama{
-  max-width:320px;
-
-  padding:8px 10px;
+/* FIX GLOBAL TEXT COLORS */
+.bloc *{
+color: inherit;
 }
 
-/* TYPOGRAPHY */
+/* FIX LINKS VIOLET */
+a, a:visited{
+color: white;
+}
+
+/* =========================================
+TYPOGRAPHY INSIDE BLOCS
+========================================= */
 
 .bloc h2{
-  font-size:16px;
-
-  margin:0;
+font-size: 20px;
+margin-bottom: 10px;
 }
 
 .bloc p{
-  font-size:13px;
-
-  line-height:1.4;
-
-  opacity:.88;
-
-  margin:0;
+opacity: 0.9;
 }
 
-/* BUTTONS INSIDE BLOCS */
-
-.bloc button,
-.bloc .btn{
-
-  margin-top:8px;
-
-  padding:10px 12px;
-
-  font-size:13px;
-
-  border-radius:12px;
-
-  font-weight:600;
-}
-
-/* FIX COLORS */
-
-.bloc *{
-  color:inherit;
-}
-
-/* MOBILE */
+/* =========================================
+MOBILE
+========================================= */
 
 @media(max-width:768px){
 
-  .bloc{
-    width:90%;
+nav{
+flex-direction:column;
+align-items:center;
+}
 
-    padding:10px;
-  }
+nav a{
+width:90%;
+text-align:center;
+}
 
-  .bloc h2{
-    font-size:15px;
-  }
+.quiz-options{
+grid-template-columns:
+repeat(2,1fr);
+}
 
-  .bloc p{
-    font-size:12px;
-  }
+#keyboard button{
+width:56px;
+height:56px;
+font-size:28px;
+}
 
+.card{
+padding:20px;
+}
+
+#letterDisplay{
+font-size:78px;
+}
+
+.bloc{
+width: 88%;
+padding: 12px;
+}
+}
+
+/* =========================================
+BLOC SHLAMA - VERSION COMPACTE
+========================================= */
+
+.bloc{
+width: min(92%, 340px);
+margin: 10px auto;
+
+padding: 10px 12px;
+
+border-radius: 14px;
+
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.10);
+
+backdrop-filter: blur(10px);
+
+box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+
+color: white;
+
+transition: .2s ease;
+
+display: flex;
+flex-direction: column;
+gap: 6px;
 }
