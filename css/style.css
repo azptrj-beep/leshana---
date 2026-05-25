@@ -500,3 +500,28 @@ display: flex;
 flex-direction: column;
 gap: 6px;
 }
+
+/* =========================================
+   FIX HAUTEUR BLOC SHLAMA
+========================================= */
+
+.bloc.shlama{
+  padding:8px 12px;
+}
+
+.bloc.shlama h2,
+.bloc.shlama h1{
+  margin-bottom:4px;
+  line-height:1.1;
+}
+
+.bloc.shlama p{
+  margin:0;
+  line-height:1.3;
+}
+
+.bloc.shlama .btn,
+.bloc.shlama button{
+  margin-top:6px;
+  padding:8px 12px;
+}
