@@ -128,7 +128,7 @@ content="#0033a0">
     </div>  
 
     <p>  
-      Shlama : Paix — Bonjour — Salut  
+      Shlama : Paix — (Bonjour — Salut) 
     </p>  
 
   </div>  
@@ -244,11 +244,17 @@ content="#0033a0">
     ⌨️ Essayer le clavier Soureth  
   </h2>  
 
-  <textarea id="editor"  
-            class="soureth-writing"  
-            placeholder="Écrire en Soureth..."></textarea>  
+  <div class="soureth-keyboard">
 
-  <div id="keyboard">  
+  <textarea
+    id="sourethInput"
+    class="soureth-input"
+    placeholder="ܟܬܘܒ ܣܘܪܝܬ..."
+  ></textarea>
+
+  <div id="keyboard"></div>
+
+</div>
 
     <button onclick="insertLetter('ܐ')">ܐ</button>  
     <button onclick="insertLetter('ܒ')">ܒ</button>  
@@ -358,7 +364,7 @@ ctx.lineWidth = 3;
 ctx.lineCap = "round";  
   
 // IMPORTANT : police soureth (même si canvas n'affiche pas texte ici, utile si tu ajoutes du texte)  
-ctx.font = "28px 'Noto Sans Syriac Eastern'";  
+ctx.font = "28px 'Adiabene'";  
   
 // DRAW STATE  
 let drawing = false;  
@@ -388,11 +394,6 @@ canvas.addEventListener("pointerleave", () => {
 function clearCanvas() {  
   ctx.clearRect(0, 0, canvas.width, canvas.height);  
 }  
-
-<textarea
-  class="soureth-input"
-  placeholder="ܟܬܘܒ ܣܘܪܝܬ..."
-></textarea>
 
 
 </script>  </body>  </html> 
