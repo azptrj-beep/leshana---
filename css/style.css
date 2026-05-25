@@ -517,3 +517,7 @@ padding: 12px;
   margin:10px auto !important;
   max-width:340px;
 }
+
+.hero{
+  background:red !important;
+}
