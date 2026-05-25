@@ -353,16 +353,23 @@ button:active,
 }
 
 /* =========================================
-   KEYBOARD
+   SOURETH KEYBOARD CONTAINER
 ========================================= */
 
 .soureth-keyboard{
 
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+
+  padding:20px;
+
   margin-top:18px;
 
-  padding:18px;
-
-  border-radius:26px;
+  border-radius:28px;
 
   background:
     linear-gradient(
@@ -378,53 +385,21 @@ button:active,
     0 10px 30px rgba(0,0,0,.35);
 }
 
-#keyboard{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-}
-
-#keyboard button{
-
-  width:72px;
-  height:72px;
-
-  border-radius:22px;
-
-  font-size:34px;
-
-  border:none;
-
-  color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #1d4dff,
-      #14c8ff
-    );
-
-  box-shadow:
-    0 8px 18px rgba(0,140,255,.35),
-    inset 0 1px 0 rgba(255,255,255,.25);
-
-  transition:.15s ease;
-}
-
-#keyboard button:active{
-  transform:scale(.92);
-}
-
 /* =========================================
-   SOURETH INPUT PRO MAX
+   SOURETH INPUT FULL WIDTH
 ========================================= */
 
 .soureth-input{
 
   width:100%;
 
+  min-width:100%;
+
+  max-width:100%;
+
   min-height:220px;
+
+  display:block;
 
   border:none;
 
@@ -434,16 +409,10 @@ button:active,
 
   padding:24px;
 
-  border-radius:28px;
+  border-radius:24px;
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.04)
-    );
-
-  backdrop-filter:blur(18px);
+    rgba(255,255,255,.06);
 
   color:white;
 
@@ -455,19 +424,16 @@ button:active,
 
   font-family:'Adiabene','Nohadra',sans-serif;
 
+  backdrop-filter:blur(12px);
+
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.08),
-    0 10px 30px rgba(0,0,0,.35);
-
-  margin-bottom:24px;
-
-  overflow-y:auto;
+    0 10px 30px rgba(0,0,0,.25);
 }
 
 .soureth-input::placeholder{
   color:rgba(255,255,255,.35);
-}
-/* =========================================
+} =========================================
    QUIZ
 ========================================= */
 
