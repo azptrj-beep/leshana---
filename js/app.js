@@ -273,3 +273,5 @@ function handleKey(key) {
 function pressKey(key) {
   handleKey(key);
 }
+
+const input = document.getElementById("sourethInput");
