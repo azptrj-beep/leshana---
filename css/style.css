@@ -530,9 +530,31 @@ padding: 12px;
   padding:10px 20px;
 }
 
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:6px;
+}
+
+
 .hero-content{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:8px;
+}
+
+.hero-text{
+  margin:0;
+  line-height:1.35;
+  font-size:14px;
+  max-width:340px;
+}
+
+.hero-demo.card{
+  padding:10px 12px;
+  margin-top:8px;
+  max-width:320px;
 }
