@@ -244,3 +244,28 @@ window.toggleMenu = toggleMenu;
 window.playAudio = playAudio;
 window.checkAnswer = checkAnswer;
 window.nextLetter = nextLetter;
+
+document.addEventListener("keydown", (e) => {
+  handleKey(e.key);
+});
+
+function handleKey(key) {
+  console.log("Key pressed:", key);
+
+  // Exemple : alphabet Soureth
+  if (letters.includes(key)) {
+    selectLetter(key);
+  }
+
+  if (key === "Backspace") {
+    clearCanvas();
+  }
+
+  if (key === "Enter") {
+    nextLetter();
+  }
+}
+
+function pressKey(key) {
+  handleKey(key);
+}
