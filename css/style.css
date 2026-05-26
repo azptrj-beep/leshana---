@@ -1668,9 +1668,8 @@ body{
 }
 textarea,
 input {
-  font-family:
-    'Adiabene',
-    sans-serif;
+  font-family: Arial, sans-serif;
+  direction: ltr;
   unicode-bidi: plaintext;
 }
 html, body {
