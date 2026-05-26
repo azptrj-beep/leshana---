@@ -41,7 +41,7 @@ font-style: normal;
 font-display: swap;
 }
 @font-face {
-font-family: 'nohadra';
+font-family: 'Nohadra';
 src: url('../assets/fonts/nohadra.woff2') format('woff2'),
 url('../assets/fonts/nohadra.ttf') format('truetype');
 font-weight: normal;
@@ -49,7 +49,7 @@ font-style: normal;
 font-display: swap;
 }
 @font-face {
-font-family: 'assyrian';
+font-family: 'AAssyrian';
 src: url('../assets/fonts/assyrian.woff2') format('woff2'),
 url('../assets/fonts/aassyrian.ttf') format('truetype');
 font-weight: normal;
@@ -370,63 +370,12 @@ section h2 {
   border-radius: 12px;
   font-size: 18px;
 }
-.translator-box {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-}
-
-.translator-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 15px;
-}
-
-/* INPUT SOURETH */
-#frInput,
-#input {
-  width: 100%;
-  padding: 18px;
-  border-radius: 18px;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  color: white;
-
-  /* FIX SOURETH */
-  font-family:
-    'Adiabene',
-    'Nohadra',
-    'AAssyrian',
-    sans-serif !important;
-
-  direction: rtl;
-  text-align: right;
-  unicode-bidi: plaintext;
-
-  font-size: 30px;
-  line-height: 1.8;
-}
-
-/* RESULTAT TRADUCTION */
 #result {
   margin-top: 30px;
-
-  font-family:
-    'Adiabene',
-    'nohadra',
-    'assyrian',
-    sans-serif !important;
-
-  direction: rtl;
-  text-align: right;
-  unicode-bidi: plaintext;
-
-  font-size: 38px;
-  line-height: 1.8;
-
+  font-size: 2rem;
+  text-align: center;
   word-break: break-word;
-}[
+}
 .suggestion {
   padding: 10px;
   cursor: pointer;
