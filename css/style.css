@@ -1997,3 +1997,17 @@ footer {
   color: white;
   font-size: 22px;
 }
+
+/* FIX TRADUCTEUR SOURETH */
+
+#result{
+  font-family:
+    'Adiabene',
+    'Nohadra',
+    sans-serif !important;
+
+  direction:rtl;
+  text-align:right;
+
+  unicode-bidi:plaintext;
+}
