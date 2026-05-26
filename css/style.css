@@ -2011,3 +2011,8 @@ footer {
 
   unicode-bidi:plaintext;
 }
+.soureth-mode {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
