@@ -1998,16 +1998,13 @@ footer {
   font-size: 22px;
 }
 
-/* FIX TRADUCTEUR SOURETH */
-
-#result{
-  font-family:
-    'Adiabene',
-    'Nohadra',
-    sans-serif !important;
-
-  direction:rtl;
-  text-align:right;
-
-  unicode-bidi:plaintext;
+#result {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+.soureth-title,
+#result,
+#input {
+  font-family: 'Adiabene', sans-serif !important;
 }
