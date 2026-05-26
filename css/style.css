@@ -41,7 +41,7 @@ font-style: normal;
 font-display: swap;
 }
 @font-face {
-font-family: 'Nohadra';
+font-family: 'nohadra';
 src: url('../assets/fonts/nohadra.woff2') format('woff2'),
 url('../assets/fonts/nohadra.ttf') format('truetype');
 font-weight: normal;
@@ -414,8 +414,8 @@ section h2 {
 
   font-family:
     'Adiabene',
-    'Nohadra',
-    'AAssyrian',
+    'nohadra',
+    'assyrian',
     sans-serif !important;
 
   direction: rtl;
@@ -1668,8 +1668,9 @@ body{
 }
 textarea,
 input {
-  font-family: Arial, sans-serif;
-  direction: ltr;
+  font-family:
+    'Adiabene',
+    sans-serif;
   unicode-bidi: plaintext;
 }
 html, body {
