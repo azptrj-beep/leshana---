@@ -1,0 +1,445 @@
+/* =========================
+RESET
+========================= */
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* =========================
+FONTS
+========================= */
+@font-face {
+  font-family: 'Adiabene';
+  src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
+       url('../assets/fonts/Adiabene.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nohadra';
+  src: url('../assets/fonts/nohadra.woff2') format('woff2'),
+       url('../assets/fonts/nohadra.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Assyrian';
+  src: url('../assets/fonts/assyrian.woff2') format('woff2'),
+       url('../assets/fonts/assyrian.ttf') format('truetype');
+  font-display: swap;
+}
+/* =========================
+VARIABLES
+========================= */
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: #ffffff;
+  --card: rgba(255,255,255,0.08);
+  --soft: rgba(255,255,255,0.7);
+}
+/* =========================
+BODY (IMPORTANT - RESTORE STYLE)
+========================= */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: 0.3s ease;
+}
+/* =========================
+LOGO FIX (IMPORTANT)
+========================= */
+.logo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* =========================
+SOURETH ONLY (SAFE)
+========================= */
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+.letter,
+.soureth-mode {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+/* =========================
+HEADER
+========================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.25);
+  padding: 15px;
+}
+/* =========================
+NAV
+========================= */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.2s;
+}
+nav a:hover {
+  background: #00cfff;
+  transform: translateY(-2px);
+}
+/* =========================
+HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+.hero p {
+  color: var(--soft);
+}
+/* =========================
+BUTTONS
+========================= */
+.btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  display: inline-block;
+  margin: 8px;
+  background: #0066ff;
+  color: white;
+}
+/* =========================
+CARDS
+========================= */
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 18px;
+}
+/* =========================
+FEATURES
+========================= */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+/* =========================
+KEYBOARD
+========================= */
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+#keyboard button {
+  padding: 14px;
+  font-size: 26px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-family: 'Adiabene', sans-serif;
+}
+/* =========================
+QUIZ
+========================= */
+.quiz-box {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+#question {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.quiz-options button {
+  padding: 18px;
+  font-size: 32px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-family: 'Adiabene', sans-serif;
+}
+/* =========================
+FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--soft);
+}
+/* =========================
+BOTTOM NAV
+========================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 12px;
+  border-radius: 20px;
+}
+.bottom-nav a {
+  color: white;
+  font-size: 22px;
+}
+/* =========================
+PROGRESS
+========================= */
+.progress {
+  height: 12px;
+  background: #00cfff;
+  width: 35%;
+}
+/* =========================
+MOBILE SAFE
+========================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .quiz-options {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #question {
+    font-size: 34px;
+  }
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+}
+/* =========================================
+   FIX FINAL LOGO + SOURETH MODERNE
+========================================= */
+
+/* ---------- HEADER CENTER ---------- */
+
+header {
+  width: 100%;
+}
+
+.logo-container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+/* ---------- LOGO SIZE FIX ---------- */
+
+.logo {
+  width: 85px !important;
+  height: 85px !important;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  .logo{
+    width:60px !important;
+    height:60px !important;
+  }
+
+  .title{
+    font-size:1.4rem !important;
+    text-align:center !important;
+  }
+
+  .subtitle{
+    text-align:center !important;
+    font-size:0.9rem !important;
+  }
+
+}
+
+/* =========================================
+   SOURETH MODERNE ONLY
+========================================= */
+
+/* IMPORTANT :
+   on retire les polices syriaques classiques
+*/
+
+.soureth-title,
+.soureth-writing,
+.soureth-mode,
+.letter,
+#keyboard button,
+.quiz-options button,
+#question,
+#result,
+#letterDisplay,
+#guideLetter {
+
+  font-family: 'Adiabene' !important;
+
+  direction: rtl;
+  unicode-bidi: plaintext;
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ---------- NE PAS UTILISER ASSYRIAN ---------- */
+
+.soureth-classic{
+  font-family:'Adiabene' !important;
+}
+
+/* ---------- INPUT NORMAL ---------- */
+
+textarea,
+input{
+  font-family:Arial,sans-serif !important;
+  direction:ltr !important;
+}
+
+/* =========================================
+   TITLE CENTER FIX
+========================================= */
+
+.title,
+.subtitle,
+.hero,
+.hero h1,
+.hero p{
+  text-align:center !important;
+}
+
+/* =========================================
+   REMOVE BROKEN RTL
+========================================= */
+
+body{
+  direction:ltr !important;
+}
+
+/* uniquement le soureth passe RTL */
+
+.soureth-title,
+.soureth-writing,
+.soureth-mode,
+.letter{
+  direction:rtl !important;
+}
+
+/* =========================================
+   SAFE FONT RENDERING
+========================================= */
+
+body{
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================
+   FIX LETTER DISPLAY
+========================================= */
+
+#letterDisplay{
+  font-size:90px !important;
+  color:white !important;
+}
+
+#guideLetter{
+  font-size:150px !important;
+  opacity:0.08;
+}
+
+/* =========================================
+   FIX NAV CENTER
+========================================= */
+
+nav{
+  justify-content:center !important;
+  align-items:center !important;
+}
+
+/* =========================================
+   FORCE MODERN SOURETH
+========================================= */
+
+:lang(syr){
+  font-family:'Adiabene' !important;
+}
+/* =========================================
+   FIX TEXT VIOLET / LINKS / CARDS
+========================================= */
+
+/* texte normal */
+.card,
+.card p,
+.card h1,
+.card h2,
+.card h3,
+.card span,
+.card a,
+.feature-link,
+.feature-link p,
+.feature-link h2 {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* liens visités Android */
+a:visited,
+a:active,
+a:focus {
+  color: white !important;
+}
+
+/* mode clair */
+body.light-mode .card,
+body.light-mode .card p,
+body.light-mode .card h1,
+body.light-mode .card h2,
+body.light-mode .card h3,
+body.light-mode .feature-link {
+  color: #111827 !important;
+}
+
+/* empêche le violet auto mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
