@@ -4,11 +4,20 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Écriture Soureth Moderne</title>
 
-<link rel="icon" href="images/logo.png">
+<link rel="icon"
+      href="../images/logo.png">
+
+<link rel="manifest"
+      href="../manifest.json">
+
+<meta name="theme-color"
+      content="#0033a0">
 
 <style>
 
@@ -18,8 +27,10 @@
 
 @font-face {
   font-family: 'Adiabene';
-  src: url('assets/fonts/Adiabene.woff2') format('woff2'),
-       url('assets/fonts/Adiabene.ttf') format('truetype');
+
+  src:
+    url('../assets/fonts/Adiabene.woff2') format('woff2'),
+    url('../assets/fonts/Adiabene.ttf') format('truetype');
 }
 
 body{
@@ -84,15 +95,20 @@ canvas{
   touch-action:none;
 }
 
-/* LETTRE GUIDE */
+/* =========================
+   GUIDE LETTER
+========================= */
 
 .guide{
   position:absolute;
+
   top:50%;
   left:50%;
+
   transform:translate(-50%,-50%);
 
   font-family:'Adiabene';
+
   font-size:180px;
 
   opacity:0.08;
@@ -109,11 +125,17 @@ canvas{
 .btn{
   background:#d40000;
   color:white;
+
   border:none;
+
   padding:12px 18px;
+
   border-radius:12px;
+
   margin:10px;
+
   cursor:pointer;
+
   font-size:16px;
 }
 
@@ -146,9 +168,13 @@ canvas{
 <h1>✍️ Écriture Soureth Moderne</h1>
 
 <nav>
-  <a href="index.html">🏠 Accueil</a>
+
+  <a href="../index.html">🏠 Accueil</a>
+
   <a href="alphabet.html">🔠 Alphabet</a>
+
   <a href="voyelles.html">🔤 Voyelles</a>
+
 </nav>
 
 </header>
@@ -157,28 +183,45 @@ canvas{
 
 <h2>Trace la lettre</h2>
 
-<div class="letter-box soureth-title " id="letterDisplay">ܐ</div>
+<div class="letter-box soureth-title"
+     id="letterDisplay">
+  ܐ
+</div>
 
 <div class="canvas-wrapper">
 
-<div class="guide soureth-title " id="guideLetter">ܐ</div>
+<div class="guide soureth-title"
+     id="guideLetter">
+  ܐ
+</div>
 
-<canvas id="board" width="320" height="320"></canvas>
+<canvas id="board"
+        width="320"
+        height="320"></canvas>
 
 </div>
 
 <br>
 
-<button class="btn" onclick="clearCanvas()">
-Effacer
+<button class="btn"
+        onclick="clearCanvas()">
+
+  Effacer
+
 </button>
 
-<button class="btn" onclick="nextLetter()">
-Lettre suivante
+<button class="btn"
+        onclick="nextLetter()">
+
+  Lettre suivante
+
 </button>
 
-<button class="btn" onclick="toggleDarkMode()">
-Mode sombre
+<button class="btn"
+        onclick="toggleDarkMode()">
+
+  Mode sombre
+
 </button>
 
 </div>
@@ -186,7 +229,7 @@ Mode sombre
 <script>
 
 /* =========================
-   LETTRES
+   LETTERS
 ========================= */
 
 const letters = [
@@ -203,8 +246,11 @@ let index = 0;
    CANVAS
 ========================= */
 
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+const canvas =
+  document.getElementById("board");
+
+const ctx =
+  canvas.getContext("2d");
 
 let drawing = false;
 
@@ -214,11 +260,13 @@ let drawing = false;
 
 function setLetter(){
 
-  document.getElementById("letterDisplay").innerText =
-    letters[index];
+  document.getElementById(
+    "letterDisplay"
+  ).innerText = letters[index];
 
-  document.getElementById("guideLetter").innerText =
-    letters[index];
+  document.getElementById(
+    "guideLetter"
+  ).innerText = letters[index];
 }
 
 /* =========================
@@ -246,7 +294,7 @@ function getPos(e){
 }
 
 /* =========================
-   START
+   START DRAW
 ========================= */
 
 function startDraw(e){
@@ -286,7 +334,7 @@ function draw(e){
 }
 
 /* =========================
-   STOP
+   STOP DRAW
 ========================= */
 
 function stopDraw(){
@@ -300,10 +348,25 @@ function stopDraw(){
    EVENTS
 ========================= */
 
-canvas.addEventListener("mousedown", startDraw);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", stopDraw);
-canvas.addEventListener("mouseleave", stopDraw);
+canvas.addEventListener(
+  "mousedown",
+  startDraw
+);
+
+canvas.addEventListener(
+  "mousemove",
+  draw
+);
+
+canvas.addEventListener(
+  "mouseup",
+  stopDraw
+);
+
+canvas.addEventListener(
+  "mouseleave",
+  stopDraw
+);
 
 canvas.addEventListener(
   "touchstart",
@@ -364,8 +427,6 @@ setLetter();
 
 </script>
 
-
-<div id="letterDisplay" class="soureth-mode"></div>
-<div id="guideLetter" class="soureth-mode"></div>
 </body>
+
 </html>
