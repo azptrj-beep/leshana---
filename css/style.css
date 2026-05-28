@@ -892,6 +892,10 @@ a, a:visited, a:active {
   font-family: 'Soureth', sans-serif !important;
 }
 
+/* =========================================
+   SOURETH FINAL FIX
+========================================= */
+
 .soureth-mode,
 .soureth-title,
 .soureth-writing,
@@ -902,12 +906,20 @@ a, a:visited, a:active {
 #result,
 #letterDisplay,
 #guideLetter {
-  font-family: 'Soureth' !important;
-  direction: rtl;
-  unicode-bidi: plaintext;
-}
 
-body {
+  font-family:
+    'Soureth',
+    sans-serif !important;
+
+  direction: rtl;
+
+  unicode-bidi: plaintext;
+
+  font-weight: normal;
+
+  font-style: normal;
+
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
 }
