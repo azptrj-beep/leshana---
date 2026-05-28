@@ -61,7 +61,7 @@ body{
   font-family:'Soureth';
 
   src:
-    url('../assets/fonts/soureth.woff2')
+    url('./assets/fonts/soureth.woff2')
     format('woff2');
 
   font-weight:normal;
