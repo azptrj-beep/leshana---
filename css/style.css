@@ -870,3 +870,24 @@ body.light-mode nav a{
     font-size:28px;
   }
 }
+
+/* =========================
+   FIX TITRES VIOLET / LINKS
+========================= */
+
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+a, a:visited, a:active {
+  color: white !important;
+  text-decoration: none;
+}
+
+.card h2 {
+  color: white !important;
+}
+
+.feature-link {
+  color: white !important;
+}
