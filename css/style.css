@@ -1,6 +1,6 @@
 /* =========================================
-   LESHANA ED SOURETH
-   SPA PRO MAX CLEAN FIX
+   LESHANA ED SOURETH - CORE CLEAN CSS
+   VERSION: SPA PRO MAX CLEAN
 ========================================= */
 
 /* =========================================
@@ -25,10 +25,10 @@ body{
       #0033a0,
       #050816 60%
     );
-  color:#ffffff;
+  color:white;
   min-height:100vh;
   overflow-x:hidden;
-  transition:0.3s ease;
+  transition:.3s ease;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
@@ -38,36 +38,30 @@ body{
 ========================================= */
 
 :root{
-
   --blue-main:#0033a0;
   --blue-light:#0066ff;
   --cyan:#00cfff;
-  --red-main:#d40000;
-
-  --bg-dark:#050816;
+  --red:#d40000;
 
   --glass:
     rgba(255,255,255,0.08);
 
   --glass-border:
-    rgba(255,255,255,0.12);
+    rgba(255,255,255,0.10);
 
-  --text-light:#ffffff;
-
-  --text-soft:
-    rgba(255,255,255,0.72);
-
+  --soft:
+    rgba(255,255,255,0.75);
 }
 
 /* =========================================
-   FONT SOURETH MODERNE
+   SOURETH FONT
 ========================================= */
 
 @font-face{
-  font-family:'aa-_nohadra_marcus';
+  font-family:'Soureth';
 
   src:
-    url('../assets/fonts/aa-_nohadra_marcus.woff2')
+    url('../assets/fonts/soureth.woff2')
     format('woff2');
 
   font-weight:normal;
@@ -91,7 +85,7 @@ h1,h2,h3{
 
 p{
   line-height:1.7;
-  color:var(--text-soft);
+  color:var(--soft);
 }
 
 img{
@@ -101,67 +95,6 @@ img{
 
 a{
   text-decoration:none;
-  color:white;
-}
-
-a:visited,
-a:active,
-a:focus{
-  color:white;
-}
-
-button{
-  border:none;
-  cursor:pointer;
-  font-family:inherit;
-}
-
-textarea,
-input{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:18px;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  color:white;
-
-  font-size:18px;
-
-  margin-top:18px;
-
-  outline:none;
-
-  font-family:Arial,sans-serif !important;
-
-  direction:ltr !important;
-}
-
-/* =========================================
-   SOURETH MODERNE ONLY
-========================================= */
-
-.soureth-title,
-.soureth-writing,
-.soureth-mode,
-.soureth-classic,
-.letter,
-#keyboard button,
-.quiz-options button,
-#question,
-#result,
-#letterDisplay,
-#guideLetter{
-
-  font-family:'Adiabene' !important;
-
-  direction:rtl;
-  unicode-bidi:plaintext;
-
-  font-weight:normal;
-  font-style:normal;
 }
 
 /* =========================================
@@ -169,20 +102,19 @@ input{
 ========================================= */
 
 header{
-
   position:sticky;
   top:0;
   z-index:999;
 
-  padding:18px;
-
-  backdrop-filter:blur(14px);
-
   background:
     rgba(0,0,0,0.25);
 
+  backdrop-filter:blur(14px);
+
   border-bottom:
     1px solid rgba(255,255,255,0.08);
+
+  padding:16px;
 }
 
 /* =========================================
@@ -190,7 +122,6 @@ header{
 ========================================= */
 
 .logo-container{
-
   display:flex;
   flex-direction:column;
 
@@ -203,10 +134,8 @@ header{
 }
 
 .logo{
-
-  width:85px;
-  height:85px;
-
+  width:78px;
+  height:78px;
   object-fit:cover;
 
   border-radius:50%;
@@ -214,8 +143,7 @@ header{
   box-shadow:
     0 10px 30px rgba(0,0,0,0.35);
 
-  animation:
-    floatLogo 3s ease-in-out infinite;
+  animation:floatLogo 3s ease-in-out infinite;
 }
 
 @keyframes floatLogo{
@@ -225,7 +153,7 @@ header{
   }
 
   50%{
-    transform:translateY(-8px);
+    transform:translateY(-6px);
   }
 
   100%{
@@ -235,12 +163,11 @@ header{
 
 .title{
   font-size:2rem;
-  text-align:center;
 }
 
 .subtitle{
-  text-align:center;
-  color:var(--text-soft);
+  color:var(--soft);
+  font-size:.95rem;
 }
 
 /* =========================================
@@ -248,6 +175,7 @@ header{
 ========================================= */
 
 nav{
+  margin-top:20px;
 
   display:flex;
   justify-content:center;
@@ -256,27 +184,22 @@ nav{
   flex-wrap:wrap;
 
   gap:12px;
-
-  margin-top:20px;
 }
 
 nav a{
+  color:white;
 
   padding:12px 18px;
 
-  border-radius:16px;
+  border-radius:14px;
 
   background:
     rgba(255,255,255,0.05);
 
-  transition:0.25s ease;
+  transition:.25s ease;
 }
 
 nav a:hover{
-
-  transform:
-    translateY(-3px);
-
   background:
     linear-gradient(
       135deg,
@@ -284,20 +207,24 @@ nav a:hover{
       #00cfff
     );
 
+  transform:
+    translateY(-3px);
+
   box-shadow:
-    0 10px 25px rgba(0,162,255,0.35);
+    0 10px 25px rgba(0,162,255,0.30);
 }
 
 /* =========================================
-   MENU MOBILE
+   MOBILE MENU
 ========================================= */
 
 .menu-toggle{
-
   display:none;
 
   background:
     rgba(255,255,255,0.08);
+
+  border:none;
 
   color:white;
 
@@ -306,6 +233,8 @@ nav a:hover{
   padding:10px 16px;
 
   border-radius:14px;
+
+  cursor:pointer;
 }
 
 /* =========================================
@@ -314,13 +243,12 @@ nav a:hover{
 
 .hero{
   text-align:center;
-  padding:70px 20px;
+  padding:80px 20px 60px;
 }
 
 .hero h1{
-
   font-size:
-    clamp(2.3rem,7vw,4.5rem);
+    clamp(2rem,7vw,4.5rem);
 
   line-height:1.1;
 
@@ -330,8 +258,16 @@ nav a:hover{
     0 0 25px rgba(0,162,255,0.35);
 }
 
-.hero-buttons{
+.hero p{
+  max-width:850px;
+  margin:auto;
+}
 
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons{
   margin-top:30px;
 
   display:flex;
@@ -341,29 +277,19 @@ nav a:hover{
   gap:12px;
 }
 
-/* =========================================
-   BUTTONS
-========================================= */
-
 .btn{
-
   display:inline-block;
 
   padding:14px 22px;
 
   border-radius:16px;
 
-  transition:0.25s ease;
-
   font-weight:600;
-}
 
-.btn:hover{
-  transform:scale(1.05);
+  transition:.25s ease;
 }
 
 .btn-primary{
-
   background:
     linear-gradient(
       135deg,
@@ -371,22 +297,28 @@ nav a:hover{
       #00cfff
     );
 
+  color:white;
+
   box-shadow:
-    0 10px 25px rgba(0,102,255,0.35);
+    0 10px 30px rgba(0,102,255,0.35);
 }
 
 .btn-secondary{
-
   background:
     rgba(255,255,255,0.08);
+
+  color:white;
+}
+
+.btn:hover{
+  transform:scale(1.04);
 }
 
 /* =========================================
-   FEATURES / CARDS
+   CARDS
 ========================================= */
 
 .features{
-
   display:grid;
 
   grid-template-columns:
@@ -395,19 +327,10 @@ nav a:hover{
   gap:25px;
 }
 
-.feature-link{
-  color:white;
-}
-
 .card{
-
   position:relative;
 
   overflow:hidden;
-
-  padding:30px;
-
-  border-radius:28px;
 
   background:
     linear-gradient(
@@ -416,43 +339,47 @@ nav a:hover{
       rgba(10,15,40,0.95)
     );
 
+  border-radius:28px;
+
+  padding:30px;
+
   border:
-    1px solid rgba(255,255,255,0.08);
+    1px solid rgba(255,255,255,0.05);
 
   backdrop-filter:blur(12px);
 
-  transition:0.35s ease;
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,0.18);
-
-  color:white;
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
 .card:hover{
-
   transform:
     translateY(-8px);
 
   box-shadow:
-    0 20px 45px rgba(0,162,255,0.25);
-}
-
-.card,
-.card h1,
-.card h2,
-.card h3,
-.card p,
-.card span,
-.card a{
-  color:white !important;
+    0 20px 40px rgba(0,0,0,0.30),
+    0 0 25px rgba(0,200,255,0.20);
 }
 
 .card-icon{
-
   font-size:3rem;
-
   margin-bottom:18px;
+}
+
+/* =========================================
+   SECTION TITLES
+========================================= */
+
+section h2{
+  display:inline-block;
+
+  margin-bottom:25px;
+
+  padding-bottom:10px;
+
+  border-bottom:
+    3px solid #00cfff;
 }
 
 /* =========================================
@@ -460,38 +387,34 @@ nav a:hover{
 ========================================= */
 
 .alphabet-grid{
-
   display:grid;
 
   grid-template-columns:
     repeat(auto-fit,minmax(220px,1fr));
 
-  gap:25px;
+  gap:20px;
 }
 
 .letter-card{
-
-  text-align:center;
-
-  padding:30px;
+  background:var(--glass);
 
   border-radius:24px;
 
-  background:
-    rgba(255,255,255,0.08);
+  padding:30px;
 
-  transition:0.3s ease;
+  text-align:center;
+
+  transition:.25s ease;
 }
 
 .letter-card:hover{
-  transform:translateY(-6px);
+  transform:
+    translateY(-5px);
 }
 
 .letter{
-
-  font-size:84px;
-
-  margin-bottom:15px;
+  font-size:82px;
+  margin-bottom:10px;
 }
 
 /* =========================================
@@ -499,9 +422,7 @@ nav a:hover{
 ========================================= */
 
 #keyboard{
-
   display:flex;
-
   flex-wrap:wrap;
 
   justify-content:center;
@@ -512,9 +433,10 @@ nav a:hover{
 }
 
 #keyboard button{
-
   width:68px;
   height:68px;
+
+  border:none;
 
   border-radius:18px;
 
@@ -523,21 +445,22 @@ nav a:hover{
 
   color:white;
 
-  font-size:34px;
+  cursor:pointer;
 
-  transition:0.25s ease;
+  transition:.2s ease;
+
+  font-size:34px;
 }
 
 #keyboard button:hover{
-
-  transform:scale(1.08);
-
   background:
     linear-gradient(
       135deg,
       #0033a0,
       #00cfff
     );
+
+  transform:scale(1.08);
 }
 
 /* =========================================
@@ -545,14 +468,13 @@ nav a:hover{
 ========================================= */
 
 .quiz-box{
-
   max-width:650px;
 
   margin:auto;
 
   padding:24px;
 
-  border-radius:28px;
+  border-radius:24px;
 
   background:
     rgba(255,255,255,0.08);
@@ -561,43 +483,45 @@ nav a:hover{
 }
 
 #question{
+  text-align:center;
+
+  margin-bottom:25px;
+
+  line-height:1.2;
 
   font-size:
     clamp(48px,10vw,90px);
-
-  margin-bottom:20px;
-
-  text-align:center;
 }
 
 .quiz-options{
-
   display:grid;
 
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:12px;
+  gap:14px;
 }
 
 .quiz-options button{
-
   min-height:82px;
 
-  border-radius:20px;
+  border:none;
+
+  border-radius:18px;
 
   background:
     rgba(255,255,255,0.08);
 
   color:white;
 
-  font-size:40px;
+  cursor:pointer;
 
-  transition:0.25s ease;
+  transition:.25s ease;
+
+  font-size:42px;
 }
 
 .quiz-options button:hover{
-
   transform:scale(1.05);
 
   background:
@@ -613,21 +537,40 @@ nav a:hover{
 ========================================= */
 
 .translator-box{
-
   max-width:700px;
-
   margin:auto;
+}
 
-  padding:20px;
+textarea,
+input{
+  width:100%;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:18px;
+
+  margin-top:20px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color:white;
+
+  font-size:18px;
+
+  font-family:Arial,sans-serif;
+
+  direction:ltr;
 }
 
 #result{
-
   margin-top:30px;
 
-  font-size:2rem;
-
   text-align:right;
+
+  font-size:2rem;
 
   word-break:break-word;
 }
@@ -638,46 +581,47 @@ nav a:hover{
 
 .model{
   position:relative;
+  margin:20px 0;
+}
+
+#letterDisplay,
+#guideLetter{
+  font-family:'Soureth',sans-serif !important;
+
+  direction:rtl;
+
+  unicode-bidi:plaintext;
+
+  line-height:1;
 }
 
 #letterDisplay{
-
-  font-size:90px;
-
+  font-size:110px;
   color:white;
-
-  text-align:center;
 }
 
 #guideLetter{
-
   position:absolute;
 
-  top:50%;
-  left:50%;
+  inset:0;
 
-  transform:
-    translate(-50%,-50%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  font-size:160px;
+  font-size:170px;
 
-  opacity:0.08;
+  opacity:.08;
 
   pointer-events:none;
 }
 
-/* =========================================
-   CANVAS
-========================================= */
-
 .canvas-wrapper{
-
   display:flex;
   justify-content:center;
 }
 
 #board{
-
   width:min(90vw,420px);
   height:min(90vw,420px);
 
@@ -696,12 +640,13 @@ nav a:hover{
 ========================================= */
 
 .audio-btn{
+  margin-top:14px;
 
-  padding:12px 18px;
+  padding:12px 16px;
+
+  border:none;
 
   border-radius:14px;
-
-  margin-top:14px;
 
   background:
     linear-gradient(
@@ -711,28 +656,8 @@ nav a:hover{
     );
 
   color:white;
-}
 
-/* =========================================
-   XP PANEL
-========================================= */
-
-.xp-panel{
-
-  margin-top:20px;
-
-  padding:15px;
-
-  border-radius:18px;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  gap:12px;
+  cursor:pointer;
 }
 
 /* =========================================
@@ -740,17 +665,16 @@ nav a:hover{
 ========================================= */
 
 footer{
-
   text-align:center;
 
   padding:40px 20px;
 
-  margin-top:70px;
-
-  color:var(--text-soft);
+  margin-top:80px;
 
   border-top:
     1px solid rgba(255,255,255,0.08);
+
+  color:var(--soft);
 }
 
 /* =========================================
@@ -758,7 +682,6 @@ footer{
 ========================================= */
 
 .bottom-nav{
-
   position:fixed;
 
   bottom:12px;
@@ -784,47 +707,64 @@ footer{
 }
 
 .bottom-nav a{
-
-  font-size:24px;
-
   color:white;
+  font-size:26px;
+
+  transition:.25s ease;
+}
+
+.bottom-nav a:hover{
+  transform:scale(1.18);
 }
 
 /* =========================================
-   LIGHT MODE
+   SOURETH MODE
+========================================= */
+
+.soureth-mode,
+.soureth-title,
+.soureth-writing,
+.letter,
+#keyboard button,
+.quiz-options button,
+#question,
+#result,
+#letterDisplay,
+#guideLetter{
+  font-family:
+    'Soureth',
+    sans-serif !important;
+
+  direction:rtl;
+
+  unicode-bidi:plaintext;
+
+  font-weight:normal;
+}
+
+/* =========================================
+   DARK MODE
 ========================================= */
 
 body.light-mode{
-
   background:#f4f7fb !important;
-
   color:#111827 !important;
 }
 
 body.light-mode .card,
 body.light-mode .letter-card,
 body.light-mode .quiz-box{
-
   background:
     rgba(255,255,255,0.92);
 
-  color:#111827 !important;
-}
-
-body.light-mode .card p,
-body.light-mode .card h1,
-body.light-mode .card h2,
-body.light-mode .card h3{
-
-  color:#111827 !important;
+  color:#111827;
 }
 
 body.light-mode nav a{
-
   background:
     rgba(0,0,0,0.05);
 
-  color:#111827 !important;
+  color:#111827;
 }
 
 /* =========================================
@@ -832,7 +772,7 @@ body.light-mode nav a{
 ========================================= */
 
 .fade-in{
-  animation:fadeIn 0.8s ease;
+  animation:fadeIn .8s ease;
 }
 
 @keyframes fadeIn{
@@ -854,43 +794,33 @@ body.light-mode nav a{
 
 @media(max-width:768px){
 
-  header{
-    padding:12px;
-  }
-
-  .logo{
-    width:60px;
-    height:60px;
-  }
-
-  .title{
-    font-size:1.4rem;
-  }
-
-  .subtitle{
-    font-size:0.9rem;
-  }
-
-  .menu-toggle{
-    display:block;
-    margin:12px auto;
+  .hero{
+    padding:50px 16px 40px;
   }
 
   nav{
     display:none;
     flex-direction:column;
+    align-items:center;
+    width:100%;
   }
 
   nav.active{
     display:flex;
   }
 
-  .hero{
-    padding:40px 14px;
+  .menu-toggle{
+    display:block;
+    margin:15px auto;
   }
 
-  .hero h1{
-    font-size:2.2rem;
+  .title{
+    font-size:1.5rem;
+  }
+
+  .logo{
+    width:62px;
+    height:62px;
   }
 
   .card{
@@ -902,35 +832,25 @@ body.light-mode nav a{
   }
 
   #keyboard button{
-
     width:56px;
     height:56px;
-
     font-size:28px;
   }
 
   .quiz-options{
-
     grid-template-columns:
-      repeat(3,1fr);
+      repeat(4,1fr);
+
+    gap:10px;
   }
 
   .quiz-options button{
-
     min-height:68px;
-
-    font-size:32px;
+    font-size:34px;
   }
 
   #question{
     font-size:56px;
-  }
-
-  .xp-panel{
-
-    flex-direction:column;
-
-    text-align:center;
   }
 }
 
@@ -941,16 +861,12 @@ body.light-mode nav a{
 @media(max-width:420px){
 
   .quiz-options{
-
     grid-template-columns:
       repeat(2,1fr);
   }
-}
 
-/* =========================================
-   FIX ANDROID
-========================================= */
-
-*{
-  -webkit-tap-highlight-color:transparent;
+  .quiz-options button{
+    min-height:58px;
+    font-size:28px;
+  }
 }
