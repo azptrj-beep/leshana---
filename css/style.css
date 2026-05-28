@@ -57,16 +57,12 @@ body{
    SOURETH FONT
 ========================================= */
 
-@font-face{
-  font-family:'Soureth';
-
-  src:
-    url('./assets/fonts/soureth.woff2')
-    format('woff2');
-
-  font-weight:normal;
-  font-style:normal;
-  font-display:swap;
+@font-face {
+  font-family: 'Soureth';
+  src: url('../assets/fonts/soureth.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* =========================================
@@ -894,4 +890,19 @@ a, a:visited, a:active {
 
 * {
   font-family: 'Soureth', sans-serif !important;
+}
+
+.soureth-mode,
+.soureth-title,
+.soureth-writing,
+.letter,
+#keyboard button,
+.quiz-options button,
+#question,
+#result,
+#letterDisplay,
+#guideLetter {
+  font-family: 'Soureth' !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
 }
