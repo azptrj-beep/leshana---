@@ -27,7 +27,7 @@
 
 /* Question */
 #question {
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'Soureth', sans-serif;
   font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1.2;
   margin-bottom: 20px;
@@ -48,7 +48,7 @@
   border-radius: 18px;
   cursor: pointer;
 
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'Soureth', sans-serif;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
 
   background: rgba(255,255,255,0.08);
