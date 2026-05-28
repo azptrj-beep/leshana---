@@ -68,45 +68,6 @@ body{
 }
 
 /* =========================================
-   CHROME SOURETH FIX
-========================================= */
-
-html {
-  lang: syr;
-}
-
-body,
-.soureth-mode,
-.soureth-title,
-.soureth-writing,
-.letter,
-#keyboard button,
-.quiz-options button,
-#question,
-#result,
-#letterDisplay,
-#guideLetter {
-
-  font-family: 'Soureth' !important;
-
-  direction: rtl !important;
-
-  unicode-bidi: bidi-override !important;
-
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1;
-
-  font-variant-ligatures:
-    contextual
-    common-ligatures;
-
-  -webkit-font-smoothing: antialiased;
-
-  text-rendering: geometricPrecision;
-}
-
-/* =========================================
    GLOBAL
 ========================================= */
 
