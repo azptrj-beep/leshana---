@@ -308,34 +308,23 @@ content="#0033a0">
 <!-- =========================
      ÉCRITURE TACTILE PRO
 ========================= -->
-
 <section class="writing-section">
 
-  <div class="writing-card card">
+  <h2>✍️ Écriture guidée Soureth</h2>
 
-    <h2>✍️ Écriture Soureth (mode guidé)</h2>
+  <div id="letterDisplay">ܐ</div>
 
-    <p>Trace la lettre affichée ci-dessous</p>
+  <div class="canvas-box">
 
-    <div id="letterDisplay" class="writing-letter">ܐ</div>
+    <div id="guideLetter">ܐ</div>
 
-    <div class="canvas-wrapper">
+    <canvas id="drawCanvas"></canvas>
 
-      <div id="guideLetter" class="guide-letter">ܐ</div>
+  </div>
 
-      <canvas id="drawCanvas"></canvas>
-
-    </div>
-
-    <div class="writing-actions">
-
-      <button onclick="nextLetter()">🔤 Lettre suivante</button>
-      <button onclick="clearCanvas()">🧹 Effacer</button>
-
-      <div id="result"></div>
-
-    </div>
-
+  <div class="buttons">
+    <button onclick="clearCanvas()">Effacer</button>
+    <button onclick="nextLetter()">Suivant</button>
   </div>
 
 </section>
