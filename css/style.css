@@ -55,19 +55,41 @@ body{
     rgba(255,255,255,0.75);
 }
 
-/* =========================================
-   SOURETH FONT
-========================================= */
+
+/* =========================
+   SOURETH FONT FIX
+========================= */
 
 @font-face {
-  font-family: 'aa-_nohadra_marcus';
+  font-family: 'Soureth';
   src: url('../assets/fonts/aa-_nohadra_marcus.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
-/* =========================================
+/* FORCE SOURETH */
+
+.soureth-mode,
+.soureth-title,
+.soureth-writing,
+.letter,
+#keyboard button,
+.quiz-options button,
+#question,
+#result,
+#letterDisplay,
+#guideLetter {
+  font-family: 'Soureth' !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+=========================================
    GLOBAL
 ========================================= */
 
