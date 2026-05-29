@@ -356,84 +356,148 @@ function nextLetter(){
 }
 
 /* =========================
-   ÉCRITURE SOURETH SAFE MODE
+   ÉCRITURE SOURETH
 ========================= */
 
-window.addEventListener("DOMContentLoaded", () => {
-
-  const canvas = document.getElementById("drawCanvas");
-  if (!canvas) return; // évite crash si pas sur page écriture
-
-  const ctx = canvas.getContext("2d");
+(() => {
 
   const letters = [
-    "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
-    "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
-    "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+    "ܐ","ܒ","ܓ","ܕ","ܗ",
+    "ܘ","ܙ","ܚ","ܛ","ܝ",
+    "ܟ","ܠ","ܡ","ܢ","ܣ",
+    "ܥ","ܦ","ܨ","ܩ","ܪ",
+    "ܫ","ܬ"
   ];
 
-  let index = 0;
+  let i = 0;
+
+  const canvas =
+    document.getElementById("drawCanvas");
+
+  if(!canvas) return;
+
+  const ctx =
+    canvas.getContext("2d");
+
   let drawing = false;
 
-  function updateLetter(){
-    const l = letters[index];
-    const d = document.getElementById("letterDisplay");
-    const g = document.getElementById("guideLetter");
-
-    if(d) d.innerText = l;
-    if(g) g.innerText = l;
-  }
-
   function resize(){
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+
+    canvas.width =
+      canvas.offsetWidth;
+
+    canvas.height =
+      canvas.offsetHeight;
   }
 
   resize();
-  window.addEventListener("resize", resize);
+
+  window.addEventListener(
+    "resize",
+    resize
+  );
+
+  function update(){
+
+    document.getElementById(
+      "letterDisplay"
+    ).innerText = letters[i];
+
+    document.getElementById(
+      "guideLetter"
+    ).innerText = letters[i];
+  }
+
+  update();
 
   function pos(e){
-    const r = canvas.getBoundingClientRect();
-    const t = e.touches?.[0];
+
+    const r =
+      canvas.getBoundingClientRect();
+
+    const t =
+      e.touches?.[0];
+
     return {
-      x:(t?t.clientX:e.clientX)-r.left,
-      y:(t?t.clientY:e.clientY)-r.top
+
+      x:
+        (t ? t.clientX : e.clientX)
+        - r.left,
+
+      y:
+        (t ? t.clientY : e.clientY)
+        - r.top
     };
   }
 
-  canvas.addEventListener("pointerdown", (e)=>{
-    drawing = true;
-    const p = pos(e);
-    ctx.beginPath();
-    ctx.moveTo(p.x,p.y);
-  });
+  canvas.addEventListener(
+    "pointerdown",
+    (e)=>{
 
-  canvas.addEventListener("pointermove", (e)=>{
-    if(!drawing) return;
+      drawing = true;
 
-    const p = pos(e);
-    ctx.lineWidth = 6;
-    ctx.lineCap = "round";
-    ctx.strokeStyle = "#0033a0";
+      const p = pos(e);
 
-    ctx.lineTo(p.x,p.y);
-    ctx.stroke();
-  });
+      ctx.beginPath();
 
-  canvas.addEventListener("pointerup", ()=>drawing=false);
-  canvas.addEventListener("pointerleave", ()=>drawing=false);
+      ctx.moveTo(p.x,p.y);
+    }
+  );
+
+  canvas.addEventListener(
+    "pointermove",
+    (e)=>{
+
+      if(!drawing) return;
+
+      const p = pos(e);
+
+      ctx.lineWidth = 6;
+
+      ctx.lineCap = "round";
+
+      ctx.strokeStyle =
+        "#0033a0";
+
+      ctx.lineTo(p.x,p.y);
+
+      ctx.stroke();
+    }
+  );
+
+  canvas.addEventListener(
+    "pointerup",
+    ()=> drawing = false
+  );
+
+  canvas.addEventListener(
+    "pointerleave",
+    ()=> drawing = false
+  );
+
+  /* GLOBAL BUTTONS */
 
   window.clearCanvas = function(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
   }
 
   window.nextLetter = function(){
-    index++;
-    if(index >= letters.length) index = 0;
-    updateLetter();
+
+    i++;
+
+    if(i >= letters.length){
+      i = 0;
+    }
+
+    update();
+
     clearCanvas();
   }
 
-  updateLetter();
-
-});
+})();
