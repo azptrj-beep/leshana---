@@ -900,8 +900,8 @@ a, a:visited, a:active {
 /* =========================================
    WRITING SECTION
 ========================================= ..writing-section{
+  padding:40px 20px;
   text-align:center;
-  padding:30px 10px;
 }
 
 #letterDisplay{
@@ -1003,9 +1003,12 @@ canvas{
 
 @media(max-width:600px){
 
-  .writing-letter{
-    font-size:90px;
-  }
+ .writing-letter{
+  font-size:120px;
+  font-family:'aa-_nohadra_marcus';
+  color:#0033a0;
+  margin-bottom:20px;
+}
 
   .guide-letter{
     font-size:140px;
@@ -1021,29 +1024,43 @@ canvas{
   gap:10px;
 }
 
-.canvas-wrapper{
+.canvas-box{
   position:relative;
   width:320px;
   height:320px;
+  margin:auto;
 }
 
-canvas{
+#drawCanvas{
   width:100%;
   height:100%;
-  border:3px solid #0033a0;
-  border-radius:18px;
   background:white;
+  border:4px solid #0033a0;
+  border-radius:24px;
   touch-action:none;
 }
 
 .guide-letter{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:180px;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:200px;
+  font-family:'Adiabene';
+
   opacity:0.08;
+
   pointer-events:none;
+}
+
+.buttons{
+  margin-top:20px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
 }
 
 .hint{
