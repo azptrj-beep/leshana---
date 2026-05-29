@@ -1,318 +1,279 @@
 "use strict";
-
 /* =========================================
-   GLOBAL STATE
+   LESHANA-ED-SOURETH - CLEAN APP JS
 ========================================= */
 
-let xp =
-  parseInt(localStorage.getItem("xp")) || 0;
-
-let level =
-  parseInt(localStorage.getItem("level")) || 1;
+console.log("JS chargé ✔");
 
 /* =========================================
-   SOURETH LETTERS
+   THEME (LIGHT / DARK SIMPLE)
 ========================================= */
 
-const sourethLetters = [
-  "ܐ","ܒ","ܓ","ܕ","ܗ",
-  "ܘ","ܙ","ܚ","ܛ","ܝ",
-  "ܟ","ܠ","ܡ","ܢ","ܣ",
-  "ܥ","ܦ","ܨ","ܩ","ܪ",
-  "ܫ","ܬ"
-];
+function toggleTheme() {
 
-let currentLetterIndex = 0;
-
-/* =========================================
-   INIT
-========================================= */
-
-window.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    initTheme();
-    updateXPUI();
-    initCanvas();
-    updateLetter();
-  }
-);
-
-/* =========================================
-   THEME
-========================================= */
-
-function toggleTheme(){
-
-  document.body.classList.toggle(
-    "light-mode"
-  );
+  document.body.classList.toggle("light-mode");
 
   localStorage.setItem(
     "theme",
-    document.body.classList.contains(
-      "light-mode"
-    )
+    document.body.classList.contains("light-mode")
   );
 }
 
-function initTheme(){
+window.addEventListener("DOMContentLoaded", () => {
 
-  const saved =
-    localStorage.getItem("theme");
+  const savedTheme = localStorage.getItem("theme");
 
-  if(saved === "true"){
-
-    document.body.classList.add(
-      "light-mode"
-    );
+  if (savedTheme === "true") {
+    document.body.classList.add("light-mode");
   }
-}
+
+  loadProgress();
+});
 
 /* =========================================
-   MENU
+   MOBILE MENU
 ========================================= */
 
-function toggleMenu(){
+function toggleMenu() {
 
-  const nav =
-    document.querySelector("nav");
+  const nav = document.querySelector("nav");
 
-  if(nav){
-
+  if (nav) {
     nav.classList.toggle("active");
   }
 }
 
 /* =========================================
-   XP SYSTEM
+   KEYBOARD SOURETH
 ========================================= */
 
-function updateXPUI(){
+function insertLetter(letter) {
 
-  const xpEl =
-    document.getElementById("xp-value");
+  const editor = document.getElementById("editor");
 
-  const levelEl =
-    document.getElementById("level-value");
+  if (!editor) return;
 
-  if(xpEl){
-    xpEl.textContent = xp;
+  editor.value += letter;
+  editor.focus();
+}
+
+/* =========================================
+   AUDIO (OPTIONNEL)
+========================================= */
+
+function playAudio(src) {
+
+  const audio = new Audio(src);
+  audio.play();
+}
+
+/* 
+ ===========================================
+   QUIZ SYSTEM - XP + LEVELS
+=========================================== */
+
+let xp = parseInt(localStorage.getItem("xp")) || 0;
+let level = parseInt(localStorage.getItem("level")) || 1;
+
+/* TABLE DE PROGRESSION */
+function xpNeeded(level) {
+  return level * 50; // 50 XP puis 100 puis 150...
+}
+
+/* UPDATE DISPLAY (si tu ajoutes UI plus tard) */
+function updateUI() {
+
+  console.log("XP:", xp, "Level:", level);
+}
+
+/* CHECK ANSWER */
+function checkAnswer(answer) {
+
+  const result = document.getElementById("quiz-result");
+
+  if (!result) return;
+
+  const correct = "ܐ"; // réponse correcte
+
+  if (answer === correct) {
+
+    gainXP(10);
+
+    result.innerHTML =
+      "✅ Bonne réponse ! +10 XP";
+
+  } else {
+
+    result.innerHTML =
+      "❌ Mauvaise réponse";
+  }
+}
+
+/* GAIN XP */
+function gainXP(amount) {
+
+  xp += amount;
+
+  const needed = xpNeeded(level);
+
+  /* LEVEL UP */
+  if (xp >= needed) {
+
+    xp -= needed;
+    level++;
+
+    showLevelUp();
   }
 
-  if(levelEl){
-    levelEl.textContent = level;
+  saveData();
+  updateUI();
+}
+
+/* LEVEL UP EFFECT */
+function showLevelUp() {
+
+  alert("🔥 LEVEL UP ! Niveau " + level);
+}
+
+/* SAVE */
+function saveData() {
+
+  localStorage.setItem("xp", xp);
+  localStorage.setItem("level", level);
+}
+
+/* LOAD */
+window.addEventListener("DOMContentLoaded", () => {
+
+  xp = parseInt(localStorage.getItem("xp")) || 0;
+  level = parseInt(localStorage.getItem("level")) || 1;
+
+  updateUI();
+});
+  
+
+/* =========================================
+   PROGRESSION BAR
+========================================= */
+
+function updateProgress(value) {
+
+  const progress = document.querySelector(".progress");
+
+  if (!progress) return;
+
+  const finalValue = Math.min(value, 100);
+
+  progress.style.width = finalValue + "%";
+
+  localStorage.setItem("progress", finalValue);
+}
+
+function loadProgress() {
+
+  const saved = localStorage.getItem("progress");
+
+  if (saved) {
+    updateProgress(parseInt(saved));
   }
 }
 
 /* =========================================
-   SOURETH WRITING SYSTEM
+   FADE IN ANIMATION
 ========================================= */
 
-let canvas;
-let ctx;
-let drawing = false;
+window.addEventListener("DOMContentLoaded", () => {
 
-function initCanvas(){
+  const elements = document.querySelectorAll(".card, .progress-card");
 
-  canvas =
-    document.getElementById("drawCanvas");
+  const observer = new IntersectionObserver((entries) => {
 
-  if(!canvas) return;
+    entries.forEach((entry) => {
 
-  ctx =
-    canvas.getContext("2d");
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+      }
 
-  resizeCanvas();
+    });
 
-  window.addEventListener(
-    "resize",
-    resizeCanvas
-  );
+  }, { threshold: 0.15 });
 
-  /* POINTER EVENTS */
-
-  canvas.addEventListener(
-    "pointerdown",
-    startDraw
-  );
-
-  canvas.addEventListener(
-    "pointermove",
-    draw
-  );
-
-  canvas.addEventListener(
-    "pointerup",
-    stopDraw
-  );
-
-  canvas.addEventListener(
-    "pointerleave",
-    stopDraw
-  );
-}
+  elements.forEach((el) => observer.observe(el));
+});
 
 /* =========================================
-   RESIZE
+   SMOOTH SCROLL
 ========================================= */
 
-function resizeCanvas(){
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-  if(!canvas) return;
+  anchor.addEventListener("click", function (e) {
 
-  canvas.width =
-    canvas.offsetWidth;
+    const target = document.querySelector(this.getAttribute("href"));
 
-  canvas.height =
-    canvas.offsetHeight;
-}
+    if (!target) return;
+
+    e.preventDefault();
+
+    target.scrollIntoView({
+      behavior: "smooth"
+    });
+
+  });
+
+});
 
 /* =========================================
-   LETTER DISPLAY
+   BUTTON EFFECTS
 ========================================= */
 
-function updateLetter(){
+document.addEventListener("DOMContentLoaded", () => {
 
-  const letter =
-    sourethLetters[currentLetterIndex];
+  const buttons = document.querySelectorAll("button");
 
-  const display =
-    document.getElementById(
-      "letterDisplay"
+  buttons.forEach(btn => {
+
+    btn.addEventListener("mouseenter", () => {
+      btn.style.transform = "scale(1.05)";
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "scale(1)";
+    });
+
+  });
+
+});
+
+
+function updateUI() {
+
+  const xpEl = document.getElementById("xp-value");
+  const levelEl = document.getElementById("level-value");
+
+  if (xpEl) xpEl.textContent = xp;
+  if (levelEl) levelEl.textContent = level;
+}
+
+function learnWord(word) {
+
+  let learned = JSON.parse(
+    localStorage.getItem("learned")
+  ) || [];
+
+  if (!learned.includes(word)) {
+
+    learned.push(word);
+
+    localStorage.setItem(
+      "learned",
+      JSON.stringify(learned)
     );
-
-  const guide =
-    document.getElementById(
-      "guideLetter"
-    );
-
-  if(display){
-    display.innerText = letter;
-  }
-
-  if(guide){
-    guide.innerText = letter;
   }
 }
 
-/* =========================================
-   POSITION
-========================================= */
 
-function getPosition(e){
+  
 
-  const rect =
-    canvas.getBoundingClientRect();
-
-  return {
-
-    x:
-      e.clientX - rect.left,
-
-    y:
-      e.clientY - rect.top
-  };
-}
-
-/* =========================================
-   DRAW START
-========================================= */
-
-function startDraw(e){
-
-  drawing = true;
-
-  const pos =
-    getPosition(e);
-
-  ctx.beginPath();
-
-  ctx.moveTo(
-    pos.x,
-    pos.y
-  );
-}
-
-/* =========================================
-   DRAW MOVE
-========================================= */
-
-function draw(e){
-
-  if(!drawing) return;
-
-  const pos =
-    getPosition(e);
-
-  ctx.lineWidth = 7;
-
-  ctx.lineCap = "round";
-
-  ctx.strokeStyle =
-    "#0033a0";
-
-  ctx.lineTo(
-    pos.x,
-    pos.y
-  );
-
-  ctx.stroke();
-}
-
-/* =========================================
-   STOP DRAW
-========================================= */
-
-function stopDraw(){
-
-  drawing = false;
-
-  ctx.beginPath();
-}
-
-/* =========================================
-   CLEAR CANVAS
-========================================= */
-
-function clearCanvas(){
-
-  if(!ctx || !canvas) return;
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-}
-
-/* =========================================
-   NEXT LETTER
-========================================= */
-
-function nextLetter(){
-
-  currentLetterIndex++;
-
-  if(
-    currentLetterIndex >=
-    sourethLetters.length
-  ){
-    currentLetterIndex = 0;
-  }
-
-  updateLetter();
-
-  clearCanvas();
-}
-
-/* =========================================
-   GLOBAL EXPORTS
-========================================= */
-
-window.toggleTheme = toggleTheme;
-window.toggleMenu = toggleMenu;
-window.clearCanvas = clearCanvas;
-window.nextLetter = nextLetter;
+  
+  
