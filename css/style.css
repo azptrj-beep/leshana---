@@ -77,8 +77,3 @@ header{ position:sticky; top:0; z-index:999; background:rgba(0,0,0,0.25); backdr
 .dark-mode #drawCanvas{ background:#1a1a1a; border-color:#4da3ff; }
 
 .dark-mode .guide-letter{ color:white; }
-
-#drawCanvas {
-  touch-action: none;
-  display: block;
-}
