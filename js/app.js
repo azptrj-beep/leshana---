@@ -289,7 +289,7 @@ const ctx = canvas.getContext("2d");
 
 let drawing = false;
 
-/* resize FIX */
+/* 🔥 FIX CANVAS SIZE (CRUCIAL) */
 function resizeCanvas(){
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
@@ -297,53 +297,60 @@ function resizeCanvas(){
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-/* lettre */
-function setLetter(){
+/* LETTRE */
+function updateLetter(){
   document.getElementById("letterDisplay").innerText = letters[index];
   document.getElementById("guideLetter").innerText = letters[index];
 }
-setLetter();
+updateLetter();
 
-/* position */
-function pos(e){
-  const r = canvas.getBoundingClientRect();
+/* POSITION */
+function getPos(e){
+  const rect = canvas.getBoundingClientRect();
   const t = e.touches?.[0];
+
   return {
-    x:(t?t.clientX:e.clientX)-r.left,
-    y:(t?t.clientY:e.clientY)-r.top
+    x: (t ? t.clientX : e.clientX) - rect.left,
+    y: (t ? t.clientY : e.clientY) - rect.top
   };
 }
 
-/* draw */
-canvas.addEventListener("pointerdown", e=>{
+/* START */
+canvas.addEventListener("pointerdown", (e)=>{
   drawing = true;
-  const p = pos(e);
+  const p = getPos(e);
   ctx.beginPath();
-  ctx.moveTo(p.x,p.y);
+  ctx.moveTo(p.x, p.y);
 });
 
-canvas.addEventListener("pointermove", e=>{
+/* DRAW */
+canvas.addEventListener("pointermove", (e)=>{
   if(!drawing) return;
-  const p = pos(e);
+
+  const p = getPos(e);
 
   ctx.lineWidth = 6;
   ctx.lineCap = "round";
   ctx.strokeStyle = "#0033a0";
 
-  ctx.lineTo(p.x,p.y);
+  ctx.lineTo(p.x, p.y);
   ctx.stroke();
 });
 
-canvas.addEventListener("pointerup", ()=>drawing=false);
+/* STOP */
+canvas.addEventListener("pointerup", ()=> drawing=false);
+canvas.addEventListener("pointerleave", ()=> drawing=false);
 
-/* actions */
+/* CLEAR */
 function clearCanvas(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 }
 
+/* NEXT LETTER */
 function nextLetter(){
   index++;
   if(index >= letters.length) index = 0;
-  setLetter();
+
+  updateLetter();
   clearCanvas();
 }
