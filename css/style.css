@@ -956,3 +956,58 @@ a, a:visited, a:active {
   }
 
 }
+
+/* =========================================
+   WRITING SECTION
+========================================= */
+
+.writing-section{
+  padding:40px 20px;
+}
+
+.writing-card{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.writing-text{
+  margin-bottom:20px;
+  opacity:.8;
+}
+
+/* CANVAS */
+
+#draw{
+  width:100%;
+  height:400px;
+
+  background:#0f172a;
+
+  border:2px solid rgba(255,255,255,.08);
+
+  border-radius:20px;
+
+  touch-action:none;
+
+  cursor:crosshair;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.3);
+
+  transition:.3s;
+}
+
+#draw:hover{
+  border-color:#38bdf8;
+}
+
+/* ACTIONS */
+
+.writing-actions{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
