@@ -275,3 +275,75 @@ function pressKey(key) {
 }
 
 const input = document.getElementById("sourethInput");
+
+const letters = [
+"ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
+"ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
+"ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+];
+
+let index = 0;
+
+const canvas = document.getElementById("drawCanvas");
+const ctx = canvas.getContext("2d");
+
+let drawing = false;
+
+/* resize FIX */
+function resizeCanvas(){
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+/* lettre */
+function setLetter(){
+  document.getElementById("letterDisplay").innerText = letters[index];
+  document.getElementById("guideLetter").innerText = letters[index];
+}
+setLetter();
+
+/* position */
+function pos(e){
+  const r = canvas.getBoundingClientRect();
+  const t = e.touches?.[0];
+  return {
+    x:(t?t.clientX:e.clientX)-r.left,
+    y:(t?t.clientY:e.clientY)-r.top
+  };
+}
+
+/* draw */
+canvas.addEventListener("pointerdown", e=>{
+  drawing = true;
+  const p = pos(e);
+  ctx.beginPath();
+  ctx.moveTo(p.x,p.y);
+});
+
+canvas.addEventListener("pointermove", e=>{
+  if(!drawing) return;
+  const p = pos(e);
+
+  ctx.lineWidth = 6;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#0033a0";
+
+  ctx.lineTo(p.x,p.y);
+  ctx.stroke();
+});
+
+canvas.addEventListener("pointerup", ()=>drawing=false);
+
+/* actions */
+function clearCanvas(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+function nextLetter(){
+  index++;
+  if(index >= letters.length) index = 0;
+  setLetter();
+  clearCanvas();
+}
