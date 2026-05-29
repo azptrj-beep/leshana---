@@ -388,74 +388,70 @@ content="#0033a0">
 <script>
 
 const canvas = document.getElementById("draw");
+const ctx = canvas.getContext("2d");
 
-if (canvas) {
+function resizeCanvas() {
 
-  const ctx = canvas.getContext("2d");
+  const rect = canvas.getBoundingClientRect();
 
-  function resizeCanvas() {
-
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-  }
-
-  window.addEventListener("resize", resizeCanvas);
-
-  resizeCanvas();
-
-  /* STYLE */
-
-  ctx.strokeStyle = "#38bdf8";
-  ctx.lineWidth = 4;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-
-  /* DRAW STATE */
-
-  let drawing = false;
-
-  canvas.addEventListener("pointerdown", (e) => {
-
-    drawing = true;
-
-    ctx.beginPath();
-
-    ctx.moveTo(e.offsetX, e.offsetY);
-
-  });
-
-  canvas.addEventListener("pointermove", (e) => {
-
-    if (!drawing) return;
-
-    ctx.lineTo(e.offsetX, e.offsetY);
-
-    ctx.stroke();
-
-  });
-
-  canvas.addEventListener("pointerup", () => {
-
-    drawing = false;
-
-  });
-
-  canvas.addEventListener("pointerleave", () => {
-
-    drawing = false;
-
-  });
-
-  /* CLEAR */
-
-  window.clearCanvas = function () {
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  };
-
+  canvas.width = rect.width;
+  canvas.height = rect.height;
 }
-</script>  
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+ctx.strokeStyle = "#38bdf8";
+ctx.lineWidth = 5;
+ctx.lineCap = "round";
+ctx.lineJoin = "round";
+
+let drawing = false;
+
+function getPos(e) {
+
+  const rect = canvas.getBoundingClientRect();
+
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  };
+}
+
+canvas.addEventListener("pointerdown", (e) => {
+
+  drawing = true;
+
+  const pos = getPos(e);
+
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+});
+
+canvas.addEventListener("pointermove", (e) => {
+
+  if (!drawing) return;
+
+  const pos = getPos(e);
+
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+});
+
+canvas.addEventListener("pointerup", () => {
+  drawing = false;
+});
+
+canvas.addEventListener("pointerleave", () => {
+  drawing = false;
+});
+
+function clearCanvas() {
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+</script>
 
 </body>  </html> 
