@@ -306,8 +306,7 @@ content="#0033a0">
 </div>
 
  <!-- =========================================
-     ÉCRITURE TACTILE HOME SECTION
-     
+     ÉCRITURE TACTILE
 ========================================= -->
 
 <section class="writing-section">
@@ -319,11 +318,11 @@ content="#0033a0">
     </h2>
 
     <p class="writing-subtitle">
-      Trace les lettres assyro-chaldéennes
-      avec ton doigt, un stylet ou la souris.
+      Trace les lettres avec ton doigt,
+      un stylet ou la souris.
     </p>
 
-    <!-- LETTRE ACTUELLE -->
+    <!-- LETTRE -->
 
     <div id="letterDisplay"
          class="writing-letter">
@@ -334,29 +333,34 @@ content="#0033a0">
 
     <div class="canvas-wrapper">
 
-      <!-- LETTRE GUIDE -->
       <div id="guideLetter"
            class="guide-letter">
         ܐ
       </div>
 
-      <!-- UN SEUL CANVAS -->
-      <canvas id="drawCanvas"></canvas>
+      <!-- IMPORTANT -->
+      <canvas id="drawCanvas"
+              width="340"
+              height="340"></canvas>
 
     </div>
 
-    <!-- BOUTONS -->
+    <!-- ACTIONS -->
 
     <div class="writing-actions">
 
       <button class="btn btn-primary"
               onclick="nextLetter()">
+
         🔤 Lettre suivante
+
       </button>
 
       <button class="btn btn-secondary"
               onclick="clearCanvas()">
+
         🧹 Effacer
+
       </button>
 
     </div>
@@ -365,7 +369,8 @@ content="#0033a0">
 
 </section>
 
-</section>
+
+
  <!-- =========================  
        FOOTER  
   ========================== -->    <footer>  <p>  
