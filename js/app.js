@@ -22,12 +22,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   setLetter();
 
-  canvas.addEventListener("pointerdown", start);
-  canvas.addEventListener("pointermove", draw);
-  canvas.addEventListener("pointerup", stop);
-  canvas.addEventListener("pointerleave", stop);
-});
-
+  canvas.addEventListener("pointerdown", startDraw);
+canvas.addEventListener("pointermove", draw);
+canvas.addEventListener("pointerup", stopDraw);
+canvas.addEventListener("pointerleave", stopDraw);
 function resize() {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
