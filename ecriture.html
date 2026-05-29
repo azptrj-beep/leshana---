@@ -8,29 +8,35 @@
 
 <title>Écriture Soureth Moderne</title>
 
-<link rel="icon" href="images/logo.png">
-
-
-
-</head>
+<link rel="icon" href="assets/images/logo.png">
 
 <style>
+
+/* =========================
+   FONT
+========================= */
+
+@font-face{
+  font-family:'Soureth';
+  src:url('assets/fonts/aa-_nohadra_marcus.woff2') format('woff2');
+}
 
 /* =========================
    GLOBAL
 ========================= */
 
-@font-face {
-  font-family: 'aa-_nohadra_marcus';
-  src: url('..assets/fonts/aa-_nohadra_marcus.woff2') format('woff2'),
-       format('truetype');
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-  margin:0;
   font-family:Arial,sans-serif;
   background:#f4f7ff;
+  color:#111;
   text-align:center;
+  min-height:100vh;
 }
 
 /* =========================
@@ -43,14 +49,20 @@ header{
   padding:20px;
 }
 
+header h1{
+  margin-bottom:10px;
+}
+
 nav{
-  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin:10px;
   font-weight:bold;
 }
 
@@ -59,14 +71,25 @@ nav a{
 ========================= */
 
 .container{
-  padding:20px;
+  padding:25px;
+  max-width:900px;
+  margin:auto;
 }
 
+.subtitle{
+  margin-bottom:25px;
+  opacity:0.8;
+}
+
+/* =========================
+   LETTER
+========================= */
+
 .letter-box{
-  font-family:'aa-_nohadra_marcus';
+  font-family:'Soureth';
   font-size:120px;
   color:#0033a0;
-  margin:20px;
+  margin-bottom:25px;
   direction:rtl;
 }
 
@@ -76,28 +99,34 @@ nav a{
 
 .canvas-wrapper{
   position:relative;
-  display:inline-block;
+  width:100%;
+  max-width:420px;
+  margin:auto;
 }
 
-canvas{
-  width:320px;
-  height:320px;
+#board{
+  width:100%;
+  height:420px;
   background:white;
   border:3px solid #0033a0;
-  border-radius:18px;
+  border-radius:22px;
+  display:block;
   touch-action:none;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* LETTRE GUIDE */
+/* =========================
+   GUIDE LETTER
+========================= */
 
 .guide{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  
+
   font-family:'Soureth';
-  font-size:180px;
+  font-size:220px;
 
   opacity:0.08;
 
@@ -110,15 +139,41 @@ canvas{
    BUTTONS
 ========================= */
 
+.buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:25px;
+}
+
 .btn{
+  border:none;
+  padding:14px 22px;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-clear{
   background:#d40000;
   color:white;
-  border:none;
-  padding:12px 18px;
-  border-radius:12px;
-  margin:10px;
-  cursor:pointer;
-  font-size:16px;
+}
+
+.btn-next{
+  background:#0033a0;
+  color:white;
+}
+
+.btn-dark{
+  background:#111827;
+  color:white;
 }
 
 /* =========================
@@ -126,17 +181,45 @@ canvas{
 ========================= */
 
 .dark-mode{
-  background:#121212;
+  background:#0f172a;
   color:white;
 }
 
-.dark-mode canvas{
-  background:#1f1f1f;
-  border-color:white;
+.dark-mode #board{
+  background:#111827;
+  border-color:#38bdf8;
 }
 
 .dark-mode .letter-box{
-  color:white;
+  color:#38bdf8;
+}
+
+.dark-mode .guide{
+  opacity:0.05;
+}
+
+.dark-mode header{
+  background:#020617;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .letter-box{
+    font-size:90px;
+  }
+
+  .guide{
+    font-size:170px;
+  }
+
+  #board{
+    height:340px;
+  }
+
 }
 
 </style>
@@ -150,49 +233,73 @@ canvas{
 <h1>✍️ Écriture Soureth Moderne</h1>
 
 <nav>
-  <a href="index.html">🏠 Accueil</a>
-  <a href="alphabet.html">🔠 Alphabet</a>
-  <a href="voyelles.html">🔤 Voyelles</a>
+
+<a href="index.html">🏠 Accueil</a>
+
+<a href="alphabet.html">🔠 Alphabet</a>
+
+<a href="voyelles.html">🔤 Voyelles</a>
+
 </nav>
 
 </header>
 
 <div class="container">
 
-<h2>Trace la lettre</h2>
+<h2 class="subtitle">
+Trace la lettre avec ton doigt ou ton stylet
+</h2>
 
-<div class="letter-box soureth-title " id="letterDisplay">ܐ</div>
+<div
+  class="letter-box"
+  id="letterDisplay">
+  ܐ
+</div>
 
 <div class="canvas-wrapper">
 
-<div class="guide soureth-title " id="guideLetter">ܐ</div>
+<div
+  class="guide"
+  id="guideLetter">
+  ܐ
+</div>
 
-<canvas id="drawCanvas"></canvas>
-
-<canvas id="board" width="320" height="320"></canvas>
+<canvas
+  id="board"
+  width="420"
+  height="420">
+</canvas>
 
 </div>
 
-<br>
+<div class="buttons">
 
-<button class="btn" onclick="clearCanvas()">
-Effacer
+<button
+  class="btn btn-clear"
+  onclick="clearCanvas()">
+  Effacer
 </button>
 
-<button class="btn" onclick="nextLetter()">
-Lettre suivante
+<button
+  class="btn btn-next"
+  onclick="nextLetter()">
+  Lettre suivante
 </button>
 
-<button class="btn" onclick="toggleDarkMode()">
-Mode sombre
+<button
+  class="btn btn-dark"
+  onclick="toggleDarkMode()">
+  Mode sombre
 </button>
+
+</div>
 
 </div>
 
 <script>
 
 /* =========================
-   LETTRES
+   LETTERS
 ========================= */
 
 const letters = [
@@ -209,23 +316,58 @@ let index = 0;
    CANVAS
 ========================= */
 
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+const canvas =
+  document.getElementById("board");
+
+const ctx =
+  canvas.getContext("2d");
 
 let drawing = false;
 
 /* =========================
-   SET LETTER
+   RESIZE
+========================= */
+
+function resizeCanvas(){
+
+  const ratio =
+    window.devicePixelRatio || 1;
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+  canvas.width =
+    rect.width * ratio;
+
+  canvas.height =
+    rect.height * ratio;
+
+  ctx.scale(ratio, ratio);
+}
+
+resizeCanvas();
+
+window.addEventListener(
+  "resize",
+  resizeCanvas
+);
+
+/* =========================
+   LETTER
 ========================= */
 
 function setLetter(){
 
-  document.getElementById("letterDisplay").innerText =
-    letters[index];
+  document.getElementById(
+    "letterDisplay"
+  ).innerText = letters[index];
 
-  document.getElementById("guideLetter").innerText =
-    letters[index];
+  document.getElementById(
+    "guideLetter"
+  ).innerText = letters[index];
 }
+
+setLetter();
 
 /* =========================
    POSITION
@@ -236,23 +378,16 @@ function getPos(e){
   const rect =
     canvas.getBoundingClientRect();
 
-  const touch =
-    e.touches?.[0];
-
   return {
 
-    x:
-      (touch ? touch.clientX : e.clientX)
-      - rect.left,
+    x:e.clientX - rect.left,
 
-    y:
-      (touch ? touch.clientY : e.clientY)
-      - rect.top
+    y:e.clientY - rect.top
   };
 }
 
 /* =========================
-   START
+   DRAW
 ========================= */
 
 function startDraw(e){
@@ -268,10 +403,6 @@ function startDraw(e){
   e.preventDefault();
 }
 
-/* =========================
-   DRAW
-========================= */
-
 function draw(e){
 
   if(!drawing) return;
@@ -282,7 +413,9 @@ function draw(e){
 
   ctx.lineCap = "round";
 
-  ctx.strokeStyle = "#0033a0";
+  ctx.lineJoin = "round";
+
+  ctx.strokeStyle = "#38bdf8";
 
   ctx.lineTo(pos.x, pos.y);
 
@@ -291,40 +424,32 @@ function draw(e){
   e.preventDefault();
 }
 
-/* =========================
-   STOP
-========================= */
-
 function stopDraw(){
 
   drawing = false;
-
-  ctx.beginPath();
 }
 
 /* =========================
-   EVENTS
+   POINTER EVENTS
 ========================= */
 
-canvas.addEventListener("mousedown", startDraw);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", stopDraw);
-canvas.addEventListener("mouseleave", stopDraw);
-
 canvas.addEventListener(
-  "touchstart",
-  startDraw,
-  { passive:false }
+  "pointerdown",
+  startDraw
 );
 
 canvas.addEventListener(
-  "touchmove",
-  draw,
-  { passive:false }
+  "pointermove",
+  draw
 );
 
 canvas.addEventListener(
-  "touchend",
+  "pointerup",
+  stopDraw
+);
+
+canvas.addEventListener(
+  "pointerleave",
   stopDraw
 );
 
@@ -362,16 +487,7 @@ function toggleDarkMode(){
   );
 }
 
-/* =========================
-   INIT
-========================= */
-
-setLetter();
-
 </script>
 
-
-<div id="letterDisplay" class="soureth-mode"></div>
-<div id="guideLetter" class="soureth-mode"></div>
 </body>
 </html>
