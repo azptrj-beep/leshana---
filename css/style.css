@@ -942,13 +942,13 @@ a, a:visited, a:active {
 }
 
 #drawCanvas{
-  width:100%;
+  width:340px;
   height:340px;
   background:white;
   border:3px solid #0033a0;
-  border-radius:24px;
+  border-radius:20px;
   touch-action:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  display:block;
 }
 
 /* LETTRE FANTÔME */
@@ -1008,8 +1008,5 @@ a, a:visited, a:active {
     font-size:140px;
   }
 
-  #drawCanvas{
-    height:300px;
-  }
 
 }
