@@ -899,10 +899,8 @@ a, a:visited, a:active {
 
 /* =========================================
    WRITING SECTION
-========================================= */
-
-.writing-section{
-  padding:80px 20px;
+========================================= .writing-section{
+  padding:40px 20px;
 }
 
 .writing-card{
@@ -911,69 +909,38 @@ a, a:visited, a:active {
   text-align:center;
 }
 
-.section-title{
-  font-size:2rem;
-  margin-bottom:10px;
-}
-
-.writing-subtitle{
-  opacity:.8;
-  margin-bottom:25px;
-  line-height:1.6;
-}
-
-/* LETTRE */
-
 .writing-letter{
-  font-family:'aa-_nohadra_marcus';
-  font-size:120px;
+  font-size:80px;
   color:#0033a0;
-  margin-bottom:20px;
+  margin:10px 0;
   direction:rtl;
 }
-
-/* CANVAS */
 
 .canvas-wrapper{
   position:relative;
   width:100%;
-  max-width:340px;
-  margin:0 auto;
+  max-width:360px;
+  margin:auto;
 }
+
 canvas{
-  width:320px;
-  height:320px;
-
-  background:white;
-
+  width:100%;
+  height:360px;
   border:3px solid #0033a0;
-
   border-radius:18px;
-
   touch-action:none;
-
-  display:block;
+  background:white;
 }
-}
-
-/* LETTRE FANTÔME */
 
 .guide-letter{
   position:absolute;
-  inset:0;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-family:'aa-_nohadra_marcus';
-  font-size:180px;
-
-  opacity:.08;
-
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:160px;
+  opacity:0.08;
   pointer-events:none;
-
-  color:#0033a0;
+  direction:rtl;
 }
 
 /* ACTIONS */
