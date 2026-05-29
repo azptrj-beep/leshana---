@@ -899,20 +899,51 @@ a, a:visited, a:active {
 
 /* =========================================
    WRITING SECTION
-========================================= .writing-section{
-  padding:40px 20px;
-}
-
-.writing-card{
-  max-width:500px;
-  margin:auto;
+========================================= ..writing-section{
   text-align:center;
+  padding:30px 10px;
 }
 
-.writing-letter{
-  font-size:80px;
+#letterDisplay{
+  font-size:90px;
   color:#0033a0;
-  margin:10px 0;
+  direction:rtl;
+}
+
+/* CONTENEUR */
+.canvas-box{
+  position:relative;
+  width:90vw;
+  max-width:380px;
+  margin:auto;
+}
+
+/* CANVAS = TOUCH OK */
+canvas{
+  width:100%;
+  height:380px;
+  border:3px solid #0033a0;
+  border-radius:20px;
+
+  touch-action:none; /* IMPORTANT */
+  background:white;
+
+  display:block;
+}
+
+/* LETTRE GUIDE */
+#guideLetter{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+
+  font-size:180px;
+  opacity:0.12;
+  pointer-events:none;
+
+  z-index:2;
+  color:#0033a0;
   direction:rtl;
 }
 
