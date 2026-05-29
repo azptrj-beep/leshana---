@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Adiabene';
+  src: url('../assets/fonts/Adiabene.woff2') format('woff2');
+}
+
+body.ecriture-app {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f7ff;
+  text-align: center;
+}
+
+/* TOP BAR */
+.topbar {
+  background: #0033a0;
+  color: white;
+  padding: 14px;
+  font-weight: bold;
+}
+
+/* MODEL LETTER */
+.model {
+  margin: 20px 0;
+  position: relative;
+}
+
+/* LETTRE PRINCIPALE */
+#letterDisplay {
+  font-family: 'Adiabene' !important;
+  font-size: 90px;
+  color: #0033a0;
+}
+
+/* LETTRE GUIDE */
+#guideLetter {
+  font-family: 'Adiabene' !important;
+  font-size: 90px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0.12;
+  color: #0033a0;
+  pointer-events: none;
+}
+
+/* CANVAS */
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  border: 2px solid #0033a0;
+  border-radius: 12px;
+  background: white;
+
+  touch-action: none;
+}
+
+/* BUTTONS */
+.controls {
+  margin-top: 15px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #d40000;
+  color: white;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #0b0f1a;
+  color: white;
+}
+
+body.dark canvas {
+  background: #111;
+  border-color: white;
+}
+
+body.dark #letterDisplay,
+body.dark #guideLetter {
+  color: white;
+}
