@@ -305,49 +305,65 @@ content="#0033a0">
 
 </div>
 
-  </section>   
-
-<!-- =========================
-     ÉCRITURE TACTILE
-========================= -->
+ <!-- =========================================
+     ÉCRITURE TACTILE HOME SECTION
+     
+========================================= -->
 
 <section class="writing-section">
 
-  <div class="card writing-card">
+  <div class="writing-card card">
 
-    <h2>
+    <h2 class="section-title">
       ✍️ Écriture tactile Soureth
     </h2>
 
-    <p class="writing-text">
-      Dessine les lettres Soureth avec ton doigt,
-      un stylet ou la souris.
+    <p class="writing-subtitle">
+      Trace les lettres assyro-chaldéennes
+      avec ton doigt, un stylet ou la souris.
     </p>
 
-    <canvas id="draw"></canvas>
+    <!-- LETTRE ACTUELLE -->
+
+    <div id="letterDisplay"
+         class="writing-letter">
+      ܐ
+    </div>
+
+    <!-- CANVAS -->
+
+    <div class="canvas-wrapper">
+
+      <!-- LETTRE GUIDE -->
+      <div id="guideLetter"
+           class="guide-letter">
+        ܐ
+      </div>
+
+      <!-- UN SEUL CANVAS -->
+      <canvas id="drawCanvas"></canvas>
+
+    </div>
+
+    <!-- BOUTONS -->
 
     <div class="writing-actions">
 
-      <button onclick="clearCanvas()"
-              class="btn btn-secondary">
-        🗑️ Effacer
+      <button class="btn btn-primary"
+              onclick="nextLetter()">
+        🔤 Lettre suivante
+      </button>
+
+      <button class="btn btn-secondary"
+              onclick="clearCanvas()">
+        🧹 Effacer
       </button>
 
     </div>
 
   </div>
 
-<div class="draw-container card">
-
-  <h2>✍️ Dessin Soureth</h2>
-
-  <canvas id="draw"></canvas>
-
-  <button onclick="clearCanvas()" class="btn btn-primary">
-    Effacer
-  </button>
-
-</div>
+</section>
 
 </section>
  <!-- =========================  
