@@ -1,4 +1,4 @@
-As"use strict";
+"use strict";
 
 const letters = [
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
