@@ -641,20 +641,15 @@ input{
   justify-content:center;
 }
 
-#board{
-  width:min(90vw,420px);
-  height:min(90vw,420px);
-
-  background:white;
-
-  border:
-    3px solid #0033a0;
-
+#draw{
+  width:100%;
+  height:400px;
+  background:#0f172a;
+  border:2px solid #38bdf8;
   border-radius:20px;
-
   touch-action:none;
+  display:block;
 }
-
 /* =========================================
    AUDIO BUTTON
 ========================================= */
