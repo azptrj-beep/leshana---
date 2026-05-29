@@ -354,3 +354,86 @@ function nextLetter(){
   updateLetter();
   clearCanvas();
 }
+
+/* =========================
+   ÉCRITURE SOURETH SAFE MODE
+========================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const canvas = document.getElementById("drawCanvas");
+  if (!canvas) return; // évite crash si pas sur page écriture
+
+  const ctx = canvas.getContext("2d");
+
+  const letters = [
+    "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
+    "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
+    "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+  ];
+
+  let index = 0;
+  let drawing = false;
+
+  function updateLetter(){
+    const l = letters[index];
+    const d = document.getElementById("letterDisplay");
+    const g = document.getElementById("guideLetter");
+
+    if(d) d.innerText = l;
+    if(g) g.innerText = l;
+  }
+
+  function resize(){
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  function pos(e){
+    const r = canvas.getBoundingClientRect();
+    const t = e.touches?.[0];
+    return {
+      x:(t?t.clientX:e.clientX)-r.left,
+      y:(t?t.clientY:e.clientY)-r.top
+    };
+  }
+
+  canvas.addEventListener("pointerdown", (e)=>{
+    drawing = true;
+    const p = pos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+  });
+
+  canvas.addEventListener("pointermove", (e)=>{
+    if(!drawing) return;
+
+    const p = pos(e);
+    ctx.lineWidth = 6;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#0033a0";
+
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+  });
+
+  canvas.addEventListener("pointerup", ()=>drawing=false);
+  canvas.addEventListener("pointerleave", ()=>drawing=false);
+
+  window.clearCanvas = function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+
+  window.nextLetter = function(){
+    index++;
+    if(index >= letters.length) index = 0;
+    updateLetter();
+    clearCanvas();
+  }
+
+  updateLetter();
+
+});
