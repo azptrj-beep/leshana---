@@ -338,212 +338,33 @@ content="#0033a0">
   — Plateforme éducative assyro-chaldéenne moderne  
 </p>
 
-  </footer>    <!-- =========================  
-       JAVASCRIPT  
-  ========================== -->    <script src="js/app.js"></script>    <script src="js/keyboard.js"></script>      <script src="js/quiz.js"></script>    <!-- SERVICE WORKER -->    <script>  
-  
-    if ("serviceWorker" in navigator) {  
-  
-      window.addEventListener("load", () => {  
-  
-        navigator.serviceWorker.register("/sw.js")  
-  
-          .then(() => console.log("SW enregistré ✔"))  
-  
-          .catch(err => console.log("Erreur SW :", err));  
-  
-      });  
-  
-    }  
-  
-  </script>  <div class="bottom-nav">  <a href="index.html">🏠</a>
+  </footer>  <!-- JAVASCRIPT -->
+<script src="js/app.js"></script>
+<script src="js/keyboard.js"></script>
+<script src="js/quiz.js"></script>
 
-<a href="alphabet.html">🔠</a>
-
-<a href="quiz.html">🎮</a>
-
-<a href="traduction.html">🌍</a>
-
-<a href="progression.html">📈</a>
-
-</div>  
-
-<div class="hero-buttons">
-
-  <a href="soureth-aa-_nohadra_marcus.html"
-     class="btn btn-primary">
-
-
-  </a>
-
-</div>
+<!-- SERVICE WORKER -->
 <script>
+if ("serviceWorker" in navigator) {
 
-const letters = [
-"ܐ","ܒ","ܓ","ܕ","ܗ",
-"ܘ","ܙ","ܚ","ܛ","ܝ",
-"ܟ","ܠ","ܡ","ܢ","ܣ",
-"ܥ","ܦ","ܨ","ܩ","ܪ",
-"ܫ","ܬ"
-];
+  window.addEventListener("load", () => {
 
-const models = {
-  "ܐ": [{x:50,y:250},{x:160,y:40},{x:270,y:250}],
-  "ܒ": [{x:60,y:60},{x:60,y:250},{x:200,y:250}],
-  "ܓ": [{x:250,y:60},{x:120,y:120},{x:120,y:260}],
-  "ܕ": [{x:60,y:60},{x:250,y:60},{x:250,y:250}],
-  "ܗ": [{x:60,y:250},{x:160,y:60},{x:260,y:250}]
-};
+    navigator.serviceWorker
+      .register("/sw.js")
 
-let index = 0;
+      .then(() =>
+        console.log("SW enregistré ✔")
+      )
 
-const canvas = document.getElementById("board");
-const ctx = canvas.getContext("2d");
+      .catch(err =>
+        console.log("Erreur SW :", err)
+      );
 
-const letterDisplay = document.getElementById("letterDisplay");
-const guideLetter = document.getElementById("guideLetter");
+  });
 
-let drawing = false;
-let userPoints = [];
-
-/* SET LETTER */
-
-function setLetter(){
-  const l = letters[index];
-  letterDisplay.innerText = l;
-  guideLetter.innerText = l;
 }
+</script>
 
-/* POSITION */
-
-function getPos(e){
-  const rect = canvas.getBoundingClientRect();
-  const t = e.touches?.[0];
-
-  return {
-    x:(t?t.clientX:e.clientX)-rect.left,
-    y:(t?t.clientY:e.clientY)-rect.top
-  };
-}
-
-/* START */
-
-function startDraw(e){
-  drawing = true;
-  userPoints = [];
-
-  const p = getPos(e);
-
-  ctx.beginPath();
-  ctx.moveTo(p.x,p.y);
-
-  userPoints.push(p);
-  e.preventDefault();
-}
-
-/* DRAW */
-
-function draw(e){
-  if(!drawing) return;
-
-  const p = getPos(e);
-
-  ctx.lineWidth = 6;
-  ctx.lineCap = "round";
-  ctx.strokeStyle = "#0033a0";
-
-  ctx.lineTo(p.x,p.y);
-  ctx.stroke();
-
-  userPoints.push(p);
-
-  e.preventDefault();
-}
-
-/* DISTANCE POINT → POINT */
-
-function dist(a,b){
-  return Math.sqrt(
-    (a.x-b.x)**2 + (a.y-b.y)**2
-  );
-}
-
-/* IA COMPARISON */
-
-function evaluate(letter, points){
-
-  const model = models[letter];
-
-  if(!model || points.length < 5) return 0;
-
-  let score = 0;
-
-  for(let i=0;i<model.length;i++){
-
-    let closest = Infinity;
-
-    for(let p of points){
-
-      const d = dist(model[i],p);
-
-      if(d < closest) closest = d;
-    }
-
-    score += Math.max(0, 100 - closest);
-  }
-
-  return Math.round(score / model.length);
-}
-
-/* STOP */
-
-function stopDraw(){
-
-  drawing = false;
-  ctx.beginPath();
-
-  const letter = letters[index];
-
-  const score = evaluate(letter,userPoints);
-
-  if(score > 70){
-    alert("✔ Bonne lettre ! Score: " + score);
-  } else {
-    alert("✖ Essaie encore. Score: " + score);
-  }
-}
-
-/* CLEAR */
-
-function clearCanvas(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  userPoints = [];
-}
-
-/* NEXT LETTER */
-
-function nextLetter(){
-  index++;
-  if(index>=letters.length) index=0;
-
-  setLetter();
-  clearCanvas();
-}
-
-/* EVENTS */
-
-canvas.addEventListener("mousedown",startDraw);
-canvas.addEventListener("mousemove",draw);
-canvas.addEventListener("mouseup",stopDraw);
-canvas.addEventListener("mouseleave",stopDraw);
-
-canvas.addEventListener("touchstart",startDraw,{passive:false});
-canvas.addEventListener("touchmove",draw,{passive:false});
-canvas.addEventListener("touchend",stopDraw);
-
-/* INIT */
-
-setLetter();
-
-
-</body>  </html> 
+</body>
+</html>
+ 
