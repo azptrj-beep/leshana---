@@ -60,8 +60,8 @@ body{
 ========================================= */
 
 @font-face {
-  font-family: 'Soureth';
-  src: url('../assets/fonts/soureth.woff2') format('woff2');
+  font-family: 'aa-_nohadra_marcus';
+  src: url('../assets/fonts/aa-_nohadra_marcus.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -584,7 +584,7 @@ input{
 
 #letterDisplay,
 #guideLetter{
-  font-family:'Soureth',sans-serif !important;
+  font-family:'aa-_nohadra_marcus',sans-serif !important;
 
   direction:rtl;
 
@@ -730,7 +730,7 @@ footer{
 #letterDisplay,
 #guideLetter{
   font-family:
-    'Soureth',
+    'aa-_nohadra_marcus',
     sans-serif !important;
 
   direction:rtl;
@@ -891,7 +891,7 @@ a, a:visited, a:active {
 }
 
 * {
-  font-family: 'Soureth', sans-serif !important;
+  font-family: 'aa-_nohadra_marcus', sans-serif !important;
 }
 
 /* =========================================
@@ -910,7 +910,7 @@ a, a:visited, a:active {
 #guideLetter {
 
   font-family:
-    'Soureth',
+    'aa-_nohadra_marcus',
     sans-serif !important;
 
   direction: rtl;
@@ -930,7 +930,7 @@ a, a:visited, a:active {
 
   body,
   .soureth-mode {
-    font-family: 'Soureth' !important;
+    font-family: 'aa-_nohadra_marcus' !important;
   }
 
 }
