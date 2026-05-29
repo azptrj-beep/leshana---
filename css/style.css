@@ -940,15 +940,20 @@ a, a:visited, a:active {
   max-width:340px;
   margin:0 auto;
 }
+canvas{
+  width:320px;
+  height:320px;
 
-#drawCanvas{
-  width:340px;
-  height:340px;
   background:white;
+
   border:3px solid #0033a0;
-  border-radius:20px;
+
+  border-radius:18px;
+
   touch-action:none;
+
   display:block;
+}
 }
 
 /* LETTRE FANTÔME */
