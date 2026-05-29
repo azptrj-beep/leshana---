@@ -113,45 +113,57 @@ function updateXPUI(){
 let canvas;
 let ctx;
 let drawing = false;
+function initCanvas() {
+  const canvas = document.getElementById("drawCanvas");
+  if (!canvas) return;
 
-function initCanvas(){
+  const ctx = canvas.getContext("2d");
 
-  canvas =
-    document.getElementById("drawCanvas");
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
 
-  if(!canvas) return;
+  resize();
+  window.addEventListener("resize", resize);
 
-  ctx =
-    canvas.getContext("2d");
+  let drawing = false;
 
-  resizeCanvas();
+  function pos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches?.[0] || e;
 
-  window.addEventListener(
-    "resize",
-    resizeCanvas
-  );
+    return {
+      x: t.clientX - rect.left,
+      y: t.clientY - rect.top
+    };
+  }
 
-  /* POINTER EVENTS */
+  canvas.addEventListener("pointerdown", (e) => {
+    drawing = true;
+    const p = pos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  });
 
-  canvas.addEventListener(
-    "pointerdown",
-    startDraw
-  );
+  canvas.addEventListener("pointermove", (e) => {
+    if (!drawing) return;
 
-  canvas.addEventListener(
-    "pointermove",
-    draw
-  );
+    const p = pos(e);
+    ctx.lineWidth = 6;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#0033a0";
 
-  canvas.addEventListener(
-    "pointerup",
-    stopDraw
-  );
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  });
 
-  canvas.addEventListener(
-    "pointerleave",
-    stopDraw
-  );
+  canvas.addEventListener("pointerup", () => drawing = false);
+  canvas.addEventListener("pointercancel", () => drawing = false);
+
+  window.clearCanvas = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
 }
 
 /* =========================================
