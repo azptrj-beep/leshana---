@@ -305,67 +305,34 @@ content="#0033a0">
 
 </div>
 
- <!-- =========================================
-     ÉCRITURE TACTILE
-========================================= -->
+<!-- =========================
+     ÉCRITURE TACTILE PRO
+========================= -->
 
 <section class="writing-section">
 
   <div class="writing-card card">
 
-    <h2 class="section-title">
-      ✍️ Écriture tactile Soureth
-    </h2>
+    <h2>✍️ Écriture Soureth (mode guidé)</h2>
 
-    <p class="writing-subtitle">
-      Trace les lettres avec ton doigt,
-      un stylet ou la souris.
-    </p>
+    <p>Trace la lettre affichée ci-dessous</p>
 
-    <!-- LETTRE -->
+    <div id="letterDisplay" class="writing-letter">ܐ</div>
 
-    <div id="letterDisplay"
-         class="writing-letter">
-      ܐ
+    <div class="canvas-wrapper">
+
+      <div id="guideLetter" class="guide-letter">ܐ</div>
+
+      <canvas id="drawCanvas"></canvas>
+
     </div>
-
-    <!-- CANVAS -->
-
-    <div class="writing-zone">
-
-  <div class="letter-box" id="letterDisplay">ܐ</div>
-
-  <div class="canvas-wrapper">
-
-    <div id="guideLetter" class="guide-letter">ܐ</div>
-
-    <canvas id="board" width="320" height="320"></canvas>
-
-  </div>
-
-  <div class="hint">
-    ✍️ Suis la forme grise
-  </div>
-
-</div>
-
-    <!-- ACTIONS -->
 
     <div class="writing-actions">
 
-      <button class="btn btn-primary"
-              onclick="nextLetter()">
+      <button onclick="nextLetter()">🔤 Lettre suivante</button>
+      <button onclick="clearCanvas()">🧹 Effacer</button>
 
-        🔤 Lettre suivante
-
-      </button>
-
-      <button class="btn btn-secondary"
-              onclick="clearCanvas()">
-
-        🧹 Effacer
-
-      </button>
+      <div id="result"></div>
 
     </div>
 
