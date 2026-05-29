@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Soureth';
-  src: url('../assets/fonts/soureth.woff2') format('woff2');
+  font-family: 'aa-_nohadra_marcus';
+  src: url('../assets/fonts/aa-_nohadra_marcus.woff2') format('woff2');
 }
 
 body.ecriture-app {
@@ -26,14 +26,14 @@ body.ecriture-app {
 
 /* LETTRE PRINCIPALE */
 #letterDisplay {
-  font-family: 'Soureth' !important;
+  font-family: 'aa-_nohadra_marcus' !important;
   font-size: 90px;
   color: #0033a0;
 }
 
 /* LETTRE GUIDE */
 #guideLetter {
-  font-family: 'Soureth' !important;
+  font-family: 'aa-_nohadra_marcus' !important;
   font-size: 90px;
   position: absolute;
   top: 0;
