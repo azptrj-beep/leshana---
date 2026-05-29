@@ -596,61 +596,6 @@ input{
 }
 
 /* =========================================
-   WRITING MODULE
-========================================= */
-
-.model{
-  position:relative;
-  margin:20px 0;
-}
-
-#letterDisplay,
-#guideLetter{
-  font-family:'aa-_nohadra_marcus',sans-serif !important;
-
-  direction:rtl;
-
-  unicode-bidi:plaintext;
-
-  line-height:1;
-}
-
-#letterDisplay{
-  font-size:110px;
-  color:white;
-}
-
-#guideLetter{
-  position:absolute;
-
-  inset:0;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  font-size:170px;
-
-  opacity:.08;
-
-  pointer-events:none;
-}
-
-.canvas-wrapper{
-  display:flex;
-  justify-content:center;
-}
-
-#draw{
-  width:100%;
-  height:400px;
-  background:#0f172a;
-  border:2px solid #38bdf8;
-  border-radius:20px;
-  touch-action:none;
-  display:block;
-}
-/* =========================================
    AUDIO BUTTON
 ========================================= */
 
@@ -957,70 +902,114 @@ a, a:visited, a:active {
 ========================================= */
 
 .writing-section{
-  padding:40px 20px;
+  padding:80px 20px;
 }
 
 .writing-card{
-  max-width:900px;
+  max-width:500px;
   margin:auto;
   text-align:center;
 }
 
-.writing-text{
-  margin-bottom:20px;
+.section-title{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.writing-subtitle{
   opacity:.8;
+  margin-bottom:25px;
+  line-height:1.6;
+}
+
+/* LETTRE */
+
+.writing-letter{
+  font-family:'aa-_nohadra_marcus';
+  font-size:120px;
+  color:#0033a0;
+  margin-bottom:20px;
+  direction:rtl;
 }
 
 /* CANVAS */
 
-#draw{
+.canvas-wrapper{
+  position:relative;
   width:100%;
-  height:400px;
-
-  background:#0f172a;
-
-  border:2px solid rgba(255,255,255,.08);
-
-  border-radius:20px;
-
-  touch-action:none;
-
-  cursor:crosshair;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.3);
-
-  transition:.3s;
+  max-width:340px;
+  margin:0 auto;
 }
 
-#draw:hover{
-  border-color:#38bdf8;
+#drawCanvas{
+  width:100%;
+  height:340px;
+  background:white;
+  border:3px solid #0033a0;
+  border-radius:24px;
+  touch-action:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* LETTRE FANTÔME */
+
+.guide-letter{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-family:'aa-_nohadra_marcus';
+  font-size:180px;
+
+  opacity:.08;
+
+  pointer-events:none;
+
+  color:#0033a0;
 }
 
 /* ACTIONS */
 
 .writing-actions{
-  margin-top:20px;
   display:flex;
   justify-content:center;
   gap:15px;
   flex-wrap:wrap;
+  margin-top:25px;
 }
 
-.draw-container{
-  width:100%;
-  max-width:700px;
-  margin:40px auto;
-  padding:20px;
-  text-align:center;
+/* DARK MODE */
+
+.dark-mode #drawCanvas{
+  background:#1e1e1e;
+  border-color:#4da3ff;
 }
 
-#draw{
-  width:100%;
-  height:400px;
-  background:#0f172a;
-  border:2px solid #38bdf8;
-  border-radius:20px;
-  touch-action:none;
-  display:block;
+.dark-mode .guide-letter{
+  color:white;
+}
+
+.dark-mode .writing-letter{
+  color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .writing-letter{
+    font-size:90px;
+  }
+
+  .guide-letter{
+    font-size:140px;
+  }
+
+  #drawCanvas{
+    height:300px;
+  }
+
 }
