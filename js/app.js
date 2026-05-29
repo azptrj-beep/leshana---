@@ -1,8 +1,5 @@
 "use strict";
 
-/* =========================
-   LETTRES SOURETH
-========================= */
 const letters = [
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
   "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
@@ -11,86 +8,41 @@ const letters = [
 
 let index = 0;
 
-/* =========================
-   CANVAS
-========================= */
 let canvas, ctx;
 let drawing = false;
 
-/* =========================
-   INIT
-========================= */
 window.addEventListener("DOMContentLoaded", () => {
-  initCanvas();
-  setLetter();
-});
-
-/* =========================
-   LETTRES
-========================= */
-function setLetter() {
-  const display = document.getElementById("letterDisplay");
-  const guide = document.getElementById("guideLetter");
-
-  if (display) display.textContent = letters[index];
-  if (guide) guide.textContent = letters[index];
-
-  clearCanvas();
-}
-
-function nextLetter() {
-  index = (index + 1) % letters.length;
-  setLetter();
-}
-
-/* =========================
-   CANVAS INIT (STABLE)
-========================= */
-function initCanvas() {
   canvas = document.getElementById("drawCanvas");
   if (!canvas) return;
 
   ctx = canvas.getContext("2d");
 
-  resizeCanvas();
+  resize();
+  window.addEventListener("resize", resize);
 
-  window.addEventListener("resize", resizeCanvas);
+  setLetter();
 
-  canvas.addEventListener("pointerdown", startDraw);
+  canvas.addEventListener("pointerdown", start);
   canvas.addEventListener("pointermove", draw);
-  canvas.addEventListener("pointerup", stopDraw);
-  canvas.addEventListener("pointerleave", stopDraw);
-}
+  canvas.addEventListener("pointerup", stop);
+  canvas.addEventListener("pointerleave", stop);
+});
 
-/* =========================
-   RESIZE
-========================= */
-function resizeCanvas() {
-  if (!canvas) return;
+function resize() {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 }
 
-/* =========================
-   POSITION
-========================= */
-function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
-  const t = e.touches?.[0] || e;
-
-  return {
-    x: t.clientX - rect.left,
-    y: t.clientY - rect.top
-  };
+function setLetter() {
+  const l = letters[index];
+  document.getElementById("letterDisplay").textContent = l;
+  document.getElementById("guideLetter").textContent = l;
+  clear();
 }
 
-/* =========================
-   DRAW
-========================= */
-function startDraw(e) {
+function start(e) {
   drawing = true;
-  const p = getPos(e);
-
+  const p = pos(e);
   ctx.beginPath();
   ctx.moveTo(p.x, p.y);
 }
@@ -98,7 +50,7 @@ function startDraw(e) {
 function draw(e) {
   if (!drawing) return;
 
-  const p = getPos(e);
+  const p = pos(e);
 
   ctx.lineWidth = 6;
   ctx.lineCap = "round";
@@ -106,24 +58,30 @@ function draw(e) {
 
   ctx.lineTo(p.x, p.y);
   ctx.stroke();
-
-  e.preventDefault();
 }
 
-function stopDraw() {
+function stop() {
   drawing = false;
 }
 
-/* =========================
-   CLEAR
-========================= */
-function clearCanvas() {
-  if (!ctx || !canvas) return;
+function pos(e) {
+  const r = canvas.getBoundingClientRect();
+  const t = e.touches?.[0] || e;
+
+  return {
+    x: t.clientX - r.left,
+    y: t.clientY - r.top
+  };
+}
+
+function clear() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-/* =========================
-   EXPORT GLOBAL
-========================= */
+function nextLetter() {
+  index = (index + 1) % letters.length;
+  setLetter();
+}
+
+window.clearCanvas = clear;
 window.nextLetter = nextLetter;
-window.clearCanvas = clearCanvas;
