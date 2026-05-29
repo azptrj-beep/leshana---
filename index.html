@@ -418,7 +418,6 @@ content="#0033a0">
   </a>
 
 </div>
-
 <script>
 
 /* =========================================
@@ -452,12 +451,11 @@ const guideLetter =
   document.getElementById("guideLetter");
 
 /* =========================================
-   CONFIG
+   FIXED SIZE
 ========================================= */
 
-ctx.lineWidth = 6;
-ctx.lineCap = "round";
-ctx.strokeStyle = "#0033a0";
+canvas.width = 320;
+canvas.height = 320;
 
 /* =========================================
    LETTER
@@ -468,8 +466,8 @@ function updateLetter(){
   const letter =
     letters[currentLetter];
 
-  letterDisplay.textContent = letter;
-  guideLetter.textContent = letter;
+  letterDisplay.innerText = letter;
+  guideLetter.innerText = letter;
 }
 
 /* =========================================
@@ -478,63 +476,71 @@ function updateLetter(){
 
 let drawing = false;
 
-function getPosition(e){
+function getPosition(event){
 
   const rect =
     canvas.getBoundingClientRect();
 
-  if(e.touches){
+  let clientX;
+  let clientY;
 
-    return {
+  if(event.touches){
 
-      x:
-        e.touches[0].clientX - rect.left,
+    clientX =
+      event.touches[0].clientX;
 
-      y:
-        e.touches[0].clientY - rect.top
-    };
+    clientY =
+      event.touches[0].clientY;
+
+  } else {
+
+    clientX = event.clientX;
+    clientY = event.clientY;
   }
 
   return {
 
-    x:
-      e.clientX - rect.left,
-
-    y:
-      e.clientY - rect.top
+    x: clientX - rect.left,
+    y: clientY - rect.top
   };
 }
 
 /* START */
 
-function startDrawing(e){
+function startDrawing(event){
 
   drawing = true;
 
   const pos =
-    getPosition(e);
+    getPosition(event);
 
   ctx.beginPath();
 
   ctx.moveTo(pos.x, pos.y);
 
-  e.preventDefault();
+  event.preventDefault();
 }
 
 /* DRAW */
 
-function draw(e){
+function draw(event){
 
   if(!drawing) return;
 
   const pos =
-    getPosition(e);
+    getPosition(event);
+
+  ctx.lineWidth = 6;
+
+  ctx.lineCap = "round";
+
+  ctx.strokeStyle = "#0033a0";
 
   ctx.lineTo(pos.x, pos.y);
 
   ctx.stroke();
 
-  e.preventDefault();
+  event.preventDefault();
 }
 
 /* STOP */
@@ -550,7 +556,7 @@ function stopDrawing(){
    EVENTS
 ========================================= */
 
-/* SOURIS */
+/* MOUSE */
 
 canvas.addEventListener(
   "mousedown",
@@ -572,7 +578,7 @@ canvas.addEventListener(
   stopDrawing
 );
 
-/* TACTILE */
+/* TOUCH */
 
 canvas.addEventListener(
   "touchstart",
