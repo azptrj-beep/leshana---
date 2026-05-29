@@ -1,4 +1,4 @@
-"use strict";
+As"use strict";
 
 const letters = [
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
@@ -12,7 +12,8 @@ let canvas, ctx;
 let drawing = false;
 
 window.addEventListener("DOMContentLoaded", () => {
-  canvas = document.getElementById("drawCanvas");
+ const canvas =
+document.getElementById("drawCanvas");
   if (!canvas) return;
 
   ctx = canvas.getContext("2d");
