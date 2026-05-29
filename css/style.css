@@ -1,3 +1,4 @@
+
 /* ========================================= LESHANA ED SOURETH - CSS CLEAN FIXED VERSION: STABLE + MOBILE FIX + NO DUPLICATES ========================================= */
 
 /* ========================================= RESET ========================================= */
@@ -77,3 +78,26 @@ header{ position:sticky; top:0; z-index:999; background:rgba(0,0,0,0.25); backdr
 .dark-mode #drawCanvas{ background:#1a1a1a; border-color:#4da3ff; }
 
 .dark-mode .guide-letter{ color:white; }
+
+/* =========================
+   FIX CANVAS TACTILE
+========================= */
+
+#drawCanvas {
+  touch-action: none;
+  display: block;
+  width: 100%;
+  height: 360px;
+  border-radius: 18px;
+}
+
+/* IMPORTANT : empêche scroll mobile */
+.canvas-box,
+.canvas-wrapper {
+  touch-action: none;
+}
+
+/* évite conflit double canvas */
+canvas {
+  user-select: none;
+}
