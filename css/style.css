@@ -1015,3 +1015,40 @@ canvas{
 
 
 }
+
+.writing-zone{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.canvas-wrapper{
+  position:relative;
+  width:320px;
+  height:320px;
+}
+
+canvas{
+  width:100%;
+  height:100%;
+  border:3px solid #0033a0;
+  border-radius:18px;
+  background:white;
+  touch-action:none;
+}
+
+.guide-letter{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:180px;
+  opacity:0.08;
+  pointer-events:none;
+}
+
+.hint{
+  font-size:14px;
+  color:#666;
+}
