@@ -29,44 +29,15 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function resize() {
-
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-
-  setLetter();
-
 }
 
 function setLetter() {
-
   const l = letters[index];
-
-  const display =
-    document.getElementById("letterDisplay");
-
-  if (display) {
-    display.textContent = l;
-  }
-
+  document.getElementById("letterDisplay").textContent = l;
+  document.getElementById("guideLetter").textContent = l;
   clear();
-
-  ctx.save();
-
-  ctx.font = "180px Adiabene";
-
-  ctx.fillStyle =
-    "rgba(0,51,160,0.12)";
-
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  ctx.fillText(
-    l,
-    canvas.width / 2,
-    canvas.height / 2
-  );
-
-  ctx.restore();
 }
 
 function start(e) {
@@ -104,14 +75,7 @@ function pos(e) {
 }
 
 function clear() {
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function nextLetter() {
