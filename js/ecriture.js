@@ -52,7 +52,7 @@ function setLetter() {
 
   ctx.save();
 
-  ctx.font = "180px Nohadra";
+  ctx.font = "180px Adiabene";
 
   ctx.fillStyle =
     "rgba(0,51,160,0.12)";
