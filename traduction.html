@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Traducteur Soureth Ultimate</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0033a0">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <h1>🌍 FR ⇄ Soureth</h1>
+
+  <div class="top-actions">
+
+    <button id="swapBtn">
+      ⇄
+    </button>
+
+    <button id="clearBtn">
+      ✖
+    </button>
+
+  </div>
+
+</header>
+
+<main class="container">
+
+  <!-- INPUT -->
+
+  <section class="card">
+
+    <textarea id="input"
+              placeholder="Écris ici..."
+              rows="5"></textarea>
+
+    <div class="actions">
+
+      <button id="translateBtn">
+        Traduire
+      </button>
+
+      <button id="micBtn">
+        🎤
+      </button>
+
+      <button id="speakBtn">
+        🔊
+      </button>
+
+      <button id="stopBtn">
+        ⏹
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- STATUS -->
+
+  <div id="status"></div>
+
+  <!-- RESULT -->
+
+  <section class="card">
+
+    <div id="result">
+      ...
+    </div>
+
+  </section>
+
+  <!-- HISTORY -->
+
+  <section class="card">
+
+    <h3>📜 Historique</h3>
+
+    <div id="history"></div>
+
+  </section>
+
+</main>
+
+<script src="js/translate.js" defer></script>
+
+</body>
+
+</html>
+
