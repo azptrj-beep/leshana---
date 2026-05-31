@@ -1,87 +1,160 @@
-"use strict";
-
 const letters = [
-  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
-  "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
-  "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+"ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
+"ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
+"ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
 ];
 
-let index = 0;
+let current = 0;
 
-let canvas, ctx;
-let drawing = false;
+const guideLetter =
+document.getElementById("guideLetter");
 
-window.addEventListener("DOMContentLoaded", () => {
-  canvas = document.getElementById("drawCanvas");
-  if (!canvas) return;
+const canvas =
+document.getElementById("writingCanvas");
 
-  ctx = canvas.getContext("2d");
+const ctx =
+canvas.getContext("2d");
 
-  resize();
-  window.addEventListener("resize", resize);
+function updateLetter(){
 
-  setLetter();
+    guideLetter.textContent =
+    letters[current];
+}
 
-  canvas.addEventListener("pointerdown", start);
-  canvas.addEventListener("pointermove", draw);
-  canvas.addEventListener("pointerup", stop);
-  canvas.addEventListener("pointerleave", stop);
+document
+.getElementById("nextLetter")
+.addEventListener("click",()=>{
+
+    current++;
+
+    if(current >= letters.length){
+        current = 0;
+    }
+
+    updateLetter();
 });
 
-function resize() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+document
+.getElementById("prevLetter")
+.addEventListener("click",()=>{
+
+    current--;
+
+    if(current < 0){
+        current = letters.length - 1;
+    }
+
+    updateLetter();
+});
+
+document
+.getElementById("clearCanvas")
+.addEventListener("click",()=>{
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+});
+
+let drawing = false;
+
+function getPos(e){
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    const touch =
+    e.touches
+    ? e.touches[0]
+    : e;
+
+    return {
+
+        x:
+        touch.clientX
+        - rect.left,
+
+        y:
+        touch.clientY
+        - rect.top
+    };
 }
 
-function setLetter() {
-  const l = letters[index];
-  document.getElementById("letterDisplay").textContent = l;
-  document.getElementById("guideLetter").textContent = l;
-  clear();
+function startDraw(e){
+
+    drawing = true;
+
+    const pos =
+    getPos(e);
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        pos.x,
+        pos.y
+    );
 }
 
-function start(e) {
-  drawing = true;
-  const p = pos(e);
-  ctx.beginPath();
-  ctx.moveTo(p.x, p.y);
+function draw(e){
+
+    if(!drawing) return;
+
+    e.preventDefault();
+
+    const pos =
+    getPos(e);
+
+    ctx.lineWidth = 8;
+
+    ctx.lineCap = "round";
+
+    ctx.strokeStyle =
+    "#0033a0";
+
+    ctx.lineTo(
+        pos.x,
+        pos.y
+    );
+
+    ctx.stroke();
 }
 
-function draw(e) {
-  if (!drawing) return;
+function stopDraw(){
 
-  const p = pos(e);
-
-  ctx.lineWidth = 6;
-  ctx.lineCap = "round";
-  ctx.strokeStyle = "#0033a0";
-
-  ctx.lineTo(p.x, p.y);
-  ctx.stroke();
+    drawing = false;
 }
 
-function stop() {
-  drawing = false;
-}
+canvas.addEventListener(
+"mousedown",
+startDraw
+);
 
-function pos(e) {
-  const r = canvas.getBoundingClientRect();
-  const t = e.touches?.[0] || e;
+canvas.addEventListener(
+"mousemove",
+draw
+);
 
-  return {
-    x: t.clientX - r.left,
-    y: t.clientY - r.top
-  };
-}
+canvas.addEventListener(
+"mouseup",
+stopDraw
+);
 
-function clear() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+canvas.addEventListener(
+"touchstart",
+startDraw
+);
 
-function nextLetter() {
-  index = (index + 1) % letters.length;
-  setLetter();
-}
+canvas.addEventListener(
+"touchmove",
+draw
+);
 
-window.clearCanvas = clear;
-window.nextLetter = nextLetter;
+canvas.addEventListener(
+"touchend",
+stopDraw
+);
+
+updateLetter();
