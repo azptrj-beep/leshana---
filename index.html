@@ -1,263 +1,392 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Leshana-Ed-Soureth</title>
+<!DOCTYPE html>  <html lang="fr">  <head>    <meta charset="UTF-8" />  <meta name="viewport"  
+content="width=device-width, initial-scale=1.0" />
 
-  <!-- ICON -->
-  <link rel="icon" href="assets/images/logo.png" />
+  <title>Leshana-Ed-Soureth</title>    <link rel="icon"  
+        href="assets/images/logo.png" />    <!-- PRELOAD FONT -->    <link rel="preload"  
+        href="assets/fonts/Adiabene.woff2"  
+        as="font"  
+        type="font/woff2"  
+        crossorigin>    <!-- GOOGLE FONT -->    <link rel="preconnect"  
+        href="https://fonts.googleapis.com">    <link rel="preconnect"  
+        href="https://fonts.gstatic.com"  
+        crossorigin>    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"  
+        rel="stylesheet">    <!-- CSS -->    <link rel="stylesheet"  
+        href="css/style.css">    <!-- PWA -->    <link rel="manifest"  
+        href="manifest.json">  <meta name="theme-color"  
+content="#0033a0">
 
-  <!-- FONT -->
-  <link rel="preload"
-        href="assets/fonts/aa-_nohadra_marcus.woff2"
-        as="font"
-        type="font/woff2"
-        crossorigin>
+</head>  <body>    <!-- =========================  
+       HEADER  
+  ========================== -->    <header>  <div class="logo-container">  
 
-  <!-- GOOGLE FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <img src="assets/images/logo.png"  
+       alt="Logo"  
+       class="logo">  
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+  <div>  
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+    <h1 class="title">  
+      Leshana-Ed-Soureth  
+    </h1>  
 
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0033a0">
+    <p class="subtitle">  
+      Plateforme moderne d’apprentissage du Soureth  
+    </p>  
 
-</head>
+  </div>  
 
-<body>
+</div>  
 
-<!-- =========================================
-     HEADER
-========================================= -->
-<header>
+<!-- MENU MOBILE -->  
 
-  <div class="logo-container">
+<button class="menu-toggle"  
+        onclick="toggleMenu()">  
+  ☰  
+</button>  
 
-    <img src="assets/images/logo.png"
-         alt="Logo"
-         class="logo">
+<!-- NAVIGATION -->  
 
-    <div>
-      <h1 class="title">Leshana-Ed-Soureth</h1>
+<nav>  
 
-      <p class="subtitle">
-        Plateforme moderne d’apprentissage du Soureth
-      </p>
-    </div>
+  <a href="index.html">🏠 Accueil</a>  
 
-  </div>
+  <a href="alphabet.html">🔠 Alphabet</a>  
 
-  <!-- MOBILE MENU -->
-  <button class="menu-toggle"
-          onclick="toggleMenu()">
-    ☰
-  </button>
+  <a href="voyelles.html">🔤 Voyelles</a>  
 
-  <!-- NAV -->
-  <nav>
+  <a href="ecriture.html">✍️ Écriture</a>  
 
-    <a href="index.html">🏠 Accueil</a>
-    <a href="alphabet.html">🔠 Alphabet</a>
-    <a href="voyelles.html">🔤 Voyelles</a>
-    <a href="keyboard.html">⌨️ Clavier</a>
-    <a href="traduction.html">🌍 Traduction</a>
-    <a href="quiz.html">🎮 Quiz</a>
-    <a href="progression.html">📈 Progression</a>
-    <a href="vocal.html">🎤 Vocal</a>
-    <a href="videos.html">🎥 Vidéos</a>
+  <a href="keyboard.html">⌨️ Clavier</a>  
 
-    <a href="#"
-       onclick="toggleTheme()">
-       🌓 Thème
-    </a>
+  <a href="traduction.html">🌍 Traduction</a>  
 
-  </nav>
+  <a href="quiz.html">🎮 Quiz</a>  
 
-</header>
+  <a href="progression.html">📈 Progression</a>  
 
-<!-- =========================================
-     HERO
-========================================= -->
-<section class="hero">
+  <a href="revision.html">🧠 Révision</a>  
 
-  <div class="hero-content">
+  <a href="vocal.html">🎤 Vocal</a>  
 
-    <h1>
-      Apprendre le Soureth moderne
-    </h1>
+  <a href="videos.html">🎥 Vidéos</a>  
 
-    <p class="hero-text">
-      Découvre l’alphabet assyro-chaldéen,
-      le clavier Soureth,
-      la traduction,
-      les quiz,
-      les vidéos
-      et l’écriture tactile.
-    </p>
-
-    <div class="hero-buttons">
-
-      <a href="alphabet.html"
-         class="btn btn-primary">
-         🔠 Commencer
-      </a>
-
-      <a href="keyboard.html"
-         class="btn btn-secondary">
-         ⌨️ Clavier
-      </a>
-
-    </div>
-
-    <div class="hero-demo card">
-
-      <div class="soureth-title">
-        ܫܠܡܐ
-      </div>
+  <a href="#"  
+     onclick="toggleTheme()">  
+     🌓 Thème  
+  </a>  
 
-      <p>
-        Shlama : Bonjour — Paix
-      </p>
-
-    </div>
+</nav>
 
-  </div>
-
-</section>
+  </header>    <!-- =========================  
+       HERO SECTION  
+  ========================== -->    <section class="hero">  <div class="hero-content">  
 
-<!-- =========================================
-     FEATURES
-========================================= -->
-<section class="features">
+  <h1>  
+    Apprendre le Soureth moderne  
+  </h1>  
 
-  <a href="alphabet.html" class="card feature-link">
-    <div class="card-icon">🔠</div>
-    <h2>Alphabet interactif</h2>
-    <p>Apprends les lettres avec audio et animations.</p>
-  </a>
+  <p class="hero-text">  
 
-  <a href="keyboard.html" class="card feature-link">
-    <div class="card-icon">⌨️</div>
-    <h2>Clavier Soureth</h2>
-    <p>Écris facilement en Soureth moderne.</p>
-  </a>
+    SITE EN CONSTRUCTION  
 
-  <a href="traduction.html" class="card feature-link">
-    <div class="card-icon">🌍</div>
-    <h2>Traduction</h2>
-    <p>Français ⇄ Soureth avec translittération.</p>
-  </a>
+    <br><br>  
 
-  <a href="quiz.html" class="card feature-link">
-    <div class="card-icon">🎮</div>
-    <h2>Quiz</h2>
-    <p>Progresse grâce aux quiz intelligents.</p>
-  </a>
+    Découvre l’alphabet assyro-chaldéen,  
+    les voyelles,  
+    l’écriture moderne,  
+    le clavier Soureth,  
+    la traduction,  
+    les quiz interactifs,  
+    les vidéos  
+    et les audios natifs.  
 
-</section>
+  </p>  
 
-<!-- =========================================
-     ÉCRITURE GUIDÉE
-========================================= -->
-<section class="writing-section">
+  <!-- BUTTONS -->  
 
-  <div class="writing-card card">
+  <div class="hero-buttons">  
 
-    <h2>
-      ✍️ Écriture guidée Soureth
-    </h2>
+    <a href="alphabet.html"  
+       class="btn btn-primary">  
+      🔠 Commencer  
+    </a>  
 
-    <p class="writing-subtitle">
-      Trace les lettres avec ton doigt,
-      un stylet ou la souris.
-    </p>
+    <a href="keyboard.html"  
+       class="btn btn-secondary">  
+      ⌨️ Clavier Soureth  
+    </a>  
 
-    <!-- LETTRE -->
-    <div id="letterDisplay"
-         class="writing-letter">
-      ܐ
-    </div>
+  </div>  
 
-    <!-- CANVAS -->
-    <div class="canvas-box">
+  <!-- SOURETH DEMO -->  
 
-      <!-- LETTRE GUIDE -->
-      <div id="guideLetter"
-           class="guide-letter">
-        ܐ
-      </div>
+  <div class="hero-demo card">  
 
-      <!-- UN SEUL CANVAS -->
-      <canvas id="board"
-              width="500"
-              height="500">
-      </canvas>
+    <div class="soureth-title">  
+      ܫܠܡܐ  
+    </div>  
 
-    </div>
+    <p>  
+      Shlama : Paix — Bonjour — Salut  
+    </p>  
 
-    <!-- BUTTONS -->
-    <div class="writing-buttons">
+  </div>  
 
-      <button class="btn btn-primary"
-              onclick="nextLetter()">
-        🔤 Suivant
-      </button>
+</div>
 
-      <button class="btn btn-secondary"
-              onclick="clearCanvas()">
-        🧹 Effacer
-      </button>
+  </section>     <!-- =========================  
+       FEATURES  
+  ========================== -->  <section class="features">    <a href="alphabet.html" class="card feature-link">  <div class="card-icon">🔠</div>  
 
-    </div>
+<h2>Alphabet interactif</h2>  
 
-  </div>
+<p>  
+  Apprends les lettres du Soureth  
+  avec audio,  
+  animations  
+  et cartes interactives.  
+</p>
 
-</section>
+  </a>    <a href="keyboard.html" class="card feature-link">  <div class="card-icon">⌨️</div>  
 
-<!-- =========================================
-     FOOTER
-========================================= -->
-<footer>
+<h2>Clavier Soureth</h2>  
 
-  <p>
-    © 2026 Leshana-Ed-Soureth
-  </p>
+<p>  
+  Écris facilement en Soureth  
+  grâce au clavier moderne intégré.  
+</p>
 
-</footer>
+  </a>    <a href="traduction.html" class="card feature-link">  <div class="card-icon">🌍</div>  
 
-<!-- =========================================
-     SCRIPTS
-========================================= -->
-<script src="js/app.js"></script>
-<script src="js/keyboard.js"></script>
-<script src="js/quiz.js"></script>
+<h2>Traduction</h2>  
 
-<!-- SERVICE WORKER -->
-<script>
+<p>  
+  Traduction Français ⇄ Soureth  
+  avec translittération moderne.  
+</p>
 
-if ("serviceWorker" in navigator) {
+  </a>    <a href="ecriture.html" class="card feature-link">  <div class="card-icon">✍️</div>  
 
-  window.addEventListener("load", () => {
+<h2>Écriture tactile</h2>  
 
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(() => console.log("SW OK"))
-      .catch(err => console.log(err));
+<p>  
+  Dessine les lettres  
+  avec ton doigt,  
+  un stylet  
+  ou ta souris.  
+</p>
 
-  });
+  </a>    <a href="vocal.html" class="card feature-link">  <div class="card-icon">🔊</div>  
 
-}
+<h2>Audio natif</h2>  
 
-</script>
+<p>  
+  Écoute de vraies voix  
+  assyro-chaldéennes.  
+</p>
 
-</body>
-</html>
+  </a>    <a href="quiz.html" class="card feature-link">  <div class="card-icon">🎮</div>  
+
+<h2>Quiz intelligents</h2>  
+
+<p>  
+  Progresse grâce aux quiz,  
+  niveaux  
+  et révisions automatiques.  
+</p>
+
+  </a>  </section>    <!-- =========================  
+       QUIZ  
+  ========================== -->    <section class="quiz-box card">  <h2 id="question">  
+  ܐ  
+</h2>  
+
+<div class="quiz-options"></div>  
+
+<p id="quiz-result"></p>  
+
+<!-- XP -->  
+
+<div class="xp-panel">  
+
+  <p>  
+    ⭐ XP :  
+    <span id="xp-value">0</span>  
+  </p>  
+
+  <p>  
+    🏆 Niveau :  
+    <span id="level-value">1</span>  
+  </p>  
+
+</div>  
+
+<!-- BADGES -->  
+
+<div class="badge-box">  
+
+  <h3>  
+    🏆 Badge  
+  </h3>  
+
+  <div id="badge-display">  
+    🟢 Débutant  
+  </div>  
+
+</div>
+
+  </section>    <!-- =========================  
+       KEYBOARD DEMO  
+  ========================== -->    <section class="translator-box">  <div class="card">  
+
+  <h2>  
+    ⌨️ Essayer le clavier Soureth  
+  </h2>  
+
+  <textarea id="editor"  
+            class="soureth-writing"  
+            placeholder="Écrire en Soureth..."></textarea>  
+
+  <div id="keyboard">  
+
+    <button onclick="insertLetter('ܐ')">ܐ</button>  
+    <button onclick="insertLetter('ܒ')">ܒ</button>  
+    <button onclick="insertLetter('ܓ')">ܓ</button>  
+    <button onclick="insertLetter('ܕ')">ܕ</button>  
+    <button onclick="insertLetter('ܗ')">ܗ</button>  
+    <button onclick="insertLetter('ܘ')">ܘ</button>  
+    <button onclick="insertLetter('ܙ')">ܙ</button>  
+
+    <button onclick="insertLetter('ܚ')">ܚ</button>  
+    <button onclick="insertLetter('ܛ')">ܛ</button>  
+    <button onclick="insertLetter('ܝ')">ܝ</button>  
+    <button onclick="insertLetter('ܟ')">ܟ</button>  
+    <button onclick="insertLetter('ܠ')">ܠ</button>  
+    <button onclick="insertLetter('ܡ')">ܡ</button>  
+    <button onclick="insertLetter('ܢ')">ܢ</button>  
+
+    <button onclick="insertLetter('ܣ')">ܣ</button>  
+    <button onclick="insertLetter('ܥ')">ܥ</button>  
+    <button onclick="insertLetter('ܦ')">ܦ</button>  
+    <button onclick="insertLetter('ܨ')">ܨ</button>  
+    <button onclick="insertLetter('ܩ')">ܩ</button>  
+    <button onclick="insertLetter('ܪ')">ܪ</button>  
+    <button onclick="insertLetter('ܫ')">ܫ</button>  
+    <button onclick="insertLetter('ܬ')">ܬ</button>  
+
+  </div>  
+
+</div>
+
+  </section>    <!-- =========================  
+       PROGRESSION  
+  ========================== -->    <section class="progress-section">  <div class="progress-card">  
+
+  <h2>  
+    📈 Votre progression  
+  </h2>  
+
+  <p>  
+    Niveau actuel : Débutant  
+  </p>  
+
+  <div class="progress-bar">  
+
+    <div class="progress"></div>  
+
+  </div>  
+
+  <p style="margin-top:15px;">  
+    35% complété  
+  </p>  
+
+</div>
+
+  </section>    <!-- =========================  
+       FOOTER  
+  ========================== -->    <footer>  <p>  
+  © 2026 Leshana-Ed-Soureth  
+  — Plateforme éducative assyro-chaldéenne moderne  
+</p>
+
+  </footer>    <!-- =========================  
+       JAVASCRIPT  
+  ========================== -->    <script src="js/app.js"></script>    <script src="js/keyboard.js"></script>    <script src="js/translate.js"></script>    <script src="js/quiz.js"></script>    <!-- SERVICE WORKER -->    <script>  
+  
+    if ("serviceWorker" in navigator) {  
+  
+      window.addEventListener("load", () => {  
+  
+        navigator.serviceWorker.register("/sw.js")  
+  
+          .then(() => console.log("SW enregistré ✔"))  
+  
+          .catch(err => console.log("Erreur SW :", err));  
+  
+      });  
+  
+    }  
+  
+  </script>  <div class="bottom-nav">  <a href="index.html">🏠</a>
+
+<a href="alphabet.html">🔠</a>
+
+<a href="quiz.html">🎮</a>
+
+<a href="traduction.html">🌍</a>
+
+<a href="progression.html">📈</a>
+
+</div>  <a href="soureth-adiabene.html">Soureth Moderne</a>
+
+<script>  
+const canvas = document.getElementById("draw");  
+const ctx = canvas.getContext("2d");  
+  
+function resizeCanvas() {  
+  canvas.width = canvas.offsetWidth;  
+  canvas.height = canvas.offsetHeight;  
+}  
+  
+window.addEventListener("resize", resizeCanvas);  
+resizeCanvas();  
+  
+// STYLE SOURETH FORCÉ  
+ctx.strokeStyle = "#38bdf8";  
+ctx.lineWidth = 3;  
+ctx.lineCap = "round";  
+  
+// IMPORTANT : police soureth (même si canvas n'affiche pas texte ici, utile si tu ajoutes du texte)  
+ctx.font = "28px 'Noto Sans Syriac Eastern'";  
+  
+// DRAW STATE  
+let drawing = false;  
+  
+canvas.addEventListener("pointerdown", (e) => {  
+  drawing = true;  
+  ctx.beginPath();  
+  ctx.moveTo(e.offsetX, e.offsetY);  
+});  
+  
+canvas.addEventListener("pointermove", (e) => {  
+  if (!drawing) return;  
+  
+  ctx.lineTo(e.offsetX, e.offsetY);  
+  ctx.stroke();  
+});  
+  
+canvas.addEventListener("pointerup", () => {  
+  drawing = false;  
+});  
+  
+canvas.addEventListener("pointerleave", () => {  
+  drawing = false;  
+});  
+  
+// CLEAR FUNCTION (bouton)  
+function clearCanvas() {  
+  ctx.clearRect(0, 0, canvas.width, canvas.height);  
+}  
+</script>  </body>  </html> 
