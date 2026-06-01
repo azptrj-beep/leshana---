@@ -16,6 +16,8 @@ let phrases = {};
 let reverseWords = {};
 let reversePhrases = {};
 
+let wordList = [];
+
 /* =========================
    LOAD DICTIONARIES
 ========================= */
@@ -31,6 +33,7 @@ async function loadDictionaries() {
     phrases = await pRes.json();
 
     buildReverse();
+    buildIndex();
 
     console.log("✔ Dictionnaires chargés");
   } catch (e) {
@@ -39,7 +42,7 @@ async function loadDictionaries() {
 }
 
 /* =========================
-   REVERSE ENGINE
+   INDEX + REVERSE
 ========================= */
 
 function buildReverse() {
@@ -55,6 +58,10 @@ function buildReverse() {
   }
 }
 
+function buildIndex() {
+  wordList = Object.keys(words);
+}
+
 /* =========================
    CLEAN TEXT
 ========================= */
@@ -68,7 +75,7 @@ function clean(text) {
 }
 
 /* =========================
-   DETECT LANGUAGE
+   LANGUAGE DETECTION
 ========================= */
 
 function detect(text) {
@@ -76,7 +83,72 @@ function detect(text) {
 }
 
 /* =========================
-   TRANSLATE ENGINE
+   LEVENSHTEIN (ERROR FIX)
+========================= */
+
+function levenshtein(a, b) {
+  const matrix = [];
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b[i - 1] === a[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+/* =========================
+   FIND CLOSEST WORD
+========================= */
+
+function findClosest(word) {
+  let best = null;
+  let bestScore = 2;
+
+  for (const w of wordList) {
+    const score = levenshtein(word, w);
+
+    if (score < bestScore) {
+      bestScore = score;
+      best = w;
+    }
+  }
+
+  return best;
+}
+
+/* =========================
+   SUGGESTIONS
+========================= */
+
+function getSuggestions(input) {
+  const cleanInput = input.toLowerCase();
+  if (!cleanInput) return [];
+
+  return wordList
+    .filter(w => w.startsWith(cleanInput))
+    .slice(0, 5);
+}
+
+/* =========================
+   TRANSLATION ENGINE
 ========================= */
 
 function translate(text) {
@@ -92,7 +164,16 @@ function translate(text) {
 
   return input
     .split(" ")
-    .map(w => map[w] || `[${w}]`)
+    .map(word => {
+      if (map[word]) return map[word];
+
+      const closest = findClosest(word);
+      if (closest && map[closest]) {
+        return map[closest];
+      }
+
+      return `[${word}]`;
+    })
     .join(" ");
 }
 
@@ -117,10 +198,7 @@ function saveHistory(original, translated) {
 
   history = history.slice(0, 20);
 
-  localStorage.setItem(
-    "history",
-    JSON.stringify(history)
-  );
+  localStorage.setItem("history", JSON.stringify(history));
 }
 
 function renderHistory() {
@@ -154,11 +232,9 @@ function speak(text) {
 
   speechSynthesis.cancel();
 
-  const utterance =
-    new SpeechSynthesisUtterance(text);
+  const utterance = new SpeechSynthesisUtterance(text);
 
-  let voices =
-    speechSynthesis.getVoices();
+  let voices = speechSynthesis.getVoices();
 
   if (!voices.length) {
     speechSynthesis.onvoiceschanged = () => {
@@ -170,13 +246,8 @@ function speak(text) {
   }
 }
 
-/* =========================
-   START SPEECH
-========================= */
-
 function startSpeech(utterance, voices) {
-  const frVoice =
-    voices.find(v => v.lang.includes("fr"));
+  const frVoice = voices.find(v => v.lang.includes("fr"));
 
   if (frVoice) utterance.voice = frVoice;
 
@@ -201,8 +272,7 @@ function setupMicrophone(input) {
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
 
-  const micBtn =
-    document.getElementById("micBtn");
+  const micBtn = document.getElementById("micBtn");
 
   if (!SpeechRecognition) {
     if (micBtn) micBtn.disabled = true;
@@ -210,23 +280,20 @@ function setupMicrophone(input) {
     return;
   }
 
-  const recognition =
-    new SpeechRecognition();
+  const recognition = new SpeechRecognition();
 
   recognition.lang = "fr-FR";
 
-  recognition.onstart = () =>
-    setStatus("🎤 Écoute...");
+  recognition.onstart = () => setStatus("🎤 Écoute...");
 
   recognition.onresult = e => {
-    input.value =
-      e.results[0][0].transcript;
-
+    input.value = e.results[0][0].transcript;
     setStatus("✅ Reçu");
   };
 
-  recognition.onerror = e =>
+  recognition.onerror = e => {
     setStatus("❌ Micro: " + e.error);
+  };
 
   if (micBtn) {
     micBtn.addEventListener("click", () => {
@@ -244,12 +311,8 @@ function setupMicrophone(input) {
 ========================= */
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-  const input =
-    document.getElementById("input");
-
-  const result =
-    document.getElementById("result");
+  const input = document.getElementById("input");
+  const result = document.getElementById("result");
 
   await loadDictionaries();
 
@@ -279,6 +342,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.preventDefault();
       runTranslation();
     }
+  });
+
+  input.addEventListener("input", () => {
+    const suggestions = getSuggestions(input.value);
+    console.log("Suggestions:", suggestions);
   });
 
   document.getElementById("clearBtn")
@@ -319,9 +387,7 @@ const isFirefox =
   navigator.userAgent.toLowerCase().includes("firefox");
 
 if (isFirefox) {
-  const micBtn =
-    document.getElementById("micBtn");
-
+  const micBtn = document.getElementById("micBtn");
   if (micBtn) micBtn.disabled = true;
 
   setStatus("⚠️ Firefox micro limité");
