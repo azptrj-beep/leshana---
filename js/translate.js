@@ -17,7 +17,7 @@ let reverseWords = {};
 let reversePhrases = {};
 
 /* =========================
-   LOAD ALL DICTIONARIES
+   LOAD DICTIONARIES
 ========================= */
 
 async function loadDictionaries() {
@@ -68,7 +68,7 @@ function clean(text) {
 }
 
 /* =========================
-   LANGUAGE DETECTION
+   DETECT LANGUAGE
 ========================= */
 
 function detect(text) {
@@ -83,12 +83,11 @@ function translate(text) {
   const input = clean(text);
   const lang = detect(input);
 
-  /* 1. PHRASES PRIORITY */
+  /* PHRASES PRIORITY */
   if (phrases[input]) {
     return phrases[input];
   }
 
-  /* 2. WORD MODE */
   const map = lang === "fr" ? words : reverseWords;
 
   return input
@@ -107,11 +106,223 @@ function setStatus(msg) {
 }
 
 /* =========================
+   HISTORY
+========================= */
+
+function saveHistory(original, translated) {
+  let history =
+    JSON.parse(localStorage.getItem("history")) || [];
+
+  history.unshift({ original, translated });
+
+  history = history.slice(0, 20);
+
+  localStorage.setItem(
+    "history",
+    JSON.stringify(history)
+  );
+}
+
+function renderHistory() {
+  const box = document.getElementById("history");
+
+  const history =
+    JSON.parse(localStorage.getItem("history")) || [];
+
+  box.innerHTML = "";
+
+  history.forEach(item => {
+    box.innerHTML += `
+      <div class="history-item">
+        ${item.original} → ${item.translated}
+      </div>
+    `;
+  });
+}
+
+/* =========================
+   VOICE
+========================= */
+
+function speak(text) {
+  if (!text || text === "...") return;
+
+  if (!("speechSynthesis" in window)) {
+    setStatus("❌ Audio non supporté");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+  let voices =
+    speechSynthesis.getVoices();
+
+  if (!voices.length) {
+    speechSynthesis.onvoiceschanged = () => {
+      voices = speechSynthesis.getVoices();
+      startSpeech(utterance, voices);
+    };
+  } else {
+    startSpeech(utterance, voices);
+  }
+}
+
+/* =========================
+   START SPEECH
+========================= */
+
+function startSpeech(utterance, voices) {
+  const frVoice =
+    voices.find(v => v.lang.includes("fr"));
+
+  if (frVoice) utterance.voice = frVoice;
+
+  utterance.lang = "fr-FR";
+
+  utterance.onstart = () => setStatus("🔊 Lecture...");
+  utterance.onend = () => setStatus("✅ Terminé");
+  utterance.onerror = e => {
+    console.log(e);
+    setStatus("❌ Erreur audio");
+  };
+
+  speechSynthesis.speak(utterance);
+}
+
+/* =========================
+   MICROPHONE
+========================= */
+
+function setupMicrophone(input) {
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  const micBtn =
+    document.getElementById("micBtn");
+
+  if (!SpeechRecognition) {
+    if (micBtn) micBtn.disabled = true;
+    setStatus("🎤 Micro non supporté");
+    return;
+  }
+
+  const recognition =
+    new SpeechRecognition();
+
+  recognition.lang = "fr-FR";
+
+  recognition.onstart = () =>
+    setStatus("🎤 Écoute...");
+
+  recognition.onresult = e => {
+    input.value =
+      e.results[0][0].transcript;
+
+    setStatus("✅ Reçu");
+  };
+
+  recognition.onerror = e =>
+    setStatus("❌ Micro: " + e.error);
+
+  if (micBtn) {
+    micBtn.addEventListener("click", () => {
+      try {
+        recognition.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  }
+}
+
+/* =========================
    INIT
 ========================= */
 
 document.addEventListener("DOMContentLoaded", async () => {
+
+  const input =
+    document.getElementById("input");
+
+  const result =
+    document.getElementById("result");
+
   await loadDictionaries();
 
-  setStatus("✅ Moteur prêt");
+  function runTranslation() {
+    const text = input.value.trim();
+
+    if (!text) {
+      result.innerText = "⚠️ vide";
+      return;
+    }
+
+    const translated = translate(text);
+
+    result.innerText = translated;
+
+    saveHistory(text, translated);
+    renderHistory();
+
+    setStatus("✅ OK");
+  }
+
+  document.getElementById("translateBtn")
+    .addEventListener("click", runTranslation);
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      runTranslation();
+    }
+  });
+
+  document.getElementById("clearBtn")
+    .addEventListener("click", () => {
+      input.value = "";
+      result.innerText = "...";
+    });
+
+  document.getElementById("swapBtn")
+    .addEventListener("click", () => {
+      input.value = "";
+      result.innerText = "...";
+      setStatus("⇄ swap");
+    });
+
+  document.getElementById("speakBtn")
+    .addEventListener("click", () => {
+      speak(result.innerText);
+    });
+
+  document.getElementById("stopBtn")
+    .addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+
+  setupMicrophone(input);
+
+  renderHistory();
+
+  setStatus("✅ App prête");
 });
+
+/* =========================
+   FIREFOX CHECK
+========================= */
+
+const isFirefox =
+  navigator.userAgent.toLowerCase().includes("firefox");
+
+if (isFirefox) {
+  const micBtn =
+    document.getElementById("micBtn");
+
+  if (micBtn) micBtn.disabled = true;
+
+  setStatus("⚠️ Firefox micro limité");
+}
