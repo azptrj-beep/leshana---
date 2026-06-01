@@ -7,5 +7,6 @@ const dictionary = {
   paix: "ܫܠܡܐ",
   homme: "ܒܪܢܫܐ",
   femme: "ܐܢܬܬܐ"
-
+  fils: "ܒܪܘܿܢܐ"
+  
 };
