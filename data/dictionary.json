@@ -1,12 +1,18 @@
-const dictionary = {
+{
+  "words": {
+    "bonjour": "ܫܠܡܐ",
+    "maison": "ܒܝܬܐ",
+    "eau": "ܡܝܐ",
+    "roi": "ܡܠܟܐ",
+    "paix": "ܫܠܡܐ",
+    "homme": "ܒܪܢܫܐ",
+    "femme": "ܐܢܬܬܐ",
+    "fils": "ܒܪܘܢܐ"
+  },
 
-  bonjour: "ܫܠܡܐ",
-  maison: "ܒܝܬܐ",
-  eau: "ܡܝܐ",
-  roi: "ܡܠܟܐ",
-  paix: "ܫܠܡܐ",
-  homme: "ܒܪܢܫܐ",
-  femme: "ܐܢܬܬܐ"
-  fils: "ܒܪܘܢ̈ܐ"
-  
-};
+  "phrases": {
+    "comment vas-tu": "ܐܝܟ ܐܝܬܘܟ",
+    "bonne nuit": "ܠܠܝܐ ܛܒܐ",
+    "je t'aime": "ܐܢܐ ܪܚܡܢܘܟ"
+  }
+}
