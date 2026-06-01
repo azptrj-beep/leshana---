@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dictionary Builder</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f0f0f;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      flex: 1;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #2d6cdf;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .list {
+      margin-top: 20px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: #1c1c1c;
+      margin-bottom: 8px;
+      border-radius: 6px;
+    }
+
+    .actions button {
+      background: red;
+      margin-left: 10px;
+    }
+
+    .export {
+      margin-top: 20px;
+      background: green;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>📚 Dictionary Builder</h1>
+
+<div class="box">
+  <input id="fr" placeholder="Mot Français">
+  <input id="syr" placeholder="Mot Soureth">
+  <button onclick="addWord()">Ajouter</button>
+</div>
+
+<button class="export" onclick="exportJSON()">⬇ Export JSON</button>
+
+<div id="list" class="list"></div>
+
+<script src="builder.js"></script>
+
+</body>
+</html>
