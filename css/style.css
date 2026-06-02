@@ -1,10 +1,4 @@
-Enregistrements
-Lo0@font-face {
-font-family:'Adiabene';
-src:
-url('assets/fonts/Adiabene.woff2') format('woff2'),
-url('assets/fonts/Adiabene.ttf') format('truetype');
-}and
+
 /* =========================
 RESET
 ========================= */
@@ -1651,17 +1645,12 @@ p, h1, h2, h3 {
   direction: rtl;
 }
 /* LETTRE GUIDE */
-#guideLetter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  font-family: 'Adiabene' !important;
-  font-size: 90px;
-  opacity: 0.12;
-  color: #0033a0;
-  pointer-events: none;
-  direction: rtl;
+.guide-letter{
+    font-family:'Adiabene', serif;
+    font-size:120px;
+    text-align:center;
+    margin:20px 0;
+    color:#0033a0;
 }
 /* CANVAS */
 .canvas-wrapper {
@@ -1676,6 +1665,10 @@ p, h1, h2, h3 {
   border-radius: 16px;
   touch-action: none;
 }
+#writingCanvas{
+    touch-action:none;
+}
+
 /* =========================================
    ECRITURE TACTILE SOURETH MODERNE FIX
 ========================================= */
