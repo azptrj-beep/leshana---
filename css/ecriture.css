@@ -89,3 +89,7 @@ body.dark #letterDisplay,
 body.dark #guideLetter {
   color: white;
 }
+
+#writingCanvas{
+    touch-action:none;
+}
