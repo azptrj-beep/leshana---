@@ -1,114 +1,80 @@
-"use strict";
-
 const letters = [
 "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
 "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
 "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
 ];
 
-let index = 0;
+let current = 0;
 
+const guideLetter = document.getElementById("guideLetter");
 const canvas = document.getElementById("writingCanvas");
 const ctx = canvas.getContext("2d");
-const guideLetter = document.getElementById("guideLetter");
 
-/* =========================
-   CANVAS FIX MOBILE
-========================= */
-function resizeCanvas() {
-  const size = 320;
-
-  canvas.width = size;
-  canvas.height = size;
-
-  ctx.strokeStyle = "#0033a0";
-  ctx.lineWidth = 6;
-  ctx.lineCap = "round";
-}
-
-resizeCanvas();
-
-/* =========================
-   LETTRE GUIDE
-========================= */
 function updateLetter() {
-  guideLetter.textContent = letters[index];
+  guideLetter.textContent = letters[current];
 }
 
-updateLetter();
-
-/* =========================
-   NAV LETTERS
-========================= */
-document.getElementById("nextLetter").onclick = () => {
-  index = (index + 1) % letters.length;
+document.getElementById("nextLetter").addEventListener("click", () => {
+  current = (current + 1) % letters.length;
   updateLetter();
   clearCanvas();
-};
+});
 
-document.getElementById("prevLetter").onclick = () => {
-  index = (index - 1 + letters.length) % letters.length;
+document.getElementById("prevLetter").addEventListener("click", () => {
+  current = (current - 1 + letters.length) % letters.length;
   updateLetter();
   clearCanvas();
-};
+});
 
-document.getElementById("clearCanvas").onclick = clearCanvas;
+document.getElementById("clearCanvas").addEventListener("click", clearCanvas);
 
-/* =========================
-   CLEAR
-========================= */
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-/* =========================
-   POSITION FIX (IMPORTANT)
-========================= */
-function getPos(e) {
+// DRAW
+let drawing = false;
+
+function pos(e) {
   const rect = canvas.getBoundingClientRect();
-  const touch = e.touches ? e.touches[0] : e;
+  const t = e.touches ? e.touches[0] : e;
 
   return {
-    x: (touch.clientX - rect.left) * (canvas.width / rect.width),
-    y: (touch.clientY - rect.top) * (canvas.height / rect.height)
+    x: t.clientX - rect.left,
+    y: t.clientY - rect.top
   };
 }
 
-/* =========================
-   DRAW SYSTEM
-========================= */
-let drawing = false;
-
-function startDraw(e) {
+function start(e) {
   drawing = true;
-
-  const pos = getPos(e);
+  const p = pos(e);
   ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
+  ctx.moveTo(p.x, p.y);
 }
 
-function draw(e) {
+function move(e) {
   if (!drawing) return;
-
   e.preventDefault();
 
-  const pos = getPos(e);
-  ctx.lineTo(pos.x, pos.y);
+  const p = pos(e);
+  ctx.lineWidth = 6;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#0033a0";
+
+  ctx.lineTo(p.x, p.y);
   ctx.stroke();
 }
 
-function stopDraw() {
+function end() {
   drawing = false;
 }
 
-/* =========================
-   EVENTS (MOUSE + TOUCH)
-========================= */
-canvas.addEventListener("mousedown", startDraw);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", stopDraw);
-canvas.addEventListener("mouseleave", stopDraw);
+canvas.addEventListener("mousedown", start);
+canvas.addEventListener("mousemove", move);
+canvas.addEventListener("mouseup", end);
 
-canvas.addEventListener("touchstart", startDraw, { passive: false });
-canvas.addEventListener("touchmove", draw, { passive: false });
-canvas.addEventListener("touchend", stopDraw);
+canvas.addEventListener("touchstart", start, { passive: false });
+canvas.addEventListener("touchmove", move, { passive: false });
+canvas.addEventListener("touchend", end);
+
+updateLetter();
