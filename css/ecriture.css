@@ -1,11 +1,11 @@
 @font-face{
     font-family:'Nohadra';
-    src:url('../assets/fonts/nohadra.ttf');
+    src:url('../assets/fonts/nohadra.woff2');
 }
 
 @font-face{
     font-family:'Assyrian';
-    src:url('../assets/fonts/assyrian.ttf');
+    src:url('../assets/fonts/assyrian.woff2');
 }
 
 .letter-btn{
@@ -34,11 +34,11 @@
 
     color:#0033a0;
 
-    opacity:.08;
+    opacity:.25;
 
     pointer-events:none;
 
-    z-index:1;
+    z-index:2;
 }
 
 #writingCanvas{
@@ -56,7 +56,7 @@
 
     touch-action:none;
 
-    z-index:2;
+    z-index:1;
 }
 
 .canvas-controls{
