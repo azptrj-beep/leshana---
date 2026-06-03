@@ -98,6 +98,15 @@
 
 <script src="js/translate.js" defer></script>
 
+export default function render(app) {
+  app.innerHTML = `
+    <textarea id="writeInput"></textarea>
+    <div id="keyboard"></div>
+  `;
+
+  initKeyboard("writeInput");
+}
+
 </body>
 
 </html>
