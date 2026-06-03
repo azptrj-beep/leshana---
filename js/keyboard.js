@@ -1,11 +1,18 @@
 "use strict";
 
 /* =========================================
-   CLAVIER SOURETH FIX FINAL
+   CLAVIER SOURETH FIX FINAL + V2 READY
 ========================================= */
 
+let editorId = "editor";
+
+/* TARGET DYNAMIC (SPA READY) */
+function setKeyboardTarget(id) {
+  editorId = id;
+}
+
 function getEditor() {
-  return document.getElementById("editor");
+  return document.getElementById(editorId);
 }
 
 /* INSERT LETTER */
@@ -27,7 +34,7 @@ function insertLetter(letter) {
   input.focus();
 }
 
-/* DELETE */
+/* DELETE LETTER */
 function deleteLetter() {
   const input = getEditor();
   if (!input) return;
@@ -52,6 +59,12 @@ function deleteLetter() {
   input.focus();
 }
 
+/* INIT KEYBOARD (SAFE FOR FUTURE SPA) */
+function initKeyboard(targetId = "editor") {
+  setKeyboardTarget(targetId);
+}
+
 /* EXPORT GLOBAL */
 window.insertLetter = insertLetter;
 window.deleteLetter = deleteLetter;
+window.initKeyboard = initKeyboard;
