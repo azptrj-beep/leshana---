@@ -2,7 +2,6 @@
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta name="viewport"
@@ -13,9 +12,8 @@
   <link rel="stylesheet"
         href="css/style.css">
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0033a0">
-
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0033a0">
 </head>
 
 <body>
@@ -26,13 +24,9 @@
 
   <div class="top-actions">
 
-    <button id="swapBtn">
-      ⇄
-    </button>
+    <button id="swapBtn">⇄</button>
 
-    <button id="clearBtn">
-      ✖
-    </button>
+    <button id="clearBtn">✖</button>
 
   </div>
 
@@ -40,41 +34,73 @@
 
 <main class="container">
 
-  <!-- INPUT -->
-
   <section class="card">
 
     <textarea id="input"
               placeholder="Écris ici..."
               rows="5"></textarea>
 
+    <!-- CLAVIER SOURETH -->
+
+    <div id="keyboard">
+
+      <button onclick="insertLetter('ܐ')">ܐ</button>
+      <button onclick="insertLetter('ܒ')">ܒ</button>
+      <button onclick="insertLetter('ܓ')">ܓ</button>
+      <button onclick="insertLetter('ܕ')">ܕ</button>
+      <button onclick="insertLetter('ܗ')">ܗ</button>
+      <button onclick="insertLetter('ܘ')">ܘ</button>
+      <button onclick="insertLetter('ܙ')">ܙ</button>
+
+      <button onclick="insertLetter('ܚ')">ܚ</button>
+      <button onclick="insertLetter('ܛ')">ܛ</button>
+      <button onclick="insertLetter('ܝ')">ܝ</button>
+      <button onclick="insertLetter('ܟ')">ܟ</button>
+      <button onclick="insertLetter('ܠ')">ܠ</button>
+
+      <button onclick="insertLetter('ܡ')">ܡ</button>
+      <button onclick="insertLetter('ܢ')">ܢ</button>
+      <button onclick="insertLetter('ܣ')">ܣ</button>
+      <button onclick="insertLetter('ܥ')">ܥ</button>
+      <button onclick="insertLetter('ܦ')">ܦ</button>
+
+      <button onclick="insertLetter('ܨ')">ܨ</button>
+      <button onclick="insertLetter('ܩ')">ܩ</button>
+      <button onclick="insertLetter('ܪ')">ܪ</button>
+      <button onclick="insertLetter('ܫ')">ܫ</button>
+      <button onclick="insertLetter('ܬ')">ܬ</button>
+
+      <button onclick="insertLetter('݂')">݂</button>
+      <button onclick="insertLetter('̮')">̮</button>
+      <button onclick="insertLetter('ܸ')">ܸ</button>
+      <button onclick="insertLetter('ܹ')">ܹ</button>
+      <button onclick="insertLetter('ܲ')">ܲ</button>
+      <button onclick="insertLetter('ܵ')">ܵ</button>
+      <button onclick="insertLetter('ܿ')">ܿ</button>
+      <button onclick="insertLetter('ܼ')">ܼ</button>
+      <button onclick="insertLetter('̈')">̈</button>
+
+      <button onclick="insertLetter(' ')">␣</button>
+
+      <button onclick="deleteLetter()">⌫</button>
+
+    </div>
+
     <div class="actions">
 
-      <button id="translateBtn">
-        Traduire
-      </button>
+      <button id="translateBtn">Traduire</button>
 
-      <button id="micBtn">
-        🎤
-      </button>
+      <button id="micBtn">🎤</button>
 
-      <button id="speakBtn">
-        🔊
-      </button>
+      <button id="speakBtn">🔊</button>
 
-      <button id="stopBtn">
-        ⏹
-      </button>
+      <button id="stopBtn">⏹</button>
 
     </div>
 
   </section>
 
-  <!-- STATUS -->
-
   <div id="status"></div>
-
-  <!-- RESULT -->
 
   <section class="card">
 
@@ -83,8 +109,6 @@
     </div>
 
   </section>
-
-  <!-- HISTORY -->
 
   <section class="card">
 
@@ -96,18 +120,14 @@
 
 </main>
 
+<script src="js/keyboard.js" defer></script>
 <script src="js/translate.js" defer></script>
 
-export default function render(app) {
-  app.innerHTML = `
-    <textarea id="writeInput"></textarea>
-    <div id="keyboard"></div>
-  `;
-
-  initKeyboard("writeInput");
-}
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  initKeyboard("input");
+});
+</script>
 
 </body>
-
 </html>
-
