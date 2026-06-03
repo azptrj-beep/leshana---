@@ -8,6 +8,10 @@
     src:url('../assets/fonts/assyrian.ttf');
 }
 
+.letter-btn{
+    font-family:'Nohadra','Assyrian',sans-serif;
+}
+
 .writing-container{
     position:relative;
     width:350px;
