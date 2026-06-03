@@ -1,3 +1,13 @@
+@font-face{
+    font-family:'Nohadra';
+    src:url('../assets/fonts/nohadra.ttf');
+}
+
+@font-face{
+    font-family:'Assyrian';
+    src:url('../assets/fonts/assyrian.ttf');
+}
+
 .writing-container{
     position:relative;
     width:350px;
@@ -14,15 +24,6 @@
     justify-content:center;
     align-items:center;
 
-@font-face{
-    font-family:'Nohadra';
-    src:url('../assets/fonts/nohadra.ttf');
-}
-
-@font-face{
-    font-family:'Assyrian';
-    src:url('../assets/fonts/assyrian.ttf');
-}
     font-family:'Nohadra','Assyrian',sans-serif;
 
     font-size:180px;
@@ -62,7 +63,38 @@
 }
 
 .canvas-controls button{
-    padding:10px 15px;
+    padding:10px 16px;
+    font-size:16px;
+}
+
+#letterGrid{
+    width:min(700px,95%);
+    margin:25px auto;
+
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:8px;
+}
+
+.letter-btn{
+    border:none;
+    border-radius:10px;
+    padding:12px;
+
+    font-size:2rem;
+
+    background:#f0f4ff;
+
+    cursor:pointer;
+}
+
+.letter-btn:hover{
+    transform:scale(1.05);
+}
+
+.active-letter{
+    background:#0033a0;
+    color:white;
 }
 
 @media(max-width:768px){
@@ -75,5 +107,9 @@
     #guideLetter{
         font-size:42vw;
     }
-}
 
+    .letter-btn{
+        font-size:1.6rem;
+        padding:10px;
+    }
+}
