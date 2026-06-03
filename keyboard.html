@@ -1,86 +1,87 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Clavier Soureth</title>
 
-  <link rel="stylesheet"
-        href="css/style.css">
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0033a0">
-
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0033a0">
 </head>
 
 <body>
 
-  <header>
+<header>
+  <h1>⌨️ Clavier Soureth Moderne</h1>
+</header>
 
-    <h1>
-      ⌨️ Clavier Soureth Moderne
-    </h1>
+<section class="translator-box">
 
-  </header>
+  <textarea
+    id="editor"
+    class="soureth-writing"
+    placeholder="Écrire en Soureth...">
+  </textarea>
 
-  <section class="translator-box">
+  <div id="keyboard">
 
-    <textarea id="editor"
-              class="soureth-writing"
-              placeholder="Écrire en Soureth..."></textarea>
+    <button onclick="insertLetter('ܐ')">ܐ</button>
+    <button onclick="insertLetter('ܒ')">ܒ</button>
+    <button onclick="insertLetter('ܓ')">ܓ</button>
+    <button onclick="insertLetter('ܕ')">ܕ</button>
+    <button onclick="insertLetter('ܗ')">ܗ</button>
+    <button onclick="insertLetter('ܘ')">ܘ</button>
+    <button onclick="insertLetter('ܙ')">ܙ</button>
 
-    <div id="keyboard">
+    <button onclick="insertLetter('ܚ')">ܚ</button>
+    <button onclick="insertLetter('ܛ')">ܛ</button>
+    <button onclick="insertLetter('ܝ')">ܝ</button>
+    <button onclick="insertLetter('ܟ')">ܟ</button>
+    <button onclick="insertLetter('ܠ')">ܠ</button>
 
-      <button onclick="insertLetter('ܐ')">ܐ</button>
-      <button onclick="insertLetter('ܒ')">ܒ</button>
-      <button onclick="insertLetter('ܓ')">ܓ</button>
-      <button onclick="insertLetter('ܕ')">ܕ</button>
-      <button onclick="insertLetter('ܗ')">ܗ</button>
-      <button onclick="insertLetter('ܘ')">ܘ</button>
-      <button onclick="insertLetter('ܙ')">ܙ</button>
-  <button onclick="insertLetter('ܚ')">ܚ</button>
-      <button onclick="insertLetter('ܛ')">ܛ</button>
-      <button onclick="insertLetter('ܝ')">ܝ</button>
-      <button onclick="insertLetter('ܟ')">ܟ</button>
-      <button onclick="insertLetter('ܠ')">ܠ</button>
-  <button onclick="insertLetter('ܡ')">ܡ</button>
-      <button onclick="insertLetter('ܢ')">ܢ</button>
-      <button onclick="insertLetter('ܣ')">ܣ</button>
-<button onclick="insertLetter('ܥ')">ܥ</button>
-<button onclick="insertLetter('ܦ')">ܦ</button>
-      <button onclick="insertLetter('ܨ')">ܨ</button>
-      <button onclick="insertLetter('ܩ')">ܩ</button>
-      <button onclick="insertLetter('ܪ')">ܪ</button>
-<button onclick="insertLetter('ܫ')">ܫ</button>
-<button onclick="insertLetter('ܬ')">ܬ</button>
-<button onclick="insertLetter('݂')">݂</button>
-      <button onclick="insertLetter('̮')">̮</button>
-<button onclick="insertLetter('ܸ')">ܸ</button>
-<button onclick="insertLetter('ܹ')">ܹ</button>
-      <button onclick="insertLetter('ܲ')">ܲ</button>
-      <button onclick="insertLetter('ܵ')">ܵ</button>
-      <button onclick="insertLetter('ܿ')">ܿ</button>
-<button onclick="insertLetter('ܼ')">ܼ</button>
-<button onclick="insertLetter('̈')">̈</button>
+    <button onclick="insertLetter('ܡ')">ܡ</button>
+    <button onclick="insertLetter('ܢ')">ܢ</button>
+    <button onclick="insertLetter('ܣ')">ܣ</button>
+    <button onclick="insertLetter('ܥ')">ܥ</button>
+    <button onclick="insertLetter('ܦ')">ܦ</button>
 
-      <button onclick="insertLetter(' ')">␣</button>
+    <button onclick="insertLetter('ܨ')">ܨ</button>
+    <button onclick="insertLetter('ܩ')">ܩ</button>
+    <button onclick="insertLetter('ܪ')">ܪ</button>
+    <button onclick="insertLetter('ܫ')">ܫ</button>
+    <button onclick="insertLetter('ܬ')">ܬ</button>
 
-    </div>
+    <button onclick="insertLetter('݂')">݂</button>
+    <button onclick="insertLetter('̮')">̮</button>
+    <button onclick="insertLetter('ܸ')">ܸ</button>
+    <button onclick="insertLetter('ܹ')">ܹ</button>
+    <button onclick="insertLetter('ܲ')">ܲ</button>
+    <button onclick="insertLetter('ܵ')">ܵ</button>
+    <button onclick="insertLetter('ܿ')">ܿ</button>
+    <button onclick="insertLetter('ܼ')">ܼ</button>
+    <button onclick="insertLetter('̈')">̈</button>
 
-  </section>
+    <button onclick="insertLetter(' ')">␣</button>
 
+    <button onclick="deleteLetter()">⌫</button>
 
-<link rel="stylesheet" href="css/style.css">
+  </div>
+
+</section>
 
 <script src="js/app.js" defer></script>
 <script src="js/keyboard.js" defer></script>
 <script src="js/audio.js" defer></script>
+
+<script>
+  // init clavier (sécurisé)
+  window.addEventListener("DOMContentLoaded", () => {
+    initKeyboard("editor");
+  });
+</script>
 
 </body>
 
