@@ -1,12 +1,13 @@
 "use strict";
 
 const vowels = [
-  { char: "ܵ", sound: "A long" },
-  { char: "ܲ", sound: "A court" },
-  { char: "ܸ", sound: "E" },
-  { char: "ܹ", sound: "É" },
-  { char: "ܼ", sound: "U" },
-  { char: "ܘܼ", sound: "OU" },
+  { char: "ܵ", sound: "Zqapa, A long" },
+  { char: "ܲ", sound: "Ptakha, A court" },
+  { char: "ܸ", sound: "Zlama Kirya E" },
+  { char: "ܹ", sound: "Zlama Yarikha, É" },
+  { char: "ܘܿ", sound: "Rwakha, O" },
+  { char: "ܘܼ", sound: "Rwasa, OU" },
+  { char: "ܝܼ", sound: "Khwasa, EE" },
   { char: "ܐ", sound: "support vocalique" }
 ];
 
