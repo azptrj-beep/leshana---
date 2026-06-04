@@ -3,8 +3,8 @@
 const vowels = [
   { char: "ܵ", sound: "Zqapa, A long" },
   { char: "ܲ", sound: "Ptakha, A court" },
-  { char: "ܸ", sound: "Zlama Kirya E" },
-  { char: "ܹ", sound: "Zlama Yarikha, É" },
+  { char: "ܸ", sound: "Zlama Psheeqa (Kirya) E court" },
+  { char: "ܹ", sound: "Zlama Qashya(Yarikha) , É long" },
   { char: "ܘܿ", sound: "Rwakha, O" },
   { char: "ܘܼ", sound: "Rwasa, OU" },
   { char: "ܝܼ", sound: "Khwasa, EE" },
