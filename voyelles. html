@@ -183,7 +183,7 @@ header {
   <p>Prononciation : "a"</p>
   <button class="btn" onclick="playAudio('audio/voyelles/a.mp3')">🔊 Écouter</button>
   <div class="example">
-    Exemple : ܐܵܒܵܐ (Baba)
+    Exemple : ܒ̈ܒ̈ܐ (Baba)
   </div>
 </div>
 
