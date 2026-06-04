@@ -1,11 +1,13 @@
 "use strict";
 
 const vowels = [
-  { char: "ܲ", sound: "A" },
-  { char: "ܵ", sound: "O" },
+  { char: "ܵ", sound: "A long" },
+  { char: "ܲ", sound: "A court" },
   { char: "ܸ", sound: "E" },
+  { char: "ܹ", sound: "É" },
   { char: "ܼ", sound: "U" },
-  { char: "ܹ", sound: "É" }
+  { char: "ܘܼ", sound: "OU" },
+  { char: "ܐ", sound: "support vocalique" }
 ];
 
 // --------------------
