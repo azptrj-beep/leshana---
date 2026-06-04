@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #1e293b;
+}
+
+h1 {
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #334155;
+}
+
+.syriac {
+  font-size: 32px;
+}
+
+.sound {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.reading, .quiz {
+  padding: 20px;
+}
+
+.example {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.answers button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
