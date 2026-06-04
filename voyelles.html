@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voyelles Soureth</title>
+
+  <link rel="stylesheet" href="css/voyelles.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🔤 Voyelles du Soureth</h1>
+  <p>Apprends à lire et prononcer les voyelles</p>
+</header>
+
+<main>
+
+  <!-- SECTION CARTES -->
+  <section class="grid" id="vowelGrid"></section>
+
+  <!-- SECTION LECTURE -->
+  <section class="reading">
+    <h2>📖 Lecture</h2>
+
+    <div class="example">
+      <div class="syriac">ܫܠܵܡܵܐ</div>
+      <div class="translit">Shlama</div>
+      <div class="meaning">Paix / Bonjour</div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz">
+    <h2>🧠 Mini Quiz</h2>
+
+    <p id="question">Quel son produit : <span id="quizLetter"></span></p>
+
+    <div class="answers">
+      <button onclick="answer('A')">A</button>
+      <button onclick="answer('O')">O</button>
+      <button onclick="answer('E')">E</button>
+      <button onclick="answer('U')">U</button>
+      <button onclick="answer('É')">É</button>
+    </div>
+
+    <p id="result"></p>
+  </section>
+
+</main>
+
+<script src="js/voyelles.js"></script>
+</body>
+</html>
