@@ -1,8 +1,18 @@
+@font-face {
+  font-family: "Nohadra";
+  src: url("../fonts/nohadra.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Assyrian";
+  src: url("../fonts/assyrian.woff2") format("woff2");
+}
+
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Nohadra", Arial, sans-serif;
   background: #0f172a;
-  color: #fff;
+  color: white;
 }
 
 header {
@@ -35,9 +45,9 @@ h1 {
   transform: scale(1.05);
   background: #334155;
 }
-
-.syriac {
-  font-size: 32px;
+.card .syriac {
+  font-family: "Assyrian", "Nohadra";
+  font-size: 40px;
 }
 
 .sound {
@@ -63,4 +73,8 @@ h1 {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+.soureth-letter {
+  font-family: "Assyrian";
+  letter-spacing: 2px;
 }
