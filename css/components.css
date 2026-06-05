@@ -1,0 +1,35 @@
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 18px;
+  margin: 15px;
+}
+
+.btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #0066ff;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 12px;
+  border-radius: 20px;
+}
