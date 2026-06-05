@@ -1,5 +1,5 @@
 /* =========================
-RESET
+RESET GLOBAL
 ========================= */
 
 * {
@@ -15,68 +15,41 @@ FONTS SOURETH
 @font-face {
   font-family: 'nohadra';
   src: url('../assets/fonts/nohadra.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
   font-family: 'assyrian';
   src: url('../assets/fonts/assyrian.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
 
 /* =========================
-THEME
+🔥 RTL GLOBAL RÉEL (IMPORTANT)
 ========================= */
 
-:root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.08);
-  --soft: rgba(255,255,255,0.7);
-}
-
-/* =========================
-GLOBAL BODY
-========================= */
-
-body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-  transition: 0.3s ease;
-  direction: ltr; /* UI générale LTR par défaut */
-}
-
-/* DARK / LIGHT MODE */
-
-body.dark {
-  --bg: #050816;
-  --text: #ffffff;
-  --card: rgba(0,0,0,0.4);
-}
-
-body.light-mode {
-  --bg: #f4f7fb;
-  --text: #111827;
-  --card: rgba(255,255,255,0.9);
-}
-
-/* =========================
-ARCHITECTURE RTL SOURETH
-========================= */
-
-/* container RTL global */
+/* HTML = RTL GLOBAL */
 html {
   direction: rtl;
+  unicode-bidi: isolate;
 }
 
-/* zone soureth */
+/* BODY = RTL FORCÉ */
+body {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: isolate;
+  font-family: 'nohadra', 'assyrian', sans-serif;
+
+  background: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  color: white;
+
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================
+🔥 BLOCS SOURETH UNIQUEMENT
+========================= */
+
 .soureth,
 #keyboard,
 .quiz-options,
@@ -84,7 +57,9 @@ html {
 #letterDisplay,
 #guideLetter,
 .hero-demo,
-.card p {
+.card p,
+textarea,
+input {
   direction: rtl;
   text-align: right;
   unicode-bidi: plaintext;
@@ -92,7 +67,15 @@ html {
 }
 
 /* =========================
-EXCEPTION LTR (UI FR / TECH)
+🔥 FORCE AUCUN TEXTE LTR CACHÉ
+========================= */
+
+p, h1, h2, h3, span, div {
+  unicode-bidi: plaintext;
+}
+
+/* =========================
+🔥 EXCEPTION UI FR (IMPORTANT)
 ========================= */
 
 .ltr {
@@ -101,11 +84,11 @@ EXCEPTION LTR (UI FR / TECH)
 }
 
 /* =========================
-INPUTS (TRÈS IMPORTANT)
+INPUT FIX (TRÈS IMPORTANT)
 ========================= */
 
-textarea,
-input {
+input,
+textarea {
   direction: rtl;
   text-align: right;
   unicode-bidi: plaintext;
@@ -113,19 +96,10 @@ input {
 }
 
 /* =========================
-LANG SYRIAC SAFE MODE
-========================= */
-
-:lang(syr) {
-  direction: rtl;
-  unicode-bidi: plaintext;
-  font-family: 'nohadra', 'assyrian', sans-serif;
-}
-
-/* =========================
-CANVAS SAFE ZONE
+CANVAS (NE DOIT JAMAIS ÊTRE RTL)
 ========================= */
 
 canvas {
   direction: ltr;
+  touch-action: none;
 }
