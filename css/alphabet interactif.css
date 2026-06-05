@@ -1,3 +1,17 @@
+@font-face{
+    font-family:'Nohadra';
+    src:url('../assets/fonts/nohadra.woff2');
+}
+
+@font-face{
+    font-family:'Assyrian';
+    src:url('../assets/fonts/assyrian.woff2');
+}
+
+.letter-btn{
+    font-family:'Nohadra','Assyrian',sans-serif;
+}
+
 
 .letter-card {
 
