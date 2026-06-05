@@ -2006,3 +2006,40 @@ margin: 0;
 padding: 0;
 overflow-x: hidden;
 }
+
+/* =========================
+FIX PRIORITAIRE CLAVIER + ÉCRITURE
+========================= */
+
+/* 1. EMPÊCHE LE CLAVIER DE PASSER AU-DESSUS */
+.bottom-nav {
+  z-index: 10 !important;
+}
+
+/* 2. ESPACE SÉCURISÉ POUR L’ÉCRITURE */
+.writing-container {
+  padding-bottom: 180px !important;
+}
+
+/* 3. CORRIGE MODEL QUI CASSE LE FLUX */
+.model {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  left: auto !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+/* 4. ÉVITE CONFLITS TOUCH / SCROLL */
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: auto !important;
+}
+
+/* 5. CANVAS TOUJOURS AU-DESSUS DU FOND */
+#writingCanvas {
+  position: relative;
+  z-index: 2;
+}
