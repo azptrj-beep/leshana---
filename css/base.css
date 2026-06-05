@@ -1,3 +1,5 @@
+
+
 /* RESET */
 
 /* =========================
@@ -94,4 +96,38 @@ input {
   direction: rtl;
   unicode-bidi: plaintext;
   font-family: 'nohadra', 'assyrian', sans-serif;
+}
+
+/* =========================
+FORCE SOURETH RTL GLOBAL
+========================= */
+
+html {
+  direction: rtl;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Tout ce qui est UI FR peut rester LTR si besoin */
+.ui-ltr {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* SOURETH GLOBAL FONT + RTL */
+.soureth,
+#keyboard,
+.quiz-options,
+#question,
+#letterDisplay,
+#guideLetter,
+.hero-demo,
+.card p {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: plaintext;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
 }
