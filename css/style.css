@@ -1977,9 +1977,16 @@ padding:15px;
 }
 
 .model{
-position:relative;
-text-align:center;
-margin-bottom:15px;
+    position:absolute;
+    width:350px;
+    height:350px;
+    left:50%;
+    transform:translateX(-50%);
+    pointer-events:none;
+}
+
+.writing-container{
+    position:relative;
 }
 
 /* LETTRE A APPRENDRE */
