@@ -1,0 +1,36 @@
+.writing-container {
+  max-width: 420px;
+  margin: auto;
+  padding: 15px;
+}
+
+#letterDisplay {
+  font-size: 70px;
+  text-align: center;
+}
+
+#guideLetter {
+  position: absolute;
+  font-size: 160px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+#writingCanvas {
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
+  background: white;
+  border-radius: 18px;
+  border: 2px solid #0033a0;
+  display: block;
+  margin: auto;
+  touch-action: none;
+}
+
+.canvas-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
