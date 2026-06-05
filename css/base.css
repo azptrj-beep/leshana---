@@ -1,37 +1,11 @@
-/* =========================
-RESET
-========================= */
-
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-FONTS SOURETH
-========================= */
-
-@font-face {
-  font-family: 'nohadra';
-  src: url('../assets/fonts/nohadra.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'assyrian';
-  src: url('../assets/fonts/assyrian.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* =========================
-THEME
-========================= */
-
+/* THEME */
 :root {
   --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
   --text: #ffffff;
@@ -39,10 +13,7 @@ THEME
   --soft: rgba(255,255,255,0.7);
 }
 
-/* =========================
-GLOBAL BODY
-========================= */
-
+/* GLOBAL BODY */
 body {
   font-family: Arial, sans-serif;
   background: var(--bg);
@@ -50,82 +21,18 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: 0.3s ease;
-  direction: ltr; /* UI générale LTR par défaut */
 }
 
-/* DARK / LIGHT MODE */
-
-body.dark {
-  --bg: #050816;
-  --text: #ffffff;
-  --card: rgba(0,0,0,0.4);
-}
-
+/* LIGHT MODE */
 body.light-mode {
   --bg: #f4f7fb;
   --text: #111827;
   --card: rgba(255,255,255,0.9);
 }
 
-/* =========================
-ARCHITECTURE RTL SOURETH
-========================= */
-
-/* container RTL global */
-html {
-  direction: rtl;
-}
-
-/* zone soureth */
-.soureth,
-#keyboard,
-.quiz-options,
-#question,
-#letterDisplay,
-#guideLetter,
-.hero-demo,
-.card p {
-  direction: rtl;
-  text-align: right;
-  unicode-bidi: plaintext;
-  font-family: 'nohadra', 'assyrian', sans-serif !important;
-}
-
-/* =========================
-EXCEPTION LTR (UI FR / TECH)
-========================= */
-
-.ltr {
-  direction: ltr !important;
-  text-align: left !important;
-}
-
-/* =========================
-INPUTS (TRÈS IMPORTANT)
-========================= */
-
-textarea,
-input {
-  direction: rtl;
-  text-align: right;
-  unicode-bidi: plaintext;
-  font-family: 'nohadra', sans-serif;
-}
-
-/* =========================
-LANG SYRIAC SAFE MODE
-========================= */
-
-:lang(syr) {
-  direction: rtl;
-  unicode-bidi: plaintext;
-  font-family: 'nohadra', 'assyrian', sans-serif;
-}
-
-/* =========================
-CANVAS SAFE ZONE
-========================= */
-
-canvas {
-  direction: ltr;
+/* DARK MODE */
+body.dark {
+  --bg: #050816;
+  --text: #ffffff;
+  --card: rgba(0,0,0,0.4);
 }
