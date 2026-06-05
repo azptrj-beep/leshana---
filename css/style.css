@@ -1,83 +1,49 @@
+/* =========================
+RESET PROPRE
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* =========================
-RESET
+THEME UNIQUE (BASE)
 ========================= */
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-/* =========================
-VARIABLES
-========================= */
-:root {
---blue-main: #0033a0;
---blue-light: #0066ff;
---cyan: #00cfff;
---red-main: #d40000;
---dark-bg: #050816;
---glass:
-rgba(255,255,255,0.08);
---glass-border:
-rgba(255,255,255,0.12);
---text-light: #ffffff;
---text-soft: #d9e2ff;
-}
-/* =========================
-FONTS
-========================= */
-@font-face {
-font-family: 'Adiabene';
-src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
-url('../assets/fonts/Adiabene.ttf') format('truetype');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
-}
-@font-face {
-font-family: 'Nohadra';
-src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-url('../assets/fonts/nohadra.ttf') format('truetype');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
-}
-@font-face {
-font-family: 'Assyrian';
-src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-url('../assets/fonts/assyrian.ttf') format('truetype');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
-}
-/* =========================
-   BODY
-========================= */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  text-align: center;
-  overflow-x: hidden;
-  min-height: 100vh;
-  transition: all 0.3s ease;
-}
-/* =========================
-   THEME VARIABLES SAFE
-========================= */
+
 :root {
   --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: white;
+  --text: #ffffff;
   --card: rgba(255,255,255,0.08);
-  --nav: rgba(255,255,255,0.05);
+  --soft: rgba(255,255,255,0.7);
 }
-/* LIGHT MODE */
-[data-theme="light"] {
+
+/* =========================
+BODY UNIQUE
+========================= */
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: 0.3s ease;
+}
+
+/* DARK MODE PROPRE */
+body.dark {
+  --bg: #050816;
+  --text: #fff;
+  --card: rgba(0,0,0,0.4);
+}
+
+/* LIGHT MODE PROPRE */
+body.light-mode {
   --bg: #f4f7fb;
   --text: #111827;
   --card: rgba(255,255,255,0.9);
-  --nav: rgba(0,0,0,0.05);
 }
 /* =========================
    GLOBAL
