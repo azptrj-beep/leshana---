@@ -576,7 +576,7 @@ width: 100%;
 .soureth-writing,
 .soureth-classic,
 :lang(syr) {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
   direction: rtl;
   unicode-bidi: plaintext;
 }
@@ -1360,7 +1360,6 @@ font-size: 28px;
 .quiz-letter,
 .soureth-mode {
   font-family:
-    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif !important;
@@ -1607,7 +1606,7 @@ body{
 .guide,
 #keyboard button,
 .quiz-options button {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
 }
 textarea,
 input {
@@ -1654,7 +1653,7 @@ p, h1, h2, h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -40%);
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'Nohadra', sans-serif;
   font-size: 160px;
   opacity: 0.08;
   color: #0033a0;
@@ -1959,7 +1958,6 @@ footer {
 
 #result{
   font-family:
-    'Adiabene',
     'Nohadra',
     sans-serif !important;
 
