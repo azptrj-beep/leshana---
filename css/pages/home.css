@@ -1,0 +1,95 @@
+/* =========================
+HOME PAGE ONLY
+========================= */
+
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  max-width: 750px;
+  margin: auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* HERO DEMO BOX */
+.hero-demo.card {
+  max-width: 320px;
+  margin: 25px auto 0;
+  padding: 15px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+/* SOURETH TITLE */
+.soureth-title {
+  font-size: clamp(40px, 8vw, 70px);
+  font-family: 'Adiabene', sans-serif;
+  direction: rtl;
+  line-height: 1;
+}
+
+/* TEXT UNDER SOURETH */
+.hero-demo p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* FEATURES GRID (HOME ONLY) */
+.features {
+  padding: 30px 20px;
+}
+
+/* FEATURE CARD LINK */
+.feature-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* XP / QUIZ PREVIEW (HOME BLOCK) */
+.quiz-box {
+  margin-top: 40px;
+}
+
+/* PROGRESSION HOME BLOCK */
+.progress-card {
+  margin-top: 30px;
+}
+
+/* MOBILE OPTIMISATION */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-demo.card {
+    max-width: 260px;
+  }
+
+  .soureth-title {
+    font-size: 42px;
+  }
+}
