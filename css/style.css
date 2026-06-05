@@ -1,5 +1,5 @@
 /* =========================
-RESET GLOBAL
+RESET
 ========================= */
 * {
   margin: 0;
@@ -11,15 +11,19 @@ RESET GLOBAL
 VARIABLES
 ========================= */
 :root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.08);
-  --soft: rgba(255,255,255,0.7);
-
   --blue-main: #0033a0;
   --blue-light: #0066ff;
   --cyan: #00cfff;
   --red-main: #d40000;
+  --dark-bg: #050816;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+  --text-light: #ffffff;
+  --text-soft: #d9e2ff;
+
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: #ffffff;
+  --card: rgba(255,255,255,0.08);
 }
 
 /* =========================
@@ -85,7 +89,7 @@ HERO
 }
 
 .hero p {
-  color: var(--soft);
+  color: var(--text-soft);
   margin-top: 10px;
 }
 
@@ -124,7 +128,7 @@ FEATURES
 }
 
 /* =========================
-QUIZ BOX
+QUIZ
 ========================= */
 .quiz-box {
   max-width: 600px;
@@ -154,15 +158,13 @@ QUIZ BOX
 }
 
 /* =========================
-KEYBOARD (FIX IMPORTANT)
+KEYBOARD
 ========================= */
 #keyboard {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-
-  /* IMPORTANT FIX */
   margin-bottom: 140px;
 }
 
@@ -176,16 +178,13 @@ KEYBOARD (FIX IMPORTANT)
 }
 
 /* =========================
-WRITING MODULE (TACTILE FIX)
+WRITING MODULE (TACTILE)
 ========================= */
 .writing-container {
   width: 100%;
   max-width: 420px;
   margin: 20px auto;
-
-  /* IMPORTANT FIX */
-  padding-bottom: 170px;
-
+  padding-bottom: 180px;
   position: relative;
 }
 
@@ -215,16 +214,16 @@ WRITING MODULE (TACTILE FIX)
   max-width: 350px;
   height: 350px;
   margin: auto;
-
   background: white;
   border: 2px solid var(--blue-main);
   border-radius: 18px;
-
   touch-action: none;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
-BOTTOM NAV / CLAVIER FIX
+BOTTOM NAV / CLAVIER
 ========================= */
 .bottom-nav {
   position: fixed;
@@ -232,16 +231,12 @@ BOTTOM NAV / CLAVIER FIX
   left: 50%;
   transform: translateX(-50%);
   width: 92%;
-
   display: flex;
   justify-content: space-around;
-
   background: rgba(0,0,0,0.85);
   padding: 12px;
-
   border-radius: 20px;
-
-  z-index: 10; /* IMPORTANT FIX */
+  z-index: 10;
 }
 
 .bottom-nav a {
@@ -250,23 +245,44 @@ BOTTOM NAV / CLAVIER FIX
 }
 
 /* =========================
-IMAGES FIX
+CARDS / TEXT SAFE
 ========================= */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* =========================
-TEXT FIX
-========================= */
 p, h1, h2, h3 {
   word-break: break-word;
 }
 
-/* =========================
-GLOBAL SAFETY
-========================= */
-body {
-  min-height: 100vh;
+/* =========================================================
+PATCH FIX 3 — CLAVIER + ÉCRITURE (IMPORTANT)
+========================================================= */
+
+/* empêche overlay clavier */
+.bottom-nav {
+  z-index: 10 !important;
+}
+
+/* espace pour éviter recouvrement tactile */
+.writing-container {
+  padding-bottom: 180px !important;
+}
+
+/* corrige anciens bugs model absolute */
+.model {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  left: auto !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+/* sécurité scroll mobile */
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: auto !important;
 }
