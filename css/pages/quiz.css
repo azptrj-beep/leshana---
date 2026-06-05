@@ -1,0 +1,25 @@
+.quiz-box {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+#question {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.quiz-options button {
+  padding: 16px;
+  font-size: 28px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
