@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" dir="rtl">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,22 +9,18 @@
 
   <link rel="icon" href="assets/images/logo.png" />
 
-  <!-- CSS MODULAIRE -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages/home.css">
 
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0033a0">
 </head>
 
 <body class="soureth-app">
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- ========================= HEADER ========================== -->
   <header>
 
     <div class="logo-container">
@@ -38,6 +34,7 @@
 
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
+    <!-- NAV = LTR OBLIGATOIRE -->
     <nav class="ltr">
       <a href="index.html">🏠 Accueil</a>
       <a href="alphabet.html">🔠 Alphabet</a>
@@ -50,49 +47,41 @@
       <a href="revision.html">🧠 Révision</a>
       <a href="vocal.html">🎤 Vocal</a>
       <a href="videos.html">🎥 Vidéos</a>
-
       <a href="#" onclick="toggleTheme()">🌓 Thème</a>
     </nav>
 
   </header>
 
-  <!-- =========================
-       HERO
-  ========================== -->
+  <!-- ========================= HERO ========================== -->
   <section class="hero">
 
-    <div class="hero-content">
+    <h1>Apprendre le Soureth moderne</h1>
 
-      <h1>Apprendre le Soureth moderne</h1>
+    <p class="hero-text">
+      SITE EN CONSTRUCTION <br><br>
+      Découvre l’alphabet assyro-chaldéen,
+      les voyelles,
+      l’écriture moderne,
+      le clavier Soureth,
+      la traduction,
+      les quiz interactifs,
+      les vidéos et les audios natifs.
+    </p>
 
-      <p class="hero-text soureth">
-        SITE EN CONSTRUCTION <br><br>
-        Découvre l’alphabet assyro-chaldéen,
-        les voyelles,
-        l’écriture moderne,
-        le clavier Soureth,
-        la traduction,
-        les quiz interactifs,
-        les vidéos et les audios natifs.
-      </p>
+    <div class="hero-buttons">
+      <a href="alphabet.html" class="btn btn-primary">🔠 Commencer</a>
+      <a href="keyboard.html" class="btn btn-secondary">⌨️ Clavier Soureth</a>
+    </div>
 
-      <div class="hero-buttons">
-        <a href="alphabet.html" class="btn btn-primary">🔠 Commencer</a>
-        <a href="keyboard.html" class="btn btn-secondary">⌨️ Clavier Soureth</a>
-      </div>
-
-      <div class="hero-demo card soureth">
-        <div class="soureth-title">ܫܠܡܐ</div>
-        <p>Shlama : Paix — Bonjour — Salut</p>
-      </div>
-
+    <!-- SOURETH UNIQUEMENT ICI -->
+    <div class="hero-demo card soureth">
+      <div class="soureth-title">ܫܠܡܐ</div>
+      <p>Shlama : Paix — Bonjour — Salut</p>
     </div>
 
   </section>
 
-  <!-- =========================
-       FEATURES
-  ========================== -->
+  <!-- ========================= FEATURES ========================== -->
   <section class="features">
 
     <a href="alphabet.html" class="card feature-link">
@@ -104,13 +93,13 @@
     <a href="keyboard.html" class="card feature-link">
       <div class="card-icon">⌨️</div>
       <h2>Clavier Soureth</h2>
-      <p>Écris facilement en Soureth grâce au clavier intégré.</p>
+      <p>Écris facilement en Soureth.</p>
     </a>
 
     <a href="traduction.html" class="card feature-link">
       <div class="card-icon">🌍</div>
       <h2>Traduction</h2>
-      <p>Traduction Français ⇄ Soureth.</p>
+      <p>Français ⇄ Soureth.</p>
     </a>
 
     <a href="ecriture.html" class="card feature-link">
@@ -122,7 +111,7 @@
     <a href="vocal.html" class="card feature-link">
       <div class="card-icon">🔊</div>
       <h2>Audio natif</h2>
-      <p>Écoute des voix assyro-chaldéennes.</p>
+      <p>Voix assyro-chaldéennes authentiques.</p>
     </a>
 
     <a href="quiz.html" class="card feature-link">
@@ -133,14 +122,12 @@
 
   </section>
 
-  <!-- =========================
-       QUIZ
-  ========================== -->
-  <section class="quiz-box card soureth">
+  <!-- ========================= QUIZ ========================== -->
+  <section class="quiz-box card">
 
-    <h2 id="question">ܐ</h2>
+    <h2 id="question" class="soureth">ܐ</h2>
 
-    <div class="quiz-options"></div>
+    <div class="quiz-options soureth"></div>
 
     <p id="quiz-result"></p>
 
@@ -149,25 +136,18 @@
       <p>🏆 Niveau : <span id="level-value">1</span></p>
     </div>
 
-    <div class="badge-box">
-      <h3>🏆 Badge</h3>
-      <div id="badge-display">🟢 Débutant</div>
-    </div>
-
   </section>
 
-  <!-- =========================
-       ÉCRITURE
-  ========================== -->
-  <section class="model soureth">
+  <!-- ========================= ÉCRITURE ========================== -->
+  <section class="model">
 
     <h2>✍️ Entraînement d'écriture</h2>
 
     <div class="writing-container">
 
       <div class="model">
-        <div id="letterDisplay">ܐ</div>
-        <div id="guideLetter">ܐ</div>
+        <div id="letterDisplay" class="soureth">ܐ</div>
+        <div id="guideLetter" class="soureth">ܐ</div>
       </div>
 
       <canvas id="writingCanvas" width="350" height="350"></canvas>
@@ -176,95 +156,4 @@
         <button id="prevLetter">⬅</button>
         <button id="clearCanvas">🗑 Effacer</button>
         <button id="nextLetter">➡</button>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================
-       KEYBOARD
-  ========================== -->
-  <section class="translator-box">
-
-    <div class="card">
-
-      <h2>⌨️ Clavier Soureth</h2>
-
-      <textarea id="editor" class="soureth-writing" placeholder="Écrire en Soureth..."></textarea>
-
-      <div id="keyboard" class="soureth">
-        <button onclick="insertLetter('ܐ')">ܐ</button>
-        <button onclick="insertLetter('ܒ')">ܒ</button>
-        <button onclick="insertLetter('ܓ')">ܓ</button>
-        <button onclick="insertLetter('ܕ')">ܕ</button>
-        <button onclick="insertLetter('ܗ')">ܗ</button>
-        <button onclick="insertLetter('ܘ')">ܘ</button>
-        <button onclick="insertLetter('ܙ')">ܙ</button>
-        <button onclick="insertLetter('ܚ')">ܚ</button>
-        <button onclick="insertLetter('ܛ')">ܛ</button>
-        <button onclick="insertLetter('ܝ')">ܝ</button>
-        <button onclick="insertLetter('ܟ')">ܟ</button>
-        <button onclick="insertLetter('ܠ')">ܠ</button>
-        <button onclick="insertLetter('ܡ')">ܡ</button>
-        <button onclick="insertLetter('ܢ')">ܢ</button>
-        <button onclick="insertLetter('ܣ')">ܣ</button>
-        <button onclick="insertLetter('ܥ')">ܥ</button>
-        <button onclick="insertLetter('ܦ')">ܦ</button>
-        <button onclick="insertLetter('ܨ')">ܨ</button>
-        <button onclick="insertLetter('ܩ')">ܩ</button>
-        <button onclick="insertLetter('ܪ')">ܪ</button>
-        <button onclick="insertLetter('ܫ')">ܫ</button>
-        <button onclick="insertLetter('ܬ')">ܬ</button>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================
-       PROGRESSION
-  ========================== -->
-  <section class="progress-section">
-
-    <div class="progress-card">
-      <h2>📈 Votre progression</h2>
-      <p>Niveau actuel : Débutant</p>
-
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
-
-      <p style="margin-top:15px;">35% complété</p>
-    </div>
-
-  </section>
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-  <footer>
-    <p>© 2026 Leshana-Ed-Soureth — Plateforme éducative assyro-chaldéenne moderne</p>
-  </footer>
-
-  <!-- =========================
-       JS
-  ========================== -->
-  <script src="js/app.js"></script>
-  <script src="js/keyboard.js"></script>
-  <script src="js/translate.js"></script>
-  <script src="js/quiz.js"></script>
-  <script src="js/ecriture.js"></script>
-
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js")
-          .then(() => console.log("SW OK"))
-          .catch(err => console.log(err));
-      });
-    }
-  </script>
-
-</body>
-</html>
+      </
