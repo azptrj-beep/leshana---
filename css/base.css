@@ -89,3 +89,9 @@ input {
   font-family: 'nohadra', sans-serif;
 }
 
+
+:lang(syr) {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-family: 'nohadra', 'assyrian', sans-serif;
+}
