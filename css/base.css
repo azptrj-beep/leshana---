@@ -55,7 +55,7 @@ body {
 
 /* GLOBAL BODY */
 body {
-  font-family: Arial, sans-serif;
+ 
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
