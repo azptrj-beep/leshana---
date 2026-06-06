@@ -26,26 +26,20 @@ rgba(255,255,255,0.12);
 /* =========================
 FONTS
 ========================= */
+
+
 @font-face {
-font-family: 'Adiabene';
-src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
-url('../assets/fonts/Adiabene.ttf') format('truetype');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
-}
-@font-face {
-font-family: 'Nohadra';
+font-family: 'nohadra';
 src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-url('../assets/fonts/nohadra.ttf') format('truetype');
+format('truetype');
 font-weight: normal;
 font-style: normal;
 font-display: swap;
 }
 @font-face {
-font-family: 'Assyrian';
+font-family: 'assyrian';
 src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-url('../assets/fonts/assyrian.ttf') format('truetype');
+format('truetype');
 font-weight: normal;
 font-style: normal;
 font-display: swap;
@@ -97,12 +91,12 @@ p {
    SOURETH FONTS
 ========================= */
 .soureth-title {
-  font-family: 'Adiabene';
+  font-family: 'nohadra';
   direction: rtl;
   font-size: 70px;
 }
 .soureth-writing {
-  font-family: 'Nohadra';
+  font-family: 'nohadra';
   direction: rtl;
   font-size: 42px;
 }
