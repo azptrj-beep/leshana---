@@ -239,32 +239,43 @@ content="#0033a0">
 
   <h2>✍️ Entraînement d'écriture</h2>
 
-  <!-- LETTRE GUIDE -->
-  <div id="guideLetter"></div>
+    <title>Écriture Soureth</title>
 
-  <!-- LETTRE PRINCIPALE (optionnel mais conseillé) -->
-  <div id="letterDisplay"></div>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ecriture.css">
+</head>
+
+<body>
+
+<h1>✍️ Écriture Soureth</h1>
+
 <div class="writing-container">
 
-    <div class="model">
-
-
-        <div id="guideLetter">ܐ</div>
-
-    </div>
-
-    <canvas id="writingCanvas"
-            width="320"
-            height="320">
-    </canvas>
-  <!-- CONTROLES -->
-  <div class="canvas-controls">
-    <button id="prevLetter">⬅</button>
-    <button id="clearCanvas">🗑 Effacer</button>
-    <button id="nextLetter">➡</button>
-  </div>
+  <canvas
+    id="writingCanvas"
+    width="350"
+    height="350">
+  </canvas>
 
 </div>
+
+<div class="canvas-controls">
+
+  <button id="prevLetter">⬅</button>
+
+  <button id="clearCanvas">
+    🗑 Effacer
+  </button>
+
+  <button id="nextLetter">➡</button>
+
+</div>
+
+<div id="letterGrid"></div>
+
+<script src="js/ecriture.js"></script>
+
+</body>
 
 </section>    <!-- =========================  
        KEYBOARD DEMO  
