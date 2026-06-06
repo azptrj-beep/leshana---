@@ -143,71 +143,267 @@ function nextLetter() {
   setLetter();
 }
 
-/* =========================================
-   CANVAS (FIX STABLE)
-========================================= */
-function initCanvas() {
-  canvas = document.getElementById("board");
-  if (!canvas) return;
+const letters = [
+  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ",
+  "ܚ","ܛ","ܝ","ܟ","ܠ","ܡ","ܢ",
+  "ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+];
 
-  ctx = canvas.getContext("2d");
+let current = 0;
 
-  resizeCanvas();
+/* =========================
+   ELEMENTS
+========================= */
 
-  ctx.lineWidth = 4;
-  ctx.lineCap = "round";
-  ctx.strokeStyle = "#0033a0";
+const canvas = document.getElementById("writingCanvas");
+const ctx = canvas.getContext("2d");
 
-  canvas.addEventListener("mousedown", startDraw);
-  canvas.addEventListener("mousemove", draw);
-  canvas.addEventListener("mouseup", stopDraw);
-  canvas.addEventListener("mouseleave", stopDraw);
+const letterGrid =
+document.getElementById("letterGrid");
 
-  canvas.addEventListener("touchstart", startDraw, { passive: false });
-  canvas.addEventListener("touchmove", draw, { passive: false });
-  canvas.addEventListener("touchend", stopDraw);
+/* =========================
+   GUIDE LETTER
+========================= */
+
+function drawGuideLetter() {
+
+  ctx.save();
+
+  ctx.globalAlpha = 0.12;
+
+  ctx.fillStyle = "#0033a0";
+
+  ctx.font =
+    `${canvas.width * 0.65}px Nohadra, Assyrian, sans-serif`;
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(
+    letters[current],
+    canvas.width / 2,
+    canvas.height / 2
+  );
+
+  ctx.restore();
 }
 
-function resizeCanvas() {
-  if (!canvas) return;
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
+/* =========================
+   CANVAS
+========================= */
+
+function clearCanvas() {
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  drawGuideLetter();
 }
 
-function getPos(e) {
-  const rect = canvas.getBoundingClientRect();
-  const t = e.touches?.[0] || e.changedTouches?.[0];
+/* =========================
+   LETTERS
+========================= */
+
+function updateLetter() {
+
+  updateGridSelection();
+
+  clearCanvas();
+}
+
+function updateGridSelection() {
+
+  document
+    .querySelectorAll(".letter-btn")
+    .forEach((btn, index) => {
+
+      btn.classList.toggle(
+        "active-letter",
+        index === current
+      );
+
+    });
+}
+
+function buildGrid() {
+
+  letterGrid.innerHTML = "";
+
+  letters.forEach((letter, index) => {
+
+    const btn =
+      document.createElement("button");
+
+    btn.className = "letter-btn";
+
+    btn.textContent = letter;
+
+    btn.addEventListener("click", () => {
+
+      current = index;
+
+      updateLetter();
+
+    });
+
+    letterGrid.appendChild(btn);
+
+  });
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+document
+  .getElementById("nextLetter")
+  .addEventListener("click", () => {
+
+    current =
+      (current + 1) % letters.length;
+
+    updateLetter();
+
+  });
+
+document
+  .getElementById("prevLetter")
+  .addEventListener("click", () => {
+
+    current =
+      (current - 1 + letters.length)
+      % letters.length;
+
+    updateLetter();
+
+  });
+
+document
+  .getElementById("clearCanvas")
+  .addEventListener(
+    "click",
+    clearCanvas
+  );
+
+/* =========================
+   DRAWING
+========================= */
+
+let drawing = false;
+
+function getPosition(e) {
+
+  const rect =
+    canvas.getBoundingClientRect();
+
+  const point =
+    e.touches ? e.touches[0] : e;
 
   return {
-    x: (t ? t.clientX : e.clientX) - rect.left,
-    y: (t ? t.clientY : e.clientY) - rect.top
+
+    x: point.clientX - rect.left,
+    y: point.clientY - rect.top
+
   };
 }
 
-function startDraw(e) {
+function startDrawing(e) {
+
   drawing = true;
-  const pos = getPos(e);
+
+  const pos =
+    getPosition(e);
+
   ctx.beginPath();
-  ctx.moveTo(pos.x, pos.y);
+
+  ctx.moveTo(
+    pos.x,
+    pos.y
+  );
 }
 
 function draw(e) {
+
   if (!drawing) return;
+
   e.preventDefault();
 
-  const pos = getPos(e);
-  ctx.lineTo(pos.x, pos.y);
+  const pos =
+    getPosition(e);
+
+  ctx.lineWidth = 6;
+
+  ctx.lineCap = "round";
+
+  ctx.lineJoin = "round";
+
+  ctx.strokeStyle = "#0033a0";
+
+  ctx.lineTo(
+    pos.x,
+    pos.y
+  );
+
   ctx.stroke();
 }
 
-function stopDraw() {
+function stopDrawing() {
+
   drawing = false;
 }
 
-function clearCanvas() {
-  if (!ctx || !canvas) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+/* =========================
+   EVENTS
+========================= */
+
+canvas.addEventListener(
+  "mousedown",
+  startDrawing
+);
+
+canvas.addEventListener(
+  "mousemove",
+  draw
+);
+
+canvas.addEventListener(
+  "mouseup",
+  stopDrawing
+);
+
+canvas.addEventListener(
+  "mouseleave",
+  stopDrawing
+);
+
+canvas.addEventListener(
+  "touchstart",
+  startDrawing,
+  { passive: false }
+);
+
+canvas.addEventListener(
+  "touchmove",
+  draw,
+  { passive: false }
+);
+
+canvas.addEventListener(
+  "touchend",
+  stopDrawing
+);
+
+/* =========================
+   INIT
+========================= */
+
+buildGrid();
+
+updateLetter();
 
 /* =========================================
    UI EFFECTS
