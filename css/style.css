@@ -1314,3 +1314,7 @@ footer {
   unicode-bidi:plaintext;
 }
 
+/* PROTECTION GLOBAL BUTTONS (IMPORTANT) */
+button {
+  font-family: inherit;
+}
