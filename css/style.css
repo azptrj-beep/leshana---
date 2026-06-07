@@ -1065,7 +1065,7 @@ p, h1, h2, h3 {
 }
 /* sécurité affichage syriaque */
 :lang(syr) {
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'nohadra', sans-serif;
   direction: rtl;
 }
 .dark-mode .letter-box,
