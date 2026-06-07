@@ -1,4 +1,4 @@
-
+00
 /* =========================
 RESET
 ========================= */
@@ -570,7 +570,7 @@ width: 100%;
 .soureth-writing,
 .soureth-classic,
 :lang(syr) {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family:'nohadra', 'assyrian', sans-serif !important;
   direction: rtl;
   unicode-bidi: plaintext;
 }
@@ -693,9 +693,6 @@ body.light-mode nav a {
   justify-content: space-between;
 }
 Alphabet Soureth
-<h1>
-  🔠 Alphabet Soureth Moderne
-</h1>
 
 <nav>
   <a href="index.html">🏠 Accueil</a>
