@@ -1,1 +1,31 @@
-/* Clavier */
+#keyboard{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  margin-top:25px;
+}
+
+#keyboard button{
+  font-family:'nohadra';
+  font-size:34px;
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  border:none;
+  cursor:pointer;
+}
+
+#editor{
+  min-height:180px;
+}
+
+@media(max-width:768px){
+
+  #keyboard button{
+    width:58px;
+    height:58px;
+    font-size:28px;
+  }
+
+}
