@@ -738,7 +738,7 @@ canvas {
    BLOC SHLAMA
 ========================= */
 .hero-demo.card {
-  max-width: 320px;
+  max-width: 220px;
   margin: 24px auto 0;
   padding: 14px;
   border-radius: 18px;
@@ -868,10 +868,7 @@ canvas {
   touch-action: none;
   -ms-touch-action: none;
 }
-html, body {
-  overflow: auto;
-  touch-action: auto;
-}
+
 
 /* =========================
    XP PANEL
@@ -1067,11 +1064,6 @@ p, h1, h2, h3 {
 
 
 /* =========================
-   VARIABLES
-========================= */
-
-
-/* =========================
    BODY
 ========================= */
 
@@ -1167,7 +1159,6 @@ nav a:hover {
   nav.active {
     display: flex;
   }
-}
 
 /* =========================
    HERO
