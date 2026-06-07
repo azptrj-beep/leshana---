@@ -369,6 +369,10 @@ section h2 {
 .history-item {
   margin-top: 10px;
 }
+.soureth-classic {
+  font-family: 'assyrian';
+  direction: rtl;
+}
 /* =========================
    DARK MODE
 ========================= */
@@ -611,17 +615,6 @@ body.simple-dark {
   filter:
     brightness(0.92)
     contrast(1.05);
-}
-/* FORCE RESTORE THEME */
-html,
-body {
-  background:
-    radial-gradient(
-      circle at top left,
-      #0033a0,
-      #050816 60%
-    ) !important;
-  color: white !important;
 }
 
 /* =========================
