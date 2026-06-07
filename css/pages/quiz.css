@@ -1,25 +1,71 @@
-.quiz-box {
-  max-width: 600px;
-  margin: auto;
+/* =========================
+QUIZ DUOLINGO CLEAN (ISOLÉ)
+========================= */
+
+#quizApp {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
   text-align: center;
 }
 
-#question {
-  font-size: 42px;
+/* TOP BAR */
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
+  font-weight: bold;
+  color: white;
 }
 
-.quiz-options {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+/* QUESTION */
+#question {
+  font-size: 2rem;
+  margin: 30px 0;
+  color: white;
 }
 
-.quiz-options button {
-  padding: 16px;
-  font-size: 28px;
-  border-radius: 14px;
+/* ANSWERS */
+#answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-btn {
+  padding: 15px;
+  border-radius: 16px;
   border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
   background: rgba(255,255,255,0.08);
   color: white;
+  transition: 0.2s;
+}
+
+.answer-btn:hover {
+  transform: scale(1.03);
+  background: #00cfff;
+}
+
+/* FEEDBACK */
+#feedback {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  #quizApp {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  #question {
+    font-size: 1.5rem;
+  }
+
+  .answer-btn {
+    font-size: 1rem;
+  }
 }
