@@ -1,0 +1,141 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+  --blue-main: #0033a0;
+  --blue-light: #0066ff;
+  --cyan: #00cfff;
+  --red-main: #d40000;
+  --dark-bg: #050816;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+  --text-light: #ffffff;
+  --text-soft: #d9e2ff;
+
+  --bg: #ffffff;
+  --text: #000;
+  --card: rgba(255,255,255,0.1);
+}
+
+/* FONTS */
+@font-face {
+  font-family: 'nohadra';
+  src: url('../assets/fonts/nohadra.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'assyrian';
+  src: url('../assets/fonts/assyrian.woff2') format('woff2');
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left,#0033a0,#050816 60%);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all .3s ease;
+}
+
+/* GLOBAL */
+section {
+  max-width: 1400px;
+  margin: auto;
+  padding: 70px 25px;
+}
+
+h1,h2,h3 {
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.8;
+}
+
+/* SOURETH */
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+:lang(syr){
+  font-family:'nohadra','assyrian',sans-serif;
+  direction:rtl;
+  unicode-bidi:plaintext;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.25);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:20px;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+nav a{
+  text-decoration:none;
+  color:white;
+  padding:12px 20px;
+  border-radius:16px;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  border-radius:14px;
+}
+
+/* CARD GLOBAL */
+.card{
+  border-radius:28px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px 20px;
+}
+
+/* LIGHT MODE */
+body.light-mode{
+  background:#f4f7fb !important;
+  color:#111827 !important;
+}
+
+/* MOBILE MENU */
+.menu-toggle{
+  display:none;
+}
+
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  nav{
+    display:none;
+    flex-direction:column;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+}
