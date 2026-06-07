@@ -1354,7 +1354,6 @@ font-size: 28px;
 .quiz-letter,
 .soureth-mode {
   font-family:
-    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif !important;
@@ -1389,8 +1388,8 @@ body {
 /* BOUTONS */
 .quiz-options button {
   font-family:
-    'Adiabene',
     'nohadra',
+    'assyrian', 
     sans-serif !important;
   direction: rtl;
   unicode-bidi: plaintext;
@@ -1421,7 +1420,7 @@ body {
 /* QUESTION */
 #question {
   font-family:
-    'Adiabene',
+    'nohadra',
     sans-serif;
   font-size: clamp(48px, 10vw, 90px);
   text-align: center;
@@ -1624,65 +1623,7 @@ p, h1, h2, h3 {
 .dark-mode .guide {
   color: white !important;
 }
-/* =========================
-   MODULE ÉCRITURE PROPRE
-========================= */
 
-.model {
-  position: relative;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* LETTRE PRINCIPALE */
-#letterDisplay {
-  font-family: 'nohadra', sans-serif;
-  font-size: 90px;
-  color: #0033a0;
-  direction: rtl;
-}
-
-/* LETTRE GUIDE (TRACE) */
-#guideLetter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  font-family: 'nohadra', sans-serif;
-  font-size: 160px;
-  opacity: 0.08;
-  color: #0033a0;
-  pointer-events: none;
-}
-
-/* CANVAS */
-#writingCanvas {
-  width: min(90vw, 360px);
-  height: min(90vw, 360px);
-  background: white;
-  border: 2px solid #0033a0;
-  border-radius: 18px;
-  touch-action: none;
-  display: block;
-  margin: 15px auto;
-}
-
-/* CONTROLS */
-.canvas-controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.canvas-controls button {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 10px;
-  background: #0033a0;
-  color: white;
-  cursor: pointer;
-};
 }/* =========================
    RESET
 ========================= */
@@ -1962,99 +1903,4 @@ footer {
 
   unicode-bidi:plaintext;
 }
-/* =========================
-MODULE ÉCRITURE TACTILE
-========================= */
 
-.writing-container{
-width:100%;
-max-width:420px;
-margin:20px auto;
-padding:15px;
-}
-
-.model{
-position:relative;
-text-align:center;
-margin-bottom:15px;
-}
-
-/* LETTRE A APPRENDRE */
-
-#letterDisplay{
-font-family:'Nohadra','Assyrian',sans-serif !important;
-direction:rtl;
-font-size:70px;
-color:white;
-margin-bottom:10px;
-}
-
-/* TRACE GUIDE */
-
-#guideLetter{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-family:'Nohadra','Assyrian',sans-serif !important;
-direction:rtl;
-font-size:180px;
-opacity:0.08;
-color:white;
-pointer-events:none;
-}
-
-/* CANVAS */
-
-#writingCanvas{
-display:block;
-width:100%;
-max-width:350px;
-height:350px;
-margin:auto;
-
-background:white;
-border:2px solid #0033a0;
-border-radius:18px;
-
-touch-action:none;
--ms-touch-action:none;
-
-}
-
-/* BOUTONS */
-
-.canvas-controls{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:15px;
-}
-
-.canvas-controls button{
-padding:10px 15px;
-border:none;
-border-radius:10px;
-background:#0033a0;
-color:white;
-cursor:pointer;
-}
-
-/* MOBILE */
-
-@media(max-width:480px){
-
-#writingCanvas{
-    max-width:300px;
-    height:300px;
-}
-
-#guideLetter{
-    font-size:140px;
-}
-
-#letterDisplay{
-    font-size:55px;
-}
-
-}
