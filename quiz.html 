@@ -1,103 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
+<div id="quizApp">
 
-<head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>Quiz Soureth</title>
-
-  <link rel="stylesheet"
-        href="css/style.css">
-
-  <link rel="stylesheet" href="css/quiz.css">
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0033a0">
-
-</head>
-
-<body>
-
-  <header>
-
-    <h1>
-      🎮 Quiz Alphabet Soureth
-    </h1>
-
-    <nav>
-
-      <a href="index.html">
-        🏠 Accueil
-      </a>
-
-      <a href="keyboard.html">
-        ⌨️ Clavier
-      </a>
-
-    </nav>
-
-  </header>
-
- <main class="quiz-container">
-
-  <div class="quiz-box">
-
-    <!-- XP / SCORE -->
-    <div class="xp-panel">
-
-<div>❤️ Vies : <span id="lives">3</span></div>
-
-<div style="width:120px; height:10px; background:rgba(255,255,255,0.2); border-radius:10px; overflow:hidden;">
-  <div id="progress-bar" style="height:100%; width:0%; background:#00cfff;"></div>
-</div>
-
-      <div>
-        🏆 Score :
-        <span id="score">0</span>
-      </div>
-
-      <div>
-        ⚡ XP :
-        <span id="xp">0</span>
-      </div>
-
-      <div>
-        🔥 Streak :
-        <span id="streak">0</span>
-      </div>
-
-    </div>
-
-    <!-- QUESTION -->
-    <div id="question">
-      ܐ
-    </div>
-
-    <!-- OPTIONS -->
-    <div id="options"
-         class="quiz-options">
-
-    </div>
-
-    <!-- RESULT -->
-    <div id="quiz-result">
-
-    </div>
-
+  <div class="quiz-top">
+    <div id="xp">XP: 0</div>
+    <div id="progress">0 / 10</div>
   </div>
 
-</main>  
-  
-<script src="js/quiz-data.js"></script>
-<script src="js/quiz-ai.js"></script>
-<script src="js/quiz-core.js"></script>
-<script src="js/quiz-ui.js"></script>
-<script src="js/app.js"></script>
+  <div id="question">Question</div>
 
-</body>
+  <div id="answers"></div>
 
-</html>
+  <div id="feedback"></div>
+
+</div>
