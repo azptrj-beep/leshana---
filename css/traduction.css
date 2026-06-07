@@ -1,1 +1,48 @@
-/* Traduction */
+.translator-box{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+
+.translator-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+#frInput,
+#input{
+  width:100%;
+}
+
+#result{
+  margin-top:30px;
+  font-size:2rem;
+}
+
+.suggestion{
+  padding:10px;
+}
+
+.history-item{
+  margin-top:10px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+#history{
+  margin-top:15px;
+}
+
+#status{
+  margin:15px 0;
+}
+
+.audio-btn{
+  padding:12px 18px;
+}
