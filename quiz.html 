@@ -1,14 +1,35 @@
-<div id="quizApp">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="quiz-top">
-    <div id="xp">XP: 0</div>
-    <div id="progress">0 / 10</div>
+  <title>Quiz Soureth</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/quiz.css">
+</head>
+
+<body>
+
+  <div id="quizApp">
+
+    <div class="quiz-top">
+      <div id="xp">XP: 0</div>
+      <div id="progress">0 / 0</div>
+    </div>
+
+    <div id="question"></div>
+
+    <div id="answers"></div>
+
+    <div id="feedback"></div>
+
   </div>
 
-  <div id="question">Question</div>
+  <!-- JS -->
+  <script src="quiz.js"></script>
 
-  <div id="answers"></div>
-
-  <div id="feedback"></div>
-
-</div>
+</body>
+</html>
