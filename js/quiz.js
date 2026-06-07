@@ -19,50 +19,54 @@ const questions = [
 let index = 0;
 let xp = 0;
 
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const feedbackEl = document.getElementById("feedback");
+const qEl = document.getElementById("question");
+const aEl = document.getElementById("answers");
+const fEl = document.getElementById("feedback");
 const xpEl = document.getElementById("xp");
-const progressEl = document.getElementById("progress");
+const pEl = document.getElementById("progress");
 
 function loadQuestion() {
   const q = questions[index];
 
-  questionEl.textContent = q.q;
-  answersEl.innerHTML = "";
-  feedbackEl.textContent = "";
+  qEl.textContent = q.q;
+  aEl.innerHTML = "";
+  fEl.textContent = "";
 
-  q.a.forEach((ans, i) => {
+  pEl.textContent = `${index + 1} / ${questions.length}`;
+
+  q.a.forEach((text, i) => {
     const btn = document.createElement("button");
     btn.className = "answer-btn";
-    btn.textContent = ans;
+    btn.textContent = text;
 
     btn.onclick = () => checkAnswer(i);
-    answersEl.appendChild(btn);
+    aEl.appendChild(btn);
   });
-
-  progressEl.textContent = `${index + 1} / ${questions.length}`;
 }
 
 function checkAnswer(i) {
-  if (i === questions[index].correct) {
+  const q = questions[index];
+
+  if (i === q.correct) {
     xp += 10;
-    feedbackEl.textContent = "✔ Correct !";
+    fEl.textContent = "✔ Correct !";
   } else {
-    feedbackEl.textContent = "✘ Faux";
+    fEl.textContent = "✘ Faux";
   }
 
   xpEl.textContent = "XP: " + xp;
 
   setTimeout(() => {
     index++;
+
     if (index < questions.length) {
       loadQuestion();
     } else {
-      questionEl.textContent = "Fin du quiz 🎉";
-      answersEl.innerHTML = "";
+      qEl.textContent = "🎉 Fin du quiz";
+      aEl.innerHTML = "";
+      pEl.textContent = `${questions.length} / ${questions.length}`;
     }
-  }, 800);
+  }, 700);
 }
 
 loadQuestion();
