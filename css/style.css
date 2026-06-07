@@ -692,14 +692,8 @@ body.light-mode nav a {
   display: flex;
   justify-content: space-between;
 }
+
 Alphabet Soureth
-
-<nav>
-  <a href="index.html">🏠 Accueil</a>
-  <a href="keyboard.html">⌨️ Clavier</a>
-  <a href="quiz.html">🎮 Quiz</a>
-</nav>
-
 <!-- ALAP -->
 <div class="letter-card">
   <div class="letter soureth-title">ܐ</div>
