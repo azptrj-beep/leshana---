@@ -626,14 +626,7 @@ body {
     ) !important;
   color: white !important;
 }
-/* FORCE CARDS */
-.card,
-.progress-card,
-.letter-card {
-  background:
-    rgba(255,255,255,0.08) !important;
-  color: white !important;
-}
+
 /* FORCE NAV */
 nav a {
   color: white !important;
