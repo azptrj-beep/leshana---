@@ -8,13 +8,19 @@ RESET
 }
 
 /* =========================
-VARIABLES
+VARIABLES DESIGN (TON STYLE)
 ========================= */
 :root {
   --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --blue: #0066ff;
+  --cyan: #00cfff;
+  --violet: #7c4dff;
+
   --text: #ffffff;
-  --soft: rgba(255,255,255,0.7);
+  --soft: rgba(255,255,255,0.75);
+
   --card: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.12);
 }
 
 /* =========================
@@ -27,8 +33,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: 0.3s ease;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 /* =========================
@@ -43,21 +47,24 @@ header {
   padding: 15px;
 }
 
+/* =========================
+LOGO
+========================= */
 .logo-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 15px;
   flex-wrap: wrap;
 }
 
 .logo {
-  width: 80px;
+  width: 85px;
   border-radius: 50%;
 }
 
 /* =========================
-NAVIGATION
+NAV
 ========================= */
 nav {
   display: flex;
@@ -71,13 +78,13 @@ nav a {
   text-decoration: none;
   color: white;
   padding: 10px 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(255,255,255,0.05);
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 nav a:hover {
-  background: #00cfff;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
   transform: translateY(-2px);
 }
 
@@ -117,7 +124,7 @@ HERO
 ========================= */
 .hero {
   text-align: center;
-  padding: 60px 20px;
+  padding: 70px 20px;
 }
 
 .hero h1 {
@@ -134,71 +141,113 @@ BUTTONS
 ========================= */
 .btn {
   padding: 12px 18px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   text-decoration: none;
   display: inline-block;
   margin: 8px;
-  background: #0066ff;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: white;
+  font-weight: 600;
+}
+
+/* =========================
+CARDS (IMPORTANT FIX)
+========================= */
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(25,35,80,0.9),
+    rgba(10,15,40,0.9)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 25px;
+  margin: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,200,255,0.3);
+  box-shadow: 0 15px 40px rgba(0,200,255,0.15);
+}
+
+/* =========================
+FEATURE GRID
+========================= */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  padding: 20px;
+}
+
+/* =========================
+ALPHABET / CASES LETTRES FIX
+========================= */
+.letter-card {
+  text-align: center;
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: 0.25s;
+}
+
+.letter-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.12);
+}
+
+.letter {
+  font-size: 72px;
   color: white;
 }
 
 /* =========================
-CARDS
+IMPORTANT FIX SOURETH (NE PLUS TOUT PASSER EN SYRIAQUE GLOBAL)
 ========================= */
-.card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 18px;
-  margin: 15px;
+.soureth-title,
+.soureth-writing {
+  font-family: 'nohadra', sans-serif !important;
+  direction: rtl;
+}
+
+.soureth-classic {
+  font-family: 'assyrian', sans-serif;
+  direction: rtl;
 }
 
 /* =========================
-FEATURES
-========================= */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-/* =========================
-ALPHABET / LETTERS
-========================= */
-.letter-card {
-  text-align: center;
-  padding: 25px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
-}
-
-.letter {
-  font-size: 70px;
-}
-
-/* =========================
-KEYBOARD
+KEYBOARD FIX
 ========================= */
 #keyboard {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
 }
 
 #keyboard button {
   padding: 14px;
   font-size: 26px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+#keyboard button:hover {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  transform: scale(1.05);
 }
 
 /* =========================
-QUIZ
+QUIZ FIX
 ========================= */
 .quiz-box {
   max-width: 600px;
@@ -215,17 +264,22 @@ QUIZ
 .quiz-options {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .quiz-options button {
   padding: 18px;
   font-size: 32px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
-  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quiz-options button:hover {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -234,7 +288,7 @@ PROGRESS
 .progress {
   height: 12px;
   width: 35%;
-  background: #00cfff;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
   border-radius: 10px;
 }
 
@@ -268,32 +322,19 @@ footer {
 }
 
 /* =========================
-XP PANEL
-========================= */
-.xp-panel {
-  margin-top: 20px;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.06);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-/* =========================
 RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
-  #question {
-    font-size: 32px;
-  }
-
   .quiz-options {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .letter {
-    font-size: 50px;
+    font-size: 52px;
+  }
+
+  #question {
+    font-size: 34px;
   }
 }
 
