@@ -1,42 +1,68 @@
-import { addXP } from "./state.js";
-
 const questions = [
-  { q: "ܐ", a: "A" },
-  { q: "ܒ", a: "B" }
+  {
+    q: "ܐ = ?",
+    a: ["A", "B", "G", "D"],
+    correct: 0
+  },
+  {
+    q: "ܒ = ?",
+    a: ["R", "B", "S", "T"],
+    correct: 1
+  },
+  {
+    q: "ܓ = ?",
+    a: ["G", "K", "M", "N"],
+    correct: 0
+  }
 ];
 
 let index = 0;
+let xp = 0;
 
-export function initQuiz() {
-  render();
-}
+const questionEl = document.getElementById("question");
+const answersEl = document.getElementById("answers");
+const feedbackEl = document.getElementById("feedback");
+const xpEl = document.getElementById("xp");
+const progressEl = document.getElementById("progress");
 
-function render() {
-  const q = document.getElementById("question");
-  const options = document.getElementById("options");
+function loadQuestion() {
+  const q = questions[index];
 
-  if (!q || !options) return;
+  questionEl.textContent = q.q;
+  answersEl.innerHTML = "";
+  feedbackEl.textContent = "";
 
-  q.textContent = questions[index].q;
-
-  options.innerHTML = "";
-
-  ["A", "B", "C", "D"].forEach(opt => {
+  q.a.forEach((ans, i) => {
     const btn = document.createElement("button");
+    btn.className = "answer-btn";
+    btn.textContent = ans;
 
-    btn.textContent = opt;
-
-    btn.onclick = () => check(opt);
-
-    options.appendChild(btn);
+    btn.onclick = () => checkAnswer(i);
+    answersEl.appendChild(btn);
   });
+
+  progressEl.textContent = `${index + 1} / ${questions.length}`;
 }
 
-function check(answer) {
-  if (answer === questions[index].a) {
-    addXP(10);
+function checkAnswer(i) {
+  if (i === questions[index].correct) {
+    xp += 10;
+    feedbackEl.textContent = "✔ Correct !";
+  } else {
+    feedbackEl.textContent = "✘ Faux";
   }
 
-  index = (index + 1) % questions.length;
-  render();
+  xpEl.textContent = "XP: " + xp;
+
+  setTimeout(() => {
+    index++;
+    if (index < questions.length) {
+      loadQuestion();
+    } else {
+      questionEl.textContent = "Fin du quiz 🎉";
+      answersEl.innerHTML = "";
+    }
+  }, 800);
 }
+
+loadQuestion();
