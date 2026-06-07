@@ -568,9 +568,6 @@ width: 100%;
   direction: rtl;
   unicode-bidi: plaintext;
 }
-/* =========================
-   FIX MOBILE / CHROME
-========================= */
 
 /* =========================
    HEADER MOBILE FIX
@@ -627,12 +624,6 @@ body {
   color: white !important;
 }
 
-/* FORCE NAV */
-nav a {
-  color: white !important;
-  background:
-    rgba(255,255,255,0.05) !important;
-}
 /* =========================
    SAFE THEME SYSTEM FIX
 ========================= */
