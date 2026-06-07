@@ -7,7 +7,10 @@
 
   <title>Clavier Soureth</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0033a0">
 </head>
@@ -23,8 +26,7 @@
   <textarea
     id="editor"
     class="soureth-writing"
-    placeholder="Écrire en Soureth...">
-  </textarea>
+    placeholder="Écrire en Soureth..."></textarea>
 
   <div id="keyboard">
 
@@ -72,17 +74,22 @@
 
 </section>
 
+<!-- JS GLOBAL -->
 <script src="js/app.js" defer></script>
+
+<!-- JS CLAVIER -->
 <script src="js/keyboard.js" defer></script>
+
+<!-- AUDIO -->
 <script src="js/audio.js" defer></script>
 
 <script>
-  // init clavier (sécurisé)
-  window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
+  if (typeof initKeyboard === "function") {
     initKeyboard("editor");
-  });
+  }
+});
 </script>
 
 </body>
-
 </html>
