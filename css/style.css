@@ -662,11 +662,7 @@ body.light-mode {
   background: #f4f7fb !important;
   color: #111827 !important;
 }
-body.light-mode .card,
-body.light-mode .progress-card {
-  background: rgba(255,255,255,0.9) !important;
-  color: #111827 !important;
-}
+
 body.light-mode nav a {
   background: rgba(0,0,0,0.05) !important;
   color: #111827 !important;
