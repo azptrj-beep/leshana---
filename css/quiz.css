@@ -1,0 +1,74 @@
+/* =========================
+QUIZ DUOLINGO CLEAN
+========================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  color: white;
+}
+
+/* CONTAINER */
+#quizApp {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* TOP BAR */
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* QUESTION */
+#question {
+  font-size: 2.2rem;
+  margin: 30px 0;
+}
+
+/* ANSWERS */
+#answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answer-btn {
+  padding: 15px;
+  border-radius: 16px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  transition: 0.2s;
+}
+
+.answer-btn:hover {
+  transform: scale(1.03);
+  background: #00cfff;
+}
+
+/* FEEDBACK */
+#feedback {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  #quizApp {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  #question {
+    font-size: 1.6rem;
+  }
+}
