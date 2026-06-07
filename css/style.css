@@ -338,6 +338,7 @@ section h2 {
 .translator-box {
   max-width: 700px;
   margin: auto;
+  direction: rtl;
   padding: 20px;
 }
 .translator-buttons {
@@ -369,10 +370,7 @@ section h2 {
 .history-item {
   margin-top: 10px;
 }
-.soureth-classic {
-  font-family: 'assyrian';
-  direction: rtl;
-}
+
 /* =========================
    DARK MODE
 ========================= */
