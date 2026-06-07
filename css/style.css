@@ -60,12 +60,6 @@ body {
 /* =========================
    THEME VARIABLES SAFE
 ========================= */
-:root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: white;
-  --card: rgba(255,255,255,0.08);
-  --nav: rgba(255,255,255,0.05);
-}
 /* LIGHT MODE */
 [data-theme="light"] {
   --bg: #f4f7fb;
@@ -1076,12 +1070,6 @@ p, h1, h2, h3 {
    VARIABLES
 ========================= */
 
-:root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.08);
-  --soft: rgba(255,255,255,0.7);
-}
 
 /* =========================
    BODY
