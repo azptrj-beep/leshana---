@@ -1035,7 +1035,9 @@ canvas {
   text-shadow:
     0 0 18px rgba(0,162,255,0.35);
 }
-/* TEXTE HERO */
+
+   /* TEXTE HERO */ 
+
 .hero p {
   max-width: 760px;
   margin: auto;
@@ -1060,14 +1062,14 @@ canvas {
    BLOC SHLAMA
 ========================= */
 .hero-demo.card {
-  max-width: 320px;
-  margin: 24px auto 0;
+  max-width: 220px;
+  margin: 20px auto 0;
   padding: 14px;
   border-radius: 18px;
 }
 /* TEXTE SOURETH */
 .soureth-title {
-  font-family: 'Adiabene';
+  font-family: 'nohadra';
   direction: rtl;
   font-size: clamp(34px, 8vw, 62px);
   line-height: 1;
@@ -1235,7 +1237,6 @@ html, body {
   border-radius: 18px;
   cursor: pointer;
   font-family:
-    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif;
@@ -1358,7 +1359,6 @@ font-size: 28px;
 .quiz-letter,
 .soureth-mode {
   font-family:
-    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif !important;
@@ -1425,7 +1425,7 @@ body {
 /* QUESTION */
 #question {
   font-family:
-    'Adiabene',
+    'nohadra',
     sans-serif;
   font-size: clamp(48px, 10vw, 90px);
   text-align: center;
@@ -1605,7 +1605,7 @@ body{
 .guide,
 #keyboard button,
 .quiz-options button {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
 }
 textarea,
 input {
@@ -1621,7 +1621,7 @@ p, h1, h2, h3 {
 }
 /* sécurité affichage syriaque */
 :lang(syr) {
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'nohadra', sans-serif;
   direction: rtl;
 }
 .dark-mode .letter-box,
@@ -1637,7 +1637,7 @@ p, h1, h2, h3 {
 }
 /* LETTRE PRINCIPALE */
 #letterDisplay {
-  font-family: 'Adiabene' !important;
+  font-family: 'nohadra' !important;
   font-size: 90px;
   color: #0033a0;
   direction: rtl;
@@ -1648,7 +1648,7 @@ p, h1, h2, h3 {
   top: 0;
   left: 0;
   right: 0;
-  font-family: 'Adiabene' !important;
+  font-family: 'nohadra' !important;
   font-size: 90px;
   opacity: 0.12;
   color: #0033a0;
@@ -1674,7 +1674,7 @@ p, h1, h2, h3 {
 /* LETTRES MODELES */
 #letterDisplay,
 #guideLetter {
-  font-family: 'Adiabene' !important;
+  font-family: 'nohadra' !important;
   direction: rtl;
   unicode-bidi: plaintext;
   font-weight: normal;
