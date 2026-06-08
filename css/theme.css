@@ -1,11 +1,48 @@
+
+
+@font-face {
+  font-family: 'Nohadra';
+  src: url('../assets/fonts/nohadra.woff2') format('woff2'),
+       url('../assets/fonts/nohadra.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assyrian';
+  src: url('../assets/fonts/assyrian.woff2') format('woff2'),
+       url('../assets/fonts/assyrian.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --blue-main: #0033a0;
   --blue-light: #0066ff;
   --cyan: #00cfff;
-  --red: #d40000;
+  --red-main: #d40000;
 
-  --bg-dark: #050816;
+  --dark-bg: #050816;
+
   --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.10);
-  --text-soft: rgba(255,255,255,0.75);
+  --glass-border: rgba(255,255,255,0.12);
+
+  --text-light: #ffffff;
+  --text-soft: #d9e2ff;
+}
+
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: white;
+  --card: rgba(255,255,255,0.08);
+  --nav: rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] {
+  --bg: #f4f7fb;
+  --text: #111827;
+  --card: rgba(255,255,255,0.9);
+  --nav: rgba(0,0,0,0.05);
 }
