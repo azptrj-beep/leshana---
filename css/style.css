@@ -1,9 +1,4 @@
-Enregistrements
-Lo0@font-face {
-font-family:'nohadra';
-src:
-url('assets/fonts/nohadra.woff2') format('woff2'),
-}and
+
 /* =========================
 RESET
 ========================= */
@@ -31,7 +26,14 @@ rgba(255,255,255,0.12);
 /* =========================
 FONTS
 ========================= */
-
+@font-face {
+font-family: 'Adiabene';
+src: url('../assets/fonts/Adiabene.woff2') format('woff2'),
+url('../assets/fonts/Adiabene.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
 @font-face {
 font-family: 'Nohadra';
 src: url('../assets/fonts/nohadra.woff2') format('woff2'),
@@ -95,12 +97,12 @@ p {
    SOURETH FONTS
 ========================= */
 .soureth-title {
-  font-family: 'nohadra';
+  font-family: 'Adiabene';
   direction: rtl;
   font-size: 70px;
 }
 .soureth-writing {
-  font-family: 'nohadra';
+  font-family: 'Nohadra';
   direction: rtl;
   font-size: 42px;
 }
@@ -321,7 +323,7 @@ section h2 {
   margin-top: 25px;
 }
 #keyboard button {
-  font-family: 'nohadra';
+  font-family: 'Adiabene';
   font-size: 34px;
   width: 70px;
   height: 70px;
@@ -574,10 +576,12 @@ width: 100%;
 .soureth-writing,
 .soureth-classic,
 :lang(syr) {
-  font-family: 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
   direction: rtl;
   unicode-bidi: plaintext;
 }
+/* =========================
+   FIX MOBILE / CHROME
 /* =========================
    HEADER MOBILE FIX
 ========================= */
@@ -621,9 +625,7 @@ body.simple-dark {
     brightness(0.92)
     contrast(1.05);
 }
-/* =========================
-   FORCE RESTORE THEME 
-========================= */
+/* FORCE RESTORE THEME */
 html,
 body {
   background:
@@ -1035,9 +1037,7 @@ canvas {
   text-shadow:
     0 0 18px rgba(0,162,255,0.35);
 }
-
-   /* TEXTE HERO */ 
-
+/* TEXTE HERO */
 .hero p {
   max-width: 760px;
   margin: auto;
@@ -1062,14 +1062,14 @@ canvas {
    BLOC SHLAMA
 ========================= */
 .hero-demo.card {
-  max-width: 220px;
-  margin: 20px auto 0;
+  max-width: 320px;
+  margin: 24px auto 0;
   padding: 14px;
   border-radius: 18px;
 }
 /* TEXTE SOURETH */
 .soureth-title {
-  font-family: 'nohadra';
+  font-family: 'Adiabene';
   direction: rtl;
   font-size: clamp(34px, 8vw, 62px);
   line-height: 1;
@@ -1237,6 +1237,7 @@ html, body {
   border-radius: 18px;
   cursor: pointer;
   font-family:
+    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif;
@@ -1359,6 +1360,7 @@ font-size: 28px;
 .quiz-letter,
 .soureth-mode {
   font-family:
+    'Adiabene',
     'nohadra', 
     'assyrian', 
     sans-serif !important;
@@ -1425,7 +1427,7 @@ body {
 /* QUESTION */
 #question {
   font-family:
-    'nohadra',
+    'Adiabene',
     sans-serif;
   font-size: clamp(48px, 10vw, 90px);
   text-align: center;
@@ -1605,7 +1607,7 @@ body{
 .guide,
 #keyboard button,
 .quiz-options button {
-  font-family: 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
 }
 textarea,
 input {
@@ -1621,7 +1623,7 @@ p, h1, h2, h3 {
 }
 /* sécurité affichage syriaque */
 :lang(syr) {
-  font-family: 'nohadra', sans-serif;
+  font-family: 'Adiabene', sans-serif;
   direction: rtl;
 }
 .dark-mode .letter-box,
@@ -1629,101 +1631,64 @@ p, h1, h2, h3 {
   color: white !important;
 }
 /* =========================
-   MODULE ECRITURE CLEAN
+   MODULE ÉCRITURE PROPRE
 ========================= */
+
 .model {
   position: relative;
-  margin: 20px 0;
+  text-align: center;
+  margin-top: 20px;
 }
+
 /* LETTRE PRINCIPALE */
 #letterDisplay {
-  font-family: 'nohadra' !important;
+  font-family: 'Adiabene', sans-serif;
   font-size: 90px;
   color: #0033a0;
   direction: rtl;
 }
-/* LETTRE GUIDE */
+
+/* LETTRE GUIDE (TRACE) */
 #guideLetter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  font-family: 'nohadra' !important;
-  font-size: 90px;
-  opacity: 0.12;
-  color: #0033a0;
-  pointer-events: none;
-  direction: rtl;
-}
-/* CANVAS */
-.canvas-wrapper {
-  display: flex;
-  justify-content: center;
-}
-#board {
-  width: min(90vw, 420px);
-  height: min(90vw, 420px);
-  background: white;
-  border: 2px solid #0033a0;
-  border-radius: 16px;
-  touch-action: none;
-}
-/* =========================================
-   ECRITURE TACTILE SOURETH MODERNE FIX
-========================================= */
-/* LETTRES MODELES */
-#letterDisplay,
-#guideLetter {
-  font-family: 'nohadra' !important;
-  direction: rtl;
-  unicode-bidi: plaintext;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 1;
-}
-/* LETTRE PRINCIPALE */
-#letterDisplay {
-  font-size: 110px;
-  color: #ffffff;
-}
-/* LETTRE GUIDE TRANSPARENTE */
-#guideLetter {
-  font-size: 170px;
-  opacity: 0.08;
-  color: #ffffff;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
+  font-family: 'Adiabene', sans-serif;
+  font-size: 160px;
+  opacity: 0.08;
+  color: #0033a0;
   pointer-events: none;
 }
+
 /* CANVAS */
-#board {
-  background: #ffffff;
-  border: 3px solid #0033a0;
-  border-radius: 22px;
+#writingCanvas {
+  width: min(90vw, 360px);
+  height: min(90vw, 360px);
+  background: white;
+  border: 2px solid #0033a0;
+  border-radius: 18px;
   touch-action: none;
+  display: block;
+  margin: 15px auto;
 }
-/* MODE SOMBRE */
-body.dark-mode #board {
-  background: #111827;
-  border-color: #00cfff;
+
+/* CONTROLS */
+.canvas-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
-body.dark-mode #letterDisplay {
-  color: #ffffff !important;
-}
-body.dark-mode #guideLetter {
-  color: #ffffff !important;
-  opacity: 0.06;
-}
-/* MODE SOMBRE */
-.dark-mode #letterDisplay,
-.dark-mode #guideLetter {
-  color: white !important;
-}
-.dark-mode #board {
-  background: #111;
-  border-color: white;
+
+.canvas-controls button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #0033a0;
+  color: white;
+  cursor: pointer;
+};
 }/* =========================
    RESET
 ========================= */
@@ -1994,6 +1959,7 @@ footer {
 
 #result{
   font-family:
+    'Adiabene',
     'Nohadra',
     sans-serif !important;
 
@@ -2001,4 +1967,100 @@ footer {
   text-align:right;
 
   unicode-bidi:plaintext;
+}
+/* =========================
+MODULE ÉCRITURE TACTILE
+========================= */
+
+.writing-container{
+width:100%;
+max-width:420px;
+margin:20px auto;
+padding:15px;
+}
+
+.model{
+position:relative;
+text-align:center;
+margin-bottom:15px;
+}
+
+/* LETTRE A APPRENDRE */
+
+#letterDisplay{
+font-family:'Nohadra','Assyrian',sans-serif !important;
+direction:rtl;
+font-size:70px;
+color:white;
+margin-bottom:10px;
+}
+
+/* TRACE GUIDE */
+
+#guideLetter{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-family:'Nohadra','Assyrian',sans-serif !important;
+direction:rtl;
+font-size:180px;
+opacity:0.08;
+color:white;
+pointer-events:none;
+}
+
+/* CANVAS */
+
+#writingCanvas{
+display:block;
+width:100%;
+max-width:350px;
+height:350px;
+margin:auto;
+
+background:white;
+border:2px solid #0033a0;
+border-radius:18px;
+
+touch-action:none;
+-ms-touch-action:none;
+
+}
+
+/* BOUTONS */
+
+.canvas-controls{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:15px;
+}
+
+.canvas-controls button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#0033a0;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+#writingCanvas{
+    max-width:300px;
+    height:300px;
+}
+
+#guideLetter{
+    font-size:140px;
+}
+
+#letterDisplay{
+    font-size:55px;
+}
+
 }
