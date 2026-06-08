@@ -1,4 +1,3 @@
-
 "use strict";
 
 /* =========================================
@@ -125,6 +124,90 @@ function checkAnswer(answer) {
   }
 }
 
+/* =========================================
+   LETTER SYSTEM
+========================================= */
+function setLetter() {
+  const display = document.getElementById("letterDisplay");
+  const guide = document.getElementById("guideLetter");
+
+  if (display) display.textContent = letters[index];
+  if (guide) guide.textContent = letters[index];
+
+  clearCanvas();
+  drawing = false;
+}
+
+function nextLetter() {
+  index = (index + 1) % letters.length;
+  setLetter();
+}
+
+/* =========================================
+   CANVAS (FIX STABLE)
+========================================= */
+function initCanvas() {
+  canvas = document.getElementById("board");
+  if (!canvas) return;
+
+  ctx = canvas.getContext("2d");
+
+  resizeCanvas();
+
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#0033a0";
+
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mouseup", stopDraw);
+  canvas.addEventListener("mouseleave", stopDraw);
+
+  canvas.addEventListener("touchstart", startDraw, { passive: false });
+  canvas.addEventListener("touchmove", draw, { passive: false });
+  canvas.addEventListener("touchend", stopDraw);
+}
+
+function resizeCanvas() {
+  if (!canvas) return;
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const t = e.touches?.[0] || e.changedTouches?.[0];
+
+  return {
+    x: (t ? t.clientX : e.clientX) - rect.left,
+    y: (t ? t.clientY : e.clientY) - rect.top
+  };
+}
+
+function startDraw(e) {
+  drawing = true;
+  const pos = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(pos.x, pos.y);
+}
+
+function draw(e) {
+  if (!drawing) return;
+  e.preventDefault();
+
+  const pos = getPos(e);
+  ctx.lineTo(pos.x, pos.y);
+  ctx.stroke();
+}
+
+function stopDraw() {
+  drawing = false;
+}
+
+function clearCanvas() {
+  if (!ctx || !canvas) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
 /* =========================================
    UI EFFECTS
@@ -192,7 +275,3 @@ function pressKey(key) {
 }
 
 const input = document.getElementById("sourethInput");
-
-window.toggleMenu = function () {
-  document.querySelector(".menu").classList.toggle("active");
-}
