@@ -1,63 +1,11 @@
-/* =========================
-RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* =========================
-VARIABLES
-========================= */
 :root {
   --blue-main: #0033a0;
   --blue-light: #0066ff;
   --cyan: #00cfff;
-  --red-main: #d40000;
-  --dark-bg: #050816;
+  --red: #d40000;
+
+  --bg-dark: #050816;
   --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.12);
-  --text-light: #ffffff;
-  --text-soft: #d9e2ff;
-
-  --bg: #ffffff;
-  --text: #000;
-  --card: rgba(255,255,255,0.1);
-}
-
-/* LIGHT MODE */
-[data-theme="light"] {
-  --bg: #f4f7fb;
-  --text: #111827;
-  --card: rgba(255,255,255,0.9);
-  --nav: rgba(0,0,0,0.05);
-}
-
-/* DEFAULT */
-body {
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  color: white;
-  min-height: 100vh;
-  overflow-x: hidden;
-  transition: all .3s ease;
-}
-
-/* LIGHT */
-body.light-mode {
-  background: #f4f7fb !important;
-  color: #111827 !important;
-}
-
-/* DARK */
-body.dark {
-  --bg: #050816;
-  --text: #fff;
-  --card: rgba(0,0,0,0.4);
-}
-
-/* SIMPLE DARK */
-body.simple-dark {
-  filter: brightness(0.92) contrast(1.05);
+  --glass-border: rgba(255,255,255,0.10);
+  --text-soft: rgba(255,255,255,0.75);
 }
