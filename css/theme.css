@@ -1,48 +1,63 @@
+/* =========================
+RESET THEME
+========================= */
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: #ffffff;
+  --card: rgba(255,255,255,0.08);
+  --soft: rgba(255,255,255,0.7);
+}
 
+/* LIGHT MODE */
+body.light-mode {
+  --bg: #f4f7fb;
+  --text: #111827;
+  --card: rgba(255,255,255,0.9);
+  --soft: rgba(17,24,39,0.7);
+}
+
+/* BODY GLOBAL */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: 0.3s ease;
+}
+
+/* =========================
+FONTS SOURETH
+========================= */
+
+@font-face {
+  font-family: 'Adiabene';
+  src: url('../assets/fonts/Adiabene.woff2') format('woff2');
+}
 
 @font-face {
   font-family: 'Nohadra';
-  src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-       url('../assets/fonts/nohadra.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  src: url('../assets/fonts/nohadra.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Assyrian';
-  src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-       url('../assets/fonts/assyrian.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  src: url('../assets/fonts/assyrian.woff2') format('woff2');
 }
 
-:root {
-  --blue-main: #0033a0;
-  --blue-light: #0066ff;
-  --cyan: #00cfff;
-  --red-main: #d40000;
+/* =========================
+SOURETH SAFE TEXT
+========================= */
 
-  --dark-bg: #050816;
-
-  --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.12);
-
-  --text-light: #ffffff;
-  --text-soft: #d9e2ff;
-}
-
-:root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: white;
-  --card: rgba(255,255,255,0.08);
-  --nav: rgba(255,255,255,0.05);
-}
-
-[data-theme="light"] {
-  --bg: #f4f7fb;
-  --text: #111827;
-  --card: rgba(255,255,255,0.9);
-  --nav: rgba(0,0,0,0.05);
+.soureth-title,
+.soureth-writing,
+.letter,
+#keyboard button,
+.quiz-options button,
+#question {
+  font-family: 'Adiabene', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
 }
