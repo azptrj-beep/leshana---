@@ -1,64 +1,28 @@
-/* =========================
-RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-VARIABLES
-========================= */
-:root {
-  --blue-main: #0033a0;
-  --blue-light: #0066ff;
-  --cyan: #00cfff;
-  --red-main: #d40000;
-
-  --dark-bg: #050816;
-
-  --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.12);
-
-  --text-light: #ffffff;
-  --text-soft: #d9e2ff;
-}
-
-/* =========================
-FONTS
-========================= */
-@font-face {
-  font-family: 'nohadra';
-  src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-       url('../assets/fonts/nohadra.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'assyrian';
-  src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-       url('../assets/fonts/assyrian.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* =========================
-GLOBAL BASE
-========================= */
-html, body {
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top left, var(--blue-main), var(--bg-dark));
+  color: white;
   min-height: 100vh;
-  transition: 0.3s ease;
+  overflow-x: hidden;
 }
 
-p, h1, h2, h3 {
-  word-break: break-word;
+/* FIX VIOLET NAVIGATEUR */
+a, a:visited, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* REMOVE FOCUS OUTLINE CLEAN STYLE */
+button, a {
+  outline: none;
 }
