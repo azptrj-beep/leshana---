@@ -1,0 +1,2004 @@
+Enregistrements
+Lo0@font-face {
+font-family:'nohadra';
+src:
+url('assets/fonts/nohadra.woff2') format('woff2'),
+}and
+/* =========================
+RESET
+========================= */
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* =========================
+VARIABLES
+========================= */
+:root {
+--blue-main: #0033a0;
+--blue-light: #0066ff;
+--cyan: #00cfff;
+--red-main: #d40000;
+--dark-bg: #050816;
+--glass:
+rgba(255,255,255,0.08);
+--glass-border:
+rgba(255,255,255,0.12);
+--text-light: #ffffff;
+--text-soft: #d9e2ff;
+}
+/* =========================
+FONTS
+========================= */
+
+@font-face {
+font-family: 'Nohadra';
+src: url('../assets/fonts/nohadra.woff2') format('woff2'),
+url('../assets/fonts/nohadra.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
+@font-face {
+font-family: 'Assyrian';
+src: url('../assets/fonts/assyrian.woff2') format('woff2'),
+url('../assets/fonts/assyrian.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
+/* =========================
+   BODY
+========================= */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+/* =========================
+   THEME VARIABLES SAFE
+========================= */
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: white;
+  --card: rgba(255,255,255,0.08);
+  --nav: rgba(255,255,255,0.05);
+}
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg: #f4f7fb;
+  --text: #111827;
+  --card: rgba(255,255,255,0.9);
+  --nav: rgba(0,0,0,0.05);
+}
+/* =========================
+   GLOBAL
+========================= */
+section {
+  max-width: 1400px;
+  margin: auto;
+  padding: 70px 25px;
+}
+h1, h2, h3 {
+  font-weight: 700;
+}
+p {
+  line-height: 1.8;
+}
+/* =========================
+   SOURETH FONTS
+========================= */
+.soureth-title {
+  font-family: 'nohadra';
+  direction: rtl;
+  font-size: 70px;
+}
+.soureth-writing {
+  font-family: 'nohadra';
+  direction: rtl;
+  font-size: 42px;
+}
+.soureth-classic {
+  font-family: 'assyrian';
+  direction: rtl;
+}
+/* =========================
+   HEADER
+========================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background:
+    rgba(0,0,0,0.25);
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+  padding: 20px;
+}
+/* =========================
+   LOGO
+========================= */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.35);
+  animation:
+    floatLogo 3s ease-in-out infinite;
+}
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.title {
+  font-size: 2.3rem;
+}
+.subtitle {
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+nav a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 16px;
+  transition: 0.3s;
+  background:
+    rgba(255,255,255,0.05);
+}
+nav a:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+  transform:
+    translateY(-3px);
+  box-shadow:
+    0 10px 25px rgba(0,162,255,0.35);
+}
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+.hero h1 {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-shadow:
+    0 0 25px rgba(0,162,255,0.45);
+}
+.hero p {
+  max-width: 850px;
+  margin: auto;
+  font-size: 1.2rem;
+  color: var(--text-soft);
+}
+/* =========================
+   BUTTONS
+========================= */
+.hero-buttons {
+  margin-top: 40px;
+}
+.btn {
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 10px;
+  transition: 0.3s;
+}
+.btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+  color: white;
+  box-shadow:
+    0 10px 30px rgba(0,102,255,0.4);
+}
+.btn-secondary {
+  background:
+    rgba(255,255,255,0.08);
+  color: white;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+/* =========================
+   CARDS
+========================= */
+.features {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+.card {
+  background:
+    rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border:
+    1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  padding: 35px;
+  transition: 0.35s;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.18);
+}
+.card:hover {
+  transform:
+    translateY(-8px);
+  box-shadow:
+    0 20px 45px rgba(0,162,255,0.25);
+}
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 18px;
+}
+/* =========================
+   SECTION TITLES
+========================= */
+section h2 {
+  display: inline-block;
+  padding-bottom: 12px;
+  border-bottom:
+    3px solid #00cfff;
+  margin-bottom: 25px;
+}
+/* =========================
+   ALPHABET
+========================= */
+.alphabet-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px,1fr));
+  gap: 25px;
+}
+.letter-card {
+  text-align: center;
+  padding: 35px;
+  border-radius: 28px;
+  background:
+    rgba(255,255,255,0.08);
+  transition: 0.3s;
+}
+.letter-card:hover {
+  transform:
+    translateY(-6px);
+}
+.letter {
+  font-size: 84px;
+  margin-bottom: 15px;
+}
+/* =========================
+   KEYBOARD
+========================= */
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 25px;
+}
+#keyboard button {
+  font-family: 'Adiabene';
+  font-size: 34px;
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  border: none;
+  background:
+    rgba(255,255,255,0.08);
+  color: white;
+  transition: 0.25s;
+  cursor: pointer;
+}
+#keyboard button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #0033a0,
+      #00cfff
+    );
+  transform: scale(1.08);
+}
+/* =========================
+   TRANSLATOR
+========================= */
+.translator-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+.translator-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+#frInput {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+#result {
+  margin-top: 30px;
+  font-size: 2rem;
+  text-align: center;
+  word-break: break-word;
+}
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.suggestion:hover {
+  opacity: 0.8;
+}
+.history-item {
+  margin-top: 10px;
+}
+/* =========================
+   DARK MODE
+========================= */
+body.dark {
+  background: #0b0f1a;
+  color: white;
+}
+body.dark .translator-box {
+  background: #121a2a;
+  border-radius: 16px;
+}
+body.dark .suggestion {
+  background: #1b2942;
+}
+/* =========================
+   INPUTS
+========================= */
+textarea,
+input {
+  width: 100%;
+  padding: 18px;
+  border-radius: 18px;
+  border: none;
+  background:
+    rgba(255,255,255,0.08);
+  color: white;
+  font-size: 18px;
+  margin-top: 20px;
+}
+/* =========================
+   PROGRESSION
+========================= */
+.progress-card {
+  background:
+    rgba(255,255,255,0.08);
+  border-radius: 28px;
+  padding: 35px;
+}
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  border-radius: 30px;
+  overflow: hidden;
+  background:
+    rgba(255,255,255,0.08);
+  margin-top: 25px;
+}
+.progress {
+  height: 100%;
+  width: 35%;
+  background:
+    linear-gradient(
+      90deg,
+      #0066ff,
+      #00cfff
+    );
+}
+/* =========================
+   AUDIO BUTTONS
+========================= */
+.audio-btn {
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  background:
+    linear-gradient(
+      135deg,
+      #0033a0,
+      #00cfff
+    );
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 80px;
+  border-top:
+    1px solid rgba(255,255,255,0.08);
+  color: var(--text-soft);
+}
+/* =========================
+   DARK MODE
+========================= */
+:root {
+  --bg: #ffffff;
+  --text: #000;
+  --card: rgba(255,255,255,0.1);
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+body.dark {
+  --bg: #050816;
+  --text: #fff;
+  --card: rgba(0,0,0,0.4);
+}
+/* =========================
+   ANIMATIONS
+========================= */
+.fade-in {
+  animation:
+    fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from {
+opacity: 0;
+
+transform: translateY(20px);
+
+  }
+  to {
+opacity: 1;
+
+transform: translateY(0);
+
+  }
+}
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:768px) {
+  .hero h1 {
+font-size: 2.8rem;
+
+  }
+  nav {
+flex-direction: column;
+
+align-items: center;
+
+  }
+  .card {
+padding: 25px;
+
+  }
+  .soureth-title {
+font-size: 50px;
+
+  }
+  .letter {
+font-size: 60px;
+
+  }
+  #keyboard button {
+width: 58px;
+
+height: 58px;
+
+font-size: 28px;
+
+  }
+}
+/* =========================
+   MOBILE MENU
+========================= */
+.menu-toggle {
+  display: none;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+@media(max-width:768px) {
+  .menu-toggle {
+    display: block;
+margin: 20px auto;
+
+  }
+  nav {
+    display: none;
+flex-direction: column;
+
+width: 100%;
+
+  }
+  nav.active {
+    display: flex;
+  }
+}
+/* =========================
+   SOURETH SAFE DISPLAY
+========================= */
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+:lang(syr) {
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+/* =========================
+   FIX MOBILE / CHROME
+/* =========================
+   HEADER MOBILE FIX
+========================= */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 12px;
+  }
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+  .logo {
+    width: 55px;
+    height: auto;
+  }
+  .title {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+  }
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+/* =========================
+   SIMPLE DARK EFFECT
+========================= */
+body.simple-dark {
+  filter:
+    brightness(0.92)
+    contrast(1.05);
+}
+/* FORCE RESTORE THEME */
+html,
+body {
+  background:
+    radial-gradient(
+      circle at top left,
+      #0033a0,
+      #050816 60%
+    ) !important;
+  color: white !important;
+}
+/* FORCE CARDS */
+.card,
+.progress-card,
+.letter-card {
+  background:
+    rgba(255,255,255,0.08) !important;
+  color: white !important;
+}
+/* FORCE NAV */
+nav a {
+  color: white !important;
+  background:
+    rgba(255,255,255,0.05) !important;
+}
+/* =========================
+   SAFE THEME SYSTEM FIX
+========================= */
+body {
+  transition: all 0.3s ease;
+}
+/* DEFAULT = DARK (TON SITE ACTUEL) */
+body {
+  background: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  color: white;
+}
+/* CARDS LIGHT */
+body.light-mode {
+  background: #f4f7fb !important;
+  color: #111827 !important;
+}
+body.light-mode .card,
+body.light-mode .progress-card {
+  background: rgba(255,255,255,0.9) !important;
+  color: #111827 !important;
+}
+body.light-mode nav a {
+  background: rgba(0,0,0,0.05) !important;
+  color: #111827 !important;
+}
+body.light-mode .card,
+body.light-mode .progress-card,
+body.light-mode .letter-card {
+  background: rgba(255,255,255,0.9) !important;
+  color: #111827 !important;
+}
+/* NAV LIGHT */
+body.light-mode nav a {
+  background: rgba(0,0,0,0.05) !important;
+  color: #111827 !important;
+}
+/* =========================
+   XP PANEL
+========================= */
+.xp-panel {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+Alphabet Soureth
+<h1>
+  🔠 Alphabet Soureth Moderne
+</h1>
+
+<nav>
+  <a href="index.html">🏠 Accueil</a>
+  <a href="keyboard.html">⌨️ Clavier</a>
+  <a href="quiz.html">🎮 Quiz</a>
+</nav>
+
+<!-- ALAP -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܐ</div>
+  <div class="latin">A - Alap</div>
+  <button class="audio-btn" onclick="playAudio('audio/alap.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- BEITH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܒ</div>
+  <div class="latin">B - Beith</div>
+  <button class="audio-btn" onclick="playAudio('audio/beith.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- GAMAL -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܓ</div>
+  <div class="latin">G - Gamal</div>
+  <button class="audio-btn" onclick="playAudio('audio/gamal.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- DALATH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܕ</div>
+  <div class="latin">D - Dalath</div>
+  <button class="audio-btn" onclick="playAudio('audio/dalath.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- HEH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܗ</div>
+  <div class="latin">H - Heh</div>
+  <button class="audio-btn" onclick="playAudio('audio/heh.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- WAW -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܘ</div>
+  <div class="latin">W - Waw</div>
+  <button class="audio-btn" onclick="playAudio('audio/waw.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- ZAIN -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܙ</div>
+  <div class="latin">Z - Zain</div>
+  <button class="audio-btn" onclick="playAudio('audio/zain.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- KHETH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܚ</div>
+  <div class="latin">Ḥ - heth</div>
+  <button class="audio-btn" onclick="playAudio('audio/heth.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- TETH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܛ</div>
+  <div class="latin">Ṭ - Teth</div>
+  <button class="audio-btn" onclick="playAudio('audio/teth.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- YODH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܝ</div>
+  <div class="latin">Y - Yodh</div>
+  <button class="audio-btn" onclick="playAudio('audio/yodh.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- KAP -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܟ</div>
+  <div class="latin">K - Kap</div>
+  <button class="audio-btn" onclick="playAudio('audio/kap.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- LAMAD -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܠ</div>
+  <div class="latin">L - Lamad</div>
+  <button class="audio-btn" onclick="playAudio('audio/lamadh.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- MEEM -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܡ</div>
+  <div class="latin">M - Meem</div>
+  <button class="audio-btn" onclick="playAudio('audio/meem.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- NOON -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܢ</div>
+  <div class="latin">N - Noon</div>
+  <button class="audio-btn" onclick="playAudio('audio/noon.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- SEMKATH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܣ</div>
+  <div class="latin">S - Semkath</div>
+  <button class="audio-btn" onclick="playAudio('audio/semkath.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- E -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܥ</div>
+  <div class="latin">ʿ - E</div>
+  <button class="audio-btn" onclick="playAudio('audio/e.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- PEH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܦ</div>
+  <div class="latin">P - Peh</div>
+  <button class="audio-btn" onclick="playAudio('audio/peh.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- SADHE -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܨ</div>
+  <div class="latin">Ṣ - Sadhe</div>
+  <button class="audio-btn" onclick="playAudio('audio/sadhe.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- QOP -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܩ</div>
+  <div class="latin">Q - Qop</div>
+  <button class="audio-btn" onclick="playAudio('audio/qop.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- RESH -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܪ</div>
+  <div class="latin">R - Resh</div>
+  <button class="audio-btn" onclick="playAudio('audio/resh.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- SHEEN -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܫ</div>
+  <div class="latin">SH - Sheen</div>
+  <button class="audio-btn" onclick="playAudio('audio/sheen.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+<!-- TAW -->
+<div class="letter-card">
+  <div class="letter soureth-title">ܬ</div>
+  <div class="latin">T - Taw</div>
+  <button class="audio-btn" onclick="playAudio('audio/taw.mp3')">
+    🔊 Écouter
+  </button>
+</div>
+
+/* =========================
+   QUIZ
+========================= */
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+.quiz-card {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.25);
+}
+.quiz-letter {
+  font-size: 7rem;
+  margin: 30px 0;
+  animation:
+    pulse 2s infinite;
+}
+.quiz-answers {
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+.quiz-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+  color: white;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.quiz-btn:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 15px rgba(0,207,255,0.6);
+}
+.quiz-stats {
+  margin-top: 30px;
+  font-size: 1.1rem;
+}
+@keyframes pulse {
+  0% {
+transform: scale(1);
+
+  }
+  50% {
+transform: scale(1.08);
+
+  }
+  100% {
+transform: scale(1);
+
+  }
+}
+ html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+  font-family: Arial;
+}
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  background: #0033a0;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.canvas-wrapper {
+  position: relative;
+}
+canvas {
+  width: min(90vw, 500px);
+  height: min(90vw, 500px);
+  max-height: 65vh;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #0033a0;
+  touch-action: none;
+}
+/* =========================
+   HERO RESPONSIVE PRO
+========================= */
+.hero {
+  text-align: center;
+  padding: 50px 18px 35px;
+}
+/* TITRE PRINCIPAL */
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  text-shadow:
+    0 0 18px rgba(0,162,255,0.35);
+}
+/* TEXTE HERO */
+.hero p {
+  max-width: 760px;
+  margin: auto;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+/* BOUTONS */
+.hero-buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn {
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+/* =========================
+   BLOC SHLAMA
+========================= */
+.hero-demo.card {
+  max-width: 320px;
+  margin: 24px auto 0;
+  padding: 14px;
+  border-radius: 18px;
+}
+/* TEXTE SOURETH */
+.soureth-title {
+  font-family: 'Adiabene';
+  direction: rtl;
+  font-size: clamp(34px, 8vw, 62px);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+/* TEXTE PAIX */
+.hero-demo p {
+  font-size: 0.92rem;
+  line-height: 1.3;
+  margin: 0;
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .hero {
+padding: 35px 14px 25px;
+
+  }
+  .hero h1 {
+font-size: 2rem;
+
+  }
+  .hero p {
+font-size: 0.92rem;
+
+line-height: 1.5;
+
+  }
+  .hero-demo.card {
+max-width: 250px;
+
+padding: 12px;
+
+  }
+  .soureth-title {
+font-size: 42px;
+
+  }
+  .hero-demo p {
+font-size: 0.85rem;
+
+  }
+}
+  /* NAV MOBILE */
+  nav {
+flex-direction: column;
+
+align-items: center;
+
+gap: 10px;
+
+  }
+  nav a {
+width: 90%;
+
+text-align: center;
+
+  }
+  /* CARDS */
+  .card {
+padding: 22px;
+
+  }
+  /* CLAVIER */
+  #keyboard button {
+width: 54px;
+
+height: 54px;
+
+font-size: 26px;
+
+  }
+  /* LETTRES */
+  .letter {
+font-size: 58px;
+
+  }
+}
+/* =========================
+   FIX GLOBAL MOBILE
+========================= */
+body {
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* FIX TEXT OVERFLOW */
+p,
+h1,
+h2,
+h3 {
+  word-wrap: break-word;
+}
+.guide {
+  position: absolute;
+  font-size: 140px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.bottombar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: white;
+}
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 12px;
+  background: #d40000;
+  color: white;
+}
+body {
+  overscroll-behavior: auto;
+}
+canvas {
+  touch-action: none;
+  -ms-touch-action: none;
+}
+html, body {
+  overflow: auto;
+  touch-action: auto;
+}
+/* =========================
+   QUIZ MOBILE PERFECT
+========================= */
+.quiz-box {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 22px;
+  border-radius: 24px;
+  text-align: center;
+  background:
+    rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  border:
+    1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.25);
+}
+/* QUESTION */
+#question {
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: white;
+}
+/* =========================
+   QUIZ OPTIONS GRID
+========================= */
+.quiz-options {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(90px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+/* BOUTONS LETTRES */
+.quiz-options button {
+  min-height: 74px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  font-family:
+    'Adiabene',
+    'nohadra', 
+    'assyrian', 
+    sans-serif;
+  font-size: clamp(28px, 6vw, 42px);
+  background:
+    rgba(255,255,255,0.08);
+  color: white;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.18);
+}
+/* HOVER */
+.quiz-options button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+  transform:
+    translateY(-3px);
+}
+/* CLICK */
+.quiz-options button:active {
+  transform: scale(0.96);
+}
+/* =========================
+   RESULTAT
+========================= */
+#quiz-result {
+  margin-top: 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  min-height: 24px;
+}
+/* =========================
+   XP PANEL
+========================= */
+.xp-panel {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 16px;
+  background:
+    rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+/* =========================
+   MOBILE ULTRA OPTIMIZED
+========================= */
+@media (max-width: 768px) {
+  .quiz-box {
+width: calc(100% - 20px);
+
+margin: 20px auto;
+
+padding: 18px 14px;
+
+border-radius: 20px;
+
+  }
+  #question {
+font-size: 1.15rem;
+
+margin-bottom: 18px;
+
+  }
+  .quiz-options {
+grid-template-columns:
+  repeat(3, 1fr);
+
+gap: 10px;
+
+  }
+  .quiz-options button {
+min-height: 64px;
+
+border-radius: 14px;
+
+font-size: 32px;
+
+  }
+  .xp-panel {
+flex-direction: column;
+
+text-align: center;
+
+gap: 6px;
+
+  }
+}
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 420px) {
+  .quiz-options {
+grid-template-columns:
+  repeat(2, 1fr);
+
+  }
+  .quiz-options button {
+min-height: 58px;
+
+font-size: 28px;
+
+  }
+}
+/* =========================
+   QUIZ SOURETH MODERNE
+========================= */
+.quiz-options button,
+#question,
+.quiz-letter,
+.soureth-mode {
+  font-family:
+    'Adiabene',
+    'nohadra', 
+    'assyrian', 
+    sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+/* QUESTION */
+#question {
+  font-size: clamp(42px, 8vw, 72px);
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+/* BOUTONS */
+.quiz-options button {
+  font-size: clamp(28px, 6vw, 42px);
+  min-height: 74px;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* =========================
+   QUIZ FINAL FIX MOBILE
+========================= */
+.quiz-options {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 25px;
+}
+/* BOUTONS */
+.quiz-options button {
+  font-family:
+    'Adiabene',
+    'nohadra',
+    sans-serif !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 88px;
+  border-radius: 22px;
+  border: none;
+  background:
+    rgba(255,255,255,0.08);
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+/* HOVER */
+.quiz-options button:hover {
+  transform: scale(1.05);
+  background:
+    linear-gradient(
+      135deg,
+      #0066ff,
+      #00cfff
+    );
+}
+/* QUESTION */
+#question {
+  font-family:
+    'Adiabene',
+    sans-serif;
+  font-size: clamp(48px, 10vw, 90px);
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .quiz-options {
+grid-template-columns:
+  repeat(4, 1fr);
+
+gap: 10px;
+
+  }
+  .quiz-options button {
+min-height: 72px;
+
+font-size: 34px;
+
+border-radius: 18px;
+
+  }
+  #question {
+font-size: 56px;
+
+  }
+}
+/* =========================
+   FEATURE LINKS
+========================= */
+.feature-link{
+  text-decoration:none;
+  color:white;
+  display:block;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+.feature-link:hover{
+  transform:translateY(-5px) scale(1.02);
+}
+.feature-link:active{
+  transform:scale(0.98);
+}
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  padding:40px 20px;
+}
+.feature-link{
+  text-decoration:none;
+  color:white;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,35,80,0.95),
+      rgba(10,15,40,0.95)
+    );
+  border-radius:28px;
+  padding:30px;
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border .35s ease;
+  border:1px solid rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  min-height:240px;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:-100px;
+  left:-100px;
+  width:220px;
+  height:220px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,200,255,0.25),
+      transparent 70%
+    );
+  transition:0.5s;
+}
+.card:hover{
+  transform:
+    translateY(-10px)
+    scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    0 0 25px rgba(0,200,255,0.25);
+  border:1px solid rgba(0,200,255,0.35);
+}
+.card:hover::before{
+  transform:scale(1.5);
+}
+.card-icon{
+  font-size:48px;
+  margin-bottom:20px;
+}
+.card h2{
+  font-size:28px;
+  margin-bottom:15px;
+}
+.card p{
+  opacity:0.85;
+  line-height:1.7;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+}
+.ripple{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:rgba(255,255,255,0.5);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:rippleEffect .6s linear;
+}
+@keyframes rippleEffect{
+  from{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(0);
+  }
+  to{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(15);
+  }
+}
+.bottom-nav{
+  position:fixed;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  display:flex;
+  justify-content:space-around;
+  background:rgba(10,15,35,0.92);
+  backdrop-filter:blur(12px);
+  border-radius:25px;
+  padding:14px;
+  z-index:9999;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.bottom-nav a{
+  color:white;
+  text-decoration:none;
+  font-size:26px;
+  transition:0.3s;
+}
+.bottom-nav a:hover{
+  transform:scale(1.2);
+}
+body{
+  animation:fadeIn 0.8s ease;
+}
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+.letter,
+.guide,
+#keyboard button,
+.quiz-options button {
+  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+}
+textarea,
+input {
+  font-family: Arial, sans-serif;
+  direction: ltr;
+  unicode-bidi: plaintext;
+}
+html, body {
+  overflow-x: hidden;
+}
+p, h1, h2, h3 {
+  word-break: break-word;
+}
+/* sécurité affichage syriaque */
+:lang(syr) {
+  font-family: 'Adiabene', sans-serif;
+  direction: rtl;
+}
+.dark-mode .letter-box,
+.dark-mode .guide {
+  color: white !important;
+}
+/* =========================
+   MODULE ECRITURE CLEAN
+========================= */
+.model {
+  position: relative;
+  margin: 20px 0;
+}
+/* LETTRE PRINCIPALE */
+#letterDisplay {
+  font-family: 'Adiabene' !important;
+  font-size: 90px;
+  color: #0033a0;
+  direction: rtl;
+}
+/* LETTRE GUIDE */
+#guideLetter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Adiabene' !important;
+  font-size: 90px;
+  opacity: 0.12;
+  color: #0033a0;
+  pointer-events: none;
+  direction: rtl;
+}
+/* CANVAS */
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+}
+#board {
+  width: min(90vw, 420px);
+  height: min(90vw, 420px);
+  background: white;
+  border: 2px solid #0033a0;
+  border-radius: 16px;
+  touch-action: none;
+}
+/* =========================================
+   ECRITURE TACTILE SOURETH MODERNE FIX
+========================================= */
+/* LETTRES MODELES */
+#letterDisplay,
+#guideLetter {
+  font-family: 'Adiabene' !important;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+}
+/* LETTRE PRINCIPALE */
+#letterDisplay {
+  font-size: 110px;
+  color: #ffffff;
+}
+/* LETTRE GUIDE TRANSPARENTE */
+#guideLetter {
+  font-size: 170px;
+  opacity: 0.08;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+/* CANVAS */
+#board {
+  background: #ffffff;
+  border: 3px solid #0033a0;
+  border-radius: 22px;
+  touch-action: none;
+}
+/* MODE SOMBRE */
+body.dark-mode #board {
+  background: #111827;
+  border-color: #00cfff;
+}
+body.dark-mode #letterDisplay {
+  color: #ffffff !important;
+}
+body.dark-mode #guideLetter {
+  color: #ffffff !important;
+  opacity: 0.06;
+}
+/* MODE SOMBRE */
+.dark-mode #letterDisplay,
+.dark-mode #guideLetter {
+  color: white !important;
+}
+.dark-mode #board {
+  background: #111;
+  border-color: white;
+}/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+  --text: #ffffff;
+  --card: rgba(255,255,255,0.08);
+  --soft: rgba(255,255,255,0.7);
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: 0.3s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.25);
+  padding: 15px;
+}
+
+/* LOGO */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 80px;
+  border-radius: 50%;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.2s;
+}
+
+nav a:hover {
+  background: #00cfff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin: 10px auto;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav.active {
+    display: flex;
+  }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+.hero p {
+  color: var(--soft);
+  margin-top: 10px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px;
+  background: #0066ff;
+  color: white;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 18px;
+  margin: 15px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz-box {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#question {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.quiz-options button {
+  padding: 18px;
+  font-size: 32px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* =========================
+   KEYBOARD
+========================= */
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+#keyboard button {
+  padding: 14px;
+  font-size: 26px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress {
+  height: 12px;
+  background: #00cfff;
+  width: 35%;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--soft);
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 12px;
+  border-radius: 20px;
+}
+
+.bottom-nav a {
+  color: white;
+  font-size: 22px;
+}
+
+/* FIX TRADUCTEUR SOURETH */
+
+#result{
+  font-family:
+    'Nohadra',
+    sans-serif !important;
+
+  direction:rtl;
+  text-align:right;
+
+  unicode-bidi:plaintext;
+}
