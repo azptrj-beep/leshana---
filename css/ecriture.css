@@ -97,33 +97,3 @@
         padding:10px;
     }
 }
-
-.writing-container{
-  display:flex;
-  justify-content:center;
-  margin-top:20px;
-}
-
-.canvas-wrapper{
-  position:relative;
-}
-
-canvas{
-  width:min(90vw,350px);
-  height:min(90vw,350px);
-  background:white;
-  border-radius:16px;
-  border:2px solid #0033a0;
-  touch-action:none;
-}
-
-.canvas-controls{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin:20px 0;
-}
-
-#letterGrid{
-  margin-top:20px;
-}
