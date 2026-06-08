@@ -321,7 +321,7 @@ section h2 {
   margin-top: 25px;
 }
 #keyboard button {
-  font-family: 'Adiabene';
+  font-family: 'nohadra';
   font-size: 34px;
   width: 70px;
   height: 70px;
@@ -579,8 +579,6 @@ width: 100%;
   unicode-bidi: plaintext;
 }
 /* =========================
-   FIX MOBILE / CHROME
-/* =========================
    HEADER MOBILE FIX
 ========================= */
 @media (max-width: 768px) {
@@ -623,7 +621,9 @@ body.simple-dark {
     brightness(0.92)
     contrast(1.05);
 }
-/* FORCE RESTORE THEME */
+/* =========================
+   FORCE RESTORE THEME 
+========================= */
 html,
 body {
   background:
