@@ -1,3 +1,4 @@
+
 "use strict";
 
 /* =========================================
@@ -191,3 +192,7 @@ function pressKey(key) {
 }
 
 const input = document.getElementById("sourethInput");
+
+window.toggleMenu = function () {
+  document.querySelector(".menu").classList.toggle("active");
+}
