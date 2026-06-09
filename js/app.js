@@ -275,3 +275,7 @@ function pressKey(key) {
 }
 
 const input = document.getElementById("sourethInput");
+
+function toggleMenu() {
+  document.querySelector("nav").classList.toggle("active");
+}
