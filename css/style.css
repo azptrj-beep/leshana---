@@ -401,7 +401,8 @@ nav a:hover {
   }
 }
 
-nav a:focus,
-button:focus {
-  outline: none;
+/* FIX FOCUS CHROME (cadres violets) */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
