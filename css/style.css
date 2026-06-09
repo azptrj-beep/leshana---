@@ -284,23 +284,18 @@ nav a:hover {
    TRADUCTION FIX
 ========================= */
 .translator-box {
-  max-width: 700px;
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
-  background: var(--card);
-  border-radius: 18px;
+  max-width: 900px;
+  width: 95%;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 22px;
 }
 
 textarea,
 input {
-  width: 100%;
-  font-size: 18px;
-  padding: 18px;
-  border-radius: 18px;
-  background: var(--glass);
-  color: white;
-  border: none;
+  font-size: 22px;
+  padding: 22px;
+  border-radius: 20px;
 }
 
 /* =========================
