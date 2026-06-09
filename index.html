@@ -239,19 +239,44 @@ content="#0033a0">
  <!-- =========================  
   ✍️ Entraînement d'écriture
   ========================== -->   
-  
 
+      <title>Écriture Soureth</title>
 
-    <canvas id="writingCanvas"
-            width="350"
-            height="350">
-    </canvas>
-  <!-- CONTROLES -->
-  <div class="canvas-controls">
-    <button id="prevLetter">⬅</button>
-    <button id="clearCanvas">🗑 Effacer</button>
-    <button id="nextLetter">➡</button>
-  </div>
+    <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/ecriture.css">
+</head>
+
+<body>
+
+<h1>✍️ Écriture Soureth</h1>
+
+<div class="writing-container">
+
+  <canvas
+    id="writingCanvas"
+    width="350"
+    height="350">
+  </canvas>
+
+</div>
+
+<div class="canvas-controls">
+
+  <button id="prevLetter">⬅</button>
+
+  <button id="clearCanvas">
+    🗑 Effacer
+  </button>
+
+  <button id="nextLetter">➡</button>
+
+</div>
+
+<div id="letterGrid"></div>
+
+<script src="js/ecriture.js"></script>
+
 
 
 </section>    <!-- =========================  
