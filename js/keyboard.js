@@ -16,33 +16,27 @@ function getEditor() {
 }
 
 /* INSERT LETTER */
-function deleteLetter() {
+function insertLetter(letter) {
   const input = getEditor();
   if (!input) return;
 
-  const start = input.selectionStart;
-  const end = input.selectionEnd;
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? input.value.length;
 
-  if (start === end && start > 0) {
-    input.value =
-      input.value.slice(0, start - 1) +
-      input.value.slice(end);
+  input.value =
+    input.value.slice(0, start) +
+    letter +
+    input.value.slice(end);
 
-    input.setSelectionRange(start - 1, start - 1);
-  } else {
-    input.value =
-      input.value.slice(0, start) +
-      input.value.slice(end);
+  const pos = start + letter.length;
 
-    input.setSelectionRange(start, start);
-  }
-
+  input.setSelectionRange(pos, pos);
   input.focus();
 
-  /* SI PLUS DE SYRIAQUE → REPASSE EN LTR */
-  if (!/[\u0700-\u074F]/.test(input.value)) {
-    input.style.direction = "ltr";
-    input.style.textAlign = "left";
+  /* AUTO RTL SI LETTRE SYRIAQUE */
+  if (/[\u0700-\u074F]/.test(letter)) {
+    input.style.direction = "rtl";
+    input.style.textAlign = "right";
   }
 }
 
