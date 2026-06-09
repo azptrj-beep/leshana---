@@ -189,42 +189,85 @@ content="#0033a0">
 
   </a>    <a href="quiz.html" class="card feature-link">  <div class="card-icon">🎮</div>  
 
-  <!-- =========================  
-       Écriture soureth
-  ========================== --> 
-  
-    <link rel="stylesheet" href="css/style.css">
+  </a>    <a href="quiz.html" class="card feature-link">  <div class="card-icon">🎮</div>  
 
-  <link rel="stylesheet" href="css/ecriture.css">
-</head>
+<h2>Quiz intelligents</h2>  
 
-<body>
+<p>  
+  Progresse grâce aux quiz,  
+  niveaux  
+  et révisions automatiques.  
+</p>
 
-<h1>✍️ Écriture Soureth</h1>
+  </a>  </section>    <!-- =========================  
+       QUIZ  
+  ========================== -->    <section class="quiz-box card">  <h2 id="question">  
+  ܐ  
+</h2>  
 
+<div class="quiz-options"></div>  
+
+<p id="quiz-result"></p>  
+
+<!-- XP -->  
+
+<div class="xp-panel">  
+
+  <p>  
+    ⭐ XP :  
+    <span id="xp-value">0</span>  
+  </p>  
+
+  <p>  
+    🏆 Niveau :  
+    <span id="level-value">1</span>  
+  </p>  
+
+</div>  
+
+<!-- BADGES -->  
+
+<div class="badge-box">  
+
+  <h3>  
+    🏆 Badge  
+  </h3>  
+
+  <div id="badge-display">  
+    🟢 Débutant  
+  </div>  
+
+<section class="model">
+
+  <h2>✍️ Entraînement d'écriture</h2>
+
+  <!-- LETTRE GUIDE -->
+  <div id="guideLetter"></div>
+
+  <!-- LETTRE PRINCIPALE (optionnel mais conseillé) -->
+  <div id="letterDisplay"></div>
 <div class="writing-container">
 
-  <canvas
-    id="writingCanvas"
-    width="350"
-    height="350">
-  </canvas>
+    <div class="model">
+
+        <div id="letterDisplay">ܐ</div>
+
+        <div id="guideLetter">ܐ</div>
+
+    </div>
+
+    <canvas id="writingCanvas"
+            width="350"
+            height="350">
+    </canvas>
+  <!-- CONTROLES -->
+  <div class="canvas-controls">
+    <button id="prevLetter">⬅</button>
+    <button id="clearCanvas">🗑 Effacer</button>
+    <button id="nextLetter">➡</button>
+  </div>
 
 </div>
-
-<div class="canvas-controls">
-
-  <button id="prevLetter">⬅</button>
-
-  <button id="clearCanvas">
-    🗑 Effacer
-  </button>
-
-  <button id="nextLetter">➡</button>
-
-</div>
-
-<div id="letterGrid"></div>
 
 
 
