@@ -279,3 +279,132 @@ const input = document.getElementById("sourethInput");
 function toggleMenu() {
   document.querySelector("nav").classList.toggle("active");
 }
+
+/* =========================
+   MENU MODERNE SLIDE-IN
+========================= */
+function toggleMenu() {
+  const nav = document.querySelector("nav");
+  nav.classList.toggle("active");
+}
+
+/* =========================
+   MODE CLAIR / SOMBRE
+========================= */
+function toggleTheme() {
+  document.body.classList.toggle("light-mode");
+  localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+}
+
+// Charger le thème au démarrage
+(function () {
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") document.body.classList.add("light-mode");
+})();
+
+/* =========================
+   AUDIO PLAYER
+========================= */
+function playAudio(file) {
+  const audio = new Audio(file);
+  audio.play();
+}
+
+/* =========================
+   CLAVIER SOURETH
+========================= */
+function insertLetter(letter) {
+  const editor = document.getElementById("editor");
+  if (!editor) return;
+  const start = editor.selectionStart;
+  const end = editor.selectionEnd;
+  editor.value = editor.value.substring(0, start) + letter + editor.value.substring(end);
+  editor.focus();
+  editor.selectionStart = editor.selectionEnd = start + letter.length;
+}
+
+function deleteLetter() {
+  const editor = document.getElementById("editor");
+  if (!editor) return;
+  const start = editor.selectionStart;
+  const end = editor.selectionEnd;
+  if (start === end && start > 0) {
+    editor.value = editor.value.substring(0, start - 1) + editor.value.substring(end);
+    editor.selectionStart = editor.selectionEnd = start - 1;
+  } else {
+    editor.value = editor.value.substring(0, start) + editor.value.substring(end);
+    editor.selectionStart = editor.selectionEnd = start;
+  }
+}
+
+/* =========================
+   ÉCRITURE TACTILE
+========================= */
+let canvas, ctx, drawing = false;
+
+function initWritingCanvas() {
+  canvas = document.getElementById("writingCanvas");
+  if (!canvas) return;
+
+  ctx = canvas.getContext("2d");
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mouseup", stopDraw);
+  canvas.addEventListener("mouseleave", stopDraw);
+
+  canvas.addEventListener("touchstart", startDraw);
+  canvas.addEventListener("touchmove", draw);
+  canvas.addEventListener("touchend", stopDraw);
+}
+
+function startDraw(e) {
+  drawing = true;
+  ctx.beginPath();
+  ctx.moveTo(getX(e), getY(e));
+}
+
+function draw(e) {
+  if (!drawing) return;
+  ctx.lineWidth = 8;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineTo(getX(e), getY(e));
+  ctx.stroke();
+}
+
+function stopDraw() {
+  drawing = false;
+}
+
+function getX(e) {
+  return (e.touches ? e.touches[0].clientX : e.clientX) - canvas.getBoundingClientRect().left;
+}
+
+function getY(e) {
+  return (e.touches ? e.touches[0].clientY : e.clientY) - canvas.getBoundingClientRect().top;
+}
+
+function clearCanvas() {
+  if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+/* =========================
+   SERVICE WORKER
+========================= */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("SW enregistré ✔"))
+      .catch(err => console.log("Erreur SW :", err));
+  });
+}
+
+/* =========================
+   INITIALISATION GLOBALE
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  initWritingCanvas();
+});
