@@ -3,16 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Traduction Soureth ⇄ Français</title>
 
-  <title>Traducteur Soureth Ultimate</title>
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="css/style.css">
 
- 
-<link rel="stylesheet" href="css/style.css">
- <link rel="stylesheet"
-        href="css/traduction.css">
+  <!-- CSS SPÉCIFIQUE TRADUCTION -->
+  <link rel="stylesheet" href="css/traduction.css">
 
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0033a0">
@@ -20,117 +19,55 @@
 
 <body>
 
-<header class="topbar">
+<header>
+  <h1>🌍 Traduction Soureth ⇄ Français</h1>
 
-  <h1>🌍 FR ⇄ Soureth</h1>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 
-  <div class="top-actions">
-
-    <button id="swapBtn">⇄</button>
-
-    <button id="clearBtn">✖</button>
-
-  </div>
-
+  <nav>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="alphabet.html">🔠 Alphabet</a>
+    <a href="keyboard.html">⌨️ Clavier</a>
+    <a href="quiz.html">🎮 Quiz</a>
+  </nav>
 </header>
 
-<main class="container">
+<section class="translator-box card">
 
-  <section class="card">
+  <!-- STATUT -->
+  <div id="status" class="status">⏳ Chargement…</div>
 
-    <textarea id="input" placeholder="Écris ici..."></textarea>
+  <!-- ZONE DE SAISIE -->
+  <textarea id="input" placeholder="Écris ici en Français ou en Soureth…"></textarea>
 
-<div id="result" class="translation-output">...</div>
+  <!-- BOUTONS -->
+  <div class="translator-buttons">
+    <button id="translateBtn" class="btn btn-primary">🔁 Traduire</button>
+    <button id="clearBtn" class="btn btn-secondary">🧹 Effacer</button>
+    <button id="swapBtn" class="btn btn-secondary">⇄ Inverser</button>
+  </div>
 
-    <!-- CLAVIER SOURETH -->
+  <!-- AFFICHAGE DU RÉSULTAT -->
+  <div id="result" class="translation-output">...</div>
 
-    <div id="keyboard">
+  <!-- AUDIO -->
+  <div class="audio-controls">
+    <button id="speakBtn" class="audio-btn">🔊 Lire</button>
+    <button id="stopBtn" class="audio-btn">⏹ Stop</button>
+    <button id="micBtn" class="audio-btn">🎤 Micro</button>
+  </div>
 
-      <button onclick="insertLetter('ܐ')">ܐ</button>
-      <button onclick="insertLetter('ܒ')">ܒ</button>
-      <button onclick="insertLetter('ܓ')">ܓ</button>
-      <button onclick="insertLetter('ܕ')">ܕ</button>
-      <button onclick="insertLetter('ܗ')">ܗ</button>
-      <button onclick="insertLetter('ܘ')">ܘ</button>
-      <button onclick="insertLetter('ܙ')">ܙ</button>
+  <!-- HISTORIQUE -->
+  <h2>🕘 Historique</h2>
+  <div id="history" class="history-box"></div>
 
-      <button onclick="insertLetter('ܚ')">ܚ</button>
-      <button onclick="insertLetter('ܛ')">ܛ</button>
-      <button onclick="insertLetter('ܝ')">ܝ</button>
-      <button onclick="insertLetter('ܟ')">ܟ</button>
-      <button onclick="insertLetter('ܠ')">ܠ</button>
+</section>
 
-      <button onclick="insertLetter('ܡ')">ܡ</button>
-      <button onclick="insertLetter('ܢ')">ܢ</button>
-      <button onclick="insertLetter('ܣ')">ܣ</button>
-      <button onclick="insertLetter('ܥ')">ܥ</button>
-      <button onclick="insertLetter('ܦ')">ܦ</button>
-
-      <button onclick="insertLetter('ܨ')">ܨ</button>
-      <button onclick="insertLetter('ܩ')">ܩ</button>
-      <button onclick="insertLetter('ܪ')">ܪ</button>
-      <button onclick="insertLetter('ܫ')">ܫ</button>
-      <button onclick="insertLetter('ܬ')">ܬ</button>
-
-      <button onclick="insertLetter('݂')">݂</button>
-      <button onclick="insertLetter('̮')">̮</button>
-      <button onclick="insertLetter('ܸ')">ܸ</button>
-      <button onclick="insertLetter('ܹ')">ܹ</button>
-      <button onclick="insertLetter('ܲ')">ܲ</button>
-      <button onclick="insertLetter('ܵ')">ܵ</button>
-      <button onclick="insertLetter('ܿ')">ܿ</button>
-      <button onclick="insertLetter('ܼ')">ܼ</button>
-      <button onclick="insertLetter('̈')">̈</button>
-
-      <button onclick="insertLetter(' ')">␣</button>
-
-      <button onclick="deleteLetter()">⌫</button>
-
-    </div>
-
-    <div class="actions">
-
-      <button id="translateBtn">Traduire</button>
-
-      <button id="micBtn">🎤</button>
-
-      <button id="speakBtn">🔊</button>
-
-      <button id="stopBtn">⏹</button>
-
-    </div>
-
-  </section>
-
-  <div id="status"></div>
-
-  <section class="card">
-
-    <div id="result">
-      ...
-    </div>
-
-  </section>
-
-  <section class="card">
-
-    <h3>📜 Historique</h3>
-
-    <div id="history"></div>
-
-  </section>
-
-</main>
-
-<script src="js/keyboard.js" defer></script>
+<!-- JS -->
 <script src="js/translate.js" defer></script>
 <script src="js/app.js" defer></script>
-
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  initKeyboard("input");
-});
-</script>
 
 </body>
 </html>
