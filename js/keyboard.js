@@ -63,6 +63,12 @@ function deleteLetter() {
   }
 
   input.focus();
+
+  /* SI PLUS DE SYRIAQUE → REPASSE EN LTR */
+  if (!/[\u0700-\u074F]/.test(input.value)) {
+    input.style.direction = "ltr";
+    input.style.textAlign = "left";
+  }
 }
 
 /* INIT KEYBOARD (SAFE FOR FUTURE SPA) */
