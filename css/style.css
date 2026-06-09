@@ -361,3 +361,42 @@ nav a:hover {
     margin: 20px auto;
   }
 }
+
+/* =========================
+   MENU HAMBURGER FIX
+========================= */
+
+/* Bouton hamburger */
+.menu-toggle {
+  display: none;
+  background: var(--glass);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  /* Le bouton apparaît */
+  .menu-toggle {
+    display: block;
+    margin: 20px auto;
+  }
+
+  /* Le menu est caché par défaut */
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  /* Quand on active le menu */
+  nav.active {
+    display: flex;
+  }
+}
