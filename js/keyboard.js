@@ -68,3 +68,38 @@ function initKeyboard(targetId = "editor") {
 window.insertLetter = insertLetter;
 window.deleteLetter = deleteLetter;
 window.initKeyboard = initKeyboard;
+
+/* =========================
+   CLAVIER SOURETH PREMIUM
+========================= */
+
+const sourethLetters = [
+  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
+  "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
+];
+
+function generateKeyboard() {
+  const kb = document.getElementById("keyboard");
+  if (!kb) return;
+
+  kb.innerHTML = "";
+
+  sourethLetters.forEach(letter => {
+    const btn = document.createElement("button");
+    btn.className = "key-btn";
+    btn.innerText = letter;
+
+    btn.addEventListener("click", () => insertLetter(letter));
+
+    kb.appendChild(btn);
+  });
+
+  // Bouton effacer
+  const del = document.createElement("button");
+  del.className = "key-btn delete-btn";
+  del.innerText = "⌫";
+  del.addEventListener("click", deleteLetter);
+  kb.appendChild(del);
+}
+
+document.addEventListener("DOMContentLoaded", generateKeyboard);
