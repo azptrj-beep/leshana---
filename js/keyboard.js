@@ -4,7 +4,7 @@
    CLAVIER SOURETH FIX FINAL + V2 READY
 ========================================= */
 
-let editorId = "editor";
+let editorId = "input";
 
 /* TARGET DYNAMIC (SPA READY) */
 function setKeyboardTarget(id) {
