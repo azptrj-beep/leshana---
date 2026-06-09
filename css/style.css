@@ -875,7 +875,6 @@ canvas {
   -ms-touch-action: none;
 }
 html, body {
-  overflow: auto;
   touch-action: auto;
 }
 
@@ -1047,7 +1046,7 @@ body{
 .guide,
 #keyboard button,
 .quiz-options button {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
 }
 textarea,
 input {
@@ -1063,7 +1062,7 @@ p, h1, h2, h3 {
 }
 /* sécurité affichage syriaque */
 :lang(syr) {
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'nohadra', sans-serif;
   direction: rtl;
 }
 .dark-mode .letter-box,
@@ -1082,7 +1081,7 @@ p, h1, h2, h3 {
 
 /* LETTRE PRINCIPALE */
 #letterDisplay {
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'nohadra', sans-serif;
   font-size: 90px;
   color: #0033a0;
   direction: rtl;
@@ -1094,7 +1093,7 @@ p, h1, h2, h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -40%);
-  font-family: 'Adiabene', sans-serif;
+  font-family: 'nohadra', sans-serif;
   font-size: 160px;
   opacity: 0.08;
   color: #0033a0;
@@ -1399,7 +1398,6 @@ footer {
 
 #result{
   font-family:
-    'Adiabene',
     'Nohadra',
     sans-serif !important;
 
