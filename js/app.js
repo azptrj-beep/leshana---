@@ -314,26 +314,38 @@ function playAudio(file) {
    CLAVIER SOURETH
 ========================= */
 function insertLetter(letter) {
-  const editor = document.getElementById("editor");
-  if (!editor) return;
-  const start = editor.selectionStart;
-  const end = editor.selectionEnd;
-  editor.value = editor.value.substring(0, start) + letter + editor.value.substring(end);
-  editor.focus();
-  editor.selectionStart = editor.selectionEnd = start + letter.length;
+  const input = document.getElementById("input");
+  if (!input) return;
+
+  const start = input.selectionStart;
+  const end = input.selectionEnd;
+
+  input.value =
+    input.value.substring(0, start) +
+    letter +
+    input.value.substring(end);
+
+  input.focus();
+  input.selectionStart = input.selectionEnd = start + 1;
 }
 
 function deleteLetter() {
-  const editor = document.getElementById("editor");
-  if (!editor) return;
-  const start = editor.selectionStart;
-  const end = editor.selectionEnd;
+  const input = document.getElementById("input");
+  if (!input) return;
+
+  const start = input.selectionStart;
+  const end = input.selectionEnd;
+
   if (start === end && start > 0) {
-    editor.value = editor.value.substring(0, start - 1) + editor.value.substring(end);
-    editor.selectionStart = editor.selectionEnd = start - 1;
+    input.value =
+      input.value.substring(0, start - 1) +
+      input.value.substring(end);
+    input.selectionStart = input.selectionEnd = start - 1;
   } else {
-    editor.value = editor.value.substring(0, start) + editor.value.substring(end);
-    editor.selectionStart = editor.selectionEnd = start;
+    input.value =
+      input.value.substring(0, start) +
+      input.value.substring(end);
+    input.selectionStart = input.selectionEnd = start;
   }
 }
 
