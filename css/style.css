@@ -406,3 +406,43 @@ nav a:hover {
   outline: none !important;
   box-shadow: none !important;
 }
+
+/* FIX CLAVIER */
+#keyboard {
+  width: 100%;
+  max-width: 700px;
+  margin: 25px auto;
+  justify-content: center;
+}
+
+#keyboard button {
+  flex: 0 0 70px;
+}
+
+/* FIX TRADUCTION */
+.translator-box {
+  max-width: 700px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 18px;
+}
+
+/* FIX INPUTS */
+textarea,
+input {
+  width: 100%;
+  font-size: 18px;
+  padding: 18px;
+  border-radius: 18px;
+}
+
+/* FIX CARDS TROP PETITES */
+.card,
+.letter-card,
+.progress-card {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
