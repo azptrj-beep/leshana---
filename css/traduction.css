@@ -128,3 +128,13 @@
 #keyboard .delete-btn:hover {
   background: linear-gradient(135deg, #ff4444, #ff7777);
 }
+
+#input {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+#input[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
