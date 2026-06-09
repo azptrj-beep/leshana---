@@ -415,3 +415,18 @@ input {
     margin: 20px auto;
   }
 }
+
+/* =========================
+   FIX COULEUR VIOLETTE
+========================= */
+
+button,
+a,
+input,
+textarea,
+.soureth-title,
+.soureth-writing,
+.soureth-classic,
+.letter {
+  color: inherit !important;
+}
