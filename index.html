@@ -235,35 +235,38 @@ content="#0033a0">
     🟢 Débutant  
   </div>  
 
-<section class="model">
+  <title>Écriture Soureth</title>
 
-  <h2>✍️ Entraînement d'écriture</h2>
+    <link rel="stylesheet" href="css/style.css">
 
-  <!-- LETTRE GUIDE -->
-  <div id="guideLetter"></div>
+  <link rel="stylesheet" href="css/ecriture.css">
+</head>
 
-  <!-- LETTRE PRINCIPALE (optionnel mais conseillé) -->
-  <div id="letterDisplay"></div>
+<body>
+
+<h1>✍️ Écriture Soureth</h1>
+
 <div class="writing-container">
 
-    <div class="model">
- 
+  <canvas
+    id="writingCanvas"
+    width="350"
+    height="350">
+  </canvas>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/ecriture.css">
-       
+</div>
 
-    <canvas id="writingCanvas"
-            width="350"
-            height="350">
-    </canvas>
-  <!-- CONTROLES -->
-  <div class="canvas-controls">
-    <button id="prevLetter">⬅</button>
-    <button id="clearCanvas">🗑 Effacer</button>
-    <button id="nextLetter">➡</button>
-  </div>
+<div class="canvas-controls">
 
+  <button id="prevLetter">⬅</button>
+
+  <button id="clearCanvas">
+    🗑 Effacer
+  </button>
+
+  <button id="nextLetter">➡</button>
+
+</div>
 
 <div id="letterGrid"></div>
 
