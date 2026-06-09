@@ -400,3 +400,8 @@ nav a:hover {
     display: flex;
   }
 }
+
+nav a:focus,
+button:focus {
+  outline: none;
+}
