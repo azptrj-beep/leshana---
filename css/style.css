@@ -569,7 +569,7 @@ width: 100%;
 .soureth-writing,
 .soureth-classic,
 :lang(syr) {
-  font-family: 'Adiabene', 'nohadra', 'assyrian', sans-serif !important;
+  font-family: 'nohadra', 'assyrian', sans-serif !important;
   direction: rtl;
   unicode-bidi: plaintext;
 }
