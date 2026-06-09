@@ -29,14 +29,12 @@ function insertLetter(letter) {
     input.value.slice(end);
 
   const pos = start + letter.length;
-
   input.setSelectionRange(pos, pos);
   input.focus();
 
-  /* AUTO RTL SI LETTRE SYRIAQUE */
+  /* ACTIVE RTL SI LETTRE SYRIAQUE */
   if (/[\u0700-\u074F]/.test(letter)) {
-    input.style.direction = "rtl";
-    input.style.textAlign = "right";
+    input.classList.add("rtl");
   }
 }
 
