@@ -138,3 +138,13 @@
   direction: rtl !important;
   text-align: right !important;
 }
+
+#input {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+#input[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
