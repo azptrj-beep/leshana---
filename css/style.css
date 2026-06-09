@@ -30,7 +30,7 @@ FONTS
 @font-face {
 font-family: 'Nohadra';
 src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-url('../assets/fonts/nohadra.ttf') format('truetype');
+format('truetype');
 font-weight: normal;
 font-style: normal;
 font-display: swap;
@@ -38,7 +38,7 @@ font-display: swap;
 @font-face {
 font-family: 'Assyrian';
 src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-url('../assets/fonts/assyrian.ttf') format('truetype');
+format('truetype');
 font-weight: normal;
 font-style: normal;
 font-display: swap;
