@@ -1,134 +1,289 @@
 "use strict";
 
-/* =========================================
-   CLAVIER SOURETH — VERSION SIMPLE & COMPLÈTE
-========================================= */
+/* ============================================================
+   STATE
+============================================================ */
 
-let editorId = "input";
+let words = {};
+let phrases = {};
+let reverseWords = {};
+let reversePhrases = {};
+let wordList = [];
 
-/* TARGET */
-function setKeyboardTarget(id) {
-  editorId = id;
-}
+/* ============================================================
+   LOAD DICTIONARIES
+============================================================ */
 
-function getEditor() {
-  return document.getElementById(editorId);
-}
+async function loadDictionaries() {
+  try {
+    const [wRes, pRes] = await Promise.all([
+      fetch("data/words.json"),
+      fetch("data/phrases.json")
+    ]);
 
-/* INSERT LETTER */
-function insertLetter(letter) {
-  const input = getEditor();
-  if (!input) return;
+    words = await wRes.json();
+    phrases = await pRes.json();
 
-  const start = input.selectionStart ?? input.value.length;
-  const end = input.selectionEnd ?? input.value.length;
+    buildReverse();
+    buildIndex();
 
-  input.value =
-    input.value.slice(0, start) +
-    letter +
-    input.value.slice(end);
-
-  const pos = start + letter.length;
-  input.setSelectionRange(pos, pos);
-  input.focus();
-
-  // Active RTL si lettre syriaque
-  if (/[\u0700-\u074F]/.test(letter)) {
-    input.classList.add("rtl");
+    setStatus("📚 Dictionnaires chargés");
+  } catch (e) {
+    console.error("Erreur dictionnaires :", e);
+    setStatus("❌ Erreur chargement dictionnaires");
   }
 }
 
-/* DELETE LETTER */
-function deleteLetter() {
-  const input = getEditor();
-  if (!input) return;
+/* ============================================================
+   BUILD REVERSE + INDEX
+============================================================ */
 
-  const start = input.selectionStart;
-  const end = input.selectionEnd;
+function buildReverse() {
+  reverseWords = {};
+  reversePhrases = {};
 
-  if (start === end && start > 0) {
-    input.value =
-      input.value.slice(0, start - 1) +
-      input.value.slice(end);
-    input.setSelectionRange(start - 1, start - 1);
-  } else {
-    input.value =
-      input.value.slice(0, start) +
-      input.value.slice(end);
-    input.setSelectionRange(start, start);
-  }
-
-  input.focus();
-
-  // Si plus de syriaque → repasse en LTR
-  if (!/[\u0700-\u074F]/.test(input.value)) {
-    input.classList.remove("rtl");
-  }
+  for (const k in words) reverseWords[words[k]] = k;
+  for (const k in phrases) reversePhrases[phrases[k]] = k;
 }
 
-/* INIT KEYBOARD */
-function initKeyboard(targetId = "input") {
-  setKeyboardTarget(targetId);
+function buildIndex() {
+  wordList = Object.keys(words);
 }
 
-window.insertLetter = insertLetter;
-window.deleteLetter = deleteLetter;
-window.initKeyboard = initKeyboard;
+/* ============================================================
+   CLEAN + DETECT
+============================================================ */
 
-/* =========================================
-   LAYOUT UNIQUE : LETTRES + VOYELLES + FINALES + CHIFFRES
-========================================= */
+function clean(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s\u0700-\u074F]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-const fullLayout = [
+function detect(text) {
+  return /[\u0700-\u074F]/.test(text) ? "syr" : "fr";
+}
 
-  // Lettres
-  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
-  "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ",
+/* ============================================================
+   LEVENSHTEIN (CORRECTION)
+============================================================ */
 
-  // Voyelles
-  "ܵ","ܸ","ܿ","ܲ","ܼ","ܹ","ܺ",
+function levenshtein(a, b) {
+  const m = [];
 
-  // Formes finales
-  "ܟ݂","ܡ̇","ܢ̇",
+  for (let i = 0; i <= b.length; i++) m[i] = [i];
+  for (let j = 0; j <= a.length; j++) m[0][j] = j;
 
-  // Chiffres araméens
-  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      m[i][j] =
+        b[i - 1] === a[j - 1]
+          ? m[i - 1][j - 1]
+          : Math.min(m[i - 1][j - 1] + 1, m[i][j - 1] + 1, m[i - 1][j] + 1);
+    }
+  }
 
-  // Ponctuation
-  "،","؛","؟","܀","܁","܂"
-];
+  return m[b.length][a.length];
+}
 
-/* =========================================
-   GENERATE KEYBOARD
-========================================= */
+/* ============================================================
+   FIND CLOSEST WORD
+============================================================ */
 
-function generateKeyboard() {
-  const kb = document.getElementById("keyboard");
-  if (!kb) return;
+function findClosest(word) {
+  let best = null;
+  let bestScore = 2;
 
-  kb.innerHTML = "";
+  for (const w of wordList) {
+    const score = levenshtein(word, w);
+    if (score < bestScore) {
+      bestScore = score;
+      best = w;
+    }
+  }
 
-  fullLayout.forEach(letter => {
-    const btn = document.createElement("button");
-    btn.className = "key-btn";
-    btn.innerText = letter;
-    btn.addEventListener("click", () => insertLetter(letter));
-    kb.appendChild(btn);
+  return best;
+}
+
+/* ============================================================
+   TRANSLATION ENGINE
+============================================================ */
+
+function translate(text) {
+  const input = clean(text);
+  const lang = detect(input);
+
+  if (!input) return "⚠️ vide";
+
+  if (phrases[input]) return phrases[input];
+
+  const map = lang === "fr" ? words : reverseWords;
+
+  return input
+    .split(" ")
+    .map(word => {
+      if (map[word]) return map[word];
+
+      const closest = findClosest(word);
+      if (closest && map[closest]) return map[closest];
+
+      return `[${word}]`;
+    })
+    .join(" ");
+}
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+function setStatus(msg) {
+  const el = document.getElementById("status");
+  if (el) el.innerText = msg;
+}
+
+/* ============================================================
+   HISTORY
+============================================================ */
+
+function saveHistory(original, translated) {
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  history.unshift({ original, translated });
+  history = history.slice(0, 20);
+
+  localStorage.setItem("history", JSON.stringify(history));
+}
+
+function renderHistory() {
+  const box = document.getElementById("history");
+  const history = JSON.parse(localStorage.getItem("history")) || [];
+
+  box.innerHTML = history
+    .map(item => `<div class="history-item">${item.original} → ${item.translated}</div>`)
+    .join("");
+}
+
+/* ============================================================
+   AUDIO
+============================================================ */
+
+function speak(text) {
+  if (!text || text === "...") return;
+
+  if (!("speechSynthesis" in window)) {
+    setStatus("❌ Audio non supporté");
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "fr-FR";
+
+  utter.onstart = () => setStatus("🔊 Lecture...");
+  utter.onend = () => setStatus("✅ Terminé");
+  utter.onerror = () => setStatus("❌ Erreur audio");
+
+  speechSynthesis.speak(utter);
+}
+
+/* ============================================================
+   MICROPHONE
+============================================================ */
+
+function setupMicrophone(input) {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const micBtn = document.getElementById("micBtn");
+
+  if (!SpeechRecognition) {
+    if (micBtn) micBtn.disabled = true;
+    setStatus("🎤 Micro non supporté");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = "fr-FR";
+
+  recognition.onstart = () => setStatus("🎤 Écoute...");
+  recognition.onresult = e => {
+    input.value = e.results[0][0].transcript;
+    setStatus("✅ Reçu");
+  };
+  recognition.onerror = e => setStatus("❌ Micro : " + e.error);
+
+  micBtn.addEventListener("click", () => {
+    try {
+      recognition.start();
+    } catch {}
+  });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const input = document.getElementById("input");
+  const result = document.getElementById("result");
+
+  await loadDictionaries();
+
+  function runTranslation() {
+    const text = input.value.trim();
+    const translated = translate(text);
+
+    result.innerText = translated;
+    saveHistory(text, translated);
+    renderHistory();
+    setStatus("✅ OK");
+  }
+
+  document.getElementById("translateBtn").addEventListener("click", runTranslation);
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      runTranslation();
+    }
   });
 
-  // Bouton effacer
-  const del = document.createElement("button");
-  del.className = "key-btn delete-btn";
-  del.innerText = "⌫";
-  del.addEventListener("click", deleteLetter);
-  kb.appendChild(del);
-}
+  document.getElementById("clearBtn").addEventListener("click", () => {
+    input.value = "";
+    result.innerText = "...";
+    setStatus("🧹 Effacé");
+  });
 
-/* =========================================
-   INIT AUTO
-========================================= */
+  document.getElementById("swapBtn").addEventListener("click", () => {
+    input.value = "";
+    result.innerText = "...";
+    setStatus("⇄ Langues inversées");
+  });
 
-document.addEventListener("DOMContentLoaded", () => {
-  initKeyboard("input");
-  generateKeyboard();
+  document.getElementById("speakBtn").addEventListener("click", () => {
+    speak(result.innerText);
+  });
+
+  document.getElementById("stopBtn").addEventListener("click", () => {
+    speechSynthesis.cancel();
+    setStatus("⏹ Arrêt");
+  });
+
+  setupMicrophone(input);
+  renderHistory();
+
+  setStatus("✅ App prête");
 });
+
+/* ============================================================
+   FIREFOX WARNING
+============================================================ */
+
+if (navigator.userAgent.toLowerCase().includes("firefox")) {
+  const micBtn = document.getElementById("micBtn");
+  if (micBtn) micBtn.disabled = true;
+  setStatus("⚠️ Firefox : micro limité");
+}
