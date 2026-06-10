@@ -58,7 +58,8 @@ function buildIndex() {
 function clean(text) {
   return text
     .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s\u0700-\u074F\.\!\?]/gu, "")
+    // garde lettres latines, chiffres, syriaque, espaces et . ! ?
+    .replace(/[^A-Za-z0-9\u0700-\u074F\s\.\!\?]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
