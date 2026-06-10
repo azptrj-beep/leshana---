@@ -149,27 +149,7 @@
   }
 }
 
-#keyboard-tabs {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
 
-#keyboard-tabs .tab-btn {
-  padding: 8px 14px;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-  background: rgba(255,255,255,0.12);
-  color: white;
-  font-size: 14px;
-}
-
-#keyboard-tabs .tab-btn.active {
-  background: linear-gradient(135deg, #0066ff, #00cfff);
-}
 /* =========================
    ONGLETES DU CLAVIER
 ========================= */
