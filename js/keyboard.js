@@ -1,12 +1,12 @@
 "use strict";
 
 /* =========================================
-   CLAVIER SOURETH FIX FINAL + ONGLETES
+   CLAVIER SOURETH — VERSION SIMPLE & COMPLÈTE
 ========================================= */
 
 let editorId = "input";
 
-/* TARGET DYNAMIC */
+/* TARGET */
 function setKeyboardTarget(id) {
   editorId = id;
 }
@@ -76,50 +76,59 @@ window.deleteLetter = deleteLetter;
 window.initKeyboard = initKeyboard;
 
 /* =========================================
-   LAYOUTS DU CLAVIER À ONGLETES
+   LAYOUT UNIQUE : LETTRES + VOYELLES + FINALES + CHIFFRES
 ========================================= */
 
-const layoutConsonnes = [
+const fullLayout = [
+
+  // Lettres
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
-  "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
-];
+  "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ",
 
-const layoutVoyelles = [
-  "ܵ","ܸ","ܿ","ܲ","ܼ","ܹ","ܺ"
-];
+  // Voyelles
+  "ܵ","ܸ","ܿ","ܲ","ܼ","ܹ","ܺ",
 
-const layoutFinales = [
-  "ܟ݂","ܡ̇","ܢ̇"
-];
+  // Formes finales
+  "ܟ݂","ܡ̇","ܢ̇",
 
-const layoutChiffres = [
-  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ"
-];
+  // Chiffres araméens
+  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
 
-const layoutPonctuation = [
+  // Ponctuation
   "،","؛","؟","܀","܁","܂"
 ];
 
-let currentLayout = "consonnes";
+/* =========================================
+   GENERATE KEYBOARD
+========================================= */
 
-/* GET LAYOUT */
-function getLayoutLetters() {
-  switch (currentLayout) {
-    case "voyelles": return layoutVoyelles;
-    case "finales": return layoutFinales;
-    case "chiffres": return layoutChiffres;
-    case "ponctuation": return layoutPonctuation;
-    default: return layoutConsonnes;
-  }
-}
+function generateKeyboard() {
+  const kb = document.getElementById("keyboard");
+  if (!kb) return;
 
-/* ACTIVE TAB */
-function setActiveTab() {
-  const tabs = document.querySelectorAll("#keyboard-tabs .tab-btn");
-  tabs.forEach(t => {
-    t.classList.toggle("active", t.dataset.layout === currentLayout);
+  kb.innerHTML = "";
+
+  fullLayout.forEach(letter => {
+    const btn = document.createElement("button");
+    btn.className = "key-btn";
+    btn.innerText = letter;
+    btn.addEventListener("click", () => insertLetter(letter));
+    kb.appendChild(btn);
   });
+
+  // Bouton effacer
+  const del = document.createElement("button");
+  del.className = "key-btn delete-btn";
+  del.innerText = "⌫";
+  del.addEventListener("click", deleteLetter);
+  kb.appendChild(del);
 }
 
-/* GENERATE KEYBOARD */
-function generate
+/* =========================================
+   INIT AUTO
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initKeyboard("input");
+  generateKeyboard();
+});
