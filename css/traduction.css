@@ -170,3 +170,96 @@
 #keyboard-tabs .tab-btn.active {
   background: linear-gradient(135deg, #0066ff, #00cfff);
 }
+/* =========================
+   ONGLETES DU CLAVIER
+========================= */
+
+#keyboard-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+#keyboard-tabs .tab-btn {
+  padding: 10px 18px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+#keyboard-tabs .tab-btn:hover {
+  background: rgba(0,150,255,0.35);
+  transform: translateY(-2px);
+}
+
+#keyboard-tabs .tab-btn.active {
+  background: linear-gradient(135deg, #0066ff, #00cfff);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,150,255,0.35);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   CLAVIER PREMIUM
+========================= */
+
+#keyboard {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+#keyboard .key-btn {
+  font-size: 42px;
+  padding: 15px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+}
+
+#keyboard .key-btn:hover {
+  background: linear-gradient(135deg, #0066ff, #00cfff);
+  transform: translateY(-4px);
+}
+
+#keyboard .delete-btn {
+  background: rgba(255,80,80,0.25);
+}
+
+#keyboard .delete-btn:hover {
+  background: linear-gradient(135deg, #ff4444, #ff7777);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+  #keyboard .key-btn {
+    font-size: 32px;
+    padding: 12px;
+  }
+
+  #keyboard-tabs .tab-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
