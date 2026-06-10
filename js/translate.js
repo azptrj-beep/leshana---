@@ -109,16 +109,18 @@ function findClosest(word) {
 }
 
 /* ============================================================
-   TRANSLATION ENGINE
+   TRANSLATION ENGINE (AUTO-DETECT)
 ============================================================ */
 
 function translate(text) {
   const input = clean(text);
-  const lang = detect(input);
-
   if (!input) return "⚠️ vide";
 
-  if (phrases[input]) return phrases[input];
+  const lang = detect(input);
+
+  // Phrases prioritaires
+  if (lang === "fr" && phrases[input]) return phrases[input];
+  if (lang === "syr" && reversePhrases[input]) return reversePhrases[input];
 
   const map = lang === "fr" ? words : reverseWords;
 
@@ -128,30 +130,4 @@ function translate(text) {
       if (map[word]) return map[word];
 
       const closest = findClosest(word);
-      if (closest && map[closest]) return map[closest];
-
-      return `[${word}]`;
-    })
-    .join(" ");
-}
-
-/* ============================================================
-   STATUS
-============================================================ */
-
-function setStatus(msg) {
-  const el = document.getElementById("status");
-  if (el) el.innerText = msg;
-}
-
-/* ============================================================
-   HISTORY
-============================================================ */
-
-function saveHistory(original, translated) {
-  let history = JSON.parse(localStorage.getItem("history")) || [];
-
-  history.unshift({ original, translated });
-  history = history.slice(0, 20);
-
-  localStorage
+      if (closest && map
