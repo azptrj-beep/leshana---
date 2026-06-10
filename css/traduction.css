@@ -1,79 +1,88 @@
-.translator-box{
-  max-width:700px;
-  margin:auto;
-  padding:20px;
-}
-
-.translator-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-#frInput,
-#input{
-  width:100%;
-}
-
-#result{
-  margin-top:30px;
-  font-size:2rem;
-}
-
-.suggestion{
-  padding:10px;
-}
-
-.history-item{
-  margin-top:10px;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-#history{
-  margin-top:15px;
-}
-
-#status{
-  margin:15px 0;
-}
-
-.audio-btn{
-  padding:12px 18px;
-}
 /* =========================
-   FIX TRADUCTION — VISIBILITÉ + ALIGNEMENT + TAILLE
+   LAYOUT DE LA PAGE
 ========================= */
-#input {
-  background: rgba(255,255,255,0.12) !important;
-  color: white !important;
-  font-size: 32px !important;
-  padding: 22px !important;
-  border-radius: 20px !important;
-  width: 100% !important;
-  min-height: 160px !important;
-  text-align: left !important;
-  direction: ltr !important;
-  unicode-bidi: normal !important;
-  font-family: 'Poppins', sans-serif !important;
+
+.translator-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
 }
+
+.translator-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#result {
+  margin-top: 30px;
+  font-size: 2rem;
+}
+
+.history-item {
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#history {
+  margin-top: 15px;
+}
+
+#status {
+  margin: 15px 0;
+}
+
+.audio-btn {
+  padding: 12px 18px;
+}
+
+/* =========================
+   TEXTAREA PREMIUM
+========================= */
+
+#input {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 32px;
+  padding: 22px;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 160px;
+  font-family: 'Poppins', sans-serif;
+  direction: ltr;
+  text-align: left;
+}
+
+/* MODE SOURETH (activé par JS) */
+#input.rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* =========================
+   RÉSULTAT
+========================= */
 
 .translation-output {
-  background: rgba(255,255,255,0.12) !important;
-  color: white !important;
-  font-size: 28px !important;
-  padding: 25px !important;
-  border-radius: 20px !important;
-  text-align: left !important;
-  direction: ltr !important;
-  unicode-bidi: normal !important;
-  font-family: 'Poppins', sans-serif !important;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 28px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: left;
+  direction: ltr;
+  font-family: 'Poppins', sans-serif;
 }
+
+/* =========================
+   HISTORIQUE
+========================= */
 
 .history-box {
   margin-top: 20px;
@@ -129,22 +138,13 @@
   background: linear-gradient(135deg, #ff4444, #ff7777);
 }
 
-#input {
-  direction: ltr !important;
-  text-align: left !important;
-}
+/* =========================
+   RESPONSIVE
+========================= */
 
-#input[dir="rtl"] {
-  direction: rtl !important;
-  text-align: right !important;
-}
-
-#input {
-  direction: ltr !important;
-  text-align: left !important;
-}
-
-#input[dir="rtl"] {
-  direction: rtl !important;
-  text-align: right !important;
+@media(max-width:768px){
+  #keyboard .key-btn {
+    font-size: 32px;
+    padding: 12px;
+  }
 }
