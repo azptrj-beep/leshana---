@@ -63,12 +63,13 @@ function deleteLetter() {
   input.focus();
 
   /* SI PLUS DE SYRIAQUE → REPASSE EN LTR */
-if (!/[\u0700-\u074F]/.test(input.value)) {
-  input.classList.remove("rtl");
-}
+  if (!/[\u0700-\u074F]/.test(input.value)) {
+    input.classList.remove("rtl");
+  }
+}  // ← ACCOLADE QUI MANQUAIT
 
 /* INIT KEYBOARD (SAFE FOR FUTURE SPA) */
-function initKeyboard(targetId = "editor") {
+function initKeyboard(targetId = "input") {
   setKeyboardTarget(targetId);
 }
 
