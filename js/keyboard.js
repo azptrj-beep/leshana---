@@ -66,9 +66,9 @@ function deleteLetter() {
   if (!/[\u0700-\u074F]/.test(input.value)) {
     input.classList.remove("rtl");
   }
-}  // ← ACCOLADE QUI MANQUAIT
+}
 
-/* INIT KEYBOARD (SAFE FOR FUTURE SPA) */
+/* INIT KEYBOARD */
 function initKeyboard(targetId = "input") {
   setKeyboardTarget(targetId);
 }
@@ -79,27 +79,66 @@ window.deleteLetter = deleteLetter;
 window.initKeyboard = initKeyboard;
 
 /* =========================
-   CLAVIER SOURETH PREMIUM
+   CLAVIER SOURETH PREMIUM À ONGLETES
 ========================= */
 
-const sourethLetters = [
+/* --- LAYOUTS --- */
+const layoutConsonnes = [
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
   "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ"
 ];
 
+const layoutVoyelles = [
+  "ܵ","ܸ","ܿ","ܲ","ܼ","ܹ","ܺ"
+];
+
+const layoutFinales = [
+  "ܟ݂","ܡ̇","ܢ̇"
+];
+
+const layoutChiffres = [
+  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ"
+];
+
+const layoutPonctuation = [
+  "،","؛","؟","܀","܁","܂"
+];
+
+let currentLayout = "consonnes";
+
+/* --- GET LAYOUT --- */
+function getLayoutLetters() {
+  switch (currentLayout) {
+    case "voyelles": return layoutVoyelles;
+    case "finales": return layoutFinales;
+    case "chiffres": return layoutChiffres;
+    case "ponctuation": return layoutPonctuation;
+    default: return layoutConsonnes;
+  }
+}
+
+/* --- ACTIVE TAB --- */
+function setActiveTab() {
+  const tabs = document.querySelectorAll("#keyboard-tabs .tab-btn");
+  tabs.forEach(t => {
+    t.classList.toggle("active", t.dataset.layout === currentLayout);
+  });
+}
+
+/* --- GENERATE KEYBOARD --- */
 function generateKeyboard() {
   const kb = document.getElementById("keyboard");
   if (!kb) return;
 
   kb.innerHTML = "";
 
-  sourethLetters.forEach(letter => {
+  const letters = getLayoutLetters();
+
+  letters.forEach(letter => {
     const btn = document.createElement("button");
     btn.className = "key-btn";
     btn.innerText = letter;
-
     btn.addEventListener("click", () => insertLetter(letter));
-
     kb.appendChild(btn);
   });
 
@@ -109,6 +148,14 @@ function generateKeyboard() {
   del.innerText = "⌫";
   del.addEventListener("click", deleteLetter);
   kb.appendChild(del);
+
+  setActiveTab();
 }
 
-document.addEventListener("DOMContentLoaded", generateKeyboard);
+/* --- INIT TABS + KEYBOARD --- */
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll("#keyboard-tabs .tab-btn");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      currentLayout = tab.dataset
