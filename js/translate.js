@@ -345,9 +345,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   input.addEventListener("input", () => {
-    const suggestions = getSuggestions(input.value);
-    console.log("Suggestions:", suggestions);
-  });
+  const suggestions = getSuggestions(input.value);
+  console.log("Suggestions:", suggestions);
+
+  // Auto RTL si texte syriaque, sinon LTR
+  if (/[\u0700-\u074F]/.test(input.value)) {
+    input.classList.add("rtl");
+  } else {
+    input.classList.remove("rtl");
+  }
+});
 
   document.getElementById("clearBtn")
     .addEventListener("click", () => {
