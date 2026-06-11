@@ -93,6 +93,36 @@
 </section>
 
 <!-- =========================
+       ÉCRITURE TACTILE (APERÇU)
+========================== -->
+<section class="card" style="max-width:900px;margin:50px auto;padding:35px;">
+
+  <h2>✍️ Écriture tactile</h2>
+  <p style="margin-bottom:20px;color:var(--text-soft);">
+    Dessine une lettre avec ton doigt, ta souris ou un stylet.
+  </p>
+
+  <div class="tactile-preview">
+      <canvas id="writingCanvas" width="350" height="250"></canvas>
+  </div>
+
+  <div class="canvas-controls" style="margin-top:20px;display:flex;justify-content:center;gap:15px;">
+      <button id="prevLetter" class="btn">⬅</button>
+      <button id="clearCanvas" class="btn">🗑 Effacer</button>
+      <button id="nextLetter" class="btn">➡</button>
+  </div>
+
+  <div id="letterGrid" style="margin-top:25px;"></div>
+
+  <a href="ecriture.html" class="btn btn-secondary" style="margin-top:25px;display:inline-block;">
+    Ouvrir l'atelier complet
+  </a>
+
+</section>
+
+<script src="js/ecriture.js"></script>
+
+<!-- =========================
        MODULES D’ACCUEIL
 ========================== -->
 <section class="modules-container">
@@ -158,9 +188,7 @@
     <textarea id="editor" class="soureth-writing" placeholder="Écrire en Soureth..."></textarea>
 
     <div id="keyboard">
-      <!-- LETTRES -->
-      <!-- (Ton clavier complet est conservé) -->
-      <!-- ... -->
+      <!-- Ton clavier complet reste ici -->
     </div>
 
   </div>
