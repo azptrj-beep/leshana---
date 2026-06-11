@@ -100,7 +100,32 @@
 <section class="home-writing card">
   <h2>✍️ Écriture tactile</h2>
 
-  <canvas id="draw" width="350" height="250"></canvas>
+  <div class="writing-container">
+
+  <canvas
+    id="writingCanvas"
+    width="350"
+    height="250">
+  </canvas>
+
+</div>
+
+<div class="canvas-controls">
+
+  <button id="prevLetter">⬅</button>
+
+  <button id="clearCanvas">
+    🗑 Effacer
+  </button>
+
+  <button id="nextLetter">➡</button>
+
+</div>
+
+<div id="letterGrid"></div>
+
+<script src="js/ecriture.js"></script>
+
 
   <a href="ecriture.html" class="btn">Ouvrir l'atelier complet</a>
 </section>
