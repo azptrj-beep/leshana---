@@ -153,3 +153,35 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
         font-size: 14px;
     }
 }
+
+/* ================================
+   ÉCRITURE TACTILE — FORMAT VERTICAL
+   (Version ordinateur)
+=================================== */
+
+@media (min-width: 900px) {
+    #writingCanvas {
+        width: 380px !important;   /* Largeur verticale */
+        height: 520px !important;  /* Hauteur plus grande */
+        background: rgba(255,255,255,0.15);
+        border-radius: 18px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+        display: block;
+        margin: auto;
+    }
+
+    .tactile-preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .canvas-controls {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+}
