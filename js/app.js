@@ -12,14 +12,21 @@ const letters = [
 let alphabetIndex = 0;
 
 /* ============================================================
-   INIT
+   INIT (sécurisé pour toutes les pages)
 ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initMenu();
   initUIEffects();
-  initWritingCanvas();
-  updateAlphabet();
+
+  // Exécuter alphabet + canvas UNIQUEMENT si les éléments existent
+  if (document.getElementById("letterDisplay")) {
+    updateAlphabet();
+  }
+
+  if (document.getElementById("writingCanvas")) {
+    initWritingCanvas();
+  }
 });
 
 /* ============================================================
@@ -46,12 +53,12 @@ window.toggleTheme = toggleTheme;
 function initMenu() {
   window.toggleMenu = () => {
     const nav = document.querySelector("nav");
-    nav.classList.toggle("active");
+    if (nav) nav.classList.toggle("active");
   };
 }
 
 /* ============================================================
-   ALPHABET SYSTEM
+   ALPHABET SYSTEM (sécurisé)
 ============================================================ */
 function updateAlphabet() {
   const display = document.getElementById("letterDisplay");
@@ -113,7 +120,7 @@ window.insertHomeLetter = insertHomeLetter;
 window.deleteHomeLetter = deleteHomeLetter;
 
 /* ============================================================
-   ÉCRITURE TACTILE (Canvas)
+   ÉCRITURE TACTILE (Canvas) — sécurisé
 ============================================================ */
 let canvas, ctx, drawing = false;
 
@@ -208,13 +215,4 @@ function initUIEffects() {
   });
 }
 
-/* ============================================================
-   SERVICE WORKER
-============================================================ */
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js")
-      .then(() => console.log("SW enregistré ✔"))
-      .catch(err => console.log("Erreur SW :", err));
-  });
-}
+/* =================================================
