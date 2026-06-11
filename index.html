@@ -93,26 +93,36 @@
 </section>
 
 <!-- =========================
-       ÉCRITURE TACTILE (APERÇU)
+       ÉCRITURE TACTILE + CLAVIER
 ========================== -->
 <section class="card" style="max-width:900px;margin:50px auto;padding:35px;">
 
   <h2>✍️ Écriture tactile</h2>
   <p style="margin-bottom:20px;color:var(--text-soft);">
-    Dessine une lettre avec ton doigt, ta souris ou un stylet.
+    Dessine une lettre avec ton doigt, ta souris ou un stylet, puis écris-la avec le clavier Soureth.
   </p>
 
+  <!-- Canvas -->
   <div class="tactile-preview">
-      <canvas id="writingCanvas" width="350" height="250"></canvas>
+    <canvas id="writingCanvas"></canvas>
   </div>
 
+  <!-- Boutons de contrôle -->
   <div class="canvas-controls" style="margin-top:20px;display:flex;justify-content:center;gap:15px;">
-      <button id="prevLetter" class="btn">⬅</button>
-      <button id="clearCanvas" class="btn">🗑 Effacer</button>
-      <button id="nextLetter" class="btn">➡</button>
+    <button id="prevLetter" class="btn">⬅</button>
+    <button id="clearCanvas" class="btn">🗑 Effacer</button>
+    <button id="nextLetter" class="btn">➡</button>
   </div>
 
-  <div id="letterGrid" style="margin-top:25px;"></div>
+  <!-- Clavier Soureth -->
+  <div class="keyboard-wrapper" style="margin-top:30px;">
+    <h3 style="margin-bottom:10px;">⌨️ Clavier Soureth</h3>
+    <textarea id="editor" class="soureth-writing" placeholder="Écrire en Soureth..."></textarea>
+
+    <div id="keyboard" class="soureth-keyboard">
+      <!-- Les touches seront ajoutées à l'étape 2 -->
+    </div>
+  </div>
 
   <a href="ecriture.html" class="btn btn-secondary" style="margin-top:25px;display:inline-block;">
     Ouvrir l'atelier complet
