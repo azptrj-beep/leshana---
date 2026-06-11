@@ -372,3 +372,13 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
     display: block;
     margin: auto;
 }
+
+@media (max-width: 600px) {
+    #writingCanvas {
+        max-height: 320px !important;
+    }
+
+    .canvas-controls {
+        margin-top: 12px !important;
+    }
+}
