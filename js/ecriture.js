@@ -13,6 +13,10 @@ let current = 0;
 const canvas = document.getElementById("writingCanvas");
 const ctx = canvas.getContext("2d");
 
+// Fixe la taille réelle du canvas (évite le décalage)
+canvas.width = 380;   // largeur réelle
+canvas.height = 520;  // hauteur réelle
+
 const letterGrid =
 document.getElementById("letterGrid");
 
