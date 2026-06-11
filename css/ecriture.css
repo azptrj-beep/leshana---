@@ -97,3 +97,11 @@
         padding:10px;
     }
 }
+
+#writingCanvas {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
