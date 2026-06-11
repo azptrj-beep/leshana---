@@ -18,8 +18,8 @@ let realtimeTimer = null;
 async function loadDictionaries() {
   try {
     const [wRes, pRes] = await Promise.all([
-  fetch("/data/words.json"),
-  fetch("/data/phrases.json")
+  fetch("data/words.json"),
+  fetch("data/phrases.json")
 ]);
 
     words = await wRes.json();
