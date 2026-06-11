@@ -1,16 +1,15 @@
 /* ================================
    ÉCRITURE TACTILE — VERSION FINALE
-   Correction complète du décalage
+   Avec lettre fantôme + anti-décalage
 =================================== */
 
 const canvas = document.getElementById("writingCanvas");
 const ctx = canvas.getContext("2d");
 
-// Taille réelle du canvas (NE PAS MODIFIER)
+// Taille réelle du canvas
 const REAL_WIDTH = 380;
 const REAL_HEIGHT = 520;
 
-// Applique la taille réelle (évite tout décalage)
 canvas.width = REAL_WIDTH;
 canvas.height = REAL_HEIGHT;
 
@@ -29,8 +28,6 @@ let lastY = 0;
 =================================== */
 function getPos(e) {
     const rect = canvas.getBoundingClientRect();
-
-    // Ratio entre taille affichée et taille réelle
     const scaleX = REAL_WIDTH / rect.width;
     const scaleY = REAL_HEIGHT / rect.height;
 
@@ -48,7 +45,7 @@ function getPos(e) {
 }
 
 /* ================================
-   DÉBUT DU DESSIN
+   DESSIN
 =================================== */
 function startDrawing(e) {
     drawing = true;
@@ -57,9 +54,6 @@ function startDrawing(e) {
     lastY = pos.y;
 }
 
-/* ================================
-   DESSIN
-=================================== */
 function draw(e) {
     if (!drawing) return;
 
@@ -74,9 +68,6 @@ function draw(e) {
     lastY = pos.y;
 }
 
-/* ================================
-   FIN DU DESSIN
-=================================== */
 function stopDrawing() {
     drawing = false;
 }
@@ -105,11 +96,25 @@ canvas.addEventListener("touchmove", (e) => {
 canvas.addEventListener("touchend", stopDrawing);
 
 /* ================================
-   BOUTON EFFACER
+   LETTRE FANTÔME
 =================================== */
-document.getElementById("clearCanvas").addEventListener("click", () => {
+function drawGhostLetter(letter) {
     ctx.clearRect(0, 0, REAL_WIDTH, REAL_HEIGHT);
-});
+
+    ctx.save();
+    ctx.globalAlpha = 0.18;
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "260px 'Nohadra', sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(letter, REAL_WIDTH / 2, REAL_HEIGHT / 2);
+    ctx.restore();
+}
+
+function redrawGhost() {
+    drawGhostLetter(letters[currentIndex]);
+}
 
 /* ================================
    LETTRES
@@ -122,8 +127,10 @@ const letters = [
 ];
 
 function updateLetter() {
+    const letter = letters[currentIndex];
     const title = document.querySelector(".soureth-title");
-    if (title) title.textContent = letters[currentIndex];
+    if (title) title.textContent = letter;
+    drawGhostLetter(letter);
 }
 
 document.getElementById("nextLetter").addEventListener("click", () => {
@@ -136,5 +143,15 @@ document.getElementById("prevLetter").addEventListener("click", () => {
     updateLetter();
 });
 
-// Initialisation
+/* ================================
+   BOUTON EFFACER
+=================================== */
+document.getElementById("clearCanvas").addEventListener("click", () => {
+    ctx.clearRect(0, 0, REAL_WIDTH, REAL_HEIGHT);
+    redrawGhost();
+});
+
+/* ================================
+   INIT
+=================================== */
 updateLetter();
