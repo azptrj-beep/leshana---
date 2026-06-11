@@ -161,8 +161,8 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
 
 @media (min-width: 900px) {
     #writingCanvas {
-        width: 380px !important;   /* Largeur verticale */
-        height: 520px !important;  /* Hauteur plus grande */
+        width: 340px !important;   /* Largeur verticale */
+        height: 420px !important;  /* Hauteur plus grande */
         background: rgba(255,255,255,0.15);
         border-radius: 18px;
         border: 1px solid var(--glass-border);
