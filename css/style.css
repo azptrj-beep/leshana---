@@ -364,3 +364,11 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
         0 0 22px rgba(0, 162, 255, 0.45);
     transform: scale(1.15);
 }
+
+#writingCanvas {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
