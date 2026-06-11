@@ -285,3 +285,82 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
         font-size: 64px;
     }
 }
+
+/* BOUTONS — GLOW PREMIUM */
+.canvas-controls .btn {
+    transition: 0.25s ease;
+}
+
+.canvas-controls .btn:hover {
+    background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+    box-shadow:
+        0 0 14px rgba(0, 162, 255, 0.55),
+        0 0 28px rgba(0, 162, 255, 0.35);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* LETTER GRID — FULL PREMIUM */
+#letterGrid .letter-box {
+    transition: 0.25s ease;
+}
+
+#letterGrid .letter-box:hover {
+    background: rgba(0, 102, 255, 0.35);
+    border-color: var(--cyan);
+    box-shadow:
+        0 0 18px rgba(0, 162, 255, 0.65),
+        0 0 35px rgba(0, 162, 255, 0.55),
+        inset 0 0 18px rgba(0, 162, 255, 0.35);
+    transform: translateY(-6px) scale(1.08);
+}
+
+/* MODULES — GLOW PREMIUM */
+.module-item {
+    transition: 0.3s ease;
+}
+
+.module-item:hover {
+    background: rgba(0, 102, 255, 0.18);
+    border: 1px solid var(--cyan);
+    box-shadow:
+        0 0 22px rgba(0, 162, 255, 0.45),
+        0 0 40px rgba(0, 162, 255, 0.35);
+    transform: translateY(-6px) scale(1.03);
+}
+/* CANVAS — GLOW PREMIUM */
+#writingCanvas {
+    transition: 0.35s ease;
+}
+
+#writingCanvas:hover {
+    box-shadow:
+        0 0 18px rgba(0, 162, 255, 0.55),
+        0 0 35px rgba(0, 162, 255, 0.45),
+        inset 0 0 18px rgba(0, 162, 255, 0.25);
+    border-color: var(--cyan);
+    transform: scale(1.02);
+}
+
+/* CARDS — GLOW PREMIUM */
+.card:hover,
+.progress-card:hover {
+    box-shadow:
+        0 0 22px rgba(0, 162, 255, 0.45),
+        0 0 40px rgba(0, 162, 255, 0.35);
+    transform: translateY(-6px);
+    border-color: var(--cyan);
+}
+
+/* ICONES — GLOW PREMIUM */
+.module-icon,
+.card-icon {
+    transition: 0.25s ease;
+}
+
+.module-item:hover .module-icon,
+.card:hover .card-icon {
+    text-shadow:
+        0 0 12px rgba(0, 162, 255, 0.65),
+        0 0 22px rgba(0, 162, 255, 0.45);
+    transform: scale(1.15);
+}
