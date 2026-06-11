@@ -36,6 +36,9 @@ function insertLetter(letter) {
   if (/[\u0700-\u074F]/.test(letter)) {
     input.classList.add("rtl");
   }
+
+  // 🔥 TRIGGER TRADUCTION
+  input.dispatchEvent(new Event("input"));
 }
 
 /* DELETE LETTER */
@@ -64,6 +67,9 @@ function deleteLetter() {
   if (!/[\u0700-\u074F]/.test(input.value)) {
     input.classList.remove("rtl");
   }
+
+  // 🔥 TRIGGER TRADUCTION
+  input.dispatchEvent(new Event("input"));
 }
 
 /* INIT KEYBOARD */
