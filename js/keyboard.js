@@ -1,7 +1,8 @@
 "use strict";
 
 /* =========================================
-   CLAVIER SOURETH — VERSION SIMPLE & COMPLÈTE
+   CLAVIER SOURETH — VERSION FINALE PREMIUM
+   Compatible input dynamique + RTL + traduction
 ========================================= */
 
 let editorId = "input";
@@ -82,11 +83,10 @@ window.deleteLetter = deleteLetter;
 window.initKeyboard = initKeyboard;
 
 /* =========================================
-   LAYOUT UNIQUE : LETTRES + VOYELLES + FINALES + CHIFFRES
+   LAYOUT FINAL : Lettres + Voyelles + Finales + Ponctuation
 ========================================= */
 
 const fullLayout = [
-
   // Lettres
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
   "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ",
@@ -96,9 +96,6 @@ const fullLayout = [
 
   // Formes finales
   "ܟ݂","ܡ̇","ܢ̇",
-
-  // Chiffres araméens
-  "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
 
   // Ponctuation
   "،","؛","؟","܀","܁","܂"
