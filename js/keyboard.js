@@ -2,10 +2,9 @@
 
 /* =========================================
    CLAVIER SOURETH — VERSION FINALE PREMIUM
-   Compatible input dynamique + RTL + traduction
 ========================================= */
 
-let editorId = "input";
+let editorId = "editor";
 
 /* TARGET */
 function setKeyboardTarget(id) {
@@ -38,7 +37,7 @@ function insertLetter(letter) {
     input.classList.add("rtl");
   }
 
-  // 🔥 TRIGGER TRADUCTION
+  // TRIGGER TRADUCTION
   input.dispatchEvent(new Event("input"));
 }
 
@@ -64,17 +63,15 @@ function deleteLetter() {
 
   input.focus();
 
-  // Si plus de syriaque → repasse en LTR
   if (!/[\u0700-\u074F]/.test(input.value)) {
     input.classList.remove("rtl");
   }
 
-  // 🔥 TRIGGER TRADUCTION
   input.dispatchEvent(new Event("input"));
 }
 
 /* INIT KEYBOARD */
-function initKeyboard(targetId = "input") {
+function initKeyboard(targetId = "editor") {
   setKeyboardTarget(targetId);
 }
 
@@ -83,21 +80,14 @@ window.deleteLetter = deleteLetter;
 window.initKeyboard = initKeyboard;
 
 /* =========================================
-   LAYOUT FINAL : Lettres + Voyelles + Finales + Ponctuation
+   LAYOUT FINAL
 ========================================= */
 
 const fullLayout = [
-  // Lettres
   "ܐ","ܒ","ܓ","ܕ","ܗ","ܘ","ܙ","ܚ","ܛ","ܝ",
   "ܟ","ܠ","ܡ","ܢ","ܣ","ܥ","ܦ","ܨ","ܩ","ܪ","ܫ","ܬ",
-
-  // Voyelles
   "ܵ","ܸ","ܿ","ܲ","ܼ","ܹ","ܺ",
-
-  // Formes finales
   "ܟ݂","ܡ̇","ܢ̇",
-
-  // Ponctuation
   "،","؛","؟","܀","܁","܂"
 ];
 
@@ -119,7 +109,6 @@ function generateKeyboard() {
     kb.appendChild(btn);
   });
 
-  // Bouton effacer
   const del = document.createElement("button");
   del.className = "key-btn delete-btn";
   del.innerText = "⌫";
@@ -132,6 +121,6 @@ function generateKeyboard() {
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  initKeyboard("input");
+  initKeyboard("editor");
   generateKeyboard();
 });
