@@ -185,3 +185,22 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
         gap: 20px;
     }
 }
+
+/* LETTER GRID — TAILLE DES LETTRES */
+#letterGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+#letterGrid .letter-box {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 25px;
+    font-size: 48px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
