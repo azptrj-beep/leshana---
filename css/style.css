@@ -155,42 +155,63 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
 }
 
 /* ================================
-   ÉCRITURE TACTILE — FORMAT VERTICAL
-   (Version ordinateur)
+   ÉCRITURE TACTILE — CANVAS RESPONSIVE
 =================================== */
 
-@media (min-width: 900px) {
+/* MOBILE (par défaut) */
+#writingCanvas {
+    width: 100% !important;
+    max-width: 340px;
+    height: 260px !important;
+    margin: auto;
+    display: block;
+    background: rgba(255,255,255,0.15);
+    border-radius: 18px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+}
+
+/* TABLETTE — format carré */
+@media (min-width: 600px) and (max-width: 899px) {
     #writingCanvas {
-        width: 340px !important;   /* Largeur verticale */
-        height: 420px !important;  /* Hauteur plus grande */
-        background: rgba(255,255,255,0.15);
-        border-radius: 18px;
-        border: 1px solid var(--glass-border);
-        box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-        display: block;
-        margin: auto;
-    }
-
-    .tactile-preview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 25px;
-    }
-
-    .canvas-controls {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
+        width: 420px !important;
+        height: 420px !important;
     }
 }
 
-/* LETTER GRID — TAILLE DES LETTRES */
+/* ORDINATEUR — format vertical */
+@media (min-width: 900px) {
+    #writingCanvas {
+        width: 380px !important;
+        height: 520px !important;
+    }
+}
+
+/* GRAND ÉCRAN — vertical large */
+@media (min-width: 1400px) {
+    #writingCanvas {
+        width: 450px !important;
+        height: 620px !important;
+    }
+}
+
+/* Centrage du bloc */
+.tactile-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+/* ================================
+   LETTER GRID — RESPONSIVE
+=================================== */
+
+/* MOBILE (par défaut) */
 #letterGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 14px;
     margin-top: 25px;
 }
 
@@ -198,9 +219,69 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
     background: rgba(255,255,255,0.12);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 25px;
-    font-size: 48px;
+    padding: 18px;
+    font-size: 38px;
     text-align: center;
     color: #fff;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+
+/* TABLETTE — cases carrées */
+@media (min-width: 600px) and (max-width: 899px) {
+    #letterGrid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 18px;
+    }
+
+    #letterGrid .letter-box {
+        padding: 28px;
+        font-size: 48px;
+    }
+}
+
+
+/* ORDINATEUR — cases larges et carrées */
+@media (min-width: 900px) {
+    #letterGrid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 22px;
+    }
+
+    #letterGrid .letter-box {
+        padding: 35px;
+        font-size: 56px;
+    }
+}
+
+/* ================================
+   LETTER GRID — GLOW BLEU ASSYRIEN
+=================================== */
+
+#letterGrid .letter-box {
+    transition: 0.25s ease;
+}
+
+/* Survol lumineux */
+#letterGrid .letter-box:hover {
+    background: rgba(0, 102, 255, 0.25);
+    border-color: var(--blue-light);
+    box-shadow:
+        0 0 12px rgba(0, 162, 255, 0.45),
+        0 0 22px rgba(0, 162, 255, 0.35),
+        inset 0 0 12px rgba(0, 162, 255, 0.25);
+    transform: translateY(-4px) scale(1.05);
+}
+
+/* GRAND ÉCRAN — version premium */
+@media (min-width: 1400px) {
+    #letterGrid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 26px;
+    }
+
+    #letterGrid .letter-box {
+        padding: 45px;
+        font-size: 64px;
+    }
 }
