@@ -694,20 +694,26 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
     }
 }
 
-/* Ultra-compact mobile keyboard */
+/* SUPER COMPACT MOBILE KEYBOARD */
 @media (max-width: 600px) {
+
     .key {
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
         margin: 1px;
-        border-radius: 6px;
+        border-radius: 4px;
+        padding: 0;
     }
 
     #keyboard {
-        padding: 3px;
-        transform: scale(0.75);
+        padding: 2px;
+        transform: scale(0.65);
         transform-origin: top center;
+    }
+
+    .keyboard-row {
+        margin-bottom: 1px;
     }
 }
 #menuButton {
