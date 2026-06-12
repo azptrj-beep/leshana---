@@ -280,3 +280,17 @@ nav a:hover {
         0 0 35px rgba(0,162,255,0.45),
         inset 0 0 18px rgba(0,162,255,0.25);
 }
+
+@media (max-width: 768px) {
+    #writingCanvas {
+        width: 90% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4;
+    }
+
+    .module-item,
+    .quiz-box {
+        padding: 18px;
+        width: 95%;
+    }
+}
