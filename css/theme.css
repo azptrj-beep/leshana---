@@ -1,63 +1,93 @@
-/* =========================
-RESET THEME
-========================= */
+/* ============================================
+   THEME.CSS — Variables globales + Glassmorphism
+   Thème Premium Bleu Assyrien
+============================================ */
+
+/* RESET GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES — MODE SOMBRE (par défaut) */
 :root {
-  --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.08);
-  --soft: rgba(255,255,255,0.7);
+    --blue-main: #0033a0;
+    --blue-light: #00a2ff;
+    --cyan: #00eaff;
+
+    --red-main: #d40000;
+
+    --text-light: #ffffff;
+    --text-soft: rgba(255,255,255,0.75);
+
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.18);
+
+    --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+    --text: #ffffff;
+
+    --card: rgba(255,255,255,0.08);
+    --nav: rgba(255,255,255,0.05);
+
+    --shadow-strong: 0 10px 35px rgba(0,0,0,0.35);
+    --shadow-soft: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-/* LIGHT MODE */
+/* MODE CLAIR */
 body.light-mode {
-  --bg: #f4f7fb;
-  --text: #111827;
-  --card: rgba(255,255,255,0.9);
-  --soft: rgba(17,24,39,0.7);
+    --bg: #f4f7fb;
+    --text: #111827;
+    --card: rgba(255,255,255,0.9);
+    --nav: rgba(0,0,0,0.05);
+    --glass-bg: rgba(255,255,255,0.6);
+    --glass-border: rgba(0,0,0,0.12);
 }
 
-/* BODY GLOBAL */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-  transition: 0.3s ease;
-}
-
-/* =========================
-FONTS SOURETH
-========================= */
-
+/* FONTS */
 @font-face {
-  font-family: 'Adiabene';
-  src: url('../assets/fonts/Adiabene.woff2') format('woff2');
+    font-family: Nohadra;
+    src: url('../assets/fonts/nohadra.woff2') format('woff2'),
+         url('../assets/fonts/nohadra.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Nohadra';
-  src: url('../assets/fonts/nohadra.woff2') format('woff2');
+    font-family: Assyrian;
+    src: url('../assets/fonts/assyrian.woff2') format('woff2'),
+         url('../assets/fonts/assyrian.ttf') format('truetype');
+    font-display: swap;
 }
 
-@font-face {
-  font-family: 'Assyrian';
-  src: url('../assets/fonts/assyrian.woff2') format('woff2');
-}
-
-/* =========================
-SOURETH SAFE TEXT
-========================= */
-
+/* TYPOGRAPHIE SOURETH */
 .soureth-title,
 .soureth-writing,
+.soureth-classic,
 .letter,
-#keyboard button,
-.quiz-options button,
-#question {
-  font-family: 'Adiabene', sans-serif !important;
-  direction: rtl;
-  unicode-bidi: plaintext;
+:lang(syr) {
+    font-family: 'Nohadra', 'Assyrian', sans-serif !important;
+    direction: rtl;
+    unicode-bidi: plaintext;
+}
+
+/* GLOW PREMIUM — BLEU ASSYRIEN */
+.glow-blue {
+    box-shadow:
+        0 0 12px rgba(0, 162, 255, 0.55),
+        0 0 22px rgba(0, 162, 255, 0.45),
+        inset 0 0 12px rgba(0, 162, 255, 0.25);
+    border-color: var(--cyan) !important;
+}
+
+/* ANIMATIONS */
+@keyframes floatLogo {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* SMOOTHING GLOBAL */
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
