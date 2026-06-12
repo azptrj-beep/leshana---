@@ -1,138 +1,37 @@
-/* =========================
-QUIZ DUOLINGO CLEAN
-========================= */
+/* ============================================
+   QUIZ.CSS — Quiz Soureth
+============================================ */
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top left, #0033a0, #050816 60%);
-  color: white;
+.quiz-box {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 22px;
+    border-radius: 24px;
+    text-align: center;
+    background: var(--card);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
 }
 
-/* CONTAINER */
-#quizApp {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  text-align: center;
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 14px;
 }
 
-/* TOP BAR */
-.quiz-top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 14px;
+.quiz-options button {
+    min-height: 74px;
+    border-radius: 18px;
+    border: none;
+    background: var(--glass-bg);
+    color: #fff;
+    font-size: clamp(28px, 6vw, 42px);
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
-/* QUESTION */
-#question {
-  font-size: 2.2rem;
-  margin: 30px 0;
-}
-
-/* ANSWERS */
-#answers {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.answer-btn {
-  padding: 15px;
-  border-radius: 16px;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  background: rgba(255,255,255,0.08);
-  color: white;
-  transition: 0.2s;
-}
-
-.answer-btn:hover {
-  transform: scale(1.03);
-  background: #00cfff;
-}
-
-/* FEEDBACK */
-#feedback {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  #quizApp {
-    margin: 20px auto;
-    padding: 15px;
-  }
-
-  #question {
-    font-size: 1.6rem;
-  }
-}
-
-#quizApp{
-  max-width:700px;
-  margin:auto;
-  padding:20px;
-}
-
-.quiz-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-#question{
-  font-size:2rem;
-  margin:30px 0;
-}
-
-#answers{
-  display:grid;
-  gap:10px;
-}
-
-#feedback{
-  margin-top:20px;
-}
-
-.xp-panel{
-  margin:15px 0;
-  padding:14px;
-  border-radius:16px;
-}
-
-#quizApp{
-  max-width:700px;
-  margin:auto;
-  padding:20px;
-}
-
-.quiz-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-#question{
-  font-size:2rem;
-  margin:30px 0;
-}
-
-#answers{
-  display:grid;
-  gap:10px;
-}
-
-#feedback{
-  margin-top:20px;
-}
-
-.xp-panel{
-  margin:15px 0;
-  padding:14px;
-  border-radius:16px;
+.quiz-options button:hover {
+    background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+    transform: translateY(-3px);
 }
