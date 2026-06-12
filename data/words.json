@@ -164,7 +164,7 @@
   "chevre": "ܥܙܐ",
   "poulet": "ܬܪܢܓܠܐ",
   "serpent": "ܚܘܝܐ",
-  "poisson": "ܢܘܢܐ"
+  "poisson": "ܢܘܢܐ", 
   "route": "ܐܘܪܚܐ",
   "pont": "ܓܫܪܐ",
   "rond point": "ܣܘܟܠܐ",
@@ -318,7 +318,6 @@
   "vallee": "ܥܡܩܐ",
   "foret": "ܚܘܪܫܐ",
   "desert": "ܡܕܒܪܐ"
-{
   "maison": "ܒܝܬܐ",
   "immeuble": "ܒܝܬܐ ܪܡܐ",
   "appartement": "ܕܘܪܐ",
@@ -493,7 +492,6 @@
   "se lever": "ܩܘܡ",
   "entrer": "ܥܘܠ",
   "sortir": "ܦܘܩ"
-{
   "acheter": "ܙܒܢ",
   "vendre": "ܙܒܢ",
   "payer": "ܦܪܥ",
@@ -663,7 +661,6 @@
   "akkad": "ܐܟܕ",
   "sumer": "ܫܘܡܪ",
   "empire assyrien": "ܡܠܟܘܬܐ ܐܬܘܪܝܬܐ"
-{
   "travail": "ܥܒܘܕܐ",
   "metier": "ܦܥܠܘܬܐ",
   "profession": "ܡܢܬܐ",
