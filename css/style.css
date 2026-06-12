@@ -708,3 +708,8 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
         transform: scale(0.9);
     }
 }
+
+#menuButton {
+    position: relative;
+    z-index: 9999;
+}
