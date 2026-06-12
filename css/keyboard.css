@@ -43,3 +43,26 @@
     padding: 12px;
   }
 }
+
+/* SUPER COMPACT MOBILE KEYBOARD */
+@media (max-width: 600px) {
+
+    .key {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        margin: 1px;
+        border-radius: 4px;
+        padding: 0;
+    }
+
+    #keyboard {
+        padding: 2px;
+        transform: scale(0.65);
+        transform-origin: top center;
+    }
+
+    .keyboard-row {
+        margin-bottom: 1px;
+    }
+}
