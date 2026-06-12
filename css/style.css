@@ -247,3 +247,36 @@ nav a:hover {
         font-size: 14px;
     }
 }
+
+/* Cadres principaux (cards, modules, canvas) */
+.module-item,
+.quiz-box,
+#writingCanvas {
+    border-radius: 18px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    background: var(--card);
+    backdrop-filter: blur(14px);
+}
+
+/* Taille et espacement */
+.module-item,
+.quiz-box {
+    padding: 28px 32px;
+    margin: 18px auto;
+    width: 90%;
+    max-width: 900px;
+}
+
+/* Canvas visible et proportionné */
+#writingCanvas {
+    width: 420px !important;
+    height: 560px !important;
+    display: block;
+    margin: 40px auto;
+    border: 2px solid var(--cyan);
+    box-shadow:
+        0 0 18px rgba(0,162,255,0.55),
+        0 0 35px rgba(0,162,255,0.45),
+        inset 0 0 18px rgba(0,162,255,0.25);
+}
