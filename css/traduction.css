@@ -3,14 +3,14 @@
 ========================= */
 
 .translator-box {
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
-  padding: 20px;
+  padding: 25px;
 }
 
 .translator-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -25,17 +25,17 @@
 
 .actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 #history {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #status {
-  margin: 15px 0;
+  margin: 18px 0;
 }
 
 .audio-btn {
@@ -57,6 +57,7 @@
   font-family: 'Poppins', sans-serif;
   direction: ltr;
   text-align: left;
+  border: 1px solid rgba(255,255,255,0.15);
 }
 
 /* MODE SOURETH (activé par JS) */
@@ -78,6 +79,7 @@
   text-align: left;
   direction: ltr;
   font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255,255,255,0.15);
 }
 
 /* =========================
@@ -85,7 +87,7 @@
 ========================= */
 
 .history-box {
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: left;
   font-size: 20px;
   line-height: 1.6;
@@ -93,62 +95,12 @@
 }
 
 .history-item {
-  padding: 10px 15px;
+  padding: 12px 16px;
   background: rgba(255,255,255,0.08);
   border-radius: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
 }
-
-/* =========================
-   CLAVIER SOURETH PREMIUM
-========================= */
-
-#keyboard {
-  width: 100%;
-  max-width: 900px;
-  margin: 25px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 12px;
-  padding: 20px;
-}
-
-#keyboard .key-btn {
-  font-size: 42px;
-  padding: 15px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.12);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.25s;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-#keyboard .key-btn:hover {
-  background: linear-gradient(135deg, #0066ff, #00cfff);
-  transform: translateY(-4px);
-}
-
-#keyboard .delete-btn {
-  background: rgba(255,80,80,0.25);
-}
-
-#keyboard .delete-btn:hover {
-  background: linear-gradient(135deg, #ff4444, #ff7777);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:768px){
-  #keyboard .key-btn {
-    font-size: 32px;
-    padding: 12px;
-  }
-}
-
 
 /* =========================
    ONGLETES DU CLAVIER
@@ -156,9 +108,9 @@
 
 #keyboard-tabs {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 25px;
   flex-wrap: wrap;
   padding: 10px 0;
 }
@@ -189,16 +141,16 @@
 }
 
 /* =========================
-   CLAVIER PREMIUM
+   CLAVIER SOURETH PREMIUM
 ========================= */
 
 #keyboard {
   width: 100%;
   max-width: 900px;
-  margin: 20px auto;
+  margin: 25px auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 12px;
+  gap: 14px;
   padding: 20px;
 }
 
@@ -208,7 +160,7 @@
   border-radius: 18px;
   background: rgba(255,255,255,0.12);
   color: white;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.15);
   cursor: pointer;
   transition: 0.25s ease;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
@@ -242,5 +194,14 @@
     font-size: 13px;
     padding: 8px 14px;
   }
-}
 
+  #input {
+    font-size: 26px;
+    padding: 18px;
+  }
+
+  .translation-output {
+    font-size: 22px;
+    padding: 20px;
+  }
+}
