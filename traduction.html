@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Traduction Soureth ⇄ Français</title>
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/keyboard.css">
+
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/keyboard.css">
 
   <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0033a0">
+  <meta name="theme-color" content="#0033a0">
 
-<!-- iOS support -->
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- iOS support -->
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 
 <body>
@@ -38,54 +38,69 @@
 
 <section class="translator-box card">
 
+  <!-- Statut (une seule fois) -->
   <div id="status" class="status">⏳ Chargement…</div>
-<div class="translator-box">
 
-    <h2>🌍 Traduction Soureth ⇄ Français</h2>
+  <!-- Zone de saisie -->
+  <textarea id="input" placeholder="Écris ici en Français ou en Soureth..."></textarea>
 
-    <!-- Zone de saisie -->
-    <textarea id="input" placeholder="Écris ici en Français ou en Soureth..."></textarea>
+  <!-- Boutons principaux -->
+  <div class="translator-buttons">
+    <button id="translateBtn">Traduire</button>
+    <button id="clearBtn">Effacer</button>
+    <button id="swapBtn">⇄ Inverser</button>
+    <button id="speakBtn">🔊 Lire</button>
+    <button id="stopBtn">⏹ Stop</button>
+    <button id="micBtn">🎤 Micro</button>
+  </div>
 
-    <!-- Boutons principaux -->
-    <div class="translator-buttons">
-        <button id="translateBtn">Traduire</button>
-        <button id="clearBtn">Effacer</button>
-        <button id="swapBtn">⇄ Inverser</button>
-        <button id="speakBtn">🔊 Lire</button>
-        <button id="stopBtn">⏹ Stop</button>
-        <button id="micBtn">🎤 Micro</button>
-    </div>
+  <!-- Résultat -->
+  <div id="result" class="translation-output">...</div>
 
-    <!-- Statut -->
-    <div id="status">⏳ Chargement...</div>
+  <!-- Clavier Soureth -->
+  <h3 style="margin-top:30px;">Clavier Soureth</h3>
 
-    <!-- Résultat -->
-    <div id="result" class="translation-output">...</div>
+  <div id="keyboard-tabs"></div>
 
-    <!-- Clavier Soureth -->
-    <h3 style="margin-top:30px;">Clavier Soureth</h3>
+  <div id="keyboard">
+    <!-- Ligne 1 -->
+    <button class="key-btn" data-letter="ܐ">ܐ</button>
+    <button class="key-btn" data-letter="ܒ">ܒ</button>
+    <button class="key-btn" data-letter="ܓ">ܓ</button>
+    <button class="key-btn" data-letter="ܕ">ܕ</button>
+    <button class="key-btn" data-letter="ܗ">ܗ</button>
+    <button class="key-btn" data-letter="ܘ">ܘ</button>
+    <button class="key-btn" data-letter="ܙ">ܙ</button>
+    <button class="key-btn" data-letter="ܚ">ܚ</button>
+    <button class="key-btn" data-letter="ܛ">ܛ</button>
+    <button class="key-btn" data-letter="ܝ">ܝ</button>
 
-    <div id="keyboard-tabs"></div>
+    <!-- Ligne 2 -->
+    <button class="key-btn" data-letter="ܟ">ܟ</button>
+    <button class="key-btn" data-letter="ܠ">ܠ</button>
+    <button class="key-btn" data-letter="ܡ">ܡ</button>
+    <button class="key-btn" data-letter="ܢ">ܢ</button>
+    <button class="key-btn" data-letter="ܣ">ܣ</button>
+    <button class="key-btn" data-letter="ܥ">ܥ</button>
+    <button class="key-btn" data-letter="ܦ">ܦ</button>
+    <button class="key-btn" data-letter="ܨ">ܨ</button>
+    <button class="key-btn" data-letter="ܩ">ܩ</button>
+    <button class="key-btn" data-letter="ܪ">ܪ</button>
 
-    <div id="keyboard">
-        <button class="key-btn" data-letter="ܐ">ܐ</button>
-        <button class="key-btn" data-letter="ܒ">ܒ</button>
-        <button class="key-btn" data-letter="ܓ">ܓ</button>
-        <button class="key-btn" data-letter="ܕ">ܕ</button>
-        <button class="key-btn" data-letter="ܗ">ܗ</button>
-        <button class="key-btn" data-letter="ܘ">ܘ</button>
-        <button class="key-btn" data-letter="ܙ">ܙ</button>
-        <button class="key-btn" data-letter="ܚ">ܚ</button>
-        <button class="key-btn" data-letter="ܛ">ܛ</button>
-        <button class="key-btn" data-letter="ܝ">ܝ</button>
-        <button class="delete-btn">⌫</button>
-    </div>
+    <!-- Ligne 3 -->
+    <button class="key-btn" data-letter="ܫ">ܫ</button>
+    <button class="key-btn" data-letter="ܬ">ܬ</button>
 
-    <!-- Historique -->
-    <h3 style="margin-top:30px;">Historique</h3>
-    <div id="history"></div>
+    <!-- Espace + suppression -->
+    <button class="key-btn" data-letter=" " style="grid-column: span 2;">␣ Espace</button>
+    <button class="delete-btn">⌫</button>
+  </div>
 
-</div>
+  <!-- Historique -->
+  <h3 style="margin-top:30px;">Historique</h3>
+  <div id="history"></div>
+
+</section>
 
 <!-- Scripts -->
 <script src="keyboard.js"></script>
