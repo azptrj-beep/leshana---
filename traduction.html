@@ -39,41 +39,57 @@
 <section class="translator-box card">
 
   <div id="status" class="status">⏳ Chargement…</div>
+<div class="translator-box">
 
-  <!-- ZONE DE SAISIE -->
-  <textarea id="input" placeholder="Écris ici en Français ou en Soureth…"></textarea>
+    <h2>🌍 Traduction Soureth ⇄ Français</h2>
 
+    <!-- Zone de saisie -->
+    <textarea id="input" placeholder="Écris ici en Français ou en Soureth..."></textarea>
 
-  <!-- CLAVIER SOURETH -->
+    <!-- Boutons principaux -->
+    <div class="translator-buttons">
+        <button id="translateBtn">Traduire</button>
+        <button id="clearBtn">Effacer</button>
+        <button id="swapBtn">⇄ Inverser</button>
+        <button id="speakBtn">🔊 Lire</button>
+        <button id="stopBtn">⏹ Stop</button>
+        <button id="micBtn">🎤 Micro</button>
+    </div>
 
-<div id="keyboard"></div>
+    <!-- Statut -->
+    <div id="status">⏳ Chargement...</div>
 
-  <!-- BOUTONS -->
-  <div class="translator-buttons">
-    <button id="translateBtn" class="btn btn-primary">🔁 Traduire</button>
-    <button id="clearBtn" class="btn btn-secondary">🧹 Effacer</button>
-    <button id="swapBtn" class="btn btn-secondary">⇄ Inverser</button>
-  </div>
+    <!-- Résultat -->
+    <div id="result" class="translation-output">...</div>
 
-  <!-- RÉSULTAT -->
-  <div id="result" class="translation-output">...</div>
+    <!-- Clavier Soureth -->
+    <h3 style="margin-top:30px;">Clavier Soureth</h3>
 
-  <!-- AUDIO -->
-  <div class="audio-controls">
-    <button id="speakBtn" class="audio-btn">🔊 Lire</button>
-    <button id="stopBtn" class="audio-btn">⏹ Stop</button>
-    <button id="micBtn" class="audio-btn">🎤 Micro</button>
-  </div>
+    <div id="keyboard-tabs"></div>
 
-  <!-- HISTORIQUE -->
-  <h2>🕘 Historique</h2>
-  <div id="history" class="history-box"></div>
+    <div id="keyboard">
+        <button class="key-btn" data-letter="ܐ">ܐ</button>
+        <button class="key-btn" data-letter="ܒ">ܒ</button>
+        <button class="key-btn" data-letter="ܓ">ܓ</button>
+        <button class="key-btn" data-letter="ܕ">ܕ</button>
+        <button class="key-btn" data-letter="ܗ">ܗ</button>
+        <button class="key-btn" data-letter="ܘ">ܘ</button>
+        <button class="key-btn" data-letter="ܙ">ܙ</button>
+        <button class="key-btn" data-letter="ܚ">ܚ</button>
+        <button class="key-btn" data-letter="ܛ">ܛ</button>
+        <button class="key-btn" data-letter="ܝ">ܝ</button>
+        <button class="delete-btn">⌫</button>
+    </div>
 
-</section>
+    <!-- Historique -->
+    <h3 style="margin-top:30px;">Historique</h3>
+    <div id="history"></div>
 
-<!-- JS -->
-<script src="js/global.js"></script>
-<script src="js/keyboard.js"></script>
+</div>
+
+<!-- Scripts -->
+<script src="keyboard.js"></script>
+<script src="translate.js"></script>
 
 </body>
 </html>
