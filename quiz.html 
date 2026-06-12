@@ -34,7 +34,8 @@
   </div>
 
   <!-- JS GLOBAL (si tu en as un) -->
-  <script src="js/app.js"></script>
+  <script src="js/global.js"></script>
+
 
   <!-- JS QUIZ -->
   <script src="js/quiz.js"></script>
