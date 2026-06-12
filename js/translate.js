@@ -18,9 +18,9 @@ let realtimeTimer = null;
 async function loadDictionaries() {
   try {
     const [wRes, pRes] = await Promise.all([
-  fetch("data/words.json"),
-  fetch("data/phrases.json")
-]);
+      fetch("data/words.json"),
+      fetch("data/phrases.json")
+    ]);
 
     words = await wRes.json();
     phrases = await pRes.json();
@@ -58,7 +58,6 @@ function buildIndex() {
 function clean(text) {
   return text
     .toLowerCase()
-    // garde lettres latines, chiffres, syriaque, espaces et . ! ?
     .replace(/[^A-Za-z0-9\u0700-\u074F\s\.\!\?]/g, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -69,7 +68,7 @@ function detect(text) {
 }
 
 /* ============================================================
-   LEVENSHTEIN (CORRECTION)
+   LEVENSHTEIN
 ============================================================ */
 
 function levenshtein(a, b) {
@@ -119,7 +118,6 @@ function translateSentence(sentence) {
 
   const lang = detect(input);
 
-  // Phrases prioritaires
   if (lang === "fr" && phrases[input]) return phrases[input];
   if (lang === "syr" && reversePhrases[input]) return reversePhrases[input];
 
@@ -143,7 +141,6 @@ function translateSentence(sentence) {
 ============================================================ */
 
 function translateText(text) {
-  // Découpe en phrases : ., !, ?
   const parts = text
     .split(/([\.!\?])/)
     .map(p => p.trim())
@@ -281,33 +278,27 @@ function runRealtimeTranslation() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("input");
-  const result = document.getElementById("result");
 
   await loadDictionaries();
 
-  /* Traduction en temps réel */
   input.addEventListener("input", runRealtimeTranslation);
 
-  /* Bouton Traduire */
   document.getElementById("translateBtn").addEventListener("click", runRealtimeTranslation);
 
-  /* Effacer */
   document.getElementById("clearBtn").addEventListener("click", () => {
     input.value = "";
-    result.innerText = "...";
+    document.getElementById("result").innerText = "...";
     setStatus("🧹 Effacé");
   });
 
-  /* Swap */
   document.getElementById("swapBtn").addEventListener("click", () => {
     input.value = "";
-    result.innerText = "...";
+    document.getElementById("result").innerText = "...";
     setStatus("⇄ Langues inversées");
   });
 
-  /* Audio */
   document.getElementById("speakBtn").addEventListener("click", () => {
-    speak(result.innerText);
+    speak(document.getElementById("result").innerText);
   });
 
   document.getElementById("stopBtn").addEventListener("click", () => {
