@@ -1,5 +1,49 @@
 @font-face{
-    font-family:'Nohadra';
+    font-family/* ============================================
+   ALPHABET.CSS — Alphabet Soureth
+============================================ */
+
+#letterGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.letter-box {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 18px;
+    font-size: 38px;
+    text-align: center;
+    color: #fff;
+    box-shadow: var(--shadow-soft);
+    transition: 0.25s ease;
+}
+
+.letter-box:hover {
+    background: rgba(0,102,255,0.35);
+    border-color: var(--cyan);
+    box-shadow:
+        0 0 18px rgba(0,162,255,0.65),
+        0 0 35px rgba(0,162,255,0.55),
+        inset 0 0 18px rgba(0,162,255,0.35);
+    transform: translateY(-6px) scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (min-width: 900px) {
+    #letterGrid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 22px;
+    }
+
+    .letter-box {
+        padding: 35px;
+        font-size: 56px;
+    }
+}';
     src:url('../assets/fonts/nohadra.woff2');
 }
 
