@@ -2,7 +2,7 @@
    CANVAS.JS — Écriture tactile
 ============================================ */
 
-const canvas = document.getElementById("writingCanvas");
+let canvas = document.getElementById("writingCanvas");
 const ctx = canvas ? canvas.getContext("2d") : null;
 
 let drawing = false;
