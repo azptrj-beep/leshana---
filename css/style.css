@@ -694,18 +694,19 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
     }
 }
 
-/* Mode mobile : touches plus petites */
+/* Ultra-compact mobile keyboard */
 @media (max-width: 600px) {
     .key {
-        width: 34px;
-        height: 34px;
-        font-size: 18px;
-        margin: 2px;
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+        margin: 1px;
+        border-radius: 6px;
     }
 
     #keyboard {
-        padding: 5px;
-        transform: scale(0.85);
+        padding: 3px;
+        transform: scale(0.75);
         transform-origin: top center;
     }
 }
