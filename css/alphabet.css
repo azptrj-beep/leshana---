@@ -44,44 +44,38 @@
     }
 }
 
-/* ===== Liste alphabet (lignes) ===== */
+/* ===== ALPHABET ===== */
 
 .alphabet-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 25px auto 40px;
+    margin: 20px auto 35px;
     width: 100%;
     max-width: 700px;
 }
 
 .alphabet-row {
     display: grid;
-    grid-template-columns: 60px 1fr auto;
+    grid-template-columns: 55px 1fr auto;
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
 }
 
 .alphabet-row .syriac {
     font-size: 1.8rem;
 }
 
-.alphabet-row .latin {
-    font-weight: 600;
-}
-
 .alphabet-row button {
     padding: 6px 12px;
     border-radius: 999px;
-    border: none;
-    background: var(--blue-light);
+    background: #007bff;
     color: #fff;
-    font-size: 0.85rem;
-    cursor: pointer;
+    border: none;
 }
 
 /* Mobile */
@@ -94,6 +88,5 @@
     .alphabet-row button {
         grid-column: 1 / -1;
         justify-self: flex-start;
-        margin-top: 4px;
     }
 }
