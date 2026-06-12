@@ -697,18 +697,18 @@ button,a,input,textarea,.soureth-title,.soureth-writing,.soureth-classic,.letter
 /* Mode mobile : touches plus petites */
 @media (max-width: 600px) {
     .key {
-        width: 38px;
-        height: 38px;
-        font-size: 20px;
-        margin: 3px;
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+        margin: 2px;
     }
 
     #keyboard {
         padding: 5px;
-        transform: scale(0.9);
+        transform: scale(0.85);
+        transform-origin: top center;
     }
 }
-
 #menuButton {
     position: relative;
     z-index: 9999;
