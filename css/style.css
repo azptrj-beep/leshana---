@@ -302,47 +302,28 @@ nav a:hover {
         0 0 45px rgba(0,162,255,0.45),
         inset 0 0 25px rgba(0,162,255,0.25);
 }
-/* ===== Cadres principaux (modules, blocs, sections) ===== */
+/* ===== STRUCTURE GLOBALE ===== */
 
-section {
+.page-section {
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 
-/* Cartes / blocs de contenu */
+.card,
 .module-item,
 .quiz-box,
 .alphabet-card,
 .canvas-card,
-.keyboard-card {
+.keyboard-card,
+.translator-card {
     width: 100%;
     max-width: 900px;
-    margin: 18px auto;
-    padding: 24px 22px;
-    border-radius: 18px;
-    border: 1px solid var(--glass-border);
-    background: var(--card);
-    backdrop-filter: blur(14px);
-    box-shadow: var(--shadow-soft);
-}
-
-/* Titres dans les cartes */
-.module-item h3,
-.quiz-box h2,
-.alphabet-card h2,
-.canvas-card h2,
-.keyboard-card h2 {
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-/* Texte dans les cartes */
-.module-item p,
-.quiz-box p,
-.alphabet-card p,
-.canvas-card p,
-.keyboard-card p {
-    font-size: 0.95rem;
-    color: var(--text-soft);
+    margin: 20px auto;
+    padding: 22px 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
 }
