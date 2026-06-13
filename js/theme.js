@@ -1,3 +1,5 @@
+"use strict";
+
 export function initTheme() {
   const saved = localStorage.getItem("theme");
 
