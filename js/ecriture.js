@@ -1,3 +1,5 @@
+
+"use strict";
 /* ================================
    ÉCRITURE TACTILE — VERSION FINALE
    Avec lettre fantôme + anti-décalage
