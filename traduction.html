@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/keyboard.css">
+  <link rel="stylesheet" href="css/soureth.css"> <!-- Ajout important -->
 
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0033a0">
@@ -43,7 +44,8 @@
   <div id="status" class="status">⏳ Chargement…</div>
 
   <!-- Zone de saisie -->
-  <textarea id="translateInput" placeholder="Écris ici en Français ou en Soureth..."></textarea>
+  <textarea id="translateInput" class="soureth"
+    placeholder="Écris ici en Soureth ou en Français..."></textarea>
 
   <!-- Boutons principaux -->
   <div class="translator-buttons">
@@ -56,12 +58,13 @@
   </div>
 
   <!-- Résultat -->
-  <textarea id="translateResult" class="translation-output" readonly></textarea>
+  <textarea id="translateResult" class="soureth translation-output" readonly></textarea>
 
   <!-- Clavier Soureth -->
   <h3 style="margin-top:30px;">Clavier Soureth</h3>
 
-  <div id="keyboard">
+  <div id="keyboard" class="soureth">
+
     <!-- Ligne 1 -->
     <button class="key-btn" onclick="insertLetter('ܐ')">ܐ</button>
     <button class="key-btn" onclick="insertLetter('ܒ')">ܒ</button>
@@ -91,8 +94,9 @@
     <button class="key-btn" onclick="insertLetter('ܬ')">ܬ</button>
 
     <!-- Espace + suppression -->
-    <button class="key-btn" onclick="insertLetter(' ')" style="grid-column: span 2;">␣ Espace</button>
+    <button class="key-btn space" onclick="insertLetter(' ')">␣ Espace</button>
     <button class="delete-btn" onclick="deleteLetter()">⌫</button>
+
   </div>
 
   <!-- Historique -->
@@ -100,9 +104,10 @@
   <div id="history"></div>
 
 </section>
+
 <!-- Scripts -->
-<script src="js/keyboard.js"></script>
 <script src="js/traduction.js"></script>
 <script src="js/app.js"></script>
+
 </body>
 </html>
