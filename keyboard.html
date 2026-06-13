@@ -7,97 +7,89 @@
 
   <title>Clavier Soureth</title>
 
-  <!-- CSS -->
-  
-<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/keyboard.css">
+  <link rel="stylesheet" href="css/soureth.css"> <!-- IMPORTANT -->
 
- <link rel="stylesheet" href="css/keyboard.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0033a0">
 
-  <!-- PWA -->
- <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0033a0">
-
-<!-- iOS support -->
-<link rel="apple-touch-icon" href="/icons/icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- iOS support -->
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 
 <body>
 
 <header>
-  <h1>⌨️ Clavier Soureth Moderne</h1>
+  <h1>⌨️ Clavier Soureth</h1>
+
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="alphabet.html">🔠 Alphabet</a>
+    <a href="traduction.html">🌍 Traduction</a>
+    <a href="quiz.html">🎮 Quiz</a>
+  </nav>
 </header>
 
-<section class="translator-box">
+<section class="translator-box card">
 
-  <textarea
-    id="editor"
-    class="soureth-writing"
-    placeholder="Écrire en Soureth..."></textarea>
+  <h2>Écriture Soureth</h2>
 
-  <div id="keyboard">
+  <!-- Zone d’écriture -->
+  <textarea id="keyboardInput" class="soureth"
+    placeholder="Écris ici en Soureth..."></textarea>
 
-    <button onclick="insertLetter('ܐ')">ܐ</button>
-    <button onclick="insertLetter('ܒ')">ܒ</button>
-    <button onclick="insertLetter('ܓ')">ܓ</button>
-    <button onclick="insertLetter('ܕ')">ܕ</button>
-    <button onclick="insertLetter('ܗ')">ܗ</button>
-    <button onclick="insertLetter('ܘ')">ܘ</button>
-    <button onclick="insertLetter('ܙ')">ܙ</button>
+  <!-- Clavier Soureth -->
+  <h3 style="margin-top:30px;">Clavier Soureth</h3>
 
-    <button onclick="insertLetter('ܚ')">ܚ</button>
-    <button onclick="insertLetter('ܛ')">ܛ</button>
-    <button onclick="insertLetter('ܝ')">ܝ</button>
-    <button onclick="insertLetter('ܟ')">ܟ</button>
-    <button onclick="insertLetter('ܠ')">ܠ</button>
+  <div id="keyboard" class="soureth">
 
-    <button onclick="insertLetter('ܡ')">ܡ</button>
-    <button onclick="insertLetter('ܢ')">ܢ</button>
-    <button onclick="insertLetter('ܣ')">ܣ</button>
-    <button onclick="insertLetter('ܥ')">ܥ</button>
-    <button onclick="insertLetter('ܦ')">ܦ</button>
+    <!-- Ligne 1 -->
+    <button class="key-btn" onclick="insertLetter('ܐ')">ܐ</button>
+    <button class="key-btn" onclick="insertLetter('ܒ')">ܒ</button>
+    <button class="key-btn" onclick="insertLetter('ܓ')">ܓ</button>
+    <button class="key-btn" onclick="insertLetter('ܕ')">ܕ</button>
+    <button class="key-btn" onclick="insertLetter('ܗ')">ܗ</button>
+    <button class="key-btn" onclick="insertLetter('ܘ')">ܘ</button>
+    <button class="key-btn" onclick="insertLetter('ܙ')">ܙ</button>
+    <button class="key-btn" onclick="insertLetter('ܚ')">ܚ</button>
+    <button class="key-btn" onclick="insertLetter('ܛ')">ܛ</button>
+    <button class="key-btn" onclick="insertLetter('ܝ')">ܝ</button>
 
-    <button onclick="insertLetter('ܨ')">ܨ</button>
-    <button onclick="insertLetter('ܩ')">ܩ</button>
-    <button onclick="insertLetter('ܪ')">ܪ</button>
-    <button onclick="insertLetter('ܫ')">ܫ</button>
-    <button onclick="insertLetter('ܬ')">ܬ</button>
+    <!-- Ligne 2 -->
+    <button class="key-btn" onclick="insertLetter('ܟ')">ܟ</button>
+    <button class="key-btn" onclick="insertLetter('ܠ')">ܠ</button>
+    <button class="key-btn" onclick="insertLetter('ܡ')">ܡ</button>
+    <button class="key-btn" onclick="insertLetter('ܢ')">ܢ</button>
+    <button class="key-btn" onclick="insertLetter('ܣ')">ܣ</button>
+    <button class="key-btn" onclick="insertLetter('ܥ')">ܥ</button>
+    <button class="key-btn" onclick="insertLetter('ܦ')">ܦ</button>
+    <button class="key-btn" onclick="insertLetter('ܨ')">ܨ</button>
+    <button class="key-btn" onclick="insertLetter('ܩ')">ܩ</button>
+    <button class="key-btn" onclick="insertLetter('ܪ')">ܪ</button>
 
-    <button onclick="insertLetter('݂')">݂</button>
-    <button onclick="insertLetter('̮')">̮</button>
-    <button onclick="insertLetter('ܸ')">ܸ</button>
-    <button onclick="insertLetter('ܹ')">ܹ</button>
-    <button onclick="insertLetter('ܲ')">ܲ</button>
-    <button onclick="insertLetter('ܵ')">ܵ</button>
-    <button onclick="insertLetter('ܿ')">ܿ</button>
-    <button onclick="insertLetter('ܼ')">ܼ</button>
-    <button onclick="insertLetter('̈')">̈</button>
+    <!-- Ligne 3 -->
+    <button class="key-btn" onclick="insertLetter('ܫ')">ܫ</button>
+    <button class="key-btn" onclick="insertLetter('ܬ')">ܬ</button>
 
-    <button onclick="insertLetter(' ')">␣</button>
-
-    <button onclick="deleteLetter()">⌫</button>
+    <!-- Espace + suppression -->
+    <button class="key-btn space" onclick="insertLetter(' ')">␣ Espace</button>
+    <button class="delete-btn" onclick="deleteLetter()">⌫</button>
 
   </div>
 
 </section>
 
-<!-- JS GLOBAL -->
-<script src="js/app.js" defer></script>
-
-<!-- JS CLAVIER -->
-<script src="js/keyboard.js" defer></script>
-
-<!-- AUDIO -->
-<script src="js/audio.js" defer></script>
-
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  if (typeof initKeyboard === "function") {
-    initKeyboard("editor");
-  }
-});
-</script>
+<!-- Scripts -->
+<script src="js/traduction.js"></script> <!-- contient insertLetter/deleteLetter -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
