@@ -360,3 +360,11 @@ nav {
 nav.open {
     pointer-events: auto;
 }
+
+nav {
+    pointer-events: none;
+}
+
+nav.open {
+    pointer-events: auto;
+}
