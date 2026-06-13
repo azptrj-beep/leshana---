@@ -1,10 +1,8 @@
-/* ============================================
-   STYLE.CSS — Layout global + Menu + Modules
-============================================ */
-
-/* BODY GLOBAL */
+/* ============================================================
+   1) RESET + GLOBAL
+============================================================ */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     text-align: center;
@@ -13,14 +11,12 @@ body {
     transition: 0.3s;
 }
 
-/* SECTIONS */
 section {
     max-width: 1400px;
     margin: auto;
     padding: 70px 25px;
 }
 
-/* TITRES */
 h1, h2, h3 {
     font-weight: 700;
     word-break: break-word;
@@ -31,10 +27,9 @@ p {
     word-break: break-word;
 }
 
-/* ============================================
-   HEADER + MENU HAMBURGER
-============================================ */
-
+/* ============================================================
+   2) HEADER + MENU
+============================================================ */
 header {
     position: sticky;
     top: 0;
@@ -45,7 +40,6 @@ header {
     padding: 20px;
 }
 
-/* LOGO */
 .logo-container {
     display: flex;
     justify-content: center;
@@ -62,7 +56,6 @@ header {
     animation: floatLogo 3s ease-in-out infinite;
 }
 
-/* MENU BURGER */
 .menu-toggle {
     display: none;
     background: transparent;
@@ -84,7 +77,6 @@ header {
     transition: 0.3s;
 }
 
-/* NAVIGATION */
 nav {
     position: fixed;
     top: 0;
@@ -121,10 +113,9 @@ nav a:hover {
     transform: translateX(6px);
 }
 
-/* ============================================
-   HERO
-============================================ */
-
+/* ============================================================
+   3) HERO
+============================================================ */
 .hero {
     padding: 120px 20px;
 }
@@ -143,10 +134,9 @@ nav a:hover {
     color: var(--text-soft);
 }
 
-/* ============================================
-   MODULES — PAGE D’ACCUEIL
-============================================ */
-
+/* ============================================================
+   4) MODULES
+============================================================ */
 .modules-container {
     max-width: 1100px;
     margin: 60px auto;
@@ -200,117 +190,9 @@ nav a:hover {
     margin-top: 4px;
 }
 
-/* ============================================
-   RESPONSIVE GLOBAL
-============================================ */
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 35px 14px 25px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .menu-toggle {
-        display: block;
-        margin: 20px auto;
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-    }
-
-    nav.active {
-        display: flex;
-    }
-}
-
-@media (max-width: 700px) {
-    .module-item {
-        padding: 18px;
-        gap: 16px;
-    }
-
-    .module-icon {
-        font-size: 34px;
-        min-width: 40px;
-    }
-
-    .module-title {
-        font-size: 18px;
-    }
-
-    .module-desc {
-        font-size: 14px;
-    }
-}
-
-/* Cadres principaux (cards, modules, canvas) */
-.module-item,
-.quiz-box,
-#writingCanvas {
-    border-radius: 18px;
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-soft);
-    background: var(--card);
-    backdrop-filter: blur(14px);
-}
-
-/* Taille et espacement */
-.module-item,
-.quiz-box {
-    padding: 28px 32px;
-    margin: 18px auto;
-    width: 90%;
-    max-width: 900px;
-}
-
-/* Canvas visible et proportionné */
-#writingCanvas {
-    width: 420px !important;
-    height: 560px !important;
-    display: block;
-    margin: 40px auto;
-    border: 2px solid var(--cyan);
-    box-shadow:
-        0 0 18px rgba(0,162,255,0.55),
-        0 0 35px rgba(0,162,255,0.45),
-        inset 0 0 18px rgba(0,162,255,0.25);
-}
-
-@media (max-width: 768px) {
-    #writingCanvas {
-        width: 90% !important;
-        height: auto !important;
-        aspect-ratio: 3 / 4;
-    }
-
-    .module-item,
-    .quiz-box {
-        padding: 18px;
-        width: 95%;
-    }
-}
-
-#writingCanvas {
-    border: 2px solid var(--cyan);
-    box-shadow:
-        0 0 25px rgba(0,162,255,0.65),
-        0 0 45px rgba(0,162,255,0.45),
-        inset 0 0 25px rgba(0,162,255,0.25);
-}
-/* ===== STRUCTURE GLOBALE ===== */
-
-.page-section {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 30px 20px;
-}
-
+/* ============================================================
+   5) CANVAS + CARDS
+============================================================ */
 .card,
 .module-item,
 .quiz-box,
@@ -327,8 +209,21 @@ nav a:hover {
     border: 1px solid rgba(255,255,255,0.12);
     backdrop-filter: blur(12px);
 }
+
+#writingCanvas {
+    width: 420px !important;
+    height: 560px !important;
+    display: block;
+    margin: 40px auto;
+    border: 2px solid var(--cyan);
+    box-shadow:
+        0 0 25px rgba(0,162,255,0.65),
+        0 0 45px rgba(0,162,255,0.45),
+        inset 0 0 25px rgba(0,162,255,0.25);
+}
+
 /* ============================================================
-   POLICES SOURETH (Nohadra + Assyrian)
+   6) SOURETH (polices + RTL)
 ============================================================ */
 @font-face {
   font-family: "Nohadra";
@@ -342,9 +237,6 @@ nav a:hover {
   font-display: swap;
 }
 
-/* ============================================================
-   STYLE GLOBAL SOURETH
-============================================================ */
 .soureth {
   direction: rtl;
   unicode-bidi: bidi-override;
@@ -355,7 +247,6 @@ nav a:hover {
   white-space: pre-wrap;
 }
 
-/* Pour les zones de texte */
 textarea.soureth {
   width: 100%;
   padding: 15px;
@@ -369,14 +260,13 @@ textarea.soureth {
   box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
 }
 
-/* Focus */
 textarea.soureth:focus {
   border-color: #0055ff;
   box-shadow: 0 0 8px rgba(0,85,255,0.4);
 }
 
 /* ============================================================
-   CLAVIER SOURETH
+   7) CLAVIER SOURETH
 ============================================================ */
 #keyboard.soureth {
   direction: rtl;
@@ -401,7 +291,6 @@ textarea.soureth:focus {
   text-align: center;
 }
 
-/* Hover */
 #keyboard.soureth .key-btn:hover,
 #keyboard.soureth .delete-btn:hover {
   background: #0033a0;
@@ -409,12 +298,10 @@ textarea.soureth:focus {
   transform: scale(1.05);
 }
 
-/* Espace */
 #keyboard.soureth .key-btn.space {
   grid-column: span 2;
 }
 
-/* Delete */
 #keyboard.soureth .delete-btn {
   background: #ffdddd;
   border-color: #cc0000;
@@ -427,27 +314,38 @@ textarea.soureth:focus {
 }
 
 /* ============================================================
-   AFFICHAGE ALPHABET (Alphabet.html)
+   8) RESPONSIVE
 ============================================================ */
-#letterDisplay.soureth {
-  font-size: 80px;
-  font-family: "Nohadra", "Assyrian", sans-serif;
-  direction: rtl;
-  unicode-bidi: bidi-override;
-  text-align: center;
-  margin: 20px 0;
+@media (max-width: 768px) {
+    .hero {
+        padding: 35px 14px 25px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin: 20px auto;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    #writingCanvas {
+        width: 90% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 4;
+    }
 }
 
-/* Guide */
-#guideLetter.soureth {
-  font-size: 40px;
-  opacity: 0.7;
-  text-align: center;
-}
-
-/* ============================================================
-   COMPATIBILITÉ MOBILE
-============================================================ */
 @media (max-width: 600px) {
   textarea.soureth {
     font-size: 24px;
