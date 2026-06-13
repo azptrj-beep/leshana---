@@ -101,7 +101,7 @@ nav {
     z-index: 1000;
 }
 
-nav.active {
+header nav.open {
     right: 0;
 }
 
