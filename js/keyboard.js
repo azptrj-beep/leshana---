@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!keyboard || !input) return;
 
-  input.classList.add("soureth");   // RTL + police
+  // Active le mode Soureth correct
+  input.classList.remove("ltr");
+  input.classList.add("rtl");
+
   generateKeyboard(keyboard, input);
 });
 
@@ -28,20 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
 ============================================================ */
 function generateKeyboard(container, targetInput) {
   container.innerHTML = "";
-  container.classList.add("soureth");
+  container.classList.add("rtl"); // pas .soureth
 
-  // Lettres
   SOURETH_LETTERS.forEach(letter => {
     const btn = createKey(letter, () => insertLetter(targetInput, letter));
     container.appendChild(btn);
   });
 
-  // Espace
   const space = createKey("␣ Espace", () => insertLetter(targetInput, " "));
   space.classList.add("space");
   container.appendChild(space);
 
-  // Delete
   const del = createKey("⌫", () => deleteLetter(targetInput));
   del.classList.add("delete-btn");
   container.appendChild(del);
@@ -70,6 +70,10 @@ function createKey(label, action) {
 function insertLetter(input, letter) {
   const start = input.selectionStart || 0;
   const end = input.selectionEnd || 0;
+
+  // Active RTL automatiquement
+  input.classList.remove("ltr");
+  input.classList.add("rtl");
 
   input.value =
     input.value.substring(0, start) +
@@ -100,10 +104,16 @@ function deleteLetter(input) {
   }
 
   input.focus();
+
+  // Si plus de lettres soureth → repasse en LTR
+  if (!/[\u0700-\u074F]/.test(input.value)) {
+    input.classList.remove("rtl");
+    input.classList.add("ltr");
+  }
 }
 
 /* ============================================================
-   EXPORT GLOBAL (si nécessaire)
+   EXPORT GLOBAL
 ============================================================ */
 window.insertLetter = (letter) => {
   const input = document.getElementById("keyboardInput") 
