@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   synth = window.speechSynthesis || null;
 
   initSpeechRecognition();
-  loadDictionaries(); // sécurisé, ne bloque jamais
+  loadDictionaries();
 });
 
 /* ============================================================
@@ -30,7 +30,7 @@ function setStatus(text) {
 }
 
 /* ============================================================
-   DICTIONNAIRES — VERSION 100% SÉCURISÉE
+   DICTIONNAIRES — VERSION SÉCURISÉE
 ============================================================ */
 async function loadDictionaries() {
   setStatus("Chargement des dictionnaires…");
@@ -39,9 +39,7 @@ async function loadDictionaries() {
     const w = await fetch("data/words.json", { cache: "no-store" });
     const p = await fetch("data/phrases.json", { cache: "no-store" });
 
-    if (!w.ok || !p.ok) {
-      throw new Error("Fichiers dictionnaires introuvables");
-    }
+    if (!w.ok || !p.ok) throw new Error("Fichiers dictionnaires introuvables");
 
     words = await w.json().catch(() => ({}));
     phrases = await p.json().catch(() => ({}));
@@ -54,7 +52,6 @@ async function loadDictionaries() {
     setStatus("Dictionnaires non chargés (mode réduit) ⚠️");
   }
 
-  // Quoi qu’il arrive, l’UI est utilisable
   enableTranslatorUI();
 }
 
@@ -73,18 +70,37 @@ function detectLanguage(text) {
 }
 
 /* ============================================================
+   GESTION AUTOMATIQUE RTL / LTR
+============================================================ */
+function applyDirection(lang) {
+  if (!input || !result) return;
+
+  if (lang === "syr") {
+    input.classList.remove("ltr");
+    input.classList.add("rtl");
+
+    result.classList.remove("ltr");
+    result.classList.add("rtl");
+  } else {
+    input.classList.remove("rtl");
+    input.classList.add("ltr");
+
+    result.classList.remove("rtl");
+    result.classList.add("ltr");
+  }
+}
+
+/* ============================================================
    TRADUCTION
 ============================================================ */
 function translateWord(word, lang) {
   if (!word) return word;
 
-  // Phrases d’abord (si jamais on veut les utiliser plus tard)
   if (lang === "syr") {
     if (phrases[word]) return phrases[word];
     if (words[word]) return words[word];
     return word;
   } else {
-    // FR → SYR : recherche inverse
     const phraseKey = Object.keys(phrases).find(k => phrases[k] === word);
     if (phraseKey) return phraseKey;
 
@@ -119,13 +135,16 @@ function translateText() {
   }
 
   const lang = detectLanguage(text);
+
+  // 🔥 Mise à jour automatique de la direction
+  applyDirection(lang);
+
   const sentences = text.split(/(?<=[.!?])/g);
 
   const translated = sentences
     .map(s => translateSentence(s.trim(), lang))
     .join(" ");
 
-  // Si aucun dictionnaire → on renvoie au moins le texte original
   result.value = translated || text;
 
   addToHistory(text, result.value);
@@ -166,9 +185,15 @@ window.clearAll = clearAll;
 
 function swapText() {
   if (!input || !result) return;
+
   const temp = input.value;
   input.value = result.value;
   result.value = temp;
+
+  // 🔥 Mise à jour direction après inversion
+  const lang = detectLanguage(input.value);
+  applyDirection(lang);
+
   setStatus("Texte inversé ↔️");
 }
 
