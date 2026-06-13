@@ -327,3 +327,139 @@ nav a:hover {
     border: 1px solid rgba(255,255,255,0.12);
     backdrop-filter: blur(12px);
 }
+/* ============================================================
+   POLICES SOURETH (Nohadra + Assyrian)
+============================================================ */
+@font-face {
+  font-family: "Nohadra";
+  src: url("../assets/fonts/nohadra.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Assyrian";
+  src: url("../assets/fonts/assyrian.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* ============================================================
+   STYLE GLOBAL SOURETH
+============================================================ */
+.soureth {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  font-family: "Nohadra", "Assyrian", sans-serif;
+  font-size: 28px;
+  line-height: 1.7;
+  text-align: right;
+  white-space: pre-wrap;
+}
+
+/* Pour les zones de texte */
+textarea.soureth {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #0033a0;
+  background: #f8faff;
+  color: #001a4d;
+  resize: vertical;
+  min-height: 140px;
+  outline: none;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
+
+/* Focus */
+textarea.soureth:focus {
+  border-color: #0055ff;
+  box-shadow: 0 0 8px rgba(0,85,255,0.4);
+}
+
+/* ============================================================
+   CLAVIER SOURETH
+============================================================ */
+#keyboard.soureth {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#keyboard.soureth .key-btn,
+#keyboard.soureth .delete-btn {
+  font-family: "Nohadra", "Assyrian", sans-serif;
+  font-size: 26px;
+  padding: 14px 0;
+  background: #ffffff;
+  border: 2px solid #0033a0;
+  border-radius: 10px;
+  color: #0033a0;
+  cursor: pointer;
+  transition: 0.15s ease;
+  text-align: center;
+}
+
+/* Hover */
+#keyboard.soureth .key-btn:hover,
+#keyboard.soureth .delete-btn:hover {
+  background: #0033a0;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Espace */
+#keyboard.soureth .key-btn.space {
+  grid-column: span 2;
+}
+
+/* Delete */
+#keyboard.soureth .delete-btn {
+  background: #ffdddd;
+  border-color: #cc0000;
+  color: #cc0000;
+}
+
+#keyboard.soureth .delete-btn:hover {
+  background: #cc0000;
+  color: white;
+}
+
+/* ============================================================
+   AFFICHAGE ALPHABET (Alphabet.html)
+============================================================ */
+#letterDisplay.soureth {
+  font-size: 80px;
+  font-family: "Nohadra", "Assyrian", sans-serif;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Guide */
+#guideLetter.soureth {
+  font-size: 40px;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* ============================================================
+   COMPATIBILITÉ MOBILE
+============================================================ */
+@media (max-width: 600px) {
+  textarea.soureth {
+    font-size: 24px;
+  }
+
+  #keyboard.soureth .key-btn,
+  #keyboard.soureth .delete-btn {
+    font-size: 22px;
+    padding: 10px 0;
+  }
+
+  #letterDisplay.soureth {
+    font-size: 60px;
+  }
+}
