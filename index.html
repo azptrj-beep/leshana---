@@ -163,3 +163,81 @@
   <a href="ecriture.html" class="module-item">
     <div class="module-icon">✍️</div>
     <div class="module-text">
+      <div class="module-title">Écriture tactile</div>
+      <div class="module-desc">Écris avec ton doigt, un stylet ou la souris.</div>
+    </div>
+  </a>
+
+  <a href="vocal.html" class="module-item">
+    <div class="module-icon">🔊</div>
+    <div class="module-text">
+      <div class="module-title">Audio natif</div>
+      <div class="module-desc">Écoute la prononciation authentique.</div>
+    </div>
+  </a>
+
+  <a href="quiz.html" class="module-item">
+    <div class="module-icon">🧠</div>
+    <div class="module-text">
+      <div class="module-title">Quiz intelligents</div>
+      <div class="module-desc">Progresse avec niveaux et révisions automatiques.</div>
+    </div>
+  </a>
+
+</section>
+
+<!-- =========================
+       PROGRESSION
+========================== -->
+<section class="progress-section">
+  <div class="progress-card">
+    <h2>📈 Votre progression</h2>
+    <p>Niveau actuel : Débutant</p>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <p style="margin-top:15px;">35% complété</p>
+  </div>
+</section>
+
+<!-- =========================
+       FOOTER
+========================== -->
+<footer>
+  <p>© 2026 Leshana-Ed-Soureth — Plateforme éducative assyro-chaldéenne moderne</p>
+  <a href="soureth-Adiabene.html">Soureth Moderne</a>
+</footer>
+
+<!-- =========================
+       JAVASCRIPT
+========================== -->
+<script src="js/global.js"></script>
+<script src="js/keyboard.js"></script>
+<script src="js/traduction.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/ecriture.js"></script>
+
+<!-- SERVICE WORKER -->
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js")
+        .then(() => console.log("SW enregistré ✔"))
+        .catch(err => console.log("Erreur SW :", err));
+    });
+  }
+</script>
+
+<!-- NAVIGATION BAS -->
+<div class="bottom-nav">
+  <a href="index.html">🏠</a>
+  <a href="alphabet.html">🔠</a>
+  <a href="quiz.html">🎮</a>
+  <a href="traduction.html">🌍</a>
+  <a href="progression.html">📈</a>
+</div>
+
+</body>
+</html>
