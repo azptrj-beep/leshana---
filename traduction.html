@@ -39,68 +39,63 @@
 
 <section class="translator-box card">
 
-  <!-- Statut (UNE SEULE FOIS) -->
+  <!-- Statut -->
   <div id="status" class="status">⏳ Chargement…</div>
 
   <!-- Zone de saisie -->
-  <textarea id="input" placeholder="Écris ici en Français ou en Soureth..."></textarea>
+  <textarea id="translateInput" placeholder="Écris ici en Français ou en Soureth..."></textarea>
 
   <!-- Boutons principaux -->
   <div class="translator-buttons">
-    <button id="translateBtn">Traduire</button>
-    <button id="clearBtn">Effacer</button>
-    <button id="swapBtn">⇄ Inverser</button>
-    <button id="speakBtn">🔊 Lire</button>
-    <button id="stopBtn">⏹ Stop</button>
-    <button id="micBtn">🎤 Micro</button>
+    <button onclick="translateText()">Traduire</button>
+    <button onclick="clearAll()">Effacer</button>
+    <button onclick="swapText()">⇄ Inverser</button>
+    <button onclick="speakText()">🔊 Lire</button>
+    <button onclick="stopSpeak()">⏹ Stop</button>
+    <button onclick="startMic()">🎤 Micro</button>
   </div>
 
   <!-- Résultat -->
-  <div id="result" class="translation-output">...</div>
+  <textarea id="translateResult" class="translation-output" readonly></textarea>
 
   <!-- Clavier Soureth -->
   <h3 style="margin-top:30px;">Clavier Soureth</h3>
 
-  <div id="keyboard-tabs"></div>
-
   <div id="keyboard">
-
     <!-- Ligne 1 -->
-    <button class="key-btn" data-letter="ܐ">ܐ</button>
-    <button class="key-btn" data-letter="ܒ">ܒ</button>
-    <button class="key-btn" data-letter="ܓ">ܓ</button>
-    <button class="key-btn" data-letter="ܕ">ܕ</button>
-    <button class="key-btn" data-letter="ܗ">ܗ</button>
-    <button class="key-btn" data-letter="ܘ">ܘ</button>
-    <button class="key-btn" data-letter="ܙ">ܙ</button>
-    <button class="key-btn" data-letter="ܚ">ܚ</button>
-    <button class="key-btn" data-letter="ܛ">ܛ</button>
-    <button class="key-btn" data-letter="ܝ">ܝ</button>
+    <button class="key-btn" onclick="insertLetter('ܐ')">ܐ</button>
+    <button class="key-btn" onclick="insertLetter('ܒ')">ܒ</button>
+    <button class="key-btn" onclick="insertLetter('ܓ')">ܓ</button>
+    <button class="key-btn" onclick="insertLetter('ܕ')">ܕ</button>
+    <button class="key-btn" onclick="insertLetter('ܗ')">ܗ</button>
+    <button class="key-btn" onclick="insertLetter('ܘ')">ܘ</button>
+    <button class="key-btn" onclick="insertLetter('ܙ')">ܙ</button>
+    <button class="key-btn" onclick="insertLetter('ܚ')">ܚ</button>
+    <button class="key-btn" onclick="insertLetter('ܛ')">ܛ</button>
+    <button class="key-btn" onclick="insertLetter('ܝ')">ܝ</button>
 
     <!-- Ligne 2 -->
-    <button class="key-btn" data-letter="ܟ">ܟ</button>
-    <button class="key-btn" data-letter="ܠ">ܠ</button>
-    <button class="key-btn" data-letter="ܡ">ܡ</button>
-    <button class="key-btn" data-letter="ܢ">ܢ</button>
-    <button class="key-btn" data-letter="ܣ">ܣ</button>
-    <button class="key-btn" data-letter="ܥ">ܥ</button>
-    <button class="key-btn" data-letter="ܦ">ܦ</button>
-    <button class="key-btn" data-letter="ܨ">ܨ</button>
-    <button class="key-btn" data-letter="ܩ">ܩ</button>
-    <button class="key-btn" data-letter="ܪ">ܪ</button>
+    <button class="key-btn" onclick="insertLetter('ܟ')">ܟ</button>
+    <button class="key-btn" onclick="insertLetter('ܠ')">ܠ</button>
+    <button class="key-btn" onclick="insertLetter('ܡ')">ܡ</button>
+    <button class="key-btn" onclick="insertLetter('ܢ')">ܢ</button>
+    <button class="key-btn" onclick="insertLetter('ܣ')">ܣ</button>
+    <button class="key-btn" onclick="insertLetter('ܥ')">ܥ</button>
+    <button class="key-btn" onclick="insertLetter('ܦ')">ܦ</button>
+    <button class="key-btn" onclick="insertLetter('ܨ')">ܨ</button>
+    <button class="key-btn" onclick="insertLetter('ܩ')">ܩ</button>
+    <button class="key-btn" onclick="insertLetter('ܪ')">ܪ</button>
 
     <!-- Ligne 3 -->
-    <button class="key-btn" data-letter="ܫ">ܫ</button>
-    <button class="key-btn" data-letter="ܬ">ܬ</button>
+    <button class="key-btn" onclick="insertLetter('ܫ')">ܫ</button>
+    <button class="key-btn" onclick="insertLetter('ܬ')">ܬ</button>
 
     <!-- Espace + suppression -->
-    <button class="key-btn" data-letter=" " style="grid-column: span 2;">␣ Espace</button>
-    <button class="delete-btn">⌫</button>
-
+    <button class="key-btn" onclick="insertLetter(' ')" style="grid-column: span 2;">␣ Espace</button>
+    <button class="delete-btn" onclick="deleteLetter()">⌫</button>
   </div>
 
   <!-- Historique -->
-
   <h3 style="margin-top:30px;">Historique</h3>
   <div id="history"></div>
 
@@ -108,7 +103,8 @@
 
 <!-- Scripts -->
 <script src="keyboard.js"></script>
-<script src="translate.js"></script>
+<script src="traduction.js"></script>
 <script src="app.js"></script>
+
 </body>
 </html>
