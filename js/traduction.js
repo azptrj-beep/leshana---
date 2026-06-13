@@ -30,7 +30,7 @@ function setStatus(text) {
 }
 
 /* ============================================================
-   DICTIONNAIRES — VERSION SÉCURISÉE
+   DICTIONNAIRES
 ============================================================ */
 async function loadDictionaries() {
   setStatus("Chargement des dictionnaires…");
@@ -49,7 +49,7 @@ async function loadDictionaries() {
     console.warn("Erreur dictionnaires :", e);
     words = {};
     phrases = {};
-    setStatus("Dictionnaires non chargés (mode réduit) ⚠️");
+    setStatus("Dictionnaires non chargés ⚠️");
   }
 
   enableTranslatorUI();
@@ -70,7 +70,7 @@ function detectLanguage(text) {
 }
 
 /* ============================================================
-   GESTION AUTOMATIQUE RTL / LTR
+   RTL / LTR AUTOMATIQUE
 ============================================================ */
 function applyDirection(lang) {
   if (!input || !result) return;
@@ -79,14 +79,14 @@ function applyDirection(lang) {
     input.classList.remove("ltr");
     input.classList.add("rtl");
 
-    result.classList.remove("ltr");
-    result.classList.add("rtl");
+    result.classList.remove("rtl");
+    result.classList.add("ltr");
   } else {
     input.classList.remove("rtl");
     input.classList.add("ltr");
 
-    result.classList.remove("rtl");
-    result.classList.add("ltr");
+    result.classList.remove("ltr");
+    result.classList.add("rtl");
   }
 }
 
@@ -172,7 +172,7 @@ function addToHistory(src, out) {
 window.addToHistory = addToHistory;
 
 /* ============================================================
-   BOUTONS : EFFACER / SWAP
+   EFFACER / SWAP
 ============================================================ */
 function clearAll() {
   if (!input || !result) return;
@@ -241,7 +241,7 @@ function deleteLetter() {
 window.deleteLetter = deleteLetter;
 
 /* ============================================================
-   AUDIO : LECTURE
+   AUDIO
 ============================================================ */
 function speakText() {
   if (!synth || !result) return;
@@ -272,7 +272,7 @@ function stopSpeak() {
 window.stopSpeak = stopSpeak;
 
 /* ============================================================
-   MICRO : RECONNAISSANCE VOCALE
+   MICRO
 ============================================================ */
 function initSpeechRecognition() {
   const SpeechRecognition =
@@ -305,7 +305,7 @@ function initSpeechRecognition() {
 
 function startMic() {
   if (!recognition) {
-    setStatus("Micro non supporté sur ce navigateur ❌");
+    setStatus("Micro non supporté ❌");
     return;
   }
   recognition.start();
