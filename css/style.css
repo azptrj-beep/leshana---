@@ -351,3 +351,12 @@ textarea.soureth:focus {
         font-size: 60px;
     }
 }
+
+/* Empêche le menu fermé de bloquer la page */
+nav {
+    pointer-events: none;
+}
+
+nav.open {
+    pointer-events: auto;
+}
