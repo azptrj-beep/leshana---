@@ -1,7 +1,7 @@
-/* ============================================
+/* ============================================================
    THEME.CSS — Variables globales + Glassmorphism
-   Thème Premium Bleu Assyrien
-============================================ */
+   Version harmonisée avec style.css
+============================================================ */
 
 /* RESET GLOBAL */
 * {
@@ -10,67 +10,83 @@
     box-sizing: border-box;
 }
 
-/* VARIABLES — MODE SOMBRE (par défaut) */
+/* ============================================================
+   PALETTE — MODE SOMBRE (par défaut)
+============================================================ */
 :root {
     --blue-main: #0033a0;
-    --blue-light: #00a2ff;
+    --blue-light: #0090ff;
     --cyan: #00eaff;
 
     --red-main: #d40000;
 
-    --text-light: #ffffff;
+    --text: #ffffff;
     --text-soft: rgba(255,255,255,0.75);
 
-    --glass-bg: rgba(255,255,255,0.08);
-    --glass-border: rgba(255,255,255,0.18);
-
     --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
-    --text: #ffffff;
-
-    --card: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.06);
     --nav: rgba(255,255,255,0.05);
 
-    --shadow-strong: 0 10px 35px rgba(0,0,0,0.35);
-    --shadow-soft: 0 6px 18px rgba(0,0,0,0.25);
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.12);
+
+    --shadow-soft: 0 8px 25px rgba(0,0,0,0.25);
+    --shadow-strong: 0 12px 35px rgba(0,0,0,0.45);
+
+    --radius: 18px;
+    --transition: 0.25s ease;
 }
 
-/* MODE CLAIR */
+/* ============================================================
+   MODE CLAIR
+============================================================ */
 body.light-mode {
     --bg: #f4f7fb;
     --text: #111827;
+    --text-soft: #4a5568;
+
     --card: rgba(255,255,255,0.9);
     --nav: rgba(0,0,0,0.05);
+
     --glass-bg: rgba(255,255,255,0.6);
     --glass-border: rgba(0,0,0,0.12);
+
+    --shadow-soft: 0 8px 25px rgba(0,0,0,0.15);
+    --shadow-strong: 0 12px 35px rgba(0,0,0,0.25);
 }
 
-/* FONTS */
+/* ============================================================
+   POLICES SOURETH
+============================================================ */
 @font-face {
-    font-family: Nohadra;
-    src: url('../assets/fonts/nohadra.woff2') format('woff2'),
-         url('../assets/fonts/nohadra.ttf') format('truetype');
+    font-family: "Nohadra";
+    src: url('../assets/fonts/nohadra.woff2') format('woff2');
     font-display: swap;
 }
 
 @font-face {
-    font-family: Assyrian;
-    src: url('../assets/fonts/assyrian.woff2') format('woff2'),
-         url('../assets/fonts/assyrian.ttf') format('truetype');
+    font-family: "Assyrian";
+    src: url('../assets/fonts/assyrian.woff2') format('woff2');
     font-display: swap;
 }
 
-/* TYPOGRAPHIE SOURETH */
+/* ============================================================
+   TYPOGRAPHIE SOURETH — HARMONISÉE AVEC style.css
+============================================================ */
 .soureth-title,
 .soureth-writing,
 .soureth-classic,
 .letter,
 :lang(syr) {
-    font-family: 'Nohadra', 'Assyrian', sans-serif !important;
+    font-family: "Nohadra", "Assyrian", sans-serif !important;
     direction: rtl;
-    unicode-bidi: plaintext;
+    unicode-bidi: bidi-override;
+    text-align: right;
 }
 
-/* GLOW PREMIUM — BLEU ASSYRIEN */
+/* ============================================================
+   GLOW PREMIUM — BLEU ASSYRIEN
+============================================================ */
 .glow-blue {
     box-shadow:
         0 0 12px rgba(0, 162, 255, 0.55),
@@ -79,15 +95,10 @@ body.light-mode {
     border-color: var(--cyan) !important;
 }
 
-/* ANIMATIONS */
-@keyframes floatLogo {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0); }
-}
-
-/* SMOOTHING GLOBAL */
-body {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
+/* ============================================================
+   GLASSMORPHISM GLOBAL — ALIGNÉ AVEC style.css
+============================================================ */
+.glass,
+.card,
+.module-item,
+.quiz-box
