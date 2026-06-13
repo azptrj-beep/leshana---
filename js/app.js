@@ -53,10 +53,9 @@ window.toggleTheme = toggleTheme;
 function initMenu() {
   window.toggleMenu = () => {
     const nav = document.querySelector("nav");
-    if (nav) nav.classList.toggle("active");
+    if (nav) nav.classList.toggle("open");
   };
 }
-
 /* ============================================================
    ALPHABET SYSTEM (sécurisé)
 ============================================================ */
