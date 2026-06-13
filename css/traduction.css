@@ -43,10 +43,10 @@
 }
 
 /* =========================
-   TEXTAREA PREMIUM
+   TEXTAREA INPUT
 ========================= */
 
-#input {
+#translateInput {
   background: rgba(255,255,255,0.12);
   color: white;
   font-size: 32px;
@@ -55,31 +55,47 @@
   width: 100%;
   min-height: 160px;
   font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255,255,255,0.15);
   direction: ltr;
   text-align: left;
-  border: 1px solid rgba(255,255,255,0.15);
 }
 
 /* MODE SOURETH (activé par JS) */
-#input.rtl {
+#translateInput.rtl {
   direction: rtl !important;
   text-align: right !important;
+}
+
+#translateInput.ltr {
+  direction: ltr !important;
+  text-align: left !important;
 }
 
 /* =========================
    RÉSULTAT
 ========================= */
 
-.translation-output {
+#translateResult {
   background: rgba(255,255,255,0.12);
   color: white;
   font-size: 28px;
   padding: 25px;
   border-radius: 20px;
-  text-align: left;
-  direction: ltr;
-  font-family: 'Poppins', sans-serif;
   border: 1px solid rgba(255,255,255,0.15);
+  font-family: 'Poppins', sans-serif;
+  direction: ltr;
+  text-align: left;
+}
+
+/* RTL pour résultat */
+#translateResult.rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+#translateResult.ltr {
+  direction: ltr !important;
+  text-align: left !important;
 }
 
 /* =========================
@@ -130,78 +146,4 @@
 
 #keyboard-tabs .tab-btn:hover {
   background: rgba(0,150,255,0.35);
-  transform: translateY(-2px);
-}
-
-#keyboard-tabs .tab-btn.active {
-  background: linear-gradient(135deg, #0066ff, #00cfff);
-  color: white;
-  box-shadow: 0 4px 12px rgba(0,150,255,0.35);
-  transform: translateY(-2px);
-}
-
-/* =========================
-   CLAVIER SOURETH PREMIUM
-========================= */
-
-#keyboard {
-  width: 100%;
-  max-width: 900px;
-  margin: 25px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 14px;
-  padding: 20px;
-}
-
-#keyboard .key-btn {
-  font-size: 42px;
-  padding: 15px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.12);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.15);
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  backdrop-filter: blur(4px);
-}
-
-#keyboard .key-btn:hover {
-  background: linear-gradient(135deg, #0066ff, #00cfff);
-  transform: translateY(-4px);
-}
-
-#keyboard .delete-btn {
-  background: rgba(255,80,80,0.25);
-}
-
-#keyboard .delete-btn:hover {
-  background: linear-gradient(135deg, #ff4444, #ff7777);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:768px){
-  #keyboard .key-btn {
-    font-size: 32px;
-    padding: 12px;
-  }
-
-  #keyboard-tabs .tab-btn {
-    font-size: 13px;
-    padding: 8px 14px;
-  }
-
-  #input {
-    font-size: 26px;
-    padding: 18px;
-  }
-
-  .translation-output {
-    font-size: 22px;
-    padding: 20px;
-  }
-}
+  transform: translate
