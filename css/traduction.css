@@ -56,19 +56,21 @@
   min-height: 160px;
   font-family: 'Poppins', sans-serif;
   border: 1px solid rgba(255,255,255,0.15);
-  direction: ltr;
-  text-align: left;
+  resize: vertical;
 }
 
-/* MODE SOURETH (activé par JS) */
+/* MODE SOURETH (RTL) */
 #translateInput.rtl {
   direction: rtl !important;
   text-align: right !important;
+  font-family: 'Nohadra', 'Assyrian', sans-serif !important;
 }
 
+/* MODE FRANÇAIS (LTR) */
 #translateInput.ltr {
   direction: ltr !important;
   text-align: left !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* =========================
@@ -83,19 +85,21 @@
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.15);
   font-family: 'Poppins', sans-serif;
-  direction: ltr;
-  text-align: left;
+  resize: vertical;
 }
 
-/* RTL pour résultat */
+/* RTL pour résultat (Soureth) */
 #translateResult.rtl {
   direction: rtl !important;
   text-align: right !important;
+  font-family: 'Nohadra', 'Assyrian', sans-serif !important;
 }
 
+/* LTR pour résultat (Français) */
 #translateResult.ltr {
   direction: ltr !important;
   text-align: left !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 /* =========================
@@ -146,4 +150,44 @@
 
 #keyboard-tabs .tab-btn:hover {
   background: rgba(0,150,255,0.35);
-  transform: translate
+  transform: translateY(-2px);
+}
+
+/* =========================
+   CLAVIER SOURETH
+========================= */
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end; /* RTL */
+  margin-top: 20px;
+}
+
+#keyboard.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.key-btn,
+.delete-btn {
+  padding: 14px 18px;
+  font-size: 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  transition: 0.25s ease;
+}
+
+.key-btn:hover,
+.delete-btn:hover {
+  background: rgba(0,150,255,0.35);
+}
+
+.key-btn.space {
+  flex: 1;
+  text-align: center;
+}
