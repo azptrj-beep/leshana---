@@ -1,9 +1,11 @@
 /* ============================================================
    THEME.CSS — Variables globales + Glassmorphism
-   Version harmonisée avec style.css
+   Version harmonisée avec style.css & traduction.css
 ============================================================ */
 
-/* RESET GLOBAL */
+/* ============================================================
+   0. RESET GLOBAL
+============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -11,37 +13,46 @@
 }
 
 /* ============================================================
-   PALETTE — MODE SOMBRE (par défaut)
+   1. PALETTE — MODE SOMBRE (par défaut)
 ============================================================ */
 :root {
+    /* Couleurs principales */
     --blue-main: #0033a0;
     --blue-light: #0090ff;
     --cyan: #00eaff;
 
     --red-main: #d40000;
 
+    /* Texte */
     --text: #ffffff;
     --text-soft: rgba(255,255,255,0.75);
 
+    /* Fond global */
     --bg: radial-gradient(circle at top left, #0033a0, #050816 60%);
+
+    /* Cartes & modules */
     --card: rgba(255,255,255,0.06);
     --nav: rgba(255,255,255,0.05);
 
+    /* Glassmorphism */
     --glass-bg: rgba(255,255,255,0.08);
     --glass-border: rgba(255,255,255,0.12);
 
+    /* Ombres */
     --shadow-soft: 0 8px 25px rgba(0,0,0,0.25);
     --shadow-strong: 0 12px 35px rgba(0,0,0,0.45);
 
+    /* Arrondis & transitions */
     --radius: 18px;
     --transition: 0.25s ease;
 }
 
 /* ============================================================
-   MODE CLAIR
+   2. MODE CLAIR
 ============================================================ */
 body.light-mode {
     --bg: #f4f7fb;
+
     --text: #111827;
     --text-soft: #4a5568;
 
@@ -56,7 +67,7 @@ body.light-mode {
 }
 
 /* ============================================================
-   POLICES SOURETH
+   3. POLICES SOURETH
 ============================================================ */
 @font-face {
     font-family: "Nohadra";
@@ -71,7 +82,7 @@ body.light-mode {
 }
 
 /* ============================================================
-   TYPOGRAPHIE SOURETH — HARMONISÉE AVEC style.css
+   4. TYPOGRAPHIE SOURETH — Harmonisation globale
 ============================================================ */
 .soureth-title,
 .soureth-writing,
@@ -85,7 +96,7 @@ body.light-mode {
 }
 
 /* ============================================================
-   GLOW PREMIUM — BLEU ASSYRIEN
+   5. GLOW PREMIUM — Bleu Assyrien
 ============================================================ */
 .glow-blue {
     box-shadow:
@@ -96,9 +107,58 @@ body.light-mode {
 }
 
 /* ============================================================
-   GLASSMORPHISM GLOBAL — ALIGNÉ AVEC style.css
+   6. GLASSMORPHISM GLOBAL
 ============================================================ */
 .glass,
 .card,
 .module-item,
-.quiz-box
+.quiz-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow-soft);
+    padding: 20px;
+}
+
+/* ============================================================
+   7. TEXTE GLOBAL
+============================================================ */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   8. BOUTONS GLOBAUX
+============================================================ */
+button {
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    background: var(--glass-bg);
+    color: var(--text);
+    transition: var(--transition);
+    backdrop-filter: blur(4px);
+}
+
+button:hover {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 12px rgba(0,150,255,0.45);
+}
+
+/* ============================================================
+   9. RTL / LTR GLOBAL
+============================================================ */
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+}
