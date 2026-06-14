@@ -2,40 +2,42 @@
 <html lang="fr">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Alphabet Soureth</title>
 
-   <link rel="stylesheet" href="css/theme.css">
+ <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/alphabet.css">
 
-<link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#0033a0">
 
+<!-- iOS support -->
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 
 <body>
 
-  <header>
+<header>
+  <h1>🔠 Alphabet Soureth Moderne</h1>
+  <h2>Les 22 consonnes de l’alphabet</h2>
 
-    <h1>
-      🔠 Alphabet Soureth Moderne
-    </h1>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 
-    <nav>
-      <a href="index.html">🏠 Accueil</a>
-      <a href="keyboard.html">⌨️ Clavier</a>
-      <a href="quiz.html">🎮 Quiz</a>
-    </nav>
+  <nav>
+    <a href="index.html">🏠 Accueil</a>
+    <a href="keyboard.html">⌨️ Clavier</a>
+    <a href="quiz.html">🎮 Quiz</a>
+  </nav>
+</header>
 
-  </header>
-
-  <section class="alphabet-grid">
+<section class="alphabet-grid">
 
     <!-- ALAP -->
     <div class="letter-card">
@@ -262,12 +264,14 @@
       </button>
     </div>
 
+<div id="letterDisplay" class="soureth"></div>
+<div id="guideLetter" class="soureth"></div>
+
   </section>
 
-  
+
 <script src="js/global.js"></script>
 <script src="js/alphabet.js"></script>
 <script src="js/audio.js" defer></script>
 </body>
-
 </html>
