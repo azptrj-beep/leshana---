@@ -1,0 +1,26 @@
+{
+  "alphabet": [
+    { "letter": "ܐ", "latin": "A — Alap", "audio": "audio/alap.mp3" },
+    { "letter": "ܒ", "latin": "B — Beth", "audio": "audio/beth.mp3" },
+    { "letter": "ܓ", "latin": "G — Gamal", "audio": "audio/gamal.mp3" },
+    { "letter": "ܕ", "latin": "D — Dalath", "audio": "audio/dalath.mp3" },
+    { "letter": "ܗ", "latin": "H — He", "audio": "audio/he.mp3" },
+    { "letter": "ܘ", "latin": "W — Waw", "audio": "audio/waw.mp3" },
+    { "letter": "ܙ", "latin": "Z — Zain", "audio": "audio/zain.mp3" },
+    { "letter": "ܚ", "latin": "Ḥ — Heth", "audio": "audio/heth.mp3" },
+    { "letter": "ܛ", "latin": "Ṭ — Teth", "audio": "audio/teth.mp3" },
+    { "letter": "ܝ", "latin": "Y — Yodh", "audio": "audio/yodh.mp3" },
+    { "letter": "ܟ", "latin": "K — Kap", "audio": "audio/kap.mp3" },
+    { "letter": "ܠ", "latin": "L — Lamad", "audio": "audio/lamad.mp3" },
+    { "letter": "ܡ", "latin": "M — Meem", "audio": "audio/meem.mp3" },
+    { "letter": "ܢ", "latin": "N — Noon", "audio": "audio/noon.mp3" },
+    { "letter": "ܣ", "latin": "S — Semkath", "audio": "audio/semkath.mp3" },
+    { "letter": "ܥ", "latin": "ʿ — Ayn", "audio": "audio/e.mp3" },
+    { "letter": "ܦ", "latin": "P — Pe", "audio": "audio/pe.mp3" },
+    { "letter": "ܨ", "latin": "Ṣ — Sadhe", "audio": "audio/sadhe.mp3" },
+    { "letter": "ܩ", "latin": "Q — Qop", "audio": "audio/qop.mp3" },
+    { "letter": "ܪ", "latin": "R — Resh", "audio": "audio/resh.mp3" },
+    { "letter": "ܫ", "latin": "SH — Sheen", "audio": "audio/sheen.mp3" },
+    { "letter": "ܬ", "latin": "T — Taw", "audio": "audio/taw.mp3" }
+  ]
+}
