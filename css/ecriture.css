@@ -9,8 +9,8 @@
 .canvas-card,
 .keyboard-card,
 .translator-card {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 900px;
     margin: 20px auto;
     padding: 22px 20px;
     border-radius: 16px;
@@ -20,14 +20,24 @@
 }
 
 #writingCanvas {
-    width: 420px !important;
-    height: 560px !important;
+    width: 100% !important;
+    max-width: 380px;          /* Réduction propre */
+    height: 420px !important;  /* Taille idéale */
     display: block;
-    margin: 40px auto;
+    margin: 25px auto;         /* Moins d’espace autour */
     border: 2px solid var(--cyan);
+    border-radius: 14px;
     box-shadow:
-        0 0 25px rgba(0,162,255,0.65),
-        0 0 45px rgba(0,162,255,0.45),
-        inset 0 0 25px rgba(0,162,255,0.25);
+        0 0 18px rgba(0,162,255,0.55),
+        0 0 32px rgba(0,162,255,0.35),
+        inset 0 0 18px rgba(0,162,255,0.25);
+}
+
+@media (max-width: 768px) {
+    #writingCanvas {
+        max-width: 300px;
+        height: 260px !important;
+        margin: 15px auto;
+    }
 }
 
