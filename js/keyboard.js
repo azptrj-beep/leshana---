@@ -34,15 +34,15 @@ function generateKeyboard(container, targetInput) {
   container.classList.add("rtl"); // pas .soureth
 
   SOURETH_LETTERS.forEach(letter => {
-    const btn = createKey(letter, () => insertLetter(targetInput, letter));
+    const btn = createKey(letter, () => insertLetterLocal(targetInput, letter));
     container.appendChild(btn);
   });
 
-  const space = createKey("␣ Espace", () => insertLetter(targetInput, " "));
+  const space = createKey("␣ Espace", () => insertLetterLocal(targetInput, " "));
   space.classList.add("space");
   container.appendChild(space);
 
-  const del = createKey("⌫", () => deleteLetter(targetInput));
+  const del = createKey("⌫", () => deleteLetterLocal(targetInput));
   del.classList.add("delete-btn");
   container.appendChild(del);
 }
@@ -65,9 +65,9 @@ function createKey(label, action) {
 }
 
 /* ============================================================
-   INSERTION DE LETTRE
+   INSERTION DE LETTRE (LOCAL)
 ============================================================ */
-function insertLetter(input, letter) {
+function insertLetterLocal(input, letter) {
   const start = input.selectionStart || 0;
   const end = input.selectionEnd || 0;
 
@@ -85,9 +85,9 @@ function insertLetter(input, letter) {
 }
 
 /* ============================================================
-   SUPPRESSION
+   SUPPRESSION (LOCAL)
 ============================================================ */
-function deleteLetter(input) {
+function deleteLetterLocal(input) {
   const start = input.selectionStart || 0;
   const end = input.selectionEnd || 0;
 
@@ -113,16 +113,9 @@ function deleteLetter(input) {
 }
 
 /* ============================================================
-   EXPORT GLOBAL
+   ⚠️ SUPPRESSION TOTALE DES EXPORTS GLOBAUX
+   (C’était la cause du bug)
 ============================================================ */
-window.insertLetter = (letter) => {
-  const input = document.getElementById("keyboardInput") 
-             || document.getElementById("translateInput");
-  if (input) insertLetter(input, letter);
-};
-
-window.deleteLetter = () => {
-  const input = document.getElementById("keyboardInput") 
-             || document.getElementById("translateInput");
-  if (input) deleteLetter(input);
-};
+// ❌ AUCUN window.insertLetter
+// ❌ AUCUN window.deleteLetter
+// ❌ AUCUNE redéfinition globale
