@@ -70,23 +70,19 @@ function detectLanguage(text) {
 }
 
 /* ============================================================
-   RTL / LTR AUTOMATIQUE
+   RTL / LTR AUTOMATIQUE (CORRIGÉ)
 ============================================================ */
 function applyDirection(lang) {
   if (!input || !result) return;
 
   if (lang === "syr") {
-    input.classList.remove("ltr");
-    input.classList.add("rtl");
-
-    result.classList.remove("rtl");
-    result.classList.add("ltr");
+    // Soureth → RTL
+    input.className = "rtl soureth";
+    result.className = "ltr french";
   } else {
-    input.classList.remove("rtl");
-    input.classList.add("ltr");
-
-    result.classList.remove("ltr");
-    result.classList.add("rtl");
+    // Français → LTR
+    input.className = "ltr french";
+    result.className = "rtl soureth";
   }
 }
 
