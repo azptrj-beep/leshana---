@@ -3,15 +3,14 @@
 /* ============================================================
    ELEMENTS & INIT
 ============================================================ */
-let input, result, statusBox, historyBox;
+let box, statusBox, historyBox;
 let words = {};
 let phrases = {};
 let synth;
 let recognition = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  input = document.getElementById("translateInput");
-  result = document.getElementById("translateResult");
+  box = document.getElementById("translateBox");   // 🔥 un seul champ
   statusBox = document.getElementById("status");
   historyBox = document.getElementById("history");
 
@@ -25,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
    STATUS
 ============================================================ */
 function setStatus(text) {
-  if (!statusBox) return;
-  statusBox.textContent = text;
+  if (statusBox) statusBox.textContent = text;
 }
 
 /* ============================================================
@@ -41,8 +39,8 @@ async function loadDictionaries() {
 
     if (!w.ok || !p.ok) throw new Error("Fichiers dictionnaires introuvables");
 
-    words = await w.json().catch(() => ({}));
-    phrases = await p.json().catch(() => ({}));
+    words = await w.json();
+    phrases = await p.json();
 
     setStatus("Dictionnaires chargés ✔️");
   } catch (e) {
@@ -51,38 +49,25 @@ async function loadDictionaries() {
     phrases = {};
     setStatus("Dictionnaires non chargés ⚠️");
   }
-
-  enableTranslatorUI();
-}
-
-function enableTranslatorUI() {
-  document.querySelectorAll("button").forEach(btn => {
-    btn.disabled = false;
-  });
 }
 
 /* ============================================================
    DÉTECTION LANGUE
 ============================================================ */
 function detectLanguage(text) {
-  const syriac = /[\u0700-\u074F]/;
-  return syriac.test(text) ? "syr" : "fr";
+  return /[\u0700-\u074F]/.test(text) ? "syr" : "fr";
 }
 
 /* ============================================================
-   RTL / LTR AUTOMATIQUE (CORRIGÉ)
+   RTL / LTR AUTOMATIQUE
 ============================================================ */
 function applyDirection(lang) {
-  if (!input || !result) return;
+  if (!box) return;
 
   if (lang === "syr") {
-    // Soureth → RTL
-    input.className = "rtl soureth";
-    result.className = "ltr french";
+    box.className = "rtl soureth";
   } else {
-    // Français → LTR
-    input.className = "ltr french";
-    result.className = "rtl soureth";
+    box.className = "ltr french";
   }
 }
 
@@ -93,23 +78,19 @@ function translateWord(word, lang) {
   if (!word) return word;
 
   if (lang === "syr") {
-    if (phrases[word]) return phrases[word];
-    if (words[word]) return words[word];
-    return word;
+    return phrases[word] || words[word] || word;
   } else {
-    const phraseKey = Object.keys(phrases).find(k => phrases[k] === word);
-    if (phraseKey) return phraseKey;
+    const p = Object.keys(phrases).find(k => phrases[k] === word);
+    if (p) return p;
 
-    const wordKey = Object.keys(words).find(k => words[k] === word);
-    if (wordKey) return wordKey;
+    const w = Object.keys(words).find(k => words[k] === word);
+    if (w) return w;
 
     return word;
   }
 }
 
 function translateSentence(sentence, lang) {
-  if (!sentence) return "";
-
   const parts = sentence.split(/(\s+|[.,!?;:])/g);
 
   return parts
@@ -120,34 +101,30 @@ function translateSentence(sentence, lang) {
     .join("");
 }
 
-function translateText() {
-  if (!input || !result) return;
+function translate() {
+  if (!box) return;
 
-  const text = input.value.trim();
+  const text = box.value.trim();
   if (!text) {
-    result.value = "";
     setStatus("Aucun texte à traduire");
     return;
   }
 
   const lang = detectLanguage(text);
-
-  // 🔥 Mise à jour automatique de la direction
   applyDirection(lang);
 
   const sentences = text.split(/(?<=[.!?])/g);
-
   const translated = sentences
     .map(s => translateSentence(s.trim(), lang))
     .join(" ");
 
-  result.value = translated || text;
+  addToHistory(text, translated);
 
-  addToHistory(text, result.value);
+  box.value = translated;
   setStatus("Traduction effectuée ✔️");
 }
 
-window.translateText = translateText;
+window.translate = translate;
 
 /* ============================================================
    HISTORIQUE
@@ -165,72 +142,53 @@ function addToHistory(src, out) {
   historyBox.prepend(div);
 }
 
-window.addToHistory = addToHistory;
-
 /* ============================================================
-   EFFACER / SWAP
+   EFFACER
 ============================================================ */
 function clearAll() {
-  if (!input || !result) return;
-  input.value = "";
-  result.value = "";
+  if (!box) return;
+  box.value = "";
   setStatus("Effacé ✔️");
 }
 
 window.clearAll = clearAll;
 
-function swapText() {
-  if (!input || !result) return;
-
-  const temp = input.value;
-  input.value = result.value;
-  result.value = temp;
-
-  // 🔥 Mise à jour direction après inversion
-  const lang = detectLanguage(input.value);
-  applyDirection(lang);
-
-  setStatus("Texte inversé ↔️");
-}
-
-window.swapText = swapText;
-
 /* ============================================================
    CLAVIER SOURETH
 ============================================================ */
 function insertLetter(letter) {
-  if (!input) return;
+  if (!box) return;
 
-  const start = input.selectionStart || 0;
-  const end = input.selectionEnd || 0;
+  const start = box.selectionStart || 0;
+  const end = box.selectionEnd || 0;
 
-  input.value =
-    input.value.substring(0, start) +
+  box.value =
+    box.value.substring(0, start) +
     letter +
-    input.value.substring(end);
+    box.value.substring(end);
 
-  input.focus();
-  input.selectionStart = input.selectionEnd = start + letter.length;
+  box.focus();
+  box.selectionStart = box.selectionEnd = start + letter.length;
 }
 
 window.insertLetter = insertLetter;
 
 function deleteLetter() {
-  if (!input) return;
+  if (!box) return;
 
-  const start = input.selectionStart || 0;
-  const end = input.selectionEnd || 0;
+  const start = box.selectionStart || 0;
+  const end = box.selectionEnd || 0;
 
   if (start === end && start > 0) {
-    input.value =
-      input.value.substring(0, start - 1) +
-      input.value.substring(end);
-    input.selectionStart = input.selectionEnd = start - 1;
+    box.value =
+      box.value.substring(0, start - 1) +
+      box.value.substring(end);
+    box.selectionStart = box.selectionEnd = start - 1;
   } else {
-    input.value =
-      input.value.substring(0, start) +
-      input.value.substring(end);
-    input.selectionStart = input.selectionEnd = start;
+    box.value =
+      box.value.substring(0, start) +
+      box.value.substring(end);
+    box.selectionStart = box.selectionEnd = start;
   }
 }
 
@@ -240,9 +198,9 @@ window.deleteLetter = deleteLetter;
    AUDIO
 ============================================================ */
 function speakText() {
-  if (!synth || !result) return;
+  if (!synth || !box) return;
 
-  const text = result.value.trim();
+  const text = box.value.trim();
   if (!text) {
     setStatus("Rien à lire");
     return;
@@ -285,9 +243,9 @@ function initSpeechRecognition() {
   recognition.lang = "fr-FR";
 
   recognition.onresult = (event) => {
-    if (!input) return;
-    input.value = event.results[0][0].transcript;
-    translateText();
+    if (!box) return;
+    box.value = event.results[0][0].transcript;
+    translate();
   };
 
   recognition.onerror = () => {
