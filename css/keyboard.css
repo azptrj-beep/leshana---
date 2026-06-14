@@ -2,6 +2,24 @@
    KEYBOARD.CSS — Clavier Soureth Premium
 ============================================ */
 
+/* ============================================================
+   1) CONTENEURS (2 types : #keyboard et .soureth-keyboard)
+============================================================ */
+
+/* Clavier utilisé dans traduction.html */
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--glass-bg);
+    border-radius: 18px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+}
+
+/* Clavier utilisé dans keyboard.html */
 .soureth-keyboard {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
@@ -14,7 +32,12 @@
     backdrop-filter: blur(12px);
 }
 
-.key-btn {
+/* ============================================================
+   2) TOUCHES
+============================================================ */
+
+.key-btn,
+.delete-btn {
     background: rgba(255,255,255,0.12);
     border: 1px solid var(--glass-border);
     border-radius: 14px;
@@ -26,9 +49,12 @@
     transition: 0.25s ease;
     user-select: none;
     box-shadow: var(--shadow-soft);
+    font-family: "Nohadra", "Assyrian", sans-serif;
 }
 
-.key-btn:hover {
+/* Hover */
+.key-btn:hover,
+.delete-btn:hover {
     background: rgba(0,102,255,0.25);
     border-color: var(--cyan);
     box-shadow:
@@ -38,14 +64,23 @@
     transform: translateY(-4px) scale(1.05);
 }
 
-.key-btn:active {
+/* Active */
+.key-btn:active,
+.delete-btn:active {
     transform: scale(0.92);
     box-shadow: inset 0 0 12px rgba(0,0,0,0.35);
 }
 
+/* Espace */
+.key-btn.space {
+    grid-column: span 2;
+}
+
+/* Delete */
 .delete-btn {
     background: rgba(255,80,80,0.18);
     border-color: rgba(255,80,80,0.35);
+    color: #ffcccc;
 }
 
 .delete-btn:hover {
@@ -53,24 +88,12 @@
     box-shadow:
         0 0 12px rgba(255,80,80,0.55),
         0 0 22px rgba(255,80,80,0.45);
+    color: white;
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    .soureth-keyboard {
-        grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
-        gap: 8px;
-        padding: 10px;
-    }
-
-    .key-btn {
-        font-size: 22px;
-        padding: 10px 0;
-        border-radius: 10px;
-    }
-}
-
-/* ===== CLAVIER ===== */
+/* ============================================================
+   3) ZONE D'ÉCRITURE (page clavier)
+============================================================ */
 
 .soureth-writing {
     width: 100%;
@@ -82,22 +105,28 @@
     border: 1px solid rgba(255,255,255,0.12);
     background: rgba(255,255,255,0.05);
     color: #fff;
+    font-family: "Nohadra", "Assyrian", sans-serif;
+    direction: rtl;
+    unicode-bidi: bidi-override;
 }
 
-.soureth-keyboard {
-    margin-top: 15px;
-    padding: 14px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
-    gap: 10px;
-}
+/* ============================================================
+   4) RESPONSIVE
+============================================================ */
 
-.key-btn {
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    text-align: center;
-    font-size: 1.2rem;
-    color: #fff;
+@media (max-width: 600px) {
+
+    #keyboard,
+    .soureth-keyboard {
+        grid-template-columns: repeat(auto-fit, minmax(38px, 1fr));
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .key-btn,
+    .delete-btn {
+        font-size: 22px;
+        padding: 10px 0;
+        border-radius: 10px;
+    }
 }
