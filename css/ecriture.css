@@ -9,7 +9,7 @@
 .canvas-card,
 .keyboard-card,
 .translator-card {
-    width: 100%;
+    width: 80%;
     max-width: 800px;
     margin: 20px auto;
     padding: 22px 20px;
