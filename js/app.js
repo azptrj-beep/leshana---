@@ -56,6 +56,7 @@ function initMenu() {
     if (nav) nav.classList.toggle("open");
   };
 }
+
 /* ============================================================
    ALPHABET SYSTEM (sécurisé)
 ============================================================ */
@@ -213,21 +214,3 @@ function initUIEffects() {
     });
   });
 }
-
-function insertLetter(letter) {
-  const input = document.getElementById("translateInput");
-  if (!input) return;
-
-  const start = input.selectionStart;
-  const end = input.selectionEnd;
-
-  input.value =
-    input.value.substring(0, start) +
-    letter +
-    input.value.substring(end);
-
-  input.focus();
-  input.selectionStart = input.selectionEnd = start + 1;
-}
-
-window.insertLetter = insertLetter;
